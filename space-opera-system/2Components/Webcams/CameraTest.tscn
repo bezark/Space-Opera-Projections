@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b401xtha2whym"]
 
-[ext_resource type="Script" path="res://2Components/Webcams/CameraTest.gd" id="1_ael7a"]
+[ext_resource type="Script" uid="uid://definor1eusx2" path="res://2Components/Webcams/CameraTest.gd" id="1_ael7a"]
 
 [sub_resource type="CameraTexture" id="CameraTexture_nl3vh"]
 camera_feed_id = 1

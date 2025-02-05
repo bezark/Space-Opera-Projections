@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dd8qdtovr8rt6"]
+[gd_scene load_steps=6 format=3 uid="uid://ewqbnn3s010b"]
 
 [ext_resource type="PackedScene" uid="uid://v2iy6svfm1gl" path="res://2Components/DiceCam/dice_cam_webcam_control.tscn" id="2_8lu4k"]
 
