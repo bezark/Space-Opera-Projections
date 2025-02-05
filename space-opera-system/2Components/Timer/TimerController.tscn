@@ -1,0 +1,67 @@
+[gd_scene load_steps=4 format=3 uid="uid://d0mtfhwq8gcov"]
+
+[ext_resource type="Theme" uid="uid://lw6kq8u7ky66" path="res://2Components/Timer/SocietyBoard.tres" id="1_ichy1"]
+[ext_resource type="Script" path="res://2Components/Timer/SocietyPhaseTimerController.gd" id="2_bk1ey"]
+[ext_resource type="PackedScene" uid="uid://sghxqgcrs7b8" path="res://2Components/Timer/Timer.tscn" id="3_qgdn8"]
+
+[node name="SocietyPhaseTimerDash" type="ColorRect"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme = ExtResource("1_ichy1")
+color = Color(0, 0, 0, 1)
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SocietyPhaseTimer" type="HBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+script = ExtResource("2_bk1ey")
+
+[node name="Timer" parent="CenterContainer/SocietyPhaseTimer" instance=ExtResource("3_qgdn8")]
+layout_mode = 2
+
+[node name="VSeparator" type="VSeparator" parent="CenterContainer/SocietyPhaseTimer/Timer"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="Reset" type="Button" parent="CenterContainer/SocietyPhaseTimer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "RESET"
+
+[node name="Start" type="Button" parent="CenterContainer/SocietyPhaseTimer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "START"
+
+[node name="Stop" type="Button" parent="CenterContainer/SocietyPhaseTimer"]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "PAUSE"
+
+[node name="Minutes" type="SpinBox" parent="CenterContainer/SocietyPhaseTimer"]
+layout_mode = 2
+size_flags_horizontal = 10
+max_value = 60.0
+
+[node name="Seconds" type="SpinBox" parent="CenterContainer/SocietyPhaseTimer"]
+layout_mode = 2
+size_flags_horizontal = 10
+max_value = 60.0
+
+[connection signal="button_down" from="CenterContainer/SocietyPhaseTimer/Reset" to="CenterContainer/SocietyPhaseTimer" method="_on_button_button_down"]
+[connection signal="button_down" from="CenterContainer/SocietyPhaseTimer/Start" to="CenterContainer/SocietyPhaseTimer" method="_on_start_button_down"]
+[connection signal="button_down" from="CenterContainer/SocietyPhaseTimer/Stop" to="CenterContainer/SocietyPhaseTimer" method="_on_stop_button_down"]
+[connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Minutes" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_seconds_value_changed"]

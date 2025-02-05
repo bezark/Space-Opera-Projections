@@ -1,0 +1,39 @@
+[gd_scene load_steps=6 format=3 uid="uid://dd8qdtovr8rt6"]
+
+[ext_resource type="PackedScene" uid="uid://v2iy6svfm1gl" path="res://2Components/DiceCam/dice_cam_webcam_control.tscn" id="2_8lu4k"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t14xh"]
+
+[sub_resource type="CameraTexture" id="CameraTexture_5o2j6"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_jkv63"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c2gm3"]
+albedo_texture_force_srgb = true
+
+[node name="3dDiceCam" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+shadow_enabled = true
+
+[node name="DiceCamWebcamControl" parent="." instance=ExtResource("2_8lu4k")]
+DEVICE_NAME = "Laptop Camera: Laptop Camera"
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.49599)
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.258819, -0.965926, 0, 0.965926, 0.258819, 0, 0, 0)
+material = SubResource("StandardMaterial3D_t14xh")
+
+[node name="SubViewport" type="SubViewport" parent="CSGTorus3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="CSGTorus3D/SubViewport"]
+transform = Transform3D(0.786396, 0, -0.617722, 0, 1, 0, 0.617722, 0, 0.786396, 0, 0, -3.47215)
+texture = SubResource("CameraTexture_5o2j6")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.37247)
+mesh = SubResource("BoxMesh_jkv63")
+surface_material_override/0 = SubResource("StandardMaterial3D_c2gm3")

@@ -1,0 +1,42 @@
+[gd_scene load_steps=5 format=3 uid="uid://b81hbyj2r4vlo"]
+
+[ext_resource type="Script" path="res://2Components/Views/SocietySheet.gd" id="1_iohmd"]
+[ext_resource type="Resource" uid="uid://d3b5rkb7nh0rq" path="res://2Components/Data/test_society.tres" id="2_7rr33"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sqv2l"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_cyu4l"]
+font_size = 24
+
+[node name="SocietySheet" type="PanelContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_iohmd")
+society = ExtResource("2_7rr33")
+
+[node name="VBox" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Name" type="LineEdit" parent="VBox"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 28
+theme_override_icons/clear = SubResource("PlaceholderTexture2D_sqv2l")
+placeholder_text = "NAME"
+alignment = 1
+context_menu_enabled = false
+flat = true
+
+[node name="CommunitiesLabel" type="Label" parent="VBox"]
+layout_mode = 2
+text = "Communities"
+label_settings = SubResource("LabelSettings_cyu4l")
+horizontal_alignment = 1
+
+[node name="Communities" type="HBoxContainer" parent="VBox"]
+layout_mode = 2
+size_flags_vertical = 3

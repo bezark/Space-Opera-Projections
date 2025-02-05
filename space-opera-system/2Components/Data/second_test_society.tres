@@ -1,0 +1,40 @@
+[gd_resource type="Resource" script_class="Society" load_steps=10 format=3 uid="uid://duhcgbckngvq6"]
+
+[ext_resource type="Script" path="res://2Components/Classes/Community.gd" id="1_37haw"]
+[ext_resource type="Script" path="res://2Components/Classes/SPResource.gd" id="2_e3jlt"]
+[ext_resource type="Script" path="res://2Components/Classes/Society.gd" id="3_s0lh1"]
+
+[sub_resource type="Resource" id="Resource_uhcwl"]
+script = ExtResource("2_e3jlt")
+title = "The thing"
+relationship = ""
+
+[sub_resource type="Resource" id="Resource_81qm4"]
+script = ExtResource("2_e3jlt")
+title = "So Good"
+relationship = ""
+
+[sub_resource type="Resource" id="Resource_plccc"]
+script = ExtResource("1_37haw")
+title = "Baby Boys"
+resources = Array[ExtResource("2_e3jlt")]([SubResource("Resource_uhcwl"), SubResource("Resource_81qm4")])
+
+[sub_resource type="Resource" id="Resource_eyjk7"]
+script = ExtResource("2_e3jlt")
+title = "NOthing"
+relationship = ""
+
+[sub_resource type="Resource" id="Resource_nuwdc"]
+script = ExtResource("1_37haw")
+title = "Farts"
+resources = Array[ExtResource("2_e3jlt")]([SubResource("Resource_eyjk7")])
+
+[sub_resource type="Resource" id="Resource_hxs4b"]
+script = ExtResource("1_37haw")
+title = "Honchos"
+resources = Array[ExtResource("2_e3jlt")]([])
+
+[resource]
+script = ExtResource("3_s0lh1")
+title = "The Cats"
+communities = Array[ExtResource("1_37haw")]([SubResource("Resource_plccc"), SubResource("Resource_nuwdc"), SubResource("Resource_hxs4b")])

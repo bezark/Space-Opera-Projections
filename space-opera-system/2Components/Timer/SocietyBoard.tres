@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://lw6kq8u7ky66"]
+
+[sub_resource type="SystemFont" id="SystemFont_oqihu"]
+
+[resource]
+Label/font_sizes/font_size = 64
+Label/fonts/font = SubResource("SystemFont_oqihu")
