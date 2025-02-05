@@ -1,0 +1,55 @@
+[gd_scene load_steps=8 format=3 uid="uid://b7i2tqy56hkql"]
+
+[ext_resource type="PackedScene" uid="uid://cgx81p3pku0sb" path="res://Experiments/imageto3d/Space_Traveler_Advent_0205232100_texture.glb" id="1_c6bv8"]
+[ext_resource type="PackedScene" uid="uid://d0x13rkg8o6op" path="res://Experiments/imageto3d/Starship_Sketch_0205231322_texture.glb" id="2_tlwpd"]
+[ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Shaders/blackhole.gdshader" id="3_tlwpd"]
+[ext_resource type="Shader" uid="uid://b1ihjkp2sjm4m" path="res://Shaders/1bit.gdshader" id="4_hqfrp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_bjfds"]
+shader = ExtResource("4_hqfrp")
+shader_parameter/dithering = true
+shader_parameter/dithering_size = 13
+shader_parameter/resolution_scale = 2
+shader_parameter/threshold = 24.0
+shader_parameter/white = Color(0.0445579, 0.0445578, 0.0445578, 1)
+shader_parameter/black = Color(1, 1, 1, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q56d7"]
+render_priority = 0
+shader = ExtResource("3_tlwpd")
+shader_parameter/scale = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_5vpqt"]
+material = SubResource("ShaderMaterial_q56d7")
+flip_faces = true
+
+[node name="3D Assets" type="Node3D"]
+
+[node name="ColorRect" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_bjfds")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 3
+
+[node name="SubViewport" type="SubViewport" parent="ColorRect"]
+handle_input_locally = false
+size = Vector2i(1920, 1080)
+render_target_update_mode = 4
+
+[node name="Space_Traveler_Advent_0205232100_texture" parent="ColorRect/SubViewport" instance=ExtResource("1_c6bv8")]
+transform = Transform3D(-0.3737, 0, 0.92755, 0, 1, 0, -0.92755, 0, -0.3737, 2.23721, 0, 0.954518)
+
+[node name="Starship_Sketch_0205231322_texture" parent="ColorRect/SubViewport" instance=ExtResource("2_tlwpd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.51318, 0, -1.93488)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="ColorRect/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 0.999964, -0.0085171, 0, 0.0085171, 0.999964, 4.6034, -0.00122836, 0.849188)
+mesh = SubResource("SphereMesh_5vpqt")
+skeleton = NodePath("../../..")
+
+[node name="Camera3D" type="Camera3D" parent="ColorRect/SubViewport"]
+transform = Transform3D(0.447728, 0, 0.89417, 0, 1, 0, -0.89417, 0, 0.447728, 5.01726, 2.38419e-07, 1.06505)

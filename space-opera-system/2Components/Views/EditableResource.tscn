@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cvbo2q7pj0v1u"]
 
-[ext_resource type="Script" path="res://xArchive/SocietyComponents/resource_sheet.gd" id="1_4lp0g"]
+[ext_resource type="Script" uid="uid://ba11aysr6rwt5" path="res://xArchive/SocietyComponents/resource_sheet.gd" id="1_4lp0g"]
 
 [node name="Resource" type="VBoxContainer"]
 offset_right = 68.0

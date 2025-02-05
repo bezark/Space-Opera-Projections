@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://pdsgrmnhygwc"]
+
+[ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Shaders/blackhole.gdshader" id="1_sjfy6"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_q56d7"]
+render_priority = 0
+shader = ExtResource("1_sjfy6")
+shader_parameter/scale = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_5vpqt"]
+material = SubResource("ShaderMaterial_q56d7")
+flip_faces = true
+
+[node name="MeshInstance3D" type="MeshInstance3D"]
+mesh = SubResource("SphereMesh_5vpqt")
