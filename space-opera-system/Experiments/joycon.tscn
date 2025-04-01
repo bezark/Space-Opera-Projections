@@ -1,6 +1,27 @@
-[gd_scene load_steps=2 format=3 uid="uid://byvgq4tih3ac1"]
+[gd_scene load_steps=4 format=3 uid="uid://byvgq4tih3ac1"]
 
 [ext_resource type="Script" uid="uid://dfp618d6r2oit" path="res://Experiments/joycon.gd" id="1_gu3ap"]
+[ext_resource type="Script" uid="uid://cfon3p4usolha" path="res://addons/godOSC/scripts/OSCServer.gd" id="2_ix0ut"]
+[ext_resource type="Script" uid="uid://cw37rxgmj7h7g" path="res://Experiments/accel_stretcher.gd" id="4_mccmv"]
 
 [node name="Joycon" type="Node"]
 script = ExtResource("1_gu3ap")
+delay = 4
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="OSCServer" type="Node" parent="."]
+script = ExtResource("2_ix0ut")
+port = 7878
+metadata/_custom_type_script = "uid://cfon3p4usolha"
+
+[node name="accel_stretcher" type="CSGBox3D" parent="."]
+script = ExtResource("4_mccmv")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.97852, 0.206153, 0, -0.206153, 0.97852, 0, 1.82456, 7.45638)
+
+[connection signal="accel_changed" from="." to="accel_stretcher" method="_on_joycon_accel_changed"]
+[connection signal="message_received" from="OSCServer" to="." method="_on_osc_server_message_received"]
