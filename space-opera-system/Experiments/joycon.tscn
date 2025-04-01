@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byvgq4tih3ac1"]
+
+[ext_resource type="Script" uid="uid://dfp618d6r2oit" path="res://Experiments/joycon.gd" id="1_gu3ap"]
+
+[node name="Joycon" type="Node"]
+script = ExtResource("1_gu3ap")
