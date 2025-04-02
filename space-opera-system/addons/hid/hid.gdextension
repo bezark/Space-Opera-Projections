@@ -3,5 +3,5 @@ entry_symbol = "hid_ext_init"
 compatibility_minimum = 4.1
 
 [libraries]
-linux.x86_64 = "bin/libhid_ext.linux.x86_64.release.so"
+linux.x86_64.debug = "bin/libhid_ext.linux.x86_64.debug.so"
 

@@ -13,32 +13,35 @@ signal accel_changed
 
 
 func _ready():
+	print(Engine.get_singleton("Hid"))
+	#var devices = Hid.list_devices()
+	#print(devices)
 	
-	Hid
 	#peer = PacketPeerUDP.new()
 	#peer.bind(7878)
-	udp.set_dest_address(server_ip, server_port)
-	
-	 #Construct and send the handshake packet
-	var handshake_packet = construct_handshake_packet()
-	udp.put_packet(handshake_packet)
+	#udp.set_dest_address(server_ip, server_port)
+	#
+	 ##Construct and send the handshake packet
+	#var handshake_packet = construct_handshake_packet()
+	#udp.put_packet(handshake_packet)
 
 
 func _process(_delta):
+	pass
 	#if peer.get_available_packet_count() > 0:
 		#var array_bytes = peer.get_packet()
 		#var packet_string = array_bytes.get_string_from_ascii()
 		#print("Received message: ", packet_string)
 		
-	current_step +=1
-	if current_step >= delay:
-		current_step = 0
-		if udp.get_available_packet_count() > 0:
-			var packet = udp.get_packet()
-			#var array_bytes = peer.get_packet()
-			#var packet_string = array_bytes.get_string_from_utf32()
-			#print("Received message: ", packet_string)
-			process_received_packet(packet)
+	#current_step +=1
+	#if current_step >= delay:
+		#current_step = 0
+		#if udp.get_available_packet_count() > 0:
+			#var packet = udp.get_packet()
+			##var array_bytes = peer.get_packet()
+			##var packet_string = array_bytes.get_string_from_utf32()
+			##print("Received message: ", packet_string)
+			#process_received_packet(packet)
 
 
 func _on_osc_server_message_received(address, value, time):
