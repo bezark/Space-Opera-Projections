@@ -6,27 +6,29 @@ var current_step = 0
 var udp := PacketPeerUDP.new()
 var server_ip = "127.0.0.1"  # Change this if your server is running on another machine
 var server_port = 26760  # Default DSU protocol port
-var peer
+#var peer
 signal accel_changed
 #func _input(event: InputEvent) -> void:
 	#print(event)
 
 
 func _ready():
-	peer = PacketPeerUDP.new()
-	peer.bind(7879)
+	
+	Hid
+	#peer = PacketPeerUDP.new()
+	#peer.bind(7878)
 	udp.set_dest_address(server_ip, server_port)
 	
-	# Construct and send the handshake packet
+	 #Construct and send the handshake packet
 	var handshake_packet = construct_handshake_packet()
 	udp.put_packet(handshake_packet)
 
 
 func _process(_delta):
-	if peer.get_available_packet_count() > 0:
-		var array_bytes = peer.get_packet()
-		var packet_string = array_bytes.get_string_from_ascii()
-		print("Received message: ", packet_string)
+	#if peer.get_available_packet_count() > 0:
+		#var array_bytes = peer.get_packet()
+		#var packet_string = array_bytes.get_string_from_ascii()
+		#print("Received message: ", packet_string)
 		
 	current_step +=1
 	if current_step >= delay:
@@ -78,7 +80,7 @@ func construct_handshake_packet() -> PackedByteArray:
 
 func process_received_packet(packet: PackedByteArray):
 	# Motion data should be somewhere in this packet; for now, just print raw data
-	#print("Received packet: ", packet)
+	print("Received packet: ", packet)
 	
 	#if packet.size() < 60:
 		#print("Packet too short, ignoring.")
@@ -100,21 +102,25 @@ func process_received_packet(packet: PackedByteArray):
 	if packet.size() < 100:
 		print("Packet too short, ignoring. Size:", packet.size())
 		return
-
+	#print(packet.decode_half(68))
 	# Extract accelerometer data (potential new offsets)
-	var accel_x = bytes_to_int16(packet[82], packet[83])
-	var accel_y = bytes_to_int16(packet[84], packet[85])
-	var accel_z = bytes_to_int16(packet[86], packet[87])
-	
-	# Extract gyroscope data (potential new offsets)
-	var gyro_x = bytes_to_int16(packet[88], packet[89])
-	var gyro_y = bytes_to_int16(packet[90], packet[91])
-	var gyro_z = bytes_to_int16(packet[92], packet[93])
+	var accel_x = packet.decode_float(45)
+	var accel_y = packet.decode_float(49)
+	var accel_z = packet.decode_float(53)
+	#
+	var gyro_x = packet.decode_float(57)
+	var gyro_y = packet.decode_float(61)
+	var gyro_z = packet.decode_float(65)
+	#prints(accel_x, acc)
+	## Extract gyroscope data (potential new offsets)
+	#var gyro_x = bytes_to_int16(packet[88], packet[89])
+	#var gyro_y = bytes_to_int16(packet[90], packet[91])
+	#var gyro_z = bytes_to_int16(packet[92], packet[93])
 	#prints(accel_x, accel_y, accel_z, gyro_x,gyro_y,gyro_z)
 
 	#print("Accel (X,Y,Z): ", accel_x / 4096.0, "g, ", accel_y / 4096.0, "g, ", accel_z / 4096.0, "g")
 	#print("Gyro (X,Y,Z): ", gyro_x / 16.4, "°/s, ", gyro_y / 16.4, "°/s, ", gyro_z / 16.4, "°/s")
-	accel_changed.emit(Vector3(accel_x / 4096.0, accel_y / 4096.0, accel_z / 4096.0))
+	accel_changed.emit(Vector3(accel_x, accel_y, accel_z))
 func bytes_to_int16(high: int, low: int) -> int:
 	var value = (high << 8) | low
 	if value >= 32768:
