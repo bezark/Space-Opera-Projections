@@ -21,7 +21,7 @@ metadata/_custom_type_script = "uid://cfon3p4usolha"
 script = ExtResource("4_mccmv")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.97852, 0.206153, 0, -0.206153, 0.97852, 0, 1.82456, 7.45638)
+transform = Transform3D(1, 0, 0, 0, 0.97852, 0.206153, 0, -0.206153, 0.97852, 0, 1.82456, 56.7259)
 
 [connection signal="accel_changed" from="." to="accel_stretcher" method="_on_joycon_accel_changed"]
 [connection signal="message_received" from="OSCServer" to="." method="_on_osc_server_message_received"]

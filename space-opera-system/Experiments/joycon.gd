@@ -2,6 +2,10 @@ extends Node
 
 @export var delay = 10
 
+var joycon_parser = JoyConParser.new()
+
+
+
 var current_step = 0
 var udp := PacketPeerUDP.new()
 var server_ip = "127.0.0.1"  # Change this if your server is running on another machine
@@ -9,39 +13,65 @@ var server_port = 26760  # Default DSU protocol port
 #var peer
 signal accel_changed
 #func _input(event: InputEvent) -> void:
-	#print(event)
-
+#print(event)
+var hid
 
 func _ready():
-	print(Engine.get_singleton("Hid"))
-	#var devices = Hid.list_devices()
-	#print(devices)
-	
+	#print(Engine.get_singleton("Hid"))
+	var devices = Hid.list_devices()
+	# print(devices)
+
+	hid = Hid.new()
+	# Open by vender id and product id
+	hid.open(1406, 8199)
+	# Or open by device path
+	# hid.open_path(path)
+	# Or open by serial number
+	#hid.open_serial(vid, pid, serial_number)
+
+	# Then you can read HID report data from device.
+	var report_recv = hid.read(64)
+	print(report_recv)
+
+	#var report_recv = hid.read_timeout(64, 10)
+	# And write report data to HID
+	# hid.write(report_send)
+
 	#peer = PacketPeerUDP.new()
 	#peer.bind(7878)
 	#udp.set_dest_address(server_ip, server_port)
 	#
-	 ##Construct and send the handshake packet
+	##Construct and send the handshake packet
 	#var handshake_packet = construct_handshake_packet()
 	#udp.put_packet(handshake_packet)
 
 
 func _process(_delta):
-	pass
+	var hid_data = hid.read(64)
+	# Assuming you have your HID data in a variable called 'hid_data'
+	if hid_data and hid_data.size() > 0:
+		var parsed_data = joycon_parser.parse_joycon_data(hid_data)
+		if parsed_data:
+			# Do something with the parsed data
+			#print("Left stick: ", parsed_data.left_stick)
+			print(parsed_data.gyroscope)
+			#print(parsed_data.buttons.right.a)
+			accel_changed.emit(parsed_data.gyroscope)
+
 	#if peer.get_available_packet_count() > 0:
-		#var array_bytes = peer.get_packet()
-		#var packet_string = array_bytes.get_string_from_ascii()
-		#print("Received message: ", packet_string)
-		
+	#var array_bytes = peer.get_packet()
+	#var packet_string = array_bytes.get_string_from_ascii()
+	#print("Received message: ", packet_string)
+
 	#current_step +=1
 	#if current_step >= delay:
-		#current_step = 0
-		#if udp.get_available_packet_count() > 0:
-			#var packet = udp.get_packet()
-			##var array_bytes = peer.get_packet()
-			##var packet_string = array_bytes.get_string_from_utf32()
-			##print("Received message: ", packet_string)
-			#process_received_packet(packet)
+	#current_step = 0
+	#if udp.get_available_packet_count() > 0:
+	#var packet = udp.get_packet()
+	##var array_bytes = peer.get_packet()
+	##var packet_string = array_bytes.get_string_from_utf32()
+	##print("Received message: ", packet_string)
+	#process_received_packet(packet)
 
 
 func _on_osc_server_message_received(address, value, time):
@@ -49,45 +79,45 @@ func _on_osc_server_message_received(address, value, time):
 	print("Sent handshake packet to register for motion data")
 
 
-	
 func construct_handshake_packet() -> PackedByteArray:
 	var packet = PackedByteArray()
-	
+
 	# DSUS header
-	packet.append_array("DSUS".to_utf8_buffer()) 
-	
+	packet.append_array("DSUS".to_utf8_buffer())
+
 	# Protocol version (0x03E9 in little-endian)
 	packet.append(0xE9)
 	packet.append(0x03)
-	
+
 	# Length field (payload length + 4 bytes for CRC, setting this as 16 for simplicity)
 	packet.append(16 & 0xFF)
 	packet.append((16 >> 8) & 0xFF)
-	
+
 	# Placeholder for CRC32 (4 zeroed bytes, some servers may ignore this)
 	packet.append_array([0x00, 0x00, 0x00, 0x00])
-	
+
 	# Server ID (set to all 0xFF)
 	packet.append_array([0xFF, 0xFF, 0xFF, 0xFF])
-	
+
 	# Message type (0x02, 0x00, 0x10, 0x00) - "data" request
 	packet.append_array([0x02, 0x00, 0x10, 0x00])
-	
+
 	# Registration ID (0 for all controllers)
 	packet.append(0x00)
-	
+
 	# Slot ID (0 for first controller slot)
 	packet.append(0x00)
-	
+
 	return packet
+
 
 func process_received_packet(packet: PackedByteArray):
 	# Motion data should be somewhere in this packet; for now, just print raw data
 	print("Received packet: ", packet)
-	
+
 	#if packet.size() < 60:
-		#print("Packet too short, ignoring.")
-		#return
+	#print("Packet too short, ignoring.")
+	#return
 	#
 	## Extract accelerometer data (X, Y, Z)
 	#var accel_y = bytes_to_int16(packet[38], packet[39])
@@ -124,8 +154,15 @@ func process_received_packet(packet: PackedByteArray):
 	#print("Accel (X,Y,Z): ", accel_x / 4096.0, "g, ", accel_y / 4096.0, "g, ", accel_z / 4096.0, "g")
 	#print("Gyro (X,Y,Z): ", gyro_x / 16.4, "°/s, ", gyro_y / 16.4, "°/s, ", gyro_z / 16.4, "°/s")
 	accel_changed.emit(Vector3(accel_x, accel_y, accel_z))
+
+
 func bytes_to_int16(high: int, low: int) -> int:
 	var value = (high << 8) | low
 	if value >= 32768:
 		value -= 65536
 	return value
+	
+	
+	
+	
+	
