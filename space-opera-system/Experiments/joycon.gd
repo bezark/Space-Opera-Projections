@@ -54,7 +54,7 @@ func _process(_delta):
 		if parsed_data:
 			# Do something with the parsed data
 			#print("Left stick: ", parsed_data.left_stick)
-			print(parsed_data.gyroscope)
+			#print(parsed_data.gyroscope)
 			#print(parsed_data.buttons.right.a)
 			accel_changed.emit(parsed_data.gyroscope)
 
