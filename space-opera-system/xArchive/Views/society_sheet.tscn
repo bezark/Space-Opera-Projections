@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://b81hbyj2r4vlo"]
 
-[ext_resource type="Script" uid="uid://bnqq8cpvxyj6l" path="res://2Components/Views/SocietySheet.gd" id="1_iohmd"]
+[ext_resource type="Script" uid="uid://bnqq8cpvxyj6l" path="res://xArchive/Views/SocietySheet.gd" id="1_iohmd"]
 [ext_resource type="Resource" uid="uid://d3b5rkb7nh0rq" path="res://2Components/Data/test_society.tres" id="2_7rr33"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_sqv2l"]

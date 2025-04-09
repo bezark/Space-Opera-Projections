@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://d0mtfhwq8gcov"]
 
-[ext_resource type="Theme" uid="uid://lw6kq8u7ky66" path="res://2Components/Timer/SocietyBoard.tres" id="1_ichy1"]
-[ext_resource type="Script" path="res://2Components/Timer/SocietyPhaseTimerController.gd" id="2_bk1ey"]
-[ext_resource type="PackedScene" uid="uid://sghxqgcrs7b8" path="res://2Components/Timer/Timer.tscn" id="3_qgdn8"]
+[ext_resource type="Theme" uid="uid://lw6kq8u7ky66" path="res://xArchive/Timer/SocietyBoard.tres" id="1_ichy1"]
+[ext_resource type="Script" uid="uid://diow40je2csto" path="res://xArchive/Timer/SocietyPhaseTimerController.gd" id="2_bk1ey"]
+[ext_resource type="PackedScene" uid="uid://sghxqgcrs7b8" path="res://xArchive/Timer/Timer.tscn" id="3_qgdn8"]
 
 [node name="SocietyPhaseTimerDash" type="ColorRect"]
 anchors_preset = 15
@@ -63,5 +63,5 @@ max_value = 60.0
 [connection signal="button_down" from="CenterContainer/SocietyPhaseTimer/Start" to="CenterContainer/SocietyPhaseTimer" method="_on_start_button_down"]
 [connection signal="button_down" from="CenterContainer/SocietyPhaseTimer/Stop" to="CenterContainer/SocietyPhaseTimer" method="_on_stop_button_down"]
 [connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Minutes" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
-[connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
 [connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_seconds_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]

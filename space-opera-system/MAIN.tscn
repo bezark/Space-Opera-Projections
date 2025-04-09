@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://cdqhyp5lnk3hy"]
+
+[ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://2Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
+[ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://2Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
+
+[node name="Main" type="Node2D"]
+
+[node name="DatapadSync" type="Node" parent="."]
+script = ExtResource("1_a1u8q")
+
+[node name="FetchGameData" parent="DatapadSync" instance=ExtResource("2_78rud")]
+
+[node name="Timer" type="Timer" parent="DatapadSync"]
+autostart = true
+
+[connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
+[connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]

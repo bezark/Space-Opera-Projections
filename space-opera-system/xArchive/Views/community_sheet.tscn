@@ -1,10 +1,10 @@
 [gd_scene load_steps=10 format=3 uid="uid://lgpxr0pcx8eg"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Themes/SpaceOpera.tres" id="1_2vjvk"]
-[ext_resource type="Script" path="res://2Components/Views/community_sheet.gd" id="1_o0m87"]
-[ext_resource type="Script" path="res://2Components/Classes/SPResource.gd" id="2_panls"]
-[ext_resource type="PackedScene" uid="uid://cvbo2q7pj0v1u" path="res://2Components/Views/EditableResource.tscn" id="2_yoge5"]
-[ext_resource type="Script" path="res://2Components/Classes/Community.gd" id="3_m0e0n"]
+[ext_resource type="Script" uid="uid://ev7u63dinq8a" path="res://xArchive/Views/community_sheet.gd" id="1_o0m87"]
+[ext_resource type="Script" uid="uid://b7drd8dk57bpq" path="res://2Components/Classes/SPResource.gd" id="2_panls"]
+[ext_resource type="PackedScene" uid="uid://cvbo2q7pj0v1u" path="res://xArchive/Views/EditableResource.tscn" id="2_yoge5"]
+[ext_resource type="Script" uid="uid://bj0gi6wec2ufj" path="res://2Components/Classes/Community.gd" id="3_m0e0n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tbmsn"]
 bg_color = Color(0.138808, 0.157712, 0.265942, 1)

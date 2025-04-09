@@ -1,12 +1,12 @@
 [gd_scene load_steps=10 format=3 uid="uid://bvoeqgpw05f7c"]
 
-[ext_resource type="PackedScene" uid="uid://sghxqgcrs7b8" path="res://2Components/Timer/Timer.tscn" id="1_3wrh2"]
+[ext_resource type="PackedScene" uid="uid://sghxqgcrs7b8" path="res://xArchive/Timer/Timer.tscn" id="1_3wrh2"]
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Themes/SpaceOpera.tres" id="1_8rv42"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://2Components/DiceCam/dice_cam_rect.tscn" id="1_h2x4q"]
-[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://1Playtests/timer_billboard.gd" id="2_ld50t"]
-[ext_resource type="Script" uid="uid://diow40je2csto" path="res://2Components/Timer/SocietyPhaseTimerController.gd" id="2_rfh1a"]
-[ext_resource type="Script" uid="uid://cy7j8i0m8avfn" path="res://1Playtests/billboard_broadcast.gd" id="6_6spbi"]
-[ext_resource type="Script" uid="uid://cbds6wquxbc6h" path="res://1Playtests/dice_cam_control_button.gd" id="7_vppq5"]
+[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_ld50t"]
+[ext_resource type="Script" uid="uid://diow40je2csto" path="res://xArchive/Timer/SocietyPhaseTimerController.gd" id="2_rfh1a"]
+[ext_resource type="Script" uid="uid://cy7j8i0m8avfn" path="res://xArchive/OctoberPlaytest/billboard_broadcast.gd" id="6_6spbi"]
+[ext_resource type="Script" uid="uid://cbds6wquxbc6h" path="res://xArchive/OctoberPlaytest/dice_cam_control_button.gd" id="7_vppq5"]
 
 [sub_resource type="Gradient" id="Gradient_bcqdd"]
 offsets = PackedFloat32Array(0, 0.248826, 1)
