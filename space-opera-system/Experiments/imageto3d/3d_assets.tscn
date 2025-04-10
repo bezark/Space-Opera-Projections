@@ -2,9 +2,9 @@
 
 [ext_resource type="PackedScene" uid="uid://cgx81p3pku0sb" path="res://Experiments/imageto3d/Space_Traveler_Advent_0205232100_texture.glb" id="1_c6bv8"]
 [ext_resource type="PackedScene" uid="uid://d0x13rkg8o6op" path="res://Experiments/imageto3d/Starship_Sketch_0205231322_texture.glb" id="2_tlwpd"]
-[ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Shaders/blackhole.gdshader" id="3_tlwpd"]
-[ext_resource type="PackedScene" uid="uid://pdsgrmnhygwc" path="res://Experiments/black_hole.tscn" id="4_bjfds"]
-[ext_resource type="Shader" uid="uid://b1ihjkp2sjm4m" path="res://Shaders/1bit.gdshader" id="4_hqfrp"]
+[ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Assets/Shaders/blackhole.gdshader" id="3_tlwpd"]
+[ext_resource type="PackedScene" uid="uid://pdsgrmnhygwc" path="res://Assets/1Toys/black_hole.tscn" id="4_bjfds"]
+[ext_resource type="Shader" uid="uid://b1ihjkp2sjm4m" path="res://Assets/Shaders/1bit.gdshader" id="4_hqfrp"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bjfds"]
 shader = ExtResource("4_hqfrp")

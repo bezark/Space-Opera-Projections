@@ -17,34 +17,34 @@ float getGrayscale(vec2 coords, vec2 iResolution){
 	return length(sourcePixel*vec3(0.2126,0.7152,0.0722));
 }
 
-	
+
 void fragment() {
 	vec2 iResolution = 1.0 / SCREEN_PIXEL_SIZE;
 	int topGapY = int(iResolution.y - FRAGCOORD.y);
-	
+
 	int cornerGapX = int((FRAGCOORD.x < 10.0) ? FRAGCOORD.x : iResolution.x - FRAGCOORD.x);
 	int cornerGapY = int((FRAGCOORD.y < 10.0) ? FRAGCOORD.y : iResolution.y - FRAGCOORD.y);
 	int cornerThreshhold = ((cornerGapX == 0) || (topGapY == 0)) ? 5 : 4;
 	// Place fragment code here.
 		if (cornerGapX+cornerGapY < cornerThreshhold) {
-				
+
 		COLOR = vec4(0,0,0,1);
-		
+
 	} else if (topGapY < 20) {
-			
+
 			if (topGapY == 19) {
-				
+
 				COLOR = vec4(0,0,0,1);
-				
+
 			} else {
-		
+
 				COLOR = vec4(1,1,1,1);
-				
+
 			}
-		
+
 	}
 	else {
-		
+
 		float xError = 0.0;
 		for(float xLook=0.0; xLook<lookupSize; xLook++){
 			float grayscale = getGrayscale(FRAGCOORD.xy + vec2(-lookupSize+xLook,0),iResolution);
@@ -52,7 +52,7 @@ void fragment() {
 			float bit = grayscale >= 0.5 ? 1.0 : 0.0;
 			xError = (grayscale - bit)*errorCarry;
 		}
-		
+
 		float yError = 0.0;
 		for(float yLook=0.0; yLook<lookupSize; yLook++){
 			float grayscale = getGrayscale(FRAGCOORD.xy + vec2(0,-lookupSize+yLook),iResolution);
@@ -60,13 +60,13 @@ void fragment() {
 			float bit = grayscale >= 0.5 ? 1.0 : 0.0;
 			yError = (grayscale - bit)*errorCarry;
 		}
-		
+
 		float finalGrayscale = getGrayscale(FRAGCOORD.xy,iResolution);
 		finalGrayscale += xError*0.5 + yError*0.5;
 		float finalBit = finalGrayscale >= 0.5 ? 1.0 : 0.0;
-		
+
 		COLOR = vec4(finalBit,finalBit,finalBit,1);
-			
+
 	}
-	
+
 }

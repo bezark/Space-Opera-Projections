@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://bvoeqgpw05f7c"]
+[gd_scene load_steps=6 format=3 uid="uid://daygx8iem7bg6"]
 
-[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_8rv42"]
-[ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://2Components/DiceCam/dice_cam_rect.tscn" id="1_h2x4q"]
-[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_ld50t"]
-[ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller.tscn" id="4_kug5l"]
+[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_bpnmf"]
+[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_va5hy"]
+[ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://2Components/DiceCam/dice_cam_rect.tscn" id="3_mxtln"]
 
 [sub_resource type="Gradient" id="Gradient_bcqdd"]
 offsets = PackedFloat32Array(0, 0.248826, 1)
@@ -14,13 +13,13 @@ gradient = SubResource("Gradient_bcqdd")
 fill_from = Vector2(0.219512, 0.536585)
 fill_to = Vector2(0, 1)
 
-[node name="OctoberPlaytest" type="TextureRect"]
+[node name="Societal" type="TextureRect"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme = ExtResource("1_8rv42")
+theme = ExtResource("1_bpnmf")
 texture = SubResource("GradientTexture2D_3jhnu")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
@@ -45,12 +44,10 @@ theme_override_font_sizes/font_size = 128
 text = "TIME LEFT"
 horizontal_alignment = 3
 vertical_alignment = 1
-script = ExtResource("2_ld50t")
+script = ExtResource("2_va5hy")
 
-[node name="DiceCamTexture" parent="MarginContainer/VBoxContainer" instance=ExtResource("1_h2x4q")]
+[node name="DiceCamTexture" parent="MarginContainer/VBoxContainer" instance=ExtResource("3_mxtln")]
 clip_contents = true
 layout_mode = 2
 size_flags_horizontal = 1
 stretch_mode = 5
-
-[node name="Control" parent="." instance=ExtResource("4_kug5l")]

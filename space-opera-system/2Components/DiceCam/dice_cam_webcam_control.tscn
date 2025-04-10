@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://v2iy6svfm1gl"]
 
-[ext_resource type="Script" path="res://2Components/DiceCam/dice_cam_webcam_control.gd" id="1_4xgyo"]
+[ext_resource type="Script" uid="uid://c17b47iyp2ob4" path="res://2Components/DiceCam/dice_cam_webcam_control.gd" id="1_4xgyo"]
 [ext_resource type="Texture2D" uid="uid://2ar7x1a804ap" path="res://2Components/DiceCam/dice_camera_texture.tres" id="2_4pkwa"]
 
 [node name="DiceCamWebcamControl" type="Node"]

@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://caxx5yulod7st"]
+
+[node name="GalacticCouncil" type="Node"]
+
+[node name="DiceCam" type="Node" parent="."]
+
+[node name="Timer" type="Node" parent="."]
