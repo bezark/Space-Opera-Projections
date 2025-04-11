@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=11 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://2Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://2Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
@@ -6,11 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/galactic_council.tscn" id="3_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://2Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
-[ext_resource type="Texture2D" uid="uid://bwlgp8vk5g6v2" path="res://icon.svg" id="7_kgeht"]
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyt76"]
-shader = ExtResource("6_iyt76")
-shader_parameter/size = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ct82"]
 resource_local_to_scene = true
@@ -27,10 +22,6 @@ shader_parameter/size = 1.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_5nrqa"]
 viewport_path = NodePath("SubViewport")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgeht"]
-shader = ExtResource("6_iyt76")
-shader_parameter/size = 1.0
 
 [node name="Main" type="Node"]
 
@@ -53,28 +44,21 @@ autostart = true
 [node name="Control" parent="." instance=ExtResource("3_78rud")]
 visible = false
 
-[node name="Icon" type="Sprite2D" parent="."]
-material = SubResource("ShaderMaterial_iyt76")
-position = Vector2(446, 1671)
-texture = ExtResource("7_kgeht")
-
-[node name="MappingSurface2" parent="." instance=ExtResource("5_kgeht")]
-material = SubResource("ShaderMaterial_7ct82")
-position = Vector2(2015, 397)
-texture = SubResource("ViewportTexture_s83dy")
-polygon = PackedVector2Array(1088, -476, 286, -743, 46.2912, 13.4106, 510, 564, 46.7853, 1031.48, 1903.58, 1067.36, 1890.12, 13.3795)
-
-[node name="MappingSurface" parent="." instance=ExtResource("5_kgeht")]
-material = SubResource("ShaderMaterial_xm6fk")
+[node name="CanvasGroup" type="CanvasGroup" parent="."]
 position = Vector2(-939.433, 59)
 scale = Vector2(1.94982, 1)
+
+[node name="MappingSurface2" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
+material = SubResource("ShaderMaterial_7ct82")
+position = Vector2(1515.23, 338)
+scale = Vector2(0.512867, 1)
+texture = SubResource("ViewportTexture_s83dy")
+polygon = PackedVector2Array(1088, -476, 645, 100, 46.2912, 13.4106, 510, 564, 46.7853, 1031.48, 1903.58, 1067.36, 1890.12, 13.3795)
+
+[node name="MappingSurface" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
+material = SubResource("ShaderMaterial_xm6fk")
 texture = SubResource("ViewportTexture_5nrqa")
 polygon = PackedVector2Array(504.602, -36.2556, 387.09, 218.754, 542.522, 998.826, 1337.4, 1011.42, 1458.2, -63.763)
-
-[node name="CanvasGroup" type="CanvasGroup" parent="."]
-material = SubResource("ShaderMaterial_kgeht")
-position = Vector2(-939.433, 59)
-scale = Vector2(1.94982, 1)
 
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
