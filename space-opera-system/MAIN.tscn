@@ -1,6 +1,7 @@
-[gd_scene load_steps=11 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=12 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://2Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
+[ext_resource type="Script" uid="uid://2eew1q8uytuv" path="res://phase_state.gd" id="1_kgeht"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://2Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller.tscn" id="3_78rud"]
 [ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/galactic_council.tscn" id="3_tm5h3"]
@@ -30,6 +31,7 @@ viewport_path = NodePath("SubViewport")
 [node name="Societies" type="Node" parent="GameState"]
 
 [node name="Phases" type="Node" parent="GameState"]
+script = ExtResource("1_kgeht")
 
 [node name="DatapadSync" type="Node" parent="."]
 script = ExtResource("1_a1u8q")
@@ -60,5 +62,6 @@ material = SubResource("ShaderMaterial_xm6fk")
 texture = SubResource("ViewportTexture_5nrqa")
 polygon = PackedVector2Array(504.602, -36.2556, 387.09, 218.754, 542.522, 998.826, 1337.4, 1011.42, 1458.2, -63.763)
 
+[connection signal="game_fetched" from="DatapadSync/FetchGameData" to="GameState/Phases" method="_on_fetch_game_data_game_fetched"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
