@@ -14,7 +14,7 @@ func _ready() -> void:
 
 func get_game():
 	var req_string = str(url, "/api/v1/episodes/", game_id)
-	print(req_string)
+	#print(req_string)
 	var error = request(req_string)
 	if error != OK:
 		push_error("An error occurred in the HTTP request.")

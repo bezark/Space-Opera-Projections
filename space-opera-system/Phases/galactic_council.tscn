@@ -1,7 +1,14 @@
-[gd_scene format=3 uid="uid://caxx5yulod7st"]
+[gd_scene load_steps=2 format=3 uid="uid://caxx5yulod7st"]
 
-[node name="GalacticCouncil" type="Node"]
+[ext_resource type="Texture2D" uid="uid://bwlgp8vk5g6v2" path="res://icon.svg" id="1_1pmjk"]
+
+[node name="GalacticCouncil" type="Node2D"]
 
 [node name="DiceCam" type="Node" parent="."]
 
 [node name="Timer" type="Node" parent="."]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(901, 341)
+scale = Vector2(9.64062, 2.32812)
+texture = ExtResource("1_1pmjk")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b3krjl7ciw1cy"]
+[gd_scene load_steps=6 format=3 uid="uid://b3krjl7ciw1cy"]
 
-[ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/societal.tscn" id="1_e7mdr"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="1_y4248"]
+[ext_resource type="Script" uid="uid://muokti5xk4km" path="res://2Components/ProjectorTools/mapping_surface.gd" id="2_gmhpb"]
+[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="3_tqyg2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmhpb"]
 resource_local_to_scene = true
@@ -13,12 +14,14 @@ viewport_path = NodePath("SubViewport")
 
 [node name="MappingSurface" type="Polygon2D"]
 material = SubResource("ShaderMaterial_gmhpb")
+position = Vector2(710, 468)
 texture = SubResource("ViewportTexture_y4248")
-polygon = PackedVector2Array(925.846, 26.8345, 51.2703, 62.7145, 46.7853, 1031.48, 1903.58, 1067.36, 1890.12, 13.3795)
+polygon = PackedVector2Array(141.14, 25.767, -276.507, -203.363, 154.444, 616.089, 1154, 600, 1156.46, 62.6593)
 uv = PackedVector2Array(2038.13, -134.626, -2.54959, -18.0155, -33.9447, 1246.76, 1926, 1094.27)
+script = ExtResource("2_gmhpb")
+active_scene = ExtResource("3_tqyg2")
 
 [node name="SubViewport" type="SubViewport" parent="."]
 size = Vector2i(1920, 1080)
 
-[node name="Societal" parent="SubViewport" instance=ExtResource("1_e7mdr")]
-modulate = Color(1, 1, 1, 0.988235)
+[node name="GanerationalPhase" parent="SubViewport" instance=ExtResource("3_tqyg2")]

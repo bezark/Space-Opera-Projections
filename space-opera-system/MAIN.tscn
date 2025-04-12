@@ -1,12 +1,19 @@
-[gd_scene load_steps=12 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=19 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://2Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
-[ext_resource type="Script" uid="uid://2eew1q8uytuv" path="res://phase_state.gd" id="1_kgeht"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://2Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
+[ext_resource type="Resource" uid="uid://d0nt3dm0pfjlt" path="res://Data/game_state.tres" id="2_iyt76"]
+[ext_resource type="Script" uid="uid://7a8cyc2ryu6a" path="res://game_state_tracker.gd" id="3_7ct82"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller.tscn" id="3_78rud"]
 [ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/galactic_council.tscn" id="3_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://2Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
+[ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://scene_changer.gd" id="5_s83dy"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
+[ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/societal.tscn" id="7_h2cot"]
+[ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/individual.tscn" id="8_6y3qq"]
+[ext_resource type="PackedScene" uid="uid://wd1w3dgwxd4u" path="res://Phases/conclusion.tscn" id="9_h2cot"]
+[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="10_6y3qq"]
+[ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Universal Phase.tscn" id="11_6y3qq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_7ct82"]
 resource_local_to_scene = true
@@ -26,22 +33,29 @@ viewport_path = NodePath("SubViewport")
 
 [node name="Main" type="Node"]
 
-[node name="GameState" type="Node" parent="."]
-
-[node name="Societies" type="Node" parent="GameState"]
-
-[node name="Phases" type="Node" parent="GameState"]
-script = ExtResource("1_kgeht")
-
 [node name="DatapadSync" type="Node" parent="."]
 script = ExtResource("1_a1u8q")
 
 [node name="FetchGameData" parent="DatapadSync" instance=ExtResource("2_78rud")]
 
 [node name="Timer" type="Timer" parent="DatapadSync"]
+one_shot = true
 autostart = true
 
-[node name="GalacticCouncil" parent="." instance=ExtResource("3_tm5h3")]
+[node name="GameStateTracker" type="Node" parent="."]
+script = ExtResource("3_7ct82")
+state = ExtResource("2_iyt76")
+
+[node name="SceneChanger" type="Node" parent="."]
+script = ExtResource("5_s83dy")
+scenes = Dictionary[String, PackedScene]({
+"Conclusion Phase": ExtResource("9_h2cot"),
+"Galactic Phase": ExtResource("3_tm5h3"),
+"Individual Phase": ExtResource("8_6y3qq"),
+"Setup Phase": ExtResource("10_6y3qq"),
+"Societal Phase": ExtResource("7_h2cot"),
+"Universal Phase": ExtResource("11_6y3qq")
+})
 
 [node name="Control" parent="." instance=ExtResource("3_78rud")]
 visible = false
@@ -52,16 +66,21 @@ scale = Vector2(1.94982, 1)
 
 [node name="MappingSurface2" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
 material = SubResource("ShaderMaterial_7ct82")
-position = Vector2(1515.23, 338)
-scale = Vector2(0.512867, 1)
+position = Vector2(801.051, 380.06)
+scale = Vector2(0.263907, 0.434999)
 texture = SubResource("ViewportTexture_s83dy")
 polygon = PackedVector2Array(1088, -476, 645, 100, 46.2912, 13.4106, 510, 564, 46.7853, 1031.48, 1903.58, 1067.36, 1890.12, 13.3795)
 
 [node name="MappingSurface" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
 material = SubResource("ShaderMaterial_xm6fk")
+position = Vector2(557.247, 182.717)
+scale = Vector2(0.161363, 0.656126)
 texture = SubResource("ViewportTexture_5nrqa")
-polygon = PackedVector2Array(504.602, -36.2556, 387.09, 218.754, 542.522, 998.826, 1337.4, 1011.42, 1458.2, -63.763)
+polygon = PackedVector2Array(-98.3998, -64.7999, -55.1998, 199.2, -50.3999, 1149.6, 1716, 1039.2, 1458.2, -63.763)
 
-[connection signal="game_fetched" from="DatapadSync/FetchGameData" to="GameState/Phases" method="_on_fetch_game_data_game_fetched"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
+[connection signal="game_fetched" from="DatapadSync/FetchGameData" to="GameStateTracker" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
+[connection signal="phase_changed" from="GameStateTracker" to="SceneChanger" method="_on_game_state_tracker_phase_changed"]
+[connection signal="scene_changed" from="SceneChanger" to="CanvasGroup/MappingSurface2" method="scene_change"]
+[connection signal="scene_changed" from="SceneChanger" to="CanvasGroup/MappingSurface" method="scene_change"]

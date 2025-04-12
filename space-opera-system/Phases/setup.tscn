@@ -1,0 +1,20 @@
+[gd_scene load_steps=3 format=3 uid="uid://beyf67m3sf4hl"]
+
+[sub_resource type="Gradient" id="Gradient_66wv7"]
+colors = PackedColorArray(0, 0, 0, 1, 0.0209586, 0, 0.762545, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_35k3e"]
+gradient = SubResource("Gradient_66wv7")
+width = 256
+height = 256
+fill = 1
+fill_from = Vector2(0.504274, 0.529915)
+
+[node name="GanerationalPhase" type="Node2D"]
+
+[node name="TextureRect" type="TextureRect" parent="."]
+offset_right = 482.0
+offset_bottom = 419.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+texture = SubResource("GradientTexture2D_35k3e")
