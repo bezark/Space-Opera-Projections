@@ -1,17 +1,21 @@
-[gd_resource type="Resource" script_class="GameState" load_steps=22 format=3]
+[gd_resource type="Resource" script_class="GameState" load_steps=23 format=3 uid="uid://bcyjyggpwn7ml"]
 
-[ext_resource type="Script" path="res://2Components/Classes/Phase.gd" id="1_oau11"]
-[ext_resource type="Script" path="res://2Components/Classes/GameState.gd" id="2_itegd"]
-[ext_resource type="Script" path="res://2Components/Classes/Society.gd" id="3_t6ak0"]
+[ext_resource type="Script" uid="uid://bitm0ri2u6kmu" path="res://2Components/Classes/Phase.gd" id="1_oau11"]
+[ext_resource type="Script" uid="uid://b5kft6ky6jkxs" path="res://2Components/Classes/GameState.gd" id="2_itegd"]
+[ext_resource type="Script" uid="uid://7b8o4kmn3vob" path="res://2Components/Classes/Society.gd" id="3_t6ak0"]
 
 [sub_resource type="Resource" id="Resource_oau11"]
 script = ExtResource("1_oau11")
-id = "HyvRR"
-type = "Conclusion Phase"
+id = "ObUN6"
+type = "Societal Phase"
 status = "playing"
-round = 5
-duration = 495.0
-timeElapsed = 37091.7
+round = 3
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [sub_resource type="Resource" id="Resource_itegd"]
 script = ExtResource("1_oau11")
@@ -19,8 +23,12 @@ id = "AYgMp"
 type = "Generational Phase"
 status = "idle"
 round = 4
-duration = 495.0
-timeElapsed = 256.032
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [sub_resource type="Resource" id="Resource_t6ak0"]
 script = ExtResource("1_oau11")
@@ -28,143 +36,220 @@ id = "BL-xN"
 type = "Galactic Phase"
 status = "complete"
 round = 2
-duration = 600.0
-timeElapsed = 3035.85
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [sub_resource type="Resource" id="Resource_pws71"]
+script = ExtResource("1_oau11")
+id = "HyvRR"
+type = "Conclusion Phase"
+status = "idle"
+round = 5
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
+
+[sub_resource type="Resource" id="Resource_e8wrl"]
 script = ExtResource("1_oau11")
 id = "IS4OL"
 type = "Universal Phase"
 status = "complete"
 round = 2
-duration = 240.0
-timeElapsed = 252.196
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_e8wrl"]
+[sub_resource type="Resource" id="Resource_ab24y"]
 script = ExtResource("1_oau11")
 id = "KXBhB"
 type = "Universal Phase"
 status = "paused"
 round = 4
-duration = 240.0
-timeElapsed = 88.076
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_ab24y"]
+[sub_resource type="Resource" id="Resource_snvbw"]
 script = ExtResource("1_oau11")
 id = "LUiqC"
 type = "Societal Phase"
 status = "complete"
 round = 1
-duration = 600.0
-timeElapsed = 1207.38
-
-[sub_resource type="Resource" id="Resource_snvbw"]
-script = ExtResource("1_oau11")
-id = "O1dcF"
-type = "Societal Phase"
-status = "paused"
-round = 4
-duration = 600.0
-timeElapsed = 401.021
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [sub_resource type="Resource" id="Resource_55rqk"]
 script = ExtResource("1_oau11")
-id = "ObUN6"
+id = "O1dcF"
 type = "Societal Phase"
-status = "complete"
-round = 3
-duration = 600.0
-timeElapsed = 329.109
+status = "idle"
+round = 4
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [sub_resource type="Resource" id="Resource_hyytr"]
 script = ExtResource("1_oau11")
-id = "PwTh2"
-type = "Galactic Phase"
-status = "complete"
+id = "ObUN6"
+type = "Societal Phase"
+status = "paused"
 round = 3
-duration = 600.0
-timeElapsed = 511.174
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [sub_resource type="Resource" id="Resource_w2jyc"]
 script = ExtResource("1_oau11")
-id = "WCUmU"
+id = "PwTh2"
 type = "Galactic Phase"
-status = "playing"
-round = 4
-duration = 600.0
-timeElapsed = 37083.7
+status = "idle"
+round = 3
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [sub_resource type="Resource" id="Resource_vudva"]
+script = ExtResource("1_oau11")
+id = "WCUmU"
+type = "Galactic Phase"
+status = "idle"
+round = 4
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
+
+[sub_resource type="Resource" id="Resource_yrqri"]
 script = ExtResource("1_oau11")
 id = "XlfBs"
 type = "Universal Phase"
 status = "complete"
 round = 3
-duration = 240.0
-timeElapsed = 273.198
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_yrqri"]
+[sub_resource type="Resource" id="Resource_ctl15"]
 script = ExtResource("1_oau11")
 id = "YhRkF"
 type = "Societal Phase"
 status = "complete"
 round = 2
-duration = 120.0
-timeElapsed = 177.141
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_ctl15"]
+[sub_resource type="Resource" id="Resource_6sobb"]
 script = ExtResource("1_oau11")
 id = "aMzE3"
 type = "Setup Phase"
 status = "complete"
 round = 0
-duration = 1200.0
-timeElapsed = 18.016
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_6sobb"]
+[sub_resource type="Resource" id="Resource_vnl6s"]
 script = ExtResource("1_oau11")
 id = "oy0x2"
 type = "Individual Phase"
-status = "playing"
+status = "idle"
 round = 3
-duration = 495.0
-timeElapsed = 36551.6
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_vnl6s"]
+[sub_resource type="Resource" id="Resource_x7nyr"]
 script = ExtResource("1_oau11")
 id = "waKEG"
 type = "Individual Phase"
 status = "complete"
 round = 2
-duration = 495.0
-timeElapsed = 14.003
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_x7nyr"]
+[sub_resource type="Resource" id="Resource_fkmv0"]
 script = ExtResource("1_oau11")
 id = "xqYRw"
 type = "Individual Phase"
 status = "complete"
 round = 1
-duration = 495.0
-timeElapsed = 140.119
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_fkmv0"]
+[sub_resource type="Resource" id="Resource_gbggd"]
 script = ExtResource("1_oau11")
 id = "yh_Ke"
 type = "Universal Phase"
 status = "complete"
 round = 1
-duration = 240.0
-timeElapsed = 258.229
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
-[sub_resource type="Resource" id="Resource_gbggd"]
+[sub_resource type="Resource" id="Resource_sffpo"]
 script = ExtResource("1_oau11")
 id = "zgtPq"
 type = "Galactic Phase"
 status = "complete"
 round = 1
-duration = 600.0
-timeElapsed = 241.194
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
 
 [resource]
 script = ExtResource("2_itegd")
@@ -172,22 +257,22 @@ active_phase = SubResource("Resource_oau11")
 phases = Dictionary[String, ExtResource("1_oau11")]({
 "AYgMp": SubResource("Resource_itegd"),
 "BL-xN": SubResource("Resource_t6ak0"),
-"HyvRR": SubResource("Resource_oau11"),
-"IS4OL": SubResource("Resource_pws71"),
-"KXBhB": SubResource("Resource_e8wrl"),
-"LUiqC": SubResource("Resource_ab24y"),
-"O1dcF": SubResource("Resource_snvbw"),
-"ObUN6": SubResource("Resource_55rqk"),
-"PwTh2": SubResource("Resource_hyytr"),
-"WCUmU": SubResource("Resource_w2jyc"),
-"XlfBs": SubResource("Resource_vudva"),
-"YhRkF": SubResource("Resource_yrqri"),
-"aMzE3": SubResource("Resource_ctl15"),
-"oy0x2": SubResource("Resource_6sobb"),
-"waKEG": SubResource("Resource_vnl6s"),
-"xqYRw": SubResource("Resource_x7nyr"),
-"yh_Ke": SubResource("Resource_fkmv0"),
-"zgtPq": SubResource("Resource_gbggd")
+"HyvRR": SubResource("Resource_pws71"),
+"IS4OL": SubResource("Resource_e8wrl"),
+"KXBhB": SubResource("Resource_ab24y"),
+"LUiqC": SubResource("Resource_snvbw"),
+"O1dcF": SubResource("Resource_55rqk"),
+"ObUN6": SubResource("Resource_hyytr"),
+"PwTh2": SubResource("Resource_w2jyc"),
+"WCUmU": SubResource("Resource_vudva"),
+"XlfBs": SubResource("Resource_yrqri"),
+"YhRkF": SubResource("Resource_ctl15"),
+"aMzE3": SubResource("Resource_6sobb"),
+"oy0x2": SubResource("Resource_vnl6s"),
+"waKEG": SubResource("Resource_x7nyr"),
+"xqYRw": SubResource("Resource_fkmv0"),
+"yh_Ke": SubResource("Resource_gbggd"),
+"zgtPq": SubResource("Resource_sffpo")
 })
 societies = Array[ExtResource("3_t6ak0")]([])
 metadata/_custom_type_script = "uid://b5kft6ky6jkxs"

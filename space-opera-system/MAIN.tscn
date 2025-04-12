@@ -1,27 +1,42 @@
-[gd_scene load_steps=19 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=21 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://2Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://2Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
-[ext_resource type="Resource" uid="uid://d0nt3dm0pfjlt" path="res://Data/game_state.tres" id="2_iyt76"]
 [ext_resource type="Script" uid="uid://7a8cyc2ryu6a" path="res://game_state_tracker.gd" id="3_7ct82"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller.tscn" id="3_78rud"]
 [ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/galactic_council.tscn" id="3_tm5h3"]
+[ext_resource type="Script" uid="uid://bitm0ri2u6kmu" path="res://2Components/Classes/Phase.gd" id="4_u0cts"]
+[ext_resource type="Script" uid="uid://b5kft6ky6jkxs" path="res://2Components/Classes/GameState.gd" id="5_jn4fx"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://2Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://scene_changer.gd" id="5_s83dy"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
+[ext_resource type="Script" uid="uid://7b8o4kmn3vob" path="res://2Components/Classes/Society.gd" id="6_rhye5"]
 [ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/societal.tscn" id="7_h2cot"]
 [ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/individual.tscn" id="8_6y3qq"]
 [ext_resource type="PackedScene" uid="uid://wd1w3dgwxd4u" path="res://Phases/conclusion.tscn" id="9_h2cot"]
 [ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="10_6y3qq"]
 [ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Universal Phase.tscn" id="11_6y3qq"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_7ct82"]
-resource_local_to_scene = true
-shader = ExtResource("6_iyt76")
-shader_parameter/size = 1.0
+[sub_resource type="Resource" id="Resource_u0cts"]
+script = ExtResource("4_u0cts")
+id = ""
+type = "asdff"
+status = ""
+round = 0
+time = {
+&"duration": 0,
+&"elapsed": 0.0,
+&"remaining": 0,
+&"remainingFormatted": ""
+}
+metadata/_custom_type_script = "uid://bitm0ri2u6kmu"
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_s83dy"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="Resource" id="Resource_a8dnc"]
+script = ExtResource("5_jn4fx")
+active_phase = SubResource("Resource_u0cts")
+phases = Dictionary[String, ExtResource("4_u0cts")]({})
+societies = Array[ExtResource("6_rhye5")]([])
+metadata/_custom_type_script = "uid://b5kft6ky6jkxs"
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xm6fk"]
 resource_local_to_scene = true
@@ -44,7 +59,7 @@ autostart = true
 
 [node name="GameStateTracker" type="Node" parent="."]
 script = ExtResource("3_7ct82")
-state = ExtResource("2_iyt76")
+state = SubResource("Resource_a8dnc")
 
 [node name="SceneChanger" type="Node" parent="."]
 script = ExtResource("5_s83dy")
@@ -64,13 +79,6 @@ visible = false
 position = Vector2(-939.433, 59)
 scale = Vector2(1.94982, 1)
 
-[node name="MappingSurface2" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
-material = SubResource("ShaderMaterial_7ct82")
-position = Vector2(801.051, 380.06)
-scale = Vector2(0.263907, 0.434999)
-texture = SubResource("ViewportTexture_s83dy")
-polygon = PackedVector2Array(1088, -476, 645, 100, 46.2912, 13.4106, 510, 564, 46.7853, 1031.48, 1903.58, 1067.36, 1890.12, 13.3795)
-
 [node name="MappingSurface" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
 material = SubResource("ShaderMaterial_xm6fk")
 position = Vector2(557.247, 182.717)
@@ -82,5 +90,4 @@ polygon = PackedVector2Array(-98.3998, -64.7999, -55.1998, 199.2, -50.3999, 1149
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="GameStateTracker" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
 [connection signal="phase_changed" from="GameStateTracker" to="SceneChanger" method="_on_game_state_tracker_phase_changed"]
-[connection signal="scene_changed" from="SceneChanger" to="CanvasGroup/MappingSurface2" method="scene_change"]
 [connection signal="scene_changed" from="SceneChanger" to="CanvasGroup/MappingSurface" method="scene_change"]

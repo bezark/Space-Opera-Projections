@@ -10,10 +10,8 @@ func _ready() -> void:
 	request_completed.connect(self._http_request_completed)
 
 
-
-
 func get_game():
-	var req_string = str(url, "/api/v1/episodes/", game_id)
+	var req_string = str(url, "/api/v1/episodes/active")
 	#print(req_string)
 	var error = request(req_string)
 	if error != OK:

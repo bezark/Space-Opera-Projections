@@ -16,21 +16,29 @@ func _process(delta):
 
 
 func _on_fetch_game_data_game_fetched(game):
-	for phase in game.phases:
-		var new_phase = Phase.new()
-		new_phase.id = phase.id
-		new_phase.type = phase.type
-		new_phase.status = phase.status
-		new_phase.round = phase.round
-		new_phase.duration = phase.duration
-		new_phase.timeElapsed = phase.timeElapsed
-		state.phases[phase.id] = new_phase
+	var phase = game.currentPhase
+	var new_phase = Phase.new()
+	# new_phase.id = phase.id
 
-		if new_phase.status == "playing":
-			if new_phase.id != state.active_phase.id or !state.active_phase:
-				print("Phase changed!")
-				state.active_phase = new_phase
-				phase_changed.emit(state.active_phase)
-				
-			
+	new_phase.type = phase.type
+	new_phase.status = phase.status
+	new_phase.round = phase.round
+
+	new_phase.time.duration = phase.time.duration
+	new_phase.time.elapsed = phase.time.elapsed
+	new_phase.time.remaining = phase.time.remaining
+	new_phase.time.remainingFormatted = phase.time.remainingFormatted
+
+	# 	state.phases[phase.id] = new_phase
+
+	if new_phase.type != state.active_phase.type or !state.active_phase:
+		phase_changed.emit(new_phase)
+		print("Phase changed!")
+	state.active_phase = new_phase
+	print(state.active_phase.time)
+	state.active_phase.id = "dog"
+	State.active_phase = state.active_phase
+
+	# print(game.societies)
 	ResourceSaver.save(state, "res://Data/game_state.tres")
+	print(state.active_phase.time)

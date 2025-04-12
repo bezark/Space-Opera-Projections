@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://bojmbshwtr1j1"]
+
+[ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_lsvgl"]
+[ext_resource type="Texture2D" uid="uid://b4ad58fiea5p5" path="res://Assets/HDR_silver_and_gold_nebulae.hdr" id="2_chmqo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 6.75
+backlight_enabled = true
+refraction_enabled = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
+panorama = ExtResource("2_chmqo")
+
+[sub_resource type="Sky" id="Sky_8b321"]
+sky_material = SubResource("PanoramaSkyMaterial_dps3l")
+
+[sub_resource type="Environment" id="Environment_4jktx"]
+background_mode = 2
+sky = SubResource("Sky_8b321")
+glow_enabled = true
+glow_intensity = 1.32
+glow_blend_mode = 0
+
+[node name="SolarSystem" type="Node3D"]
+
+[node name="AetherResevoir" parent="." instance=ExtResource("1_lsvgl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400.839, -1.19209e-07, -0.442535)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radius = 50.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_oyq1c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_4jktx")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=2 format=3 uid="uid://b32k4lkhxj3cg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wp361"]
+albedo_color = Color(0.273073, 0.550825, 0.856032, 1)
+metallic = 1.0
+metallic_specular = 0.78
+roughness = 0.32
+
+[node name="AetherResevoir" type="Node3D"]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465607, 0)
+size = Vector3(1, 6.06879, 1)
+material = SubResource("StandardMaterial3D_wp361")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.465607, 0)
+size = Vector3(1, 6.06879, 1)
+material = SubResource("StandardMaterial3D_wp361")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(-5.96046e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 5.96046e-08, 3.55271e-15, 0, -0.465607, 0)
+size = Vector3(1, 6.06879, 1)
+material = SubResource("StandardMaterial3D_wp361")
