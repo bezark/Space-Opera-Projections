@@ -17,13 +17,14 @@ config/icon="res://icon.svg"
 
 [autoload]
 
-State="*res://2Components/Classes/GameState.gd"
+State="*res://2Components/Classes/CurrentGameState.gd"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/subwindows/embed_subwindows=false
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 

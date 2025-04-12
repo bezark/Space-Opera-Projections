@@ -14,14 +14,15 @@ viewport_path = NodePath("SubViewport")
 
 [node name="MappingSurface" type="Polygon2D"]
 material = SubResource("ShaderMaterial_gmhpb")
-position = Vector2(710, 468)
 texture = SubResource("ViewportTexture_y4248")
-polygon = PackedVector2Array(141.14, 25.767, -276.507, -203.363, 154.444, 616.089, 1154, 600, 1156.46, 62.6593)
-uv = PackedVector2Array(2038.13, -134.626, -2.54959, -18.0155, -33.9447, 1246.76, 1926, 1094.27)
+polygon = PackedVector2Array(0, 0, 0, 1080, 1920, 1080, 1920, 0)
+uv = PackedVector2Array(-1.90735e-06, -4.48745e-09, -9.53674e-07, 1080, 1920, 1080, 1920, -1.38283e-05)
 script = ExtResource("2_gmhpb")
 active_scene = ExtResource("3_tqyg2")
 
 [node name="SubViewport" type="SubViewport" parent="."]
+own_world_3d = true
 size = Vector2i(1920, 1080)
+size_2d_override_stretch = true
 
 [node name="GanerationalPhase" parent="SubViewport" instance=ExtResource("3_tqyg2")]

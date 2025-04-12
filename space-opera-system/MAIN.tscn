@@ -20,7 +20,7 @@
 [sub_resource type="Resource" id="Resource_u0cts"]
 script = ExtResource("4_u0cts")
 id = ""
-type = "asdff"
+type = ""
 status = ""
 round = 0
 time = {
@@ -52,6 +52,7 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_a1u8q")
 
 [node name="FetchGameData" parent="DatapadSync" instance=ExtResource("2_78rud")]
+url = "http://datapad.dainsaint.com"
 
 [node name="Timer" type="Timer" parent="DatapadSync"]
 one_shot = true
@@ -81,10 +82,9 @@ scale = Vector2(1.94982, 1)
 
 [node name="MappingSurface" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
 material = SubResource("ShaderMaterial_xm6fk")
-position = Vector2(557.247, 182.717)
-scale = Vector2(0.161363, 0.656126)
+position = Vector2(483.856, -50)
+scale = Vector2(0.508861, 0.915741)
 texture = SubResource("ViewportTexture_5nrqa")
-polygon = PackedVector2Array(-98.3998, -64.7999, -55.1998, 199.2, -50.3999, 1149.6, 1716, 1039.2, 1458.2, -63.763)
 
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="GameStateTracker" method="_on_fetch_game_data_game_fetched"]

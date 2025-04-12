@@ -12,7 +12,8 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 texture = ExtResource("1_0il26")
-expand_mode = 3
+expand_mode = 1
+stretch_mode = 4
 
 [node name="DiceCamWebcamControl" parent="." instance=ExtResource("2_cuecs")]
 DEVICE_NAME = "HD Pro Webcam C920"

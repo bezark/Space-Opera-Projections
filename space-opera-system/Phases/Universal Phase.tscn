@@ -1,28 +1,48 @@
-[gd_scene load_steps=4 format=3 uid="uid://mbcy1e7l2o72"]
+[gd_scene load_steps=7 format=3 uid="uid://mbcy1e7l2o72"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_saujw"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_702qu"]
+[ext_resource type="Texture2D" uid="uid://b4ad58fiea5p5" path="res://Assets/HDR_silver_and_gold_nebulae.hdr" id="2_0ilj2"]
 
-[sub_resource type="Sky" id="Sky_0sxyt"]
-sky_material = SubResource("ProceduralSkyMaterial_saujw")
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
+panorama = ExtResource("2_0ilj2")
 
-[sub_resource type="Environment" id="Environment_702qu"]
+[sub_resource type="Sky" id="Sky_8b321"]
+sky_material = SubResource("PanoramaSkyMaterial_dps3l")
+
+[sub_resource type="Environment" id="Environment_4jktx"]
 background_mode = 2
-sky = SubResource("Sky_0sxyt")
+sky = SubResource("Sky_8b321")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.55
+ambient_light_energy = 6.24
 tonemap_mode = 2
 glow_enabled = true
+glow_intensity = 1.32
+glow_bloom = 0.55
+glow_blend_mode = 0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 6.75
+backlight_enabled = true
+refraction_enabled = true
 
 [node name="UniversalPhase" type="Node3D"]
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_702qu")
+environment = SubResource("Environment_4jktx")
+
+[node name="SolarSystem" type="Node3D" parent="."]
+
+[node name="AetherResevoir" parent="SolarSystem" instance=ExtResource("1_702qu")]
+transform = Transform3D(0.976383, -0.216048, 0, 0.216048, 0.976383, 0, 0, 0, 1, -400.839, -1.19209e-07, -0.442535)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SolarSystem"]
+radius = 50.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_oyq1c")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-
-[node name="CSGBox3D" type="CSGBox3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2.88768)
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -406.671, 0.819688, 0)

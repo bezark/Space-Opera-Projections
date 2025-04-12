@@ -35,10 +35,9 @@ func _on_fetch_game_data_game_fetched(game):
 		phase_changed.emit(new_phase)
 		print("Phase changed!")
 	state.active_phase = new_phase
-	print(state.active_phase.time)
 	state.active_phase.id = "dog"
-	State.active_phase = state.active_phase
+	State.state = state
 
 	# print(game.societies)
 	ResourceSaver.save(state, "res://Data/game_state.tres")
-	print(state.active_phase.time)
+	
