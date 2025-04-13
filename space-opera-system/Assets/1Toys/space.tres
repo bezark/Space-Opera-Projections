@@ -1,0 +1,23 @@
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://bostl82bwcvqp"]
+
+[ext_resource type="Texture2D" uid="uid://b4ad58fiea5p5" path="res://Assets/HDR_silver_and_gold_nebulae.hdr" id="1_j0qvp"]
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
+panorama = ExtResource("1_j0qvp")
+
+[sub_resource type="Sky" id="Sky_8b321"]
+sky_material = SubResource("PanoramaSkyMaterial_dps3l")
+
+[resource]
+background_mode = 2
+sky = SubResource("Sky_8b321")
+ambient_light_source = 3
+ambient_light_sky_contribution = 0.55
+ambient_light_energy = 6.24
+tonemap_mode = 2
+sdfgi_enabled = true
+glow_enabled = true
+glow_intensity = 1.32
+glow_bloom = 0.55
+glow_blend_mode = 0
+adjustment_enabled = true

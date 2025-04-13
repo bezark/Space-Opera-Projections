@@ -1,8 +1,8 @@
-[gd_resource type="Resource" script_class="GameState" load_steps=5 format=3 uid="uid://ca2kw1mwmm2mk"]
+[gd_resource type="Resource" script_class="GameState" load_steps=5 format=3]
 
-[ext_resource type="Script" uid="uid://bitm0ri2u6kmu" path="res://2Components/Classes/Phase.gd" id="1_oau11"]
-[ext_resource type="Script" uid="uid://b5kft6ky6jkxs" path="res://2Components/Classes/GameState.gd" id="2_itegd"]
-[ext_resource type="Script" uid="uid://7b8o4kmn3vob" path="res://2Components/Classes/Society.gd" id="3_t6ak0"]
+[ext_resource type="Script" path="res://2Components/Classes/Phase.gd" id="1_oau11"]
+[ext_resource type="Script" path="res://2Components/Classes/GameState.gd" id="2_itegd"]
+[ext_resource type="Script" path="res://2Components/Classes/Society.gd" id="3_t6ak0"]
 
 [sub_resource type="Resource" id="Resource_oau11"]
 script = ExtResource("1_oau11")

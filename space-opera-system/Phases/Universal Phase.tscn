@@ -1,25 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://mbcy1e7l2o72"]
+[gd_scene load_steps=6 format=3 uid="uid://mbcy1e7l2o72"]
 
+[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_0ilj2"]
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_702qu"]
-[ext_resource type="Texture2D" uid="uid://b4ad58fiea5p5" path="res://Assets/HDR_silver_and_gold_nebulae.hdr" id="2_0ilj2"]
 
-[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
-panorama = ExtResource("2_0ilj2")
-
-[sub_resource type="Sky" id="Sky_8b321"]
-sky_material = SubResource("PanoramaSkyMaterial_dps3l")
-
-[sub_resource type="Environment" id="Environment_4jktx"]
-background_mode = 2
-sky = SubResource("Sky_8b321")
-ambient_light_source = 3
-ambient_light_sky_contribution = 0.55
-ambient_light_energy = 6.24
-tonemap_mode = 2
-glow_enabled = true
-glow_intensity = 1.32
-glow_bloom = 0.55
-glow_blend_mode = 0
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0ilj2"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
 emission_enabled = true
@@ -28,10 +12,15 @@ emission_energy_multiplier = 6.75
 backlight_enabled = true
 refraction_enabled = true
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_702qu"]
+dof_blur_far_enabled = true
+dof_blur_near_enabled = true
+
 [node name="UniversalPhase" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_4jktx")
+environment = ExtResource("1_0ilj2")
+camera_attributes = SubResource("CameraAttributesPractical_0ilj2")
 
 [node name="SolarSystem" type="Node3D" parent="."]
 
@@ -46,3 +35,10 @@ material = SubResource("StandardMaterial3D_oyq1c")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -406.671, 0.819688, 0)
+environment = ExtResource("1_0ilj2")
+attributes = SubResource("CameraAttributesPractical_702qu")
+fov = 37.8493
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(-0.965927, 0.0669844, -0.249998, -2.98023e-06, 0.965925, 0.258821, 0.258816, 0.250003, -0.933013, 0, 0, 0)
+shadow_enabled = true
