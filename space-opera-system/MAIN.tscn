@@ -85,6 +85,7 @@ material = SubResource("ShaderMaterial_xm6fk")
 position = Vector2(483.856, -50)
 scale = Vector2(0.508861, 0.915741)
 texture = SubResource("ViewportTexture_5nrqa")
+polygon = PackedVector2Array(74.5835, 50.2325, 0, 1080, 1920, 1080, 1877.67, 98.2811)
 
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="GameStateTracker" method="_on_fetch_game_data_game_fetched"]

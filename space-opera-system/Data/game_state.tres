@@ -9,12 +9,12 @@ script = ExtResource("1_oau11")
 id = "dog"
 type = "Universal Phase"
 status = "idle"
-round = 3
+round = 5
 time = {
 &"duration": 240.0,
-&"elapsed": 202.19,
-&"remaining": 37.0,
-&"remainingFormatted": "00:37"
+&"elapsed": 0.0,
+&"remaining": 240.0,
+&"remainingFormatted": "04:00"
 }
 
 [resource]
