@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://b32k4lkhxj3cg"]
+
+[ext_resource type="Script" uid="uid://dbwghkyuf1wri" path="res://Assets/1Toys/aether_resevoir.gd" id="1_t202e"]
+[ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="2_kyj7m"]
+
+[node name="AetherResevoir" type="Node3D"]
+script = ExtResource("1_t202e")
+
+[node name="y" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.465607, 0)
+size = Vector3(1, 6.06879, 1)
+material = ExtResource("2_kyj7m")
+
+[node name="z" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, -0.465607, 0)
+size = Vector3(1, 6.06879, 1)
+material = ExtResource("2_kyj7m")
+
+[node name="x" type="CSGBox3D" parent="."]
+transform = Transform3D(-5.96046e-08, -1, -4.37114e-08, 0, -4.37114e-08, 1, -1, 5.96046e-08, 3.55271e-15, 0, -0.465607, 0)
+size = Vector3(1, 6.06879, 1)
+material = ExtResource("2_kyj7m")

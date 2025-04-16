@@ -1,0 +1,44 @@
+[gd_scene load_steps=6 format=3 uid="uid://mbcy1e7l2o72"]
+
+[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_0ilj2"]
+[ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_702qu"]
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0ilj2"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 6.75
+backlight_enabled = true
+refraction_enabled = true
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_702qu"]
+dof_blur_far_enabled = true
+dof_blur_near_enabled = true
+
+[node name="UniversalPhase" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_0ilj2")
+camera_attributes = SubResource("CameraAttributesPractical_0ilj2")
+
+[node name="SolarSystem" type="Node3D" parent="."]
+
+[node name="AetherResevoir" parent="SolarSystem" instance=ExtResource("1_702qu")]
+transform = Transform3D(0.976383, -0.216048, 0, 0.216048, 0.976383, 0, 0, 0, 1, -400.839, -1.19209e-07, -0.442535)
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="SolarSystem"]
+radius = 50.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_oyq1c")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -406.671, 0.819688, 0)
+environment = ExtResource("1_0ilj2")
+attributes = SubResource("CameraAttributesPractical_702qu")
+fov = 37.8493
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
+transform = Transform3D(-0.965927, 0.0669844, -0.249998, -2.98023e-06, 0.965925, 0.258821, 0.258816, 0.250003, -0.933013, 0, 0, 0)
+shadow_enabled = true

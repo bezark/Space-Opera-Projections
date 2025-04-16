@@ -15,12 +15,24 @@ run/main_scene="uid://cdqhyp5lnk3hy"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+State="*res://2Components/Classes/CurrentGameState.gd"
+
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
 window/subwindows/embed_subwindows=false
+window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godOSC/plugin.cfg")
+enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
+
+[rendering]
+
+anti_aliasing/quality/msaa_3d=3
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+anti_aliasing/quality/screen_space_aa=1
+anti_aliasing/quality/use_taa=true
