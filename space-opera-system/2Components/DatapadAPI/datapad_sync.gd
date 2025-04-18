@@ -10,6 +10,7 @@ func _on_timer_timeout() -> void:
 func _on_fetch_game_data_game_fetched(game) -> void:
 	$Timer.start()
 	if game:
+		### PHASE ###
 		var phase = game.currentPhase
 		var new_phase = Phase.new()
 		# new_phase.id = phase.id
@@ -31,4 +32,15 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 		elif new_phase.type != State.active_phase.type:
 			phase_changed.emit(new_phase)
 		State.active_phase = new_phase
-		State.save()
+
+	### SOCIETIES ###
+
+	print(game.societies)
+
+	for society in game.societies:
+		print(society.name)
+		for community in society.communities:
+			print(community.name)
+		pass
+
+	State.save()
