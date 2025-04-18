@@ -2,4 +2,4 @@ extends Label
 
 
 func _process(delta):
-	text = State.state.active_phase.time.remainingFormatted
+	text = State.active_phase.time.remainingFormatted

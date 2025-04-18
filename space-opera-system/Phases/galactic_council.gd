@@ -8,4 +8,4 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	%Time.text = State.state.active_phase.time.remainingFormatted
+	%Time.text = State.active_phase.time.remainingFormatted

@@ -1,22 +1,11 @@
 extends Node
 
 signal phase_changed
-# @export var phases: Array[Phase]
 @export var state: GameState
 
 
-# Called when the node enters the scene tree for the first time.
-func _ready():
-	pass  # Replace with function body.
-
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	pass
-
-
 func _on_fetch_game_data_game_fetched(game):
-	if game :
+	if game:
 		var phase = game.currentPhase
 		var new_phase = Phase.new()
 		# new_phase.id = phase.id
@@ -40,5 +29,4 @@ func _on_fetch_game_data_game_fetched(game):
 		State.state = state
 
 		# print(game.societies)
-		ResourceSaver.save(state, "res://Data/game_state.tres")
-	
+		#ResourceSaver.save(state, "res://Data/game_state.tres")

@@ -5,7 +5,7 @@ signal scene_changed
 @export var scenes: Dictionary[String, PackedScene]
 
 
-func _on_game_state_tracker_phase_changed(phase: Phase):
+func _on_datapad_sync_phase_changed(phase: Phase):
 	#TODO: Add animations, round variation
 
 	print(phase.type)
