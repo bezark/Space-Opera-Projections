@@ -1,24 +1,96 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=5 format=3]
+[gd_resource type="Resource" script_class="SessionData" load_steps=16 format=3]
 
-[ext_resource type="Script" path="res://2Components/Classes/Phase.gd" id="1_0chgj"]
-[ext_resource type="Script" path="res://2Components/Classes/SessionData.gd" id="2_suu4f"]
-[ext_resource type="Script" path="res://2Components/Classes/Society.gd" id="3_xolg1"]
+[ext_resource type="Script" path="res://2Components/Classes/Phase.gd" id="1_xolg1"]
+[ext_resource type="Script" path="res://2Components/Classes/SessionData.gd" id="2_xqyh8"]
+[ext_resource type="Script" path="res://2Components/Classes/Society.gd" id="3_cl0gu"]
+[ext_resource type="Script" path="res://2Components/Classes/Community.gd" id="4_jkowm"]
+[ext_resource type="Script" path="res://2Components/Classes/SPResource.gd" id="5_gvxx2"]
 
-[sub_resource type="Resource" id="Resource_0chgj"]
-script = ExtResource("1_0chgj")
+[sub_resource type="Resource" id="Resource_xolg1"]
+script = ExtResource("1_xolg1")
 id = ""
-type = "Individual Phase"
+type = "Universal Phase"
 status = "paused"
-round = 1
+round = 3
 time = {
-&"duration": 600.0,
-&"elapsed": 733.163,
-&"remaining": -134.0,
-&"remainingFormatted": "-02:-14"
+&"duration": 240.0,
+&"elapsed": 8.002,
+&"remaining": 231.0,
+&"remainingFormatted": "03:51"
 }
 
+[sub_resource type="Resource" id="Resource_jw88j"]
+script = ExtResource("5_gvxx2")
+title = "cats"
+relationship = ""
+vital = true
+exhausted = true
+
+[sub_resource type="Resource" id="Resource_h1pjg"]
+script = ExtResource("4_jkowm")
+title = "todd"
+resources = Dictionary[String, ExtResource("5_gvxx2")]({
+"HOzO6": SubResource("Resource_jw88j")
+})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_eaekg"]
+script = ExtResource("3_cl0gu")
+title = "Frog house"
+communities = Dictionary[String, ExtResource("4_jkowm")]({
+"Qw0Xm": SubResource("Resource_h1pjg")
+})
+
+[sub_resource type="Resource" id="Resource_v7aan"]
+script = ExtResource("5_gvxx2")
+title = "lillypadz"
+relationship = ""
+vital = false
+exhausted = true
+
+[sub_resource type="Resource" id="Resource_xxvib"]
+script = ExtResource("4_jkowm")
+title = "ribs"
+resources = Dictionary[String, ExtResource("5_gvxx2")]({
+"FADd2": SubResource("Resource_v7aan")
+})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_nl2ks"]
+script = ExtResource("3_cl0gu")
+title = "Toad Shack"
+communities = Dictionary[String, ExtResource("4_jkowm")]({
+"lHvo5": SubResource("Resource_xxvib")
+})
+
+[sub_resource type="Resource" id="Resource_xqyh8"]
+script = ExtResource("5_gvxx2")
+title = "dogs"
+relationship = ""
+vital = false
+exhausted = true
+
+[sub_resource type="Resource" id="Resource_cl0gu"]
+script = ExtResource("4_jkowm")
+title = "TINKY 6000"
+resources = Dictionary[String, ExtResource("5_gvxx2")]({
+"Ridpo": SubResource("Resource_xqyh8")
+})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_og1ky"]
+script = ExtResource("3_cl0gu")
+title = "Cool bobs"
+communities = Dictionary[String, ExtResource("4_jkowm")]({
+"o7kHM": SubResource("Resource_cl0gu")
+})
+
 [resource]
-script = ExtResource("2_suu4f")
-active_phase = SubResource("Resource_0chgj")
-phases = Dictionary[String, ExtResource("1_0chgj")]({})
-societies = Array[ExtResource("3_xolg1")]([])
+script = ExtResource("2_xqyh8")
+active_phase = SubResource("Resource_xolg1")
+phases = Dictionary[String, ExtResource("1_xolg1")]({})
+societies = Dictionary[String, ExtResource("3_cl0gu")]({
+"V9xbw": SubResource("Resource_nl2ks"),
+"VMu4n": SubResource("Resource_og1ky"),
+"et0k8": SubResource("Resource_eaekg")
+})

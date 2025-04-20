@@ -35,12 +35,56 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 	### SOCIETIES ###
 
-	print(game.societies)
+	# print(game.societies)
 
+	var current_societies = []
 	for society in game.societies:
-		print(society.name)
+		if not State.societies.has(society.id):
+			State.societies[society.id] = Society.new()
+		var this_society = State.societies[society.id]
+		this_society.title = society.name
+
+		print(this_society.title)
+		# this_society.communities = {}
+
+		### COMMUNITIES ###
+
+		var current_communities = []
 		for community in society.communities:
-			print(community.name)
-		pass
+			# print(community)
+			if not this_society.communities.has(community.id):
+				this_society.communities[community.id] = Community.new()
+			var this_community = this_society.communities[community.id]
+			this_community.title = community.name
+			this_community.voice = community.voice
+			# this_community.resources = {}
+			print("- " + this_community.title)
+
+			### RESOURCES ###
+			var current_resources = []
+			for resource in community.resources:
+				if not this_community.resources.has(resource.id):
+					this_community.resources[resource.id] = SPResource.new()
+				var this_resource = this_community.resources[resource.id]
+				this_resource.title = resource.name
+				this_resource.vital = resource.vital
+				this_resource.exhausted = resource.exhausted
+
+				print("-- " + this_resource.title)
+
+				current_resources.append(resource.id)
+			for key in this_community.resources.keys():
+				if not current_resources.has(key):
+					this_community.resources.erase(key)
+
+			current_communities.append(community.id)
+		for key in this_society.communities.keys():
+			if not current_communities.has(key):
+				this_society.communities.erase(key)
+
+		current_societies.append(society.id)
+	for key in State.societies.keys():
+		if not current_societies.has(key):
+			State.societies.erase(key)
 
 	State.save()
