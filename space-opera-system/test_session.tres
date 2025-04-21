@@ -9,22 +9,37 @@
 [sub_resource type="Resource" id="Resource_xolg1"]
 script = ExtResource("1_xolg1")
 id = ""
-type = "Universal Phase"
-status = "paused"
-round = 3
+type = "Individual Phase"
+status = "idle"
+round = 2
 time = {
-&"duration": 240.0,
-&"elapsed": 8.002,
-&"remaining": 231.0,
-&"remainingFormatted": "03:51"
+&"duration": 600.0,
+&"elapsed": 0.0,
+&"remaining": 600.0,
+&"remainingFormatted": "10:00"
 }
+
+[sub_resource type="Resource" id="Resource_xqyh8"]
+script = ExtResource("5_gvxx2")
+title = "dogs"
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_rq8ia"]
+script = ExtResource("4_jkowm")
+title = "Frank"
+resources = Dictionary[String, ExtResource("5_gvxx2")]({
+"Ridpo": SubResource("Resource_xqyh8")
+})
+voice = "people"
 
 [sub_resource type="Resource" id="Resource_jw88j"]
 script = ExtResource("5_gvxx2")
 title = "cats"
 relationship = ""
 vital = true
-exhausted = true
+exhausted = false
 
 [sub_resource type="Resource" id="Resource_h1pjg"]
 script = ExtResource("4_jkowm")
@@ -38,7 +53,8 @@ voice = "people"
 script = ExtResource("3_cl0gu")
 title = "Frog house"
 communities = Dictionary[String, ExtResource("4_jkowm")]({
-"Qw0Xm": SubResource("Resource_h1pjg")
+"Qw0Xm": SubResource("Resource_h1pjg"),
+"o7kHM": SubResource("Resource_rq8ia")
 })
 
 [sub_resource type="Resource" id="Resource_v7aan"]
@@ -46,7 +62,7 @@ script = ExtResource("5_gvxx2")
 title = "lillypadz"
 relationship = ""
 vital = false
-exhausted = true
+exhausted = false
 
 [sub_resource type="Resource" id="Resource_xxvib"]
 script = ExtResource("4_jkowm")
@@ -63,27 +79,10 @@ communities = Dictionary[String, ExtResource("4_jkowm")]({
 "lHvo5": SubResource("Resource_xxvib")
 })
 
-[sub_resource type="Resource" id="Resource_xqyh8"]
-script = ExtResource("5_gvxx2")
-title = "dogs"
-relationship = ""
-vital = false
-exhausted = true
-
-[sub_resource type="Resource" id="Resource_cl0gu"]
-script = ExtResource("4_jkowm")
-title = "TINKY 6000"
-resources = Dictionary[String, ExtResource("5_gvxx2")]({
-"Ridpo": SubResource("Resource_xqyh8")
-})
-voice = "people"
-
 [sub_resource type="Resource" id="Resource_og1ky"]
 script = ExtResource("3_cl0gu")
-title = "Cool bobs"
-communities = Dictionary[String, ExtResource("4_jkowm")]({
-"o7kHM": SubResource("Resource_cl0gu")
-})
+title = "Third Society"
+communities = Dictionary[String, ExtResource("4_jkowm")]({})
 
 [resource]
 script = ExtResource("2_xqyh8")
