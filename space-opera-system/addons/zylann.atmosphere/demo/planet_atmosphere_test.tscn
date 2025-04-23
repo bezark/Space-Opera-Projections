@@ -95,6 +95,16 @@ planet_radius = 100.0
 atmosphere_height = 8.0
 sun_path = NodePath("../Sun/DirectionalLight")
 custom_shader = ExtResource("3_ra2pw")
+shader_params/u_cloud_shape_texture = null
+shader_params/u_cloud_shape_invert = 0.0
+shader_params/u_cloud_coverage_bias = 0.0
+shader_params/u_cloud_shape_factor = 0.8
+shader_params/u_cloud_shape_scale = 1.0
+shader_params/u_cloud_coverage_cubemap = null
+shader_params/u_cloud_density_scale = 50.0
+shader_params/u_cloud_bottom = 0.2
+shader_params/u_cloud_top = 0.5
+shader_params/u_cloud_blend = 0.5
 
 [node name="Avatar" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 213.345)

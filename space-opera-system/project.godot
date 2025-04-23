@@ -31,6 +31,10 @@ window/stretch/mode="canvas_items"
 
 enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/godot_vmc_tracker/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
 
+[godot_vmc_tracker]
+
+tracking/position_mode=1
+
 [rendering]
 
 anti_aliasing/quality/msaa_3d=3
@@ -41,4 +45,3 @@ anti_aliasing/quality/use_taa=true
 [xr]
 
 openxr/enabled=true
-shaders/enabled=true

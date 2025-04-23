@@ -63,5 +63,5 @@ max_value = 60.0
 [connection signal="button_down" from="CenterContainer/SocietyPhaseTimer/Start" to="CenterContainer/SocietyPhaseTimer" method="_on_start_button_down"]
 [connection signal="button_down" from="CenterContainer/SocietyPhaseTimer/Stop" to="CenterContainer/SocietyPhaseTimer" method="_on_stop_button_down"]
 [connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Minutes" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
-[connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
 [connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_seconds_value_changed"]
+[connection signal="value_changed" from="CenterContainer/SocietyPhaseTimer/Seconds" to="CenterContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
