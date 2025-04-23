@@ -1,0 +1,43 @@
+[gd_scene load_steps=6 format=3 uid="uid://dr8ovkt4tk5y"]
+
+[ext_resource type="Script" uid="uid://c40w88s6al30o" path="res://Experiments/xr_origin_3d.gd" id="1_6j45k"]
+[ext_resource type="Script" uid="uid://de1skdbysjf7x" path="res://Experiments/xr_node_3d.gd" id="1_pngim"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j5w36"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_pngim"]
+sky_material = SubResource("ProceduralSkyMaterial_j5w36")
+
+[sub_resource type="Environment" id="Environment_6j45k"]
+background_mode = 2
+sky = SubResource("Sky_pngim")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="XRTrackingDemo" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6j45k")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866024, -0.433016, 0.250001, 0.486269, -0.613015, 0.622698, -0.116384, 0.660839, 0.74145, 0, 0, 0)
+shadow_enabled = true
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+current = true
+script = ExtResource("1_6j45k")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.52885)
+
+[node name="XRNode3D" type="XRNode3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -2)
+tracker = &"/vmc/body_tracker"
+show_when_tracked = true
+script = ExtResource("1_pngim")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="XROrigin3D/XRNode3D"]
+
+[connection signal="tracking_changed" from="XROrigin3D/XRNode3D" to="XROrigin3D/XRNode3D" method="_on_tracking_changed"]
