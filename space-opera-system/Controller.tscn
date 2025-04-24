@@ -85,7 +85,7 @@ script = ExtResource("4_8cq51")
 [connection signal="button_down" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Start" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_start_button_down"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Stop" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_stop_button_down"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Minutes" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Seconds" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_seconds_value_changed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Seconds" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Seconds" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_seconds_value_changed"]
 [connection signal="button_down" from="MarginContainer/VBoxContainer/BillboardBroadcast/Button" to="MarginContainer/VBoxContainer/BillboardBroadcast" method="_on_button_button_down"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/DiceCamControlButton" to="MarginContainer/VBoxContainer/DiceCamControlButton" method="_on_toggled"]

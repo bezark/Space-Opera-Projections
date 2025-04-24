@@ -7,8 +7,8 @@
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://2Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://scene_changer.gd" id="5_s83dy"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
-[ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/societal.tscn" id="7_h2cot"]
 [ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/individual.tscn" id="8_6y3qq"]
+[ext_resource type="PackedScene" uid="uid://s2odkfnfrpsu" path="res://Experiments/view_from.tscn" id="8_s83dy"]
 [ext_resource type="PackedScene" uid="uid://wd1w3dgwxd4u" path="res://Phases/conclusion.tscn" id="9_h2cot"]
 [ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="10_6y3qq"]
 [ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Universal Phase.tscn" id="11_6y3qq"]
@@ -39,7 +39,7 @@ scenes = Dictionary[String, PackedScene]({
 "Galactic Phase": ExtResource("3_tm5h3"),
 "Individual Phase": ExtResource("8_6y3qq"),
 "Setup Phase": ExtResource("10_6y3qq"),
-"Societal Phase": ExtResource("7_h2cot"),
+"Societal Phase": ExtResource("8_s83dy"),
 "Universal Phase": ExtResource("11_6y3qq")
 })
 

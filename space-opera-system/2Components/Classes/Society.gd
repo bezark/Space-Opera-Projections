@@ -4,3 +4,5 @@ class_name Society
 @export var title: String
 @export var communities: Dictionary[String,Community]
 var id: String
+
+@export var model: PackedScene

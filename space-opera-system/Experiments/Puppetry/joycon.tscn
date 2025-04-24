@@ -1,8 +1,8 @@
 [gd_scene load_steps=4 format=3 uid="uid://byvgq4tih3ac1"]
 
-[ext_resource type="Script" uid="uid://dfp618d6r2oit" path="res://Experiments/joycon.gd" id="1_gu3ap"]
+[ext_resource type="Script" uid="uid://dfp618d6r2oit" path="res://Experiments/Puppetry/joycon.gd" id="1_gu3ap"]
 [ext_resource type="Script" uid="uid://cfon3p4usolha" path="res://addons/godOSC/scripts/OSCServer.gd" id="2_ix0ut"]
-[ext_resource type="Script" uid="uid://cw37rxgmj7h7g" path="res://Experiments/accel_stretcher.gd" id="4_mccmv"]
+[ext_resource type="Script" uid="uid://cw37rxgmj7h7g" path="res://Experiments/Puppetry/accel_stretcher.gd" id="4_mccmv"]
 
 [node name="Joycon" type="Node"]
 script = ExtResource("1_gu3ap")

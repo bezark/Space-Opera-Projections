@@ -1,0 +1,38 @@
+[gd_scene load_steps=5 format=3 uid="uid://s2odkfnfrpsu"]
+
+[ext_resource type="Script" uid="uid://dppe5tsgfrhr3" path="res://Experiments/view_from.gd" id="1_6vlmb"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_6vlmb"]
+sky_top_color = Color(0.561082, 0.326079, 0.704478, 1)
+sky_horizon_color = Color(0.611888, 0.598965, 0.711826, 1)
+ground_bottom_color = Color(0.0100184, 0.193329, 0.266374, 1)
+ground_horizon_color = Color(0.611888, 0.598965, 0.711826, 1)
+
+[sub_resource type="Sky" id="Sky_so7of"]
+sky_material = SubResource("ProceduralSkyMaterial_6vlmb")
+
+[sub_resource type="Environment" id="Environment_ww272"]
+background_mode = 2
+sky = SubResource("Sky_so7of")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="ViewFrom" type="Node3D"]
+script = ExtResource("1_6vlmb")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ww272")
+
+[node name="Society" type="Node3D" parent="."]
+
+[node name="Title" type="Label3D" parent="Society"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02145, -2.61428)
+text = "SOCIETY"
+font_size = 256
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.91473)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=14 format=3 uid="uid://dr8ovkt4tk5y"]
 
-[ext_resource type="Script" uid="uid://c40w88s6al30o" path="res://Experiments/xr_origin_3d.gd" id="1_6j45k"]
-[ext_resource type="Script" uid="uid://de1skdbysjf7x" path="res://Experiments/xr_node_3d.gd" id="1_pngim"]
+[ext_resource type="Script" uid="uid://c40w88s6al30o" path="res://Experiments/Puppetry/xr_origin_3d.gd" id="1_6j45k"]
+[ext_resource type="Script" uid="uid://de1skdbysjf7x" path="res://Experiments/Puppetry/xr_node_3d.gd" id="1_pngim"]
 [ext_resource type="Texture2D" uid="uid://b4ad58fiea5p5" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="4_8brlu"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="5_uef6f"]
 [ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="6_4q6bd"]

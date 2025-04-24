@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://ybxkyu8ejmu7"]
 
-[ext_resource type="Script" uid="uid://cy7x0s78irund" path="res://Experiments/Wacom/wacom_testing.gd" id="1_33vww"]
-[ext_resource type="Script" uid="uid://cwcc3rjjbo8q4" path="res://Experiments/Wacom/fling_spawner.gd" id="2_oi7tt"]
+[ext_resource type="Script" uid="uid://cy7x0s78irund" path="res://Experiments/Puppetry/Wacom/wacom_testing.gd" id="1_33vww"]
+[ext_resource type="Script" uid="uid://cwcc3rjjbo8q4" path="res://Experiments/Puppetry/Wacom/fling_spawner.gd" id="2_oi7tt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0wlcm"]
 size = Vector2(2018, 156)

@@ -5,3 +5,5 @@ class_name Community
 @export var resources: Dictionary[String, SPResource]
 @export var voice: String
 var id: String
+
+@export var model: PackedScene

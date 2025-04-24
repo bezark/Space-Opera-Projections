@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://dp3wqihtnonn"]
 
-[ext_resource type="Script" uid="uid://quw4bcd5vho" path="res://Experiments/Wacom/flinger.gd" id="1_tge67"]
+[ext_resource type="Script" uid="uid://quw4bcd5vho" path="res://Experiments/Puppetry/Wacom/flinger.gd" id="1_tge67"]
 [ext_resource type="Texture2D" uid="uid://bwlgp8vk5g6v2" path="res://icon.svg" id="2_unjab"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_0bicv"]
