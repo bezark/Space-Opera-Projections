@@ -1,0 +1,128 @@
+[gd_scene load_steps=14 format=3 uid="uid://dr8ovkt4tk5y"]
+
+[ext_resource type="Script" uid="uid://c40w88s6al30o" path="res://Experiments/xr_origin_3d.gd" id="1_6j45k"]
+[ext_resource type="Script" uid="uid://de1skdbysjf7x" path="res://Experiments/xr_node_3d.gd" id="1_pngim"]
+[ext_resource type="Texture2D" uid="uid://b4ad58fiea5p5" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="4_8brlu"]
+[ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="5_uef6f"]
+[ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="6_4q6bd"]
+
+[sub_resource type="Gradient" id="Gradient_lsvgl"]
+offsets = PackedFloat32Array(0, 0.180467, 0.392781, 0.573248, 0.707006, 1)
+colors = PackedColorArray(0.3844, 0.00463759, 0.3182, 1, 0.199824, 0.251399, 0.458957, 1, 0.635238, 0, 0.197052, 1, 0.621679, 0.00025068, 0.2036, 1, 0.768106, 0.622454, 0.146984, 1, 0.959299, 0.948842, 0.965013, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_chmqo"]
+noise_type = 2
+frequency = 0.0001
+offset = Vector3(0, 0, -169.7)
+fractal_octaves = 10
+fractal_gain = 0.9
+fractal_weighted_strength = 0.27
+domain_warp_type = 1
+domain_warp_amplitude = 16.5
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_lacunarity = 7.1
+domain_warp_fractal_gain = 1.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oyq1c"]
+width = 1024
+height = 1024
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_lsvgl")
+noise = SubResource("FastNoiseLite_chmqo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dps3l"]
+albedo_texture = SubResource("NoiseTexture2D_oyq1c")
+clearcoat_roughness = 0.4
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 6.75
+backlight_enabled = true
+refraction_enabled = true
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
+panorama = ExtResource("4_8brlu")
+
+[sub_resource type="Sky" id="Sky_8b321"]
+sky_material = SubResource("PanoramaSkyMaterial_dps3l")
+
+[sub_resource type="Environment" id="Environment_4jktx"]
+background_mode = 2
+sky = SubResource("Sky_8b321")
+glow_enabled = true
+glow_intensity = 1.32
+glow_blend_mode = 0
+
+[node name="XRTrackingDemo" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="XROrigin3D" type="XROrigin3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -410.337, -3.1865, 0)
+current = true
+script = ExtResource("1_6j45k")
+
+[node name="XRCamera3D" type="XRCamera3D" parent="XROrigin3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.92935e-07, 2.92305, 18.3813)
+
+[node name="XRNode3D" type="XRNode3D" parent="XROrigin3D"]
+transform = Transform3D(0.965926, 0.258819, 1.48943e-09, -0.258819, 0.965926, 1.13133e-08, 1.48943e-09, -1.13133e-08, 1, -10.6782, 7.10545, -37.3881)
+tracker = &"/vmc/body_tracker"
+show_when_tracked = true
+script = ExtResource("1_pngim")
+
+[node name="CloudyPlanet" type="CSGSphere3D" parent="XROrigin3D/XRNode3D"]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 41.0328, 0, 0)
+radius = 5.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_dps3l")
+
+[node name="PlanetAthmosphere" parent="XROrigin3D/XRNode3D/CloudyPlanet" instance=ExtResource("5_uef6f")]
+atmosphere_height = 5.0
+sun_path = NodePath("../../../../SolarSystem/Star")
+custom_shader = ExtResource("6_4q6bd")
+shader_params/u_day_color0 = Color(0.5, 0.8, 1, 1)
+shader_params/u_day_color1 = Color(0.5, 0.8, 1, 1)
+shader_params/u_night_color0 = Color(0.2, 0.4, 0.8, 1)
+shader_params/u_night_color1 = Color(0.2, 0.4, 0.8, 1)
+shader_params/u_day_night_transition_scale = 2.0
+shader_params/u_cloud_shape_texture = null
+shader_params/u_cloud_shape_invert = 0.0
+shader_params/u_cloud_coverage_bias = 0.0
+shader_params/u_cloud_shape_factor = 0.8
+shader_params/u_cloud_shape_scale = 1.0
+shader_params/u_cloud_coverage_cubemap = null
+shader_params/u_cloud_density_scale = 50.0
+shader_params/u_cloud_bottom = 0.2
+shader_params/u_cloud_top = 0.5
+shader_params/u_cloud_blend = 0.5
+
+[node name="SolarSystem" type="Node3D" parent="."]
+
+[node name="Star" type="CSGSphere3D" parent="SolarSystem"]
+radius = 50.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_oyq1c")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SolarSystem"]
+environment = SubResource("Environment_4jktx")
+
+[node name="CloudyPlanet2" type="CSGSphere3D" parent="SolarSystem"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -352.194, 0, -61.9491)
+radius = 10.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_dps3l")
+
+[node name="PlanetAthmosphere" parent="SolarSystem/CloudyPlanet2" instance=ExtResource("5_uef6f")]
+planet_radius = 10.0
+atmosphere_height = 2.0
+sun_path = NodePath("../../Star")
+
+[connection signal="tracking_changed" from="XROrigin3D/XRNode3D" to="XROrigin3D/XRNode3D" method="_on_tracking_changed"]
