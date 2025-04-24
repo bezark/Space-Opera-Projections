@@ -5,6 +5,8 @@ class_name GameState
 @export var phases: Dictionary[String, Phase]
 
 @export var societies: Dictionary[String, Society]
+@export var communities: Dictionary[String, Community]
+@export var resources: Dictionary[String, SPResource]
 
 
 func save():

@@ -42,6 +42,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 	prints(societies_hash, previous_societies_hash)
 	if societies_hash != previous_societies_hash:
 		var current_societies = []
+
 		for society in game.societies:
 			if not State.societies.has(society.id):
 				State.societies[society.id] = Society.new()
@@ -57,18 +58,28 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 			for community in society.communities:
 				# print(community)
 				if not this_society.communities.has(community.id):
-					this_society.communities[community.id] = Community.new()
+					if not State.communities.has(community.id):
+						this_society.communities[community.id] = Community.new()
+					else:
+						this_society.communities[community.id] = State.communities[community.id]
+
 				var this_community = this_society.communities[community.id]
 				this_community.title = community.name
 				this_community.voice = community.voice
 				# this_community.resources = {}
+
 				print("- " + this_community.title)
 
 				### RESOURCES ###
+
 				var current_resources = []
 				for resource in community.resources:
 					if not this_community.resources.has(resource.id):
-						this_community.resources[resource.id] = SPResource.new()
+						if not State.resources.has(resource.id):
+							this_community.resources[resource.id] = SPResource.new()
+						else:
+							this_community.resources[resource.id] = State.resources[resource.id]
+
 					var this_resource = this_community.resources[resource.id]
 					this_resource.title = resource.name
 					this_resource.vital = resource.vital
@@ -77,11 +88,15 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 					print("-- " + this_resource.title)
 
 					current_resources.append(resource.id)
+					State.resources[resource.id] = this_resource
+
 				for key in this_community.resources.keys():
 					if not current_resources.has(key):
 						this_community.resources.erase(key)
 
 				current_communities.append(community.id)
+				State.communities[community.id] = this_community
+
 			for key in this_society.communities.keys():
 				if not current_communities.has(key):
 					this_society.communities.erase(key)

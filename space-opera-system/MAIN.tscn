@@ -47,12 +47,11 @@ scenes = Dictionary[String, PackedScene]({
 visible = false
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
-position = Vector2(-939.433, 59)
 scale = Vector2(1.94982, 1)
 
 [node name="MappingSurface" parent="CanvasGroup" instance=ExtResource("5_kgeht")]
 material = SubResource("ShaderMaterial_xm6fk")
-position = Vector2(483.856, -50)
+position = Vector2(5.64151, -50)
 scale = Vector2(0.508861, 0.915741)
 texture = SubResource("ViewportTexture_5nrqa")
 polygon = PackedVector2Array(74.5835, 50.2325, 0, 1080, 1920, 1080, 1877.67, 98.2811)
