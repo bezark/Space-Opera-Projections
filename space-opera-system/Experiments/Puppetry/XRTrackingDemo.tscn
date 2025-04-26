@@ -121,7 +121,7 @@ rings = 64
 material = SubResource("StandardMaterial3D_dps3l")
 
 [node name="PlanetAthmosphere" parent="SolarSystem/CloudyPlanet2" instance=ExtResource("5_uef6f")]
-planet_radius = 10.0
+planet_radius = 8.6
 atmosphere_height = 2.0
 sun_path = NodePath("../../Star")
 

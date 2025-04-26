@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://de5u3a1ihfqn3"]
+
+[ext_resource type="Script" uid="uid://b3q3s4xu6g6c7" path="res://Experiments/PropTemplates/resource_prop.gd" id="1_1i3mg"]
+
+[node name="ResourceProp" type="Node3D"]
+script = ExtResource("1_1i3mg")
+
+[node name="Title" type="Label3D" parent="."]

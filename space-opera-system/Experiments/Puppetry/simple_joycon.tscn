@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://h6ge3orjfc0l"]
+
+[ext_resource type="Script" uid="uid://boeoxt2btd7v3" path="res://Experiments/Puppetry/simple_joycon.gd" id="1_ii0l7"]
+
+[node name="SimpleJoycon" type="Node"]
+script = ExtResource("1_ii0l7")

@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://b4rd82hhtkh5y"]
+
+[ext_resource type="Script" uid="uid://d2nlrtpovjyjg" path="res://Experiments/PropTemplates/community_prop.gd" id="1_eng76"]
+
+[node name="CommunityProp" type="Node3D"]
+script = ExtResource("1_eng76")
+
+[node name="Title" type="Label3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.543707, 0)
+
+[node name="Object" type="Node3D" parent="."]
+
+[node name="Resources" type="Node3D" parent="."]

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bd5kxsawjfx8n"]
+
+[ext_resource type="ArrayMesh" uid="uid://b7r3wrls4gy6c" path="res://Experiments/SampleProps/SHARK.obj" id="1_stm2t"]
+
+[node name="Shark" type="Node3D"]
+
+[node name="Shark" type="MeshInstance3D" parent="."]
+mesh = ExtResource("1_stm2t")

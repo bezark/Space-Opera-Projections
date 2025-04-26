@@ -27,12 +27,12 @@ shadow_enabled = true
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ww272")
 
-[node name="Society" type="Node3D" parent="."]
-
-[node name="Title" type="Label3D" parent="Society"]
+[node name="SocietyTitle" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.02145, -2.61428)
 text = "SOCIETY"
 font_size = 256
+
+[node name="Society" type="Node3D" parent="."]
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.91473)
