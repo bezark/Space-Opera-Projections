@@ -1,4 +1,7 @@
-[gd_scene format=3 uid="uid://lefs233t4ptt"]
+[gd_scene load_steps=2 format=3 uid="uid://lefs233t4ptt"]
+
+[sub_resource type="FFmpegVideoStream" id="FFmpegVideoStream_6flc8"]
+file = "rtsp://192.168.1.147:8080/live"
 
 [node name="Ffmpeg" type="VideoStreamPlayer"]
 anchors_preset = 15
@@ -8,4 +11,5 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+stream = SubResource("FFmpegVideoStream_6flc8")
 autoplay = true
