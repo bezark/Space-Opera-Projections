@@ -1,10 +1,4 @@
-
-
-# Edit this configuration file to define what should be installed on
-# your system.  Help is available in the configuration.nix(5) man page
-# and in the NixOS manual (accessible by running 'nixos-help').
-
-{ config, pkgs, ... }:
+{ config, pkgs, lib, ... }:
 
 {
   system.copySystemConfiguration = true;
@@ -28,6 +22,35 @@
   boot.loader.efi.canTouchEfiVariables = true;
   boot.initrd.kernelModules = ["amdgpu"];
 
+
+  boot.kernelModules = [ "v4l2loopback" ];
+
+  boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];  # :contentReference[oaicite:0]{index=0}
+
+  # Pass parameters for one device, /dev/video1
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 video_nr=1 card_label="VirtualCam" exclusive_caps=1
+  '';
+
+
+  systemd.services.rtspVirtualCam = {
+    enable        = true;
+    description   = "RTSP → v4l2loopback virtual camera";
+    unitConfig = {
+      After = "network-online.target";
+      Wants = "network-online.target";
+    };
+    serviceConfig = {
+      ExecStart  = "${pkgs.ffmpeg}/bin/ffmpeg -rtsp_transport tcp \
+                      -i rtsp://192.168.1.10:554/stream \
+                      -f v4l2 -pix_fmt yuv420p /dev/video1";
+      Restart     = "always";
+      RestartSec  = "5";
+    };
+    wantedBy      = [ "multi-user.target" ];
+  };
+
+  
   networking.hostName = "nixDesktop"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
@@ -278,6 +301,8 @@
     yt-dlp-light
     radeontop
     alvr 
+    # ffmpeg
+    v4l-utils
 
     steam-run
     patchelf

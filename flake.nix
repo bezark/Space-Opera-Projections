@@ -1,50 +1,30 @@
 {
-  description = "RTSP to Virtual Webcam Service";
+  description = "Multi-config NixOS flake: workstation + projection-system";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable"; # or stable if you prefer
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
   };
 
-  outputs = { self, nixpkgs, ... }: {
-    nixosModules.virtualCam = { config, lib, pkgs, ... }: {
-      options.virtualCam = {
-        enable = lib.mkEnableOption "Enable virtual webcam RTSP service";
-        rtspUrl = lib.mkOption {
-          type = lib.types.str;
-          default = "rtsp://your-default-stream.example.com";
-          description = "RTSP URL to stream into the virtual webcam";
+  outputs = { self, nixpkgs, ... }:
+    let
+      system = "x86_64-linux";
+      pkgs   = import nixpkgs { inherit system; };
+    in {
+      nixosConfigurations = {
+        # 1) Your regular machine
+        workstation = pkgs.lib.nixosSystem {
+          inherit system;
+          modules = [ ./configuration.nix ];
         };
-      };
 
-      config = lib.mkIf config.virtualCam.enable {
-        environment.systemPackages = [
-          pkgs.ffmpeg
-          pkgs.v4l2loopback
-        ];
-
-        boot.kernelModules = [
-          "v4l2loopback"
-        ];
-
-        systemd.services.virtualCam = {
-          description = "Virtual Webcam from RTSP Stream";
-          after = [ "network.target" ];
-          wantedBy = [ "multi-user.target" ];
-          serviceConfig = {
-            ExecStart = ''
-              ${pkgs.ffmpeg}/bin/ffmpeg \
-                -rtsp_transport tcp \
-                -i ${config.virtualCam.rtspUrl} \
-                -f v4l2 \
-                -codec:v rawvideo \
-                -pix_fmt yuv420p \
-                /dev/video0
-            '';
-            Restart = "always";
-            RestartSec = "5s";
-          };
+        # 2) The projection system with virtual webcam
+        projectionSystem = pkgs.lib.nixosSystem {
+          inherit system;
+          modules = [
+            # ./configuration.nix
+            ./projection-system.nix
+          ];
         };
       };
     };
-  };
 }
