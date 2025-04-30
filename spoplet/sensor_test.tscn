@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5bdxuqyj01ql"]
+
+[ext_resource type="Script" uid="uid://bl4r1syv0amqr" path="res://sensor_test.gd" id="1_2x2oy"]
+
+[node name="SensorTest" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+alignment = 1
+script = ExtResource("1_2x2oy")
+
+[node name="Mag" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Gyro" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Accel" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Grav" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="Gesture" type="Label" parent="."]
+layout_mode = 2
+size_flags_horizontal = 4
