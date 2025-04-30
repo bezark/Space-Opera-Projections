@@ -1,5 +1,5 @@
 {
-  description = "Multi-config NixOS flake: workstation + projection-system";
+  description = "Projection-only NixOS flake";
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
@@ -8,23 +8,21 @@
   outputs = { self, nixpkgs, ... }:
     let
       system = "x86_64-linux";
-      pkgs   = import nixpkgs { inherit system; };
     in {
-      nixosConfigurations = {
-        # 1) Your regular machine
-        workstation = pkgs.lib.nixosSystem {
+      # This is the only place we call nixosSystem,
+      # directly off the flake input’s lib:
+      nixosConfigurations.projectionSystem =
+        nixpkgs.lib.nixosSystem {
           inherit system;
-          modules = [ ./configuration.nix ];
-        };
 
-        # 2) The projection system with virtual webcam
-        projectionSystem = pkgs.lib.nixosSystem {
-          inherit system;
           modules = [
-            # ./configuration.nix
+            # your real, existing config:
+            ./configuration.nix
+
+            # your RTSP→v4l2loopback bits:
             ./projection-system.nix
           ];
         };
-      };
     };
 }
+

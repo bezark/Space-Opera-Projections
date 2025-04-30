@@ -12,7 +12,7 @@
   imports =
     [ # Include the results of the hardware scan.
       ./hardware-configuration.nix
-      ./flake.nix
+      # ./flake.nix
     ];
 
 
@@ -29,26 +29,25 @@
 
   # Pass parameters for one device, /dev/video1
   boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 video_nr=1 card_label="VirtualCam" exclusive_caps=1
+    options v4l2loopback devices=1 max_buffers=2 video_nr=4 exclusive_caps=1 card_label="VirtualCam #0"
   '';
 
 
-  systemd.services.rtspVirtualCam = {
-    enable        = true;
-    description   = "RTSP → v4l2loopback virtual camera";
-    unitConfig = {
-      After = "network-online.target";
-      Wants = "network-online.target";
-    };
-    serviceConfig = {
-      ExecStart  = "${pkgs.ffmpeg}/bin/ffmpeg -rtsp_transport tcp \
-                      -i rtsp://192.168.1.10:554/stream \
-                      -f v4l2 -pix_fmt yuv420p /dev/video1";
-      Restart     = "always";
-      RestartSec  = "5";
-    };
-    wantedBy      = [ "multi-user.target" ];
-  };
+  # systemd.services.rtspVirtualCam = {
+  #   enable        = true;
+  #   unitConfig = {
+  #     After = "network-online.target";
+  #     Wants = "network-online.target";
+  #   };
+  #   serviceConfig = {
+  #     ExecStart  = "${pkgs.ffmpeg}/bin/ffmpeg -rtsp_transport tcp \
+  #                     -i rtsp://192.168.1.10:554/stream \
+  #                     -f v4l2 -pix_fmt yuv420p /dev/video1";
+  #     Restart     = "always";
+  #     RestartSec  = "5";
+  #   };
+  #   wantedBy      = [ "multi-user.target" ];
+  # };
 
   
   networking.hostName = "nixDesktop"; # Define your hostname.
@@ -188,7 +187,6 @@
   users.users.johnb = {
     shell = pkgs.zsh;
     isNormalUser = true;
-    description = "John Bezark";
     extraGroups = [ "networkmanager" "wheel" "adbusers" "audio" "dialout" "input"];
     packages = with pkgs; [
       firefox
