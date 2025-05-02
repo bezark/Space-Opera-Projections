@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller.tscn" id="3_78rud"]
 [ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/galactic_council.tscn" id="3_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://2Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
-[ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://scene_changer.gd" id="5_s83dy"]
+[ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://2Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
 [ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/individual.tscn" id="8_6y3qq"]
 [ext_resource type="PackedScene" uid="uid://s2odkfnfrpsu" path="res://Experiments/view_from.tscn" id="8_s83dy"]
@@ -43,8 +43,7 @@ scenes = Dictionary[String, PackedScene]({
 "Universal Phase": ExtResource("11_6y3qq")
 })
 
-[node name="Control" parent="." instance=ExtResource("3_78rud")]
-visible = false
+[node name="Control" parent="SceneChanger" instance=ExtResource("3_78rud")]
 
 [node name="CanvasGroup" type="CanvasGroup" parent="."]
 scale = Vector2(1.94982, 1)

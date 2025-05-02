@@ -29,7 +29,11 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/godot_vmc_tracker/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
+
+[global_group]
+
+controller=""
 
 [godot_vmc_tracker]
 
@@ -44,7 +48,3 @@ tracking/position_mode=1
 anti_aliasing/quality/msaa_3d=3
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/screen_space_aa=1
-
-[xr]
-
-openxr/enabled=true

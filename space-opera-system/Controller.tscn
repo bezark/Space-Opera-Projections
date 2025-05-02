@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://d3nh81q7dsdr4"]
+[gd_scene load_steps=3 format=3 uid="uid://d3nh81q7dsdr4"]
 
-[ext_resource type="Script" uid="uid://diow40je2csto" path="res://xArchive/Timer/SocietyPhaseTimerController.gd" id="1_7hav4"]
-[ext_resource type="PackedScene" uid="uid://sghxqgcrs7b8" path="res://xArchive/Timer/Timer.tscn" id="2_73fjk"]
-[ext_resource type="Script" uid="uid://cy7j8i0m8avfn" path="res://xArchive/OctoberPlaytest/billboard_broadcast.gd" id="3_qkmw7"]
-[ext_resource type="Script" uid="uid://cbds6wquxbc6h" path="res://xArchive/OctoberPlaytest/dice_cam_control_button.gd" id="4_8cq51"]
+[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
+[ext_resource type="PackedScene" uid="uid://cegpvuw0ycvtl" path="res://xArchive/XOldMessageTimer.tscn" id="1_kt08h"]
 
 [node name="Control" type="Window"]
 auto_translate_mode = 1
@@ -11,81 +9,24 @@ position = Vector2i(0, 36)
 size = Vector2i(800, 800)
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
-offset_right = 40.0
-offset_bottom = 40.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_55pmi")
 theme_override_constants/margin_left = 40
 theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-
-[node name="SocietyPhaseTimer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 4
-alignment = 1
-script = ExtResource("1_7hav4")
-
-[node name="Timer" parent="MarginContainer/VBoxContainer/SocietyPhaseTimer" instance=ExtResource("2_73fjk")]
+[node name="VBoxContainer" parent="MarginContainer" instance=ExtResource("1_kt08h")]
 layout_mode = 2
 
-[node name="VSeparator" type="VSeparator" parent="MarginContainer/VBoxContainer/SocietyPhaseTimer/Timer"]
+[node name="MenuButton" type="MenuButton" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/separation = 200
-
-[node name="Reset" type="Button" parent="MarginContainer/VBoxContainer/SocietyPhaseTimer"]
-layout_mode = 2
-size_flags_horizontal = 10
-text = "RESET"
-
-[node name="Start" type="Button" parent="MarginContainer/VBoxContainer/SocietyPhaseTimer"]
-layout_mode = 2
-size_flags_horizontal = 10
-text = "START"
-
-[node name="Stop" type="Button" parent="MarginContainer/VBoxContainer/SocietyPhaseTimer"]
-layout_mode = 2
-size_flags_horizontal = 10
-text = "PAUSE"
-
-[node name="Minutes" type="SpinBox" parent="MarginContainer/VBoxContainer/SocietyPhaseTimer"]
-layout_mode = 2
-size_flags_horizontal = 10
-max_value = 60.0
-
-[node name="Seconds" type="SpinBox" parent="MarginContainer/VBoxContainer/SocietyPhaseTimer"]
-layout_mode = 2
-size_flags_horizontal = 10
-max_value = 60.0
-
-[node name="BillboardBroadcast" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-script = ExtResource("3_qkmw7")
-
-[node name="Message" type="LineEdit" parent="MarginContainer/VBoxContainer/BillboardBroadcast"]
-layout_mode = 2
-size_flags_horizontal = 3
-placeholder_text = "Message..."
-
-[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/BillboardBroadcast"]
-layout_mode = 2
-text = "Broadcast	"
-
-[node name="DiceCamControlButton" type="Button" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-toggle_mode = true
-text = "Dice Cam"
-script = ExtResource("4_8cq51")
-
-[connection signal="button_down" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Reset" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_button_button_down"]
-[connection signal="button_down" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Start" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_start_button_down"]
-[connection signal="button_down" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Stop" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_stop_button_down"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Minutes" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Seconds" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_minutes_value_changed"]
-[connection signal="value_changed" from="MarginContainer/VBoxContainer/SocietyPhaseTimer/Seconds" to="MarginContainer/VBoxContainer/SocietyPhaseTimer" method="_on_seconds_value_changed"]
-[connection signal="button_down" from="MarginContainer/VBoxContainer/BillboardBroadcast/Button" to="MarginContainer/VBoxContainer/BillboardBroadcast" method="_on_button_button_down"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/DiceCamControlButton" to="MarginContainer/VBoxContainer/DiceCamControlButton" method="_on_toggled"]
+item_count = 2
+popup/item_0/text = "hello"
+popup/item_0/id = 0
+popup/item_1/text = "dog"
+popup/item_1/id = 1
