@@ -1,9 +1,29 @@
-[gd_scene load_steps=2 format=3 uid="uid://b6rmoaer5seny"]
+[gd_scene load_steps=3 format=3 uid="uid://b6rmoaer5seny"]
 
 [ext_resource type="ArrayMesh" uid="uid://bj62ijpdwio7j" path="res://Assets/Arch Street Meeting House.obj" id="1_6efbs"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6efbs"]
+transparency = 1
+albedo_color = Color(0.419608, 1, 1, 0.317647)
 
 [node name="ArchSt" type="Node3D"]
 
 [node name="ArchStreetMeetingHouse" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.147127, 1, -0.331329)
 mesh = ExtResource("1_6efbs")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.629409, -0.683013, -0.37059, -0.683013, 0.258819, 0.683013, -0.37059, 0.683013, -0.629409, 3.95422, 3.44669, 3.51775)
+radius = 4.26
+height = 7.2
+sides = 4
+cone = true
+material = SubResource("StandardMaterial3D_6efbs")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.37059, 0.683013, -0.62941, -0.683013, 0.258819, 0.683013, 0.629409, 0.683013, 0.370591, -9.04578, 3.44669, 3.51775)
+radius = 4.26
+height = 7.2
+sides = 4
+cone = true
+material = SubResource("StandardMaterial3D_6efbs")
