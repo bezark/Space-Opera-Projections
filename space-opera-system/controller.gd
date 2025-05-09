@@ -6,3 +6,6 @@ func _ready() -> void:
 
 func check_for_controls():
 	print(get_tree().root)
+
+func attach(nodes:Node):
+	nodes.reparent($MarginContainer)

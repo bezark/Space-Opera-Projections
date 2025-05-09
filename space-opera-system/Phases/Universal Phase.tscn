@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://mbcy1e7l2o72"]
 
-[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_0ilj2"]
+[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/SolarSystem/space.tres" id="1_0ilj2"]
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_702qu"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0ilj2"]
