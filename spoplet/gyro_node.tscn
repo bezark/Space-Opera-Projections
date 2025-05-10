@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cp40kapfh3p6a"]
+
+[ext_resource type="Script" uid="uid://bivyvd8xjyrga" path="res://gyro_node.gd" id="1_m2aii"]
+
+[node name="GyroNode" type="Node3D"]
+script = ExtResource("1_m2aii")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]

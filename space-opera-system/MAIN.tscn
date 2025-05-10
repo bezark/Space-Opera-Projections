@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=15 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://2Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://2Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://s2odkfnfrpsu" path="res://Experiments/view_from.tscn" id="8_s83dy"]
 [ext_resource type="PackedScene" uid="uid://wd1w3dgwxd4u" path="res://Phases/conclusion.tscn" id="9_h2cot"]
 [ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="10_6y3qq"]
+[ext_resource type="PackedScene" uid="uid://be12b8molyuxg" path="res://Phases/break.tscn" id="10_s83dy"]
 [ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Universal Phase.tscn" id="11_6y3qq"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xm6fk"]
@@ -34,6 +35,7 @@ autostart = true
 [node name="SceneChanger" type="Node" parent="."]
 script = ExtResource("5_s83dy")
 scenes = Dictionary[String, PackedScene]({
+"Break": ExtResource("10_s83dy"),
 "Conclusion Phase": ExtResource("9_h2cot"),
 "Galactic Phase": ExtResource("3_tm5h3"),
 "Individual Phase": ExtResource("8_6y3qq"),

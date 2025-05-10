@@ -82,7 +82,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 					var this_resource = this_community.resources[resource.id]
 					this_resource.title = resource.name
-					this_resource.vital = resource.vital
+					#this_resource.vital = resource.vital
 					this_resource.exhausted = resource.exhausted
 
 					print("-- " + this_resource.title)

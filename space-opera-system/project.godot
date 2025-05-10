@@ -11,8 +11,8 @@ config_version=5
 [application]
 
 config/name="Space Opera System"
-run/main_scene="uid://cdqhyp5lnk3hy"
-config/features=PackedStringArray("4.5", "Forward Plus")
+run/main_scene="uid://c5bdxuqyj01ql"
+config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
 [autoload]
@@ -54,6 +54,7 @@ tracking/position_mode=1
 
 [rendering]
 
+textures/vram_compression/import_etc2_astc=true
 anti_aliasing/quality/msaa_3d=3
 environment/defaults/default_clear_color=Color(0, 0, 0, 1)
 anti_aliasing/quality/screen_space_aa=1
