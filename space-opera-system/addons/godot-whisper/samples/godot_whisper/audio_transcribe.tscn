@@ -4,6 +4,7 @@
 [ext_resource type="WhisperResource" path="res://addons/godot_whisper/models/gglm-tiny.en.bin" id="2_u7fth"]
 [ext_resource type="Script" path="res://addons/godot_whisper/audio_stream_to_text.gd" id="2_v8tv2"]
 
+
 [node name="AudioTranscribe" type="Control"]
 layout_mode = 3
 anchors_preset = 15

@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 State="*res://2Components/Classes/GameState.gd"
 Controller="*res://Controller.tscn"
+Textify="*res://addons/textify_-_speech2text_[huggingface_whisper_api_wrapper]/textify.tscn"
 
 [display]
 
@@ -29,7 +30,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/godot_whisper/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
 
 [file_customization]
 
