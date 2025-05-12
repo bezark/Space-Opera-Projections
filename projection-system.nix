@@ -32,22 +32,30 @@
     options v4l2loopback devices=1 max_buffers=2 video_nr=4 exclusive_caps=1 card_label="VirtualCam #0"
   '';
 
+  systemd.services.ffmpeg-v4l2 = {
+    description = "Stream HTTP camera into /dev/video4 via FFmpeg";
+    wants       = [ "network-online.target" ];
+    after       = [ "network-online.target" ];
+    # if you need group access to /dev/video4, you can add:
+    # serviceConfig.User = "johnb";
+    # serviceConfig.Group = "video";
 
-  # systemd.services.rtspVirtualCam = {
-  #   enable        = true;
-  #   unitConfig = {
-  #     After = "network-online.target";
-  #     Wants = "network-online.target";
-  #   };
-  #   serviceConfig = {
-  #     ExecStart  = "${pkgs.ffmpeg}/bin/ffmpeg -rtsp_transport tcp \
-  #                     -i rtsp://192.168.1.10:554/stream \
-  #                     -f v4l2 -pix_fmt yuv420p /dev/video1";
-  #     Restart     = "always";
-  #     RestartSec  = "5";
-  #   };
-  #   wantedBy      = [ "multi-user.target" ];
-  # };
+    serviceConfig = {
+      # command to run
+      ExecStart = "${pkgs.ffmpeg}/bin/ffmpeg"
+        + " -i http://192.168.1.147:8080/video"
+        + " -vf format=yuyv422"
+        + " -f v4l2 /dev/video4";
+      Restart    = "always";
+      RestartSec = "5s";
+      # optional: log to journal
+      StandardOutput = "journal";
+      StandardError  = "journal";
+    };
+
+    # make sure it starts on boot
+    wantedBy = [ "multi-user.target" ];
+  };
 
   
   networking.hostName = "nixDesktop"; # Define your hostname.
@@ -87,11 +95,11 @@
 
   systemd.services.NetworkManager-wait-online.enable = false;
   # services.gnome-keyring.enable = true;
-  # security.pam.services.johnb.enableGnomeKeyring= true;
+  security.pam.services.johnb.enableGnomeKeyring= true;
   #
   #
   security.pam.services.gdm.enableGnomeKeyring = true;
-  # security.pam.services.greetd.enableGnomeKeyring = true;
+  security.pam.services.greetd.enableGnomeKeyring = true;
 
   services.gnome.gnome-keyring.enable = true;
 
@@ -115,7 +123,7 @@
   };
 
   # Enable the X11 windowing system.
-  # services.xserver.enable = true;
+  services.xserver.enable = true;
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   hardware.opengl.driSupport32Bit = true;
@@ -131,7 +139,7 @@
       user = "johnb";  # Your username
     };
   };
-  # services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.desktopManager.gnome.enable = true;
   services.flatpak.enable = true;
   # Configure keymap in X11
   services.xserver = {
@@ -312,7 +320,7 @@
     gnome-tweaks
     gnome-software
     dynamic-wallpaper
-    # gnome-extension-manager
+    gnome-extension-manager
     nautilus
     gnome-calculator
 
@@ -392,34 +400,34 @@
     # bibata-cursors
 
 ####HYPRLAND
-    waybar
-    networkmanager_dmenu
-    pavucontrol
-    rofi-bluetooth
+    # waybar
+    # networkmanager_dmenu
+    # pavucontrol
+    # rofi-bluetooth
 
-    nwg-panel
-    nwg-dock-hyprland
-    nwg-displays
+    # nwg-panel
+    # nwg-dock-hyprland
+    # nwg-displays
 
-    # dunst
-    libnotify
-    swaynotificationcenter
-    wofi
-    # dolphin
-    nwg-look
-    hyprshot
-    hyprpaper
-    hyprsunset
-    hyprpicker
-    hyprpolkitagent
-    xdg-desktop-portal-hyprland
-    # greetd
-    hyprlock
-    hypridle
+    # # dunst
+    # libnotify
+    # swaynotificationcenter
+    # wofi
+    # # dolphin
+    # nwg-look
+    # hyprshot
+    # hyprpaper
+    # hyprsunset
+    # hyprpicker
+    # hyprpolkitagent
+    # xdg-desktop-portal-hyprland
+    # # greetd
+    # hyprlock
+    # hypridle
 
-    sassc
-    gnome-themes-extra
-    gtk-engine-murrine
+    # sassc
+    # gnome-themes-extra
+    # gtk-engine-murrine
 
 
     
@@ -439,9 +447,9 @@
 
   security.polkit.enable = true;
 
-  programs.hyprland.enable = true;
-  programs.hyprland.xwayland.enable = true;      # enable Xwayland for X11 apps (if you use X11 apps)<
-  programs.hyprland.systemd.setPath.enable = true;
+  # programs.hyprland.enable = true;
+  # programs.hyprland.xwayland.enable = true;      # enable Xwayland for X11 apps (if you use X11 apps)<
+  # programs.hyprland.systemd.setPath.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
