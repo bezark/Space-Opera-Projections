@@ -261,6 +261,7 @@
     openai-whisper
     opencl-headers
     ocl-icd
+    rocmPackages.clr
     
 
     certbot
