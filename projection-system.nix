@@ -29,7 +29,7 @@
 
   # Pass parameters for one device, /dev/video1
   boot.extraModprobeConfig = ''
-    options v4l2loopback devices=1 max_buffers=2 video_nr=4 exclusive_caps=1 card_label="VirtualCam #0"
+    options v4l2loopback devices=1 max_buffers=2 video_nr=4 exclusive_caps=0 max_open=2 card_label="VirtualCam #0"
   '';
 
   systemd.services.ffmpeg-v4l2 = {
@@ -43,7 +43,7 @@
     serviceConfig = {
       # command to run
       ExecStart = "${pkgs.ffmpeg}/bin/ffmpeg"
-        + " -i http://192.168.1.147:8080/video"
+        + " -i http://raspberrypi.taile14a22.ts.net:8080/video"
         + " -vf format=yuyv422"
         + " -f v4l2 /dev/video4";
       Restart    = "always";
@@ -127,6 +127,11 @@
   services.xserver.videoDrivers = [ "amdgpu" ];
 
   hardware.opengl.driSupport32Bit = true;
+  hardware.opengl.enable = true;
+  # hardware.opengl.extraPackages = with pkgs[
+  #   ocl-icd
+    
+  # ];
 
   #For power mode
   services.power-profiles-daemon.enable = true;
@@ -254,6 +259,9 @@
 
     livecaptions
     openai-whisper
+    opencl-headers
+    ocl-icd
+    
 
     certbot
 
