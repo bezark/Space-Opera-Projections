@@ -128,6 +128,15 @@
 
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.enable = true;
+  hardware.opengl = {
+  extraPackages = with pkgs; [
+    ocl-icd            # the OpenCL ICD loader (provides libOpenCL.so)
+    pocl               # a CPU‑only OpenCL runtime
+    # intel-compute-runtime  # Intel GPU ICD (Gen8+)
+    rocmPackages.clr.icd   # AMD GPU ICD (if you have an AMD card)
+  ];
+};
+
   # hardware.opengl.extraPackages = with pkgs[
   #   ocl-icd
     
@@ -259,8 +268,13 @@
 
     livecaptions
     openai-whisper
+
+    opencl-clhpp
+    opencl-clang
     opencl-headers
     ocl-icd
+    stdenv.cc.cc.lib
+    libgcc
     rocmPackages.clr
     
 
@@ -494,7 +508,7 @@
     dic = "/home/johnb/Nextcloud/System/Scripts/run_dictation.sh";
   };
   
-
+  virtualisation.docker.enable = true;
 
   
   programs.zsh.shellAliases = {
@@ -525,7 +539,7 @@
   # Enable the OpenSSH daemon.
   services.openssh.enable = true;
 
-  system.stateVersion = "23.05"; # Did you read the comment?
+  system.stateVersion = "23.05"; 
 
 }
 
