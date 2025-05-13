@@ -16,5 +16,4 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="DiceCamWebcamControl" parent="." instance=ExtResource("2_cuecs")]
-DEVICE_NAME = "HD Pro Webcam C920"
-FORMAT_INDEX = 209
+DEVICE_NAME = "VirtualCam #0"

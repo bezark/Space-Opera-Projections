@@ -400,34 +400,34 @@
     # bibata-cursors
 
 ####HYPRLAND
-    # waybar
-    # networkmanager_dmenu
-    # pavucontrol
-    # rofi-bluetooth
+    waybar
+    networkmanager_dmenu
+    pavucontrol
+    rofi-bluetooth
 
-    # nwg-panel
-    # nwg-dock-hyprland
-    # nwg-displays
+    nwg-panel
+    nwg-dock-hyprland
+    nwg-displays
 
-    # # dunst
-    # libnotify
-    # swaynotificationcenter
-    # wofi
-    # # dolphin
-    # nwg-look
-    # hyprshot
-    # hyprpaper
-    # hyprsunset
-    # hyprpicker
-    # hyprpolkitagent
-    # xdg-desktop-portal-hyprland
-    # # greetd
-    # hyprlock
-    # hypridle
+    # dunst
+    libnotify
+    swaynotificationcenter
+    wofi
+    # dolphin
+    nwg-look
+    hyprshot
+    hyprpaper
+    hyprsunset
+    hyprpicker
+    hyprpolkitagent
+    xdg-desktop-portal-hyprland
+    # greetd
+    hyprlock
+    hypridle
 
-    # sassc
-    # gnome-themes-extra
-    # gtk-engine-murrine
+    sassc
+    gnome-themes-extra
+    gtk-engine-murrine
 
 
     
@@ -447,9 +447,9 @@
 
   security.polkit.enable = true;
 
-  # programs.hyprland.enable = true;
-  # programs.hyprland.xwayland.enable = true;      # enable Xwayland for X11 apps (if you use X11 apps)<
-  # programs.hyprland.systemd.setPath.enable = true;
+  programs.hyprland.enable = true;
+  programs.hyprland.xwayland.enable = true;      # enable Xwayland for X11 apps (if you use X11 apps)<
+  programs.hyprland.systemd.setPath.enable = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   xdg.portal.enable = true;
   xdg.portal.extraPortals = [pkgs.xdg-desktop-portal-gtk];
