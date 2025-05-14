@@ -268,14 +268,15 @@
 
     livecaptions
     openai-whisper
+    google-cloud-sdk
 
-    opencl-clhpp
-    opencl-clang
-    opencl-headers
-    ocl-icd
-    stdenv.cc.cc.lib
-    libgcc
-    rocmPackages.clr
+    # opencl-clhpp
+    # opencl-clang
+    # opencl-headers
+    # ocl-icd
+    # stdenv.cc.cc.lib
+    # libgcc
+    # rocmPackages.clr
     
 
     certbot
@@ -291,6 +292,7 @@
     # pamixer
     alsa-plugins
     alsa-utils
+    sox
 
     # godot_4_3
     godot
