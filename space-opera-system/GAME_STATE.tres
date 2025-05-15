@@ -11,12 +11,12 @@ script = ExtResource("2_qolqt")
 id = ""
 type = "Galactic Phase"
 status = "playing"
-round = 2
+round = 6
 time = {
 &"duration": 720.0,
-&"elapsed": 45.004,
-&"remaining": 674.0,
-&"remainingFormatted": "11:14"
+&"elapsed": 6.003,
+&"remaining": 713.0,
+&"remainingFormatted": "11:53"
 }
 
 [sub_resource type="Resource" id="Resource_6ffym"]

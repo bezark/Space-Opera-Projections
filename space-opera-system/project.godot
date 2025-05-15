@@ -22,7 +22,6 @@ driver/enable_input=true
 [autoload]
 
 State="*res://2Components/Classes/GameState.gd"
-Controller="*res://Controller.tscn"
 
 [display]
 

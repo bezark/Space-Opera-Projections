@@ -1,6 +1,7 @@
 extends Node
 
 signal phase_changed
+var syncing_datapad = true
 
 
 func _on_timer_timeout() -> void:
@@ -108,3 +109,10 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 	previous_societies_hash = societies_hash
 	State.save()
+
+
+func _on_control_datapad_sync_changed(bool: Variant) -> void:
+	if bool:
+		$Timer.start()
+	else:
+		$Timer.stop()

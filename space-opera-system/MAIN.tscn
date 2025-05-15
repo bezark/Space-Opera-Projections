@@ -1,6 +1,7 @@
-[gd_scene load_steps=9 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=10 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://2Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
+[ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller.tscn" id="1_kgeht"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://2Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://SCENE_STRUCTURE.tres" id="4_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://2Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
@@ -16,6 +17,8 @@ shader_parameter/size = 1.0
 viewport_path = NodePath("SubViewport")
 
 [node name="Main" type="Node"]
+
+[node name="Control" parent="." instance=ExtResource("1_kgeht")]
 
 [node name="DatapadSync" type="Node" parent="."]
 script = ExtResource("1_a1u8q")
@@ -41,6 +44,7 @@ scale = Vector2(0.508861, 0.915741)
 texture = SubResource("ViewportTexture_5nrqa")
 polygon = PackedVector2Array(74.5835, 50.2325, 0, 1080, 1920, 1080, 1877.67, 98.2811)
 
+[connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="phase_changed" from="DatapadSync" to="SceneChanger" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
