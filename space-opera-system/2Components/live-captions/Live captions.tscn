@@ -13,4 +13,5 @@ offset_right = 304.0
 offset_bottom = 237.0
 script = ExtResource("2_7ko6x")
 
+[connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]
 [connection signal="words_spoken" from="." to="STTLabel" method="_on_live_captions_words_spoken"]

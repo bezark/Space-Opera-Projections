@@ -1,11 +1,13 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://c8ysyp3qs4xu8"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c8ysyp3qs4xu8"]
 
-[ext_resource type="FontFile" uid="uid://nf486qo3e3w8" path="res://Assets/Themes/Comfortaa-VariableFont_wght.ttf" id="1_spm0i"]
+[ext_resource type="FontFile" uid="uid://bo07wnay8k3dv" path="res://Assets/Themes/Montserrat/static/Montserrat-Light.ttf" id="1_fbbh0"]
+[ext_resource type="FontFile" uid="uid://b57he8cdpom2c" path="res://Assets/Themes/Comfortaa-VariableFont_wght.ttf" id="1_spm0i"]
 
 [resource]
 Button/font_sizes/font_size = 24
-Button/fonts/font = ExtResource("1_spm0i")
+Button/fonts/font = ExtResource("1_fbbh0")
+CheckButton/font_sizes/font_size = 18
 Label/font_sizes/font_size = 64
-Label/fonts/font = ExtResource("1_spm0i")
+Label/fonts/font = ExtResource("1_fbbh0")
 LineEdit/font_sizes/font_size = 32
 LineEdit/fonts/font = ExtResource("1_spm0i")

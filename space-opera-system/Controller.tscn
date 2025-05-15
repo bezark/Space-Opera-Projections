@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d3nh81q7dsdr4"]
+[gd_scene load_steps=4 format=3 uid="uid://d3nh81q7dsdr4"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
 [ext_resource type="Script" uid="uid://byxtn4120rsnl" path="res://controller.gd" id="1_u2oln"]
+[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="3_u2oln"]
 
 [node name="Control" type="Window"]
 auto_translate_mode = 1
@@ -21,6 +22,49 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Label" type="Label" parent="MarginContainer"]
+[node name="Main" type="VSplitContainer" parent="MarginContainer"]
 layout_mode = 2
-text = "HELLO"
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/Main/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "TIME:	"
+script = ExtResource("3_u2oln")
+
+[node name="Time" type="Label" parent="MarginContainer/Main/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "TIME"
+
+[node name="Body" type="HSplitContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+split_offset = 200
+
+[node name="SideBar" type="VBoxContainer" parent="MarginContainer/Main/Body"]
+layout_mode = 2
+
+[node name="SceneControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+layout_mode = 2
+text = "Scenes"
+
+[node name="DatapadSync" type="CheckButton" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+layout_mode = 2
+text = "Datapad Sync"
+
+[node name="ProjectorControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar/ProjectorControl"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Projectors"
+
+[node name="ActiveSceneControls" type="PanelContainer" parent="MarginContainer/Main/Body"]
+layout_mode = 2
