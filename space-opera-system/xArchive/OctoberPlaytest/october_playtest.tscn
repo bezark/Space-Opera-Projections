@@ -1,9 +1,9 @@
 [gd_scene load_steps=7 format=3 uid="uid://bvoeqgpw05f7c"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_8rv42"]
-[ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://2Components/DiceCam/dice_cam_rect.tscn" id="1_h2x4q"]
+[ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="1_h2x4q"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_ld50t"]
-[ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller.tscn" id="4_kug5l"]
+[ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="4_kug5l"]
 
 [sub_resource type="Gradient" id="Gradient_bcqdd"]
 offsets = PackedFloat32Array(0, 0.248826, 1)

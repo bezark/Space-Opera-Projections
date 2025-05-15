@@ -21,7 +21,7 @@ driver/enable_input=true
 
 [autoload]
 
-State="*res://2Components/Classes/GameState.gd"
+State="*res://Components/Classes/GameState.gd"
 
 [display]
 
@@ -32,15 +32,18 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/godOSC/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
 
 [file_customization]
 
 folder_colors={
-"res://2Components/": "blue",
 "res://Assets/": "orange",
+"res://Components/": "blue",
+"res://Controller/": "red",
+"res://Data/": "green",
 "res://Experiments/": "yellow",
-"res://Phases/": "purple"
+"res://Phases/": "purple",
+"res://xArchive/": "gray"
 }
 
 [global_group]

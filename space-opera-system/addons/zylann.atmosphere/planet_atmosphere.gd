@@ -160,13 +160,13 @@ func _get_material() -> ShaderMaterial:
 	return _mesh_instance.material_override as ShaderMaterial
 
 
-# TODO Obsolete
+
 func set_shader_param(param_name: String, value):
 	push_warning("set_shader_param is deprecated, use set_shader_parameter")
 	set_shader_parameter(param_name, value)
 
 
-# TODO Obsolete
+
 func get_shader_param(param_name: String):
 	push_warning("get_shader_param is deprecated, use get_shader_parameter")
 	return get_shader_parameter(param_name)
@@ -273,7 +273,6 @@ func _set_mode(mode: int):
 		mat.set_shader_parameter("u_clip_mode", 1.0)
 		_mesh_instance.mesh = _near_mesh
 		_mesh_instance.transform = Transform3D()
-		# TODO Sometimes there is a short flicker, figure out why
 
 	else:
 		if OS.is_stdout_verbose():
@@ -331,11 +330,9 @@ func _process(_delta):
 			mat.set_shader_parameter(&"u_sun_position", sun.global_transform.origin)
 	
 	# We need this for mapping stuff around the planet.
-	# TODO Ideally we need view_to_model, which is better to avoid conversions with large numbers.
 	var world_to_model_matrix := global_transform.inverse()
 	mat.set_shader_parameter(&"u_world_to_model_matrix", world_to_model_matrix)
 	
-	# TODO Expose cloud coverage rotation speed
 	var time := float(Time.get_ticks_msec()) / 1000.0
 	mat.set_shader_parameter(&"u_cloud_coverage_rotation", Transform2D().rotated(
 		time * deg_to_rad(clouds_rotation_speed)))

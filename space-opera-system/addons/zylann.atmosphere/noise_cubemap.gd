@@ -49,7 +49,6 @@ var _update_scheduled := false
 
 
 func _init():
-	# Hack to have it working by default when created in the inspector...
 	noise = FastNoiseLite.new()
 	_request_update()
 
@@ -88,7 +87,6 @@ func generate_importable_image() -> Image:
 	return _generate_importable_image(_resolution, images)
 
 
-# TODO This is really slow. Could perhaps use a Viewport... somehow...
 static func _generate_images(resolution: int, noise: Noise, scale: Vector3) -> Array[Image]:
 	var half_resolution_2d := 0.5 * Vector2(resolution, resolution)
 	var images : Array[Image] = []
@@ -103,7 +101,6 @@ static func _generate_images(resolution: int, noise: Noise, scale: Vector3) -> A
 				# +X
 				var pos := Vector3(1.0, pos2d.y, -pos2d.x).normalized()
 				
-				# TODO Use a basis prior to spherization?
 				match side:
 					0: # +X
 						pos = Vector3(pos.x, pos.y, pos.z)
@@ -144,4 +141,3 @@ static func _generate_importable_image(resolution: int, images: Array[Image]) ->
 				Rect2i(Vector2(), side_im.get_size()),
 				Vector2i(x, y) * resolution)
 	return im
-

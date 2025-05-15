@@ -1,0 +1,99 @@
+[gd_scene load_steps=7 format=3 uid="uid://d3nh81q7dsdr4"]
+
+[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
+[ext_resource type="Script" uid="uid://byxtn4120rsnl" path="res://Controller/controller.gd" id="1_u2oln"]
+[ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="2_7hav4"]
+[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="3_u2oln"]
+[ext_resource type="Script" uid="uid://b6e3unj7sm45u" path="res://Controller/scene_control.gd" id="5_73fjk"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_u2oln"]
+
+[node name="Control" type="Window"]
+auto_translate_mode = 1
+position = Vector2i(0, 36)
+size = Vector2i(1920, 1080)
+script = ExtResource("1_u2oln")
+structure = ExtResource("2_7hav4")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_55pmi")
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Main" type="VSplitContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Header" type="HBoxContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+
+[node name="TimeLabel" type="Label" parent="MarginContainer/Main/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "TIME:	"
+script = ExtResource("3_u2oln")
+
+[node name="Time" type="Label" parent="MarginContainer/Main/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "TIME"
+
+[node name="Body" type="HSplitContainer" parent="MarginContainer/Main"]
+layout_mode = 2
+split_offset = 200
+
+[node name="SideBar" type="VBoxContainer" parent="MarginContainer/Main/Body"]
+layout_mode = 2
+
+[node name="SceneControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("5_73fjk")
+
+[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+layout_mode = 2
+text = "Scenes"
+
+[node name="DatapadSync" type="CheckButton" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+layout_mode = 2
+button_pressed = true
+text = "Datapad Sync"
+
+[node name="Button" type="Button" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u2oln")
+text = "A"
+
+[node name="Button2" type="Button" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u2oln")
+text = "A"
+
+[node name="Button3" type="Button" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+layout_mode = 2
+toggle_mode = true
+button_group = SubResource("ButtonGroup_u2oln")
+text = "A"
+
+[node name="ProjectorControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar/ProjectorControl"]
+layout_mode = 2
+theme_type_variation = &"HeaderSmall"
+text = "Projectors"
+
+[node name="ActiveSceneControls" type="PanelContainer" parent="MarginContainer/Main/Body"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[connection signal="toggled" from="MarginContainer/Main/Body/SideBar/SceneControl/DatapadSync" to="." method="_on_datapad_sync_toggled"]

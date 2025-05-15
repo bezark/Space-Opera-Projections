@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dqqg2f25lvxyt"]
-
-[ext_resource type="Script" uid="uid://i76hp8gfsrt0" path="res://2Components/DatapadAPI/fetch_game_data.gd" id="1_034mq"]
-
-[node name="FetchGameData" type="HTTPRequest"]
-script = ExtResource("1_034mq")
-url = "http://localhost:8080"
