@@ -16,11 +16,11 @@ func save():
 	current_session.phases = phases
 	current_session.societies = societies
 	# ResourceSaver.save(current_session, "res://test_session.tres")
-	ResourceSaver.save(current_session, "res://GAME_STATE.tres")
+	ResourceSaver.save(current_session, "res://Data/GAME_STATE.tres")
 
 
 func load_state():
-	var current_session: SessionData = ResourceLoader.load("res://GAME_STATE.tres")
+	var current_session: SessionData = ResourceLoader.load("res://Data/GAME_STATE.tres")
 	active_phase = current_session.active_phase
 	phases = current_session.phases
 	societies = current_session.societies

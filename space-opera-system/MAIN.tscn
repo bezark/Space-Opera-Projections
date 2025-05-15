@@ -45,6 +45,7 @@ texture = SubResource("ViewportTexture_5nrqa")
 polygon = PackedVector2Array(74.5835, 50.2325, 0, 1080, 1920, 1080, 1877.67, 98.2811)
 
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
+[connection signal="scene_changed" from="Control" to="CanvasGroup/MappingSurface" method="scene_change"]
 [connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="phase_changed" from="DatapadSync" to="SceneChanger" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
