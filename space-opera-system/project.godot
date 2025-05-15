@@ -39,6 +39,7 @@ enabled=PackedStringArray("res://addons/godOSC/plugin.cfg", "res://addons/zylann
 
 folder_colors={
 "res://2Components/": "blue",
+"res://Assets/": "orange",
 "res://Experiments/": "yellow",
 "res://Phases/": "purple"
 }

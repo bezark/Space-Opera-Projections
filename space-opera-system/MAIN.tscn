@@ -26,6 +26,7 @@ viewport_path = NodePath("SubViewport")
 script = ExtResource("1_a1u8q")
 
 [node name="FetchGameData" parent="DatapadSync" instance=ExtResource("2_78rud")]
+url = "http://datapad.dainsaint.com"
 
 [node name="Timer" type="Timer" parent="DatapadSync"]
 one_shot = true

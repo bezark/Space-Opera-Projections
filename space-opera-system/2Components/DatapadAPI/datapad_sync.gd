@@ -39,7 +39,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 	### SOCIETIES ###
 
 	var societies_hash = game.societies.hash()
-	prints(societies_hash, previous_societies_hash)
+	# prints(societies_hash, previous_societies_hash)
 	if societies_hash != previous_societies_hash:
 		var current_societies = []
 

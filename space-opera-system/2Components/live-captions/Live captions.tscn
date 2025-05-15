@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://bpbllvcqftidr"]
 
-[ext_resource type="Script" uid="uid://bvm8jb46s50a2" path="res://Experiments/live_captions.gd" id="1_3ppnj"]
-[ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Experiments/stt_label.gd" id="2_7ko6x"]
+[ext_resource type="Script" uid="uid://bvm8jb46s50a2" path="res://2Components/live-captions/live_captions.gd" id="1_3ppnj"]
+[ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://2Components/live-captions/stt_label.gd" id="2_7ko6x"]
 
 [node name="LiveCaptions" type="Node"]
 script = ExtResource("1_3ppnj")
