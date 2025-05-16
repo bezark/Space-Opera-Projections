@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Archetype" load_steps=2 format=3 uid="uid://roeci46rncv3"]
+
+[ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_mixc1"]
+
+[resource]
+script = ExtResource("1_mixc1")
+title = ""
+sign_name = ""
+metadata/_custom_type_script = "uid://b5hs4kdp8yai7"

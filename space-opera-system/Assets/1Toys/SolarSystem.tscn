@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://bojmbshwtr1j1"]
+[gd_scene load_steps=14 format=3 uid="uid://bojmbshwtr1j1"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_sksq8"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="2_xobol"]
-[ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="3_mjyf8"]
+[ext_resource type="PackedScene" uid="uid://dkg5lehh8sxx4" path="res://Assets/1Toys/Planets/cloudy_planet.tscn" id="3_bl21e"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="3_qhlf5"]
-[ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="4_mjyf8"]
+[ext_resource type="PackedScene" uid="uid://b7stcuhorj3v" path="res://Assets/1Toys/Planets/lava_planet.tscn" id="4_mjyf8"]
 [ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="4_xobol"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
@@ -26,35 +26,6 @@ sky = SubResource("Sky_8b321")
 glow_enabled = true
 glow_intensity = 1.32
 glow_blend_mode = 0
-
-[sub_resource type="Gradient" id="Gradient_lsvgl"]
-offsets = PackedFloat32Array(0, 0.180467, 0.392781, 0.573248, 0.707006, 1)
-colors = PackedColorArray(0.3844, 0.00463759, 0.3182, 1, 0.199824, 0.251399, 0.458957, 1, 0.635238, 0, 0.197052, 1, 0.621679, 0.00025068, 0.2036, 1, 0.768106, 0.622454, 0.146984, 1, 0.959299, 0.948842, 0.965013, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_chmqo"]
-noise_type = 2
-frequency = 0.0001
-offset = Vector3(0, 0, -169.7)
-fractal_octaves = 10
-fractal_gain = 0.9
-fractal_weighted_strength = 0.27
-domain_warp_type = 1
-domain_warp_amplitude = 16.5
-domain_warp_fractal_octaves = 2
-domain_warp_fractal_lacunarity = 7.1
-domain_warp_fractal_gain = 1.1
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oyq1c"]
-width = 1024
-height = 1024
-in_3d_space = true
-seamless = true
-color_ramp = SubResource("Gradient_lsvgl")
-noise = SubResource("FastNoiseLite_chmqo")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dps3l"]
-albedo_texture = SubResource("NoiseTexture2D_oyq1c")
-clearcoat_roughness = 0.4
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_mjyf8"]
 dof_blur_near_enabled = true
@@ -85,44 +56,11 @@ material = SubResource("StandardMaterial3D_oyq1c")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
 
-[node name="CloudyPlanet" type="CSGSphere3D" parent="."]
+[node name="CloudyPlanet" parent="." instance=ExtResource("3_bl21e")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -352.194, 0, 0)
-radius = 10.0
-radial_segments = 64
-rings = 64
-material = SubResource("StandardMaterial3D_dps3l")
 
-[node name="PlanetAthmosphere" parent="CloudyPlanet" instance=ExtResource("3_mjyf8")]
-atmosphere_height = 10.0
-sun_path = NodePath("../../Star")
-custom_shader = ExtResource("4_mjyf8")
-shader_params/u_day_color0 = Color(0.5, 0.8, 1, 1)
-shader_params/u_day_color1 = Color(0.5, 0.8, 1, 1)
-shader_params/u_night_color0 = Color(0.2, 0.4, 0.8, 1)
-shader_params/u_night_color1 = Color(0.2, 0.4, 0.8, 1)
-shader_params/u_day_night_transition_scale = 2.0
-shader_params/u_cloud_shape_texture = null
-shader_params/u_cloud_shape_invert = 0.0
-shader_params/u_cloud_coverage_bias = 0.0
-shader_params/u_cloud_shape_factor = 0.8
-shader_params/u_cloud_shape_scale = 1.0
-shader_params/u_cloud_coverage_cubemap = null
-shader_params/u_cloud_density_scale = 50.0
-shader_params/u_cloud_bottom = 0.2
-shader_params/u_cloud_top = 0.5
-shader_params/u_cloud_blend = 0.5
-
-[node name="CloudyPlanet2" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -352.194, 0, -61.9491)
-radius = 10.0
-radial_segments = 64
-rings = 64
-material = SubResource("StandardMaterial3D_dps3l")
-
-[node name="PlanetAthmosphere" parent="CloudyPlanet2" instance=ExtResource("3_mjyf8")]
-planet_radius = 10.0
-atmosphere_height = 2.0
-sun_path = NodePath("../../Star")
+[node name="LavaPlanet" parent="." instance=ExtResource("4_mjyf8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -347.302, 0, -61.9491)
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(-0.966591, 0, -0.256323, 0, 1, 0, 0.256323, 0, -0.966591, -342.969, 0.819688, -23.1794)

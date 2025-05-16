@@ -1,0 +1,14 @@
+[gd_resource type="NoiseTexture2D" load_steps=3 format=3 uid="uid://dkj6tq30oxsxw"]
+
+[ext_resource type="FastNoiseLite" uid="uid://12b5ftiyqkbp" path="res://Assets/1Toys/Planets/cloudywater.tres" id="1_svegv"]
+
+[sub_resource type="Gradient" id="Gradient_s2rsq"]
+offsets = PackedFloat32Array(0, 0.544365, 1)
+colors = PackedColorArray(0, 0, 0.486275, 1, 0.508887, 0.674375, 0.936117, 1, 0, 0.718367, 0.721014, 1)
+
+[resource]
+width = 800
+height = 800
+seamless = true
+color_ramp = SubResource("Gradient_s2rsq")
+noise = ExtResource("1_svegv")

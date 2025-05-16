@@ -5,4 +5,6 @@ class_name Society
 @export var communities: Dictionary[String,Community]
 var id: String
 
-@export var model: PackedScene
+@export var planet: PackedScene
+@export var colors : ColorPalette
+@export var archetype : Archetype
