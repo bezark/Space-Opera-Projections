@@ -5,7 +5,7 @@
 [ext_resource type="Script" uid="uid://b7drd8dk57bpq" path="res://Components/Classes/SPResource.gd" id="3_cl0gu"]
 [ext_resource type="Script" uid="uid://c1ec647xm7j1e" path="res://Components/Classes/SessionData.gd" id="4_jkowm"]
 [ext_resource type="Script" uid="uid://7b8o4kmn3vob" path="res://Components/Classes/Society.gd" id="5_gvxx2"]
-[ext_resource type="PackedScene" uid="uid://bd5kxsawjfx8n" path="res://Experiments/SampleProps/shark.tscn" id="6_xqyh8"]
+[ext_resource type="PackedScene" uid="uid://bd5kxsawjfx8n" path="res://Assets/SampleProps/shark.tscn" id="6_xqyh8"]
 
 [sub_resource type="Resource" id="Resource_xqyh8"]
 script = ExtResource("1_xolg1")

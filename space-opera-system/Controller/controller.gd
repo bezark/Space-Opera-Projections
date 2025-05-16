@@ -43,4 +43,5 @@ func _on_datapad_sync_phase_changed(phase: Phase) -> void:
 func scene_button_pressed(val):
 	if not datapad_syncing:
 		scene_changed.emit(structure.scene_data[val])
+		check_for_controls.call_deferred()
 		

@@ -1,8 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://caxx5yulod7st"]
+[gd_scene load_steps=12 format=3 uid="uid://caxx5yulod7st"]
 
-[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_hqi4b"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="2_r34sj"]
 [ext_resource type="Script" uid="uid://dqxofb6qml4d" path="res://Phases/galactic_council.gd" id="2_x5rdb"]
+[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="4_7vble"]
 [ext_resource type="Script" uid="uid://c0wgsg0s7uq8u" path="res://Controller/Phases/dais_controls.gd" id="4_x5rdb"]
 
 [sub_resource type="Gradient" id="Gradient_x5rdb"]
@@ -13,20 +13,31 @@ colors = PackedColorArray(0.219512, 0.11114, 0.197177, 1, 0.451672, 0.216629, 0.
 gradient = SubResource("Gradient_x5rdb")
 fill_from = Vector2(0, 1)
 
-[node name="GalacticCouncil" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme = ExtResource("1_hqi4b")
+[sub_resource type="Animation" id="Animation_87m48"]
+resource_name = "dicecam _down"
+
+[sub_resource type="Animation" id="Animation_rp20b"]
+resource_name = "dicecam_up"
+
+[sub_resource type="Animation" id="Animation_r2klm"]
+resource_name = "society_enter"
+
+[sub_resource type="Animation" id="Animation_n606d"]
+resource_name = "society_exit"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rvlu0"]
+_data = {
+&"dicecam _down": SubResource("Animation_87m48"),
+&"dicecam_up": SubResource("Animation_rp20b"),
+&"society_enter": SubResource("Animation_r2klm"),
+&"society_exit": SubResource("Animation_n606d")
+}
+
+[node name="GalacticCouncil" type="Node3D"]
 script = ExtResource("2_x5rdb")
 
 [node name="TextureRect" type="TextureRect" parent="."]
-layout_mode = 1
+visible = false
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -74,9 +85,18 @@ size_flags_horizontal = 1
 expand_mode = 5
 
 [node name="DaisControls" type="HFlowContainer" parent="." groups=["controller"]]
-layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_x5rdb")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_rvlu0")
+}
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_7vble")
+
+[node name="Camera3D" type="Camera3D" parent="."]
 
 [connection signal="society_approached" from="DaisControls" to="." method="_on_dais_controls_society_approached"]
