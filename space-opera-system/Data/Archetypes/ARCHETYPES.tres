@@ -1,0 +1,26 @@
+[gd_resource type="Resource" script_class="Archetypes" load_steps=11 format=3 uid="uid://ctg8p8ik3dmdd"]
+
+[ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_53wae"]
+[ext_resource type="Resource" uid="uid://boi6t3qx52xfi" path="res://Data/Archetypes/Mighty.tres" id="2_m1qwm"]
+[ext_resource type="Script" uid="uid://cn82oxefeumuk" path="res://Components/Classes/Archetypes.gd" id="2_rupfk"]
+[ext_resource type="Resource" uid="uid://dsxfj6kk3ky01" path="res://Data/Archetypes/Curious.tres" id="3_qcgau"]
+[ext_resource type="Resource" uid="uid://y8gwtw6sduhy" path="res://Data/Archetypes/Faithful.tres" id="4_yhk46"]
+[ext_resource type="Resource" uid="uid://rjkvde2cxadx" path="res://Data/Archetypes/Aesthetic.tres" id="5_bm1ua"]
+[ext_resource type="Resource" uid="uid://8ufafn1v8btf" path="res://Data/Archetypes/Enterprise.tres" id="6_3n4o2"]
+[ext_resource type="Resource" uid="uid://roeci46rncv3" path="res://Data/Archetypes/Intrepid.tres" id="7_4ijrf"]
+[ext_resource type="Resource" uid="uid://cil2aln12ayt1" path="res://Data/Archetypes/Scholars.tres" id="8_lvflk"]
+[ext_resource type="Resource" uid="uid://cstw7o32k1fbm" path="res://Data/Archetypes/Grounded.tres" id="9_u57gw"]
+
+[resource]
+script = ExtResource("2_rupfk")
+all = Dictionary[String, ExtResource("1_53wae")]({
+"the aesthetic": ExtResource("5_bm1ua"),
+"the curious": ExtResource("3_qcgau"),
+"the enterprise": ExtResource("6_3n4o2"),
+"the faithful": ExtResource("4_yhk46"),
+"the grounded": ExtResource("9_u57gw"),
+"the intrepid": ExtResource("7_4ijrf"),
+"the mighty": ExtResource("2_m1qwm"),
+"the scholars": ExtResource("8_lvflk")
+})
+metadata/_custom_type_script = "uid://cn82oxefeumuk"

@@ -49,6 +49,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				State.societies[society.id] = Society.new()
 			var this_society = State.societies[society.id]
 			this_society.title = society.name
+			this_society.archetype = State.archetypes[society.archetype]
 
 			print(this_society.title)
 			# this_society.communities = {}
