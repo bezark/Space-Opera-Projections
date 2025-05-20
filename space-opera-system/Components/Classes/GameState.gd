@@ -16,6 +16,7 @@ func save():
 	current_session.active_phase = active_phase
 	current_session.phases = phases
 	current_session.societies = societies
+	#TODO: remove this unnecessary save
 	current_session.archetypes = archetypes
 	# ResourceSaver.save(current_session, "res://test_session.tres")
 	ResourceSaver.save(current_session, "res://Data/GAME_STATE.tres")
