@@ -12,4 +12,5 @@ func _process(delta):
 
 
 func _on_dais_controls_society_approached(society: Society) -> void:
-	$TextureRect/MarginContainer/VBoxContainer/Label.text = society.title
+	#$TextureRect/MarginContainer/VBoxContainer/Label.text = society.title
+	print(society)

@@ -1,6 +1,6 @@
 [gd_resource type="Environment" load_steps=4 format=3 uid="uid://bostl82bwcvqp"]
 
-[ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="1_j0qvp"]
+[ext_resource type="Texture2D" uid="uid://c7wjn2pin5i2q" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="1_j0qvp"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
 panorama = ExtResource("1_j0qvp")

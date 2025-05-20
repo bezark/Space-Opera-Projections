@@ -1,8 +1,9 @@
-[gd_scene load_steps=12 format=3 uid="uid://caxx5yulod7st"]
+[gd_scene load_steps=13 format=3 uid="uid://caxx5yulod7st"]
 
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="2_r34sj"]
 [ext_resource type="Script" uid="uid://dqxofb6qml4d" path="res://Phases/galactic_council.gd" id="2_x5rdb"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="4_7vble"]
+[ext_resource type="Texture2D" uid="uid://dp5xcy0o2rf32" path="res://icon.png" id="4_87m48"]
 [ext_resource type="Script" uid="uid://c0wgsg0s7uq8u" path="res://Controller/Phases/dais_controls.gd" id="4_x5rdb"]
 
 [sub_resource type="Gradient" id="Gradient_x5rdb"]
@@ -45,49 +46,52 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("GradientTexture2D_7vble")
 
-[node name="MarginContainer" type="MarginContainer" parent="TextureRect"]
-layout_mode = 1
+[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect"]
+layout_mode = 0
+offset_left = 200.0
+offset_top = 100.0
+offset_right = 1720.0
+offset_bottom = 980.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+text = "GALACTIC COUNCIL"
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/VBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="TextureRect/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Time Remaining:"
+
+[node name="Time" type="Label" parent="TextureRect/VBoxContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="DiceCamTexture" parent="TextureRect/VBoxContainer" instance=ExtResource("2_r34sj")]
+layout_mode = 2
+size_flags_horizontal = 1
+expand_mode = 5
+
+[node name="DaisControls" type="VBoxContainer" parent="." groups=["controller"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_top = 100
-theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 100
 
-[node name="VBoxContainer" type="VBoxContainer" parent="TextureRect/MarginContainer"]
+[node name="SocietyButtons" type="HFlowContainer" parent="DaisControls"]
 layout_mode = 2
-theme_override_constants/separation = 20
-alignment = 1
-
-[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "GALACTIC COUNCIL"
-horizontal_alignment = 1
-
-[node name="HBoxContainer" type="HBoxContainer" parent="TextureRect/MarginContainer/VBoxContainer"]
-layout_mode = 2
-alignment = 1
-
-[node name="Label" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "Time Remaining:"
-
-[node name="Time" type="Label" parent="TextureRect/MarginContainer/VBoxContainer/HBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-
-[node name="DiceCamTexture" parent="TextureRect/MarginContainer/VBoxContainer" instance=ExtResource("2_r34sj")]
-layout_mode = 2
-size_flags_horizontal = 1
-expand_mode = 5
-
-[node name="DaisControls" type="HFlowContainer" parent="." groups=["controller"]]
-offset_right = 40.0
-offset_bottom = 40.0
 script = ExtResource("4_x5rdb")
+
+[node name="DiceCam" type="Button" parent="DaisControls"]
+layout_mode = 2
+text = "Dice Cam"
+icon = ExtResource("4_87m48")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
@@ -99,4 +103,4 @@ environment = ExtResource("4_7vble")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 
-[connection signal="society_approached" from="DaisControls" to="." method="_on_dais_controls_society_approached"]
+[connection signal="society_approached" from="DaisControls/SocietyButtons" to="." method="_on_dais_controls_society_approached"]
