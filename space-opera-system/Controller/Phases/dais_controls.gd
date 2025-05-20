@@ -1,4 +1,4 @@
-extends FlowContainer
+extends VBoxContainer
 
 signal society_approached(society: Society)
 
@@ -10,7 +10,7 @@ func _ready() -> void:
 		var button = SocietyButton.new()
 		button.society = societies[society_key]
 		button.society_selected.connect(society_selected)
-		add_child(button)
+		$SocietyButtons.add_child(button)
 
 
 func society_selected(society: Society):

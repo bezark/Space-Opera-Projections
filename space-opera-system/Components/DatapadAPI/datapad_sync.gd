@@ -42,6 +42,8 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 	var societies_hash = game.societies.hash()
 	# prints(societies_hash, previous_societies_hash)
 	if societies_hash != previous_societies_hash:
+		# State.resources = {}
+
 		var current_societies = []
 
 		for society in game.societies:
@@ -52,6 +54,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 			this_society.archetype = State.archetypes[society.archetype]
 
 			print(this_society.title)
+
 			# this_society.communities = {}
 
 			### COMMUNITIES ###
@@ -90,7 +93,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 					print("-- " + this_resource.title)
 
 					current_resources.append(resource.id)
-					State.resources[resource.id] = this_resource
+					State.resources.set(resource.id, this_resource)
 
 				for key in this_community.resources.keys():
 					if not current_resources.has(key):
@@ -104,12 +107,27 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 					this_society.communities.erase(key)
 
 			current_societies.append(society.id)
+
+			this_society.actions.clear()
+			for action in society.actions:
+				print(action)
+				var new_action = SocietyAction.new()
+				new_action.game_round = action.round
+				new_action.voted = action.voted
+				for component in action.components:
+					var new_component = SocietyActionComponent.new()
+					new_component.text = component.text
+					new_component.statement = component.statement
+					new_component.spresource = State.resources[component.resource.id]
+					new_action.components.append(new_component)
+				this_society.actions.append(new_action)
+
 		for key in State.societies.keys():
 			if not current_societies.has(key):
 				State.societies.erase(key)
 
 	previous_societies_hash = societies_hash
-	State.save()
+	#State.save()
 
 
 func _on_control_datapad_sync_changed(bool: Variant) -> void:

@@ -45,3 +45,7 @@ func scene_button_pressed(val):
 		scene_changed.emit(structure.scene_data[val])
 		check_for_controls.call_deferred()
 		
+
+
+func _on_autosave_timeout() -> void:
+	State.save()

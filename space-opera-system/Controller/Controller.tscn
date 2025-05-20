@@ -74,4 +74,9 @@ text = "Projectors"
 unique_name_in_owner = true
 layout_mode = 2
 
+[node name="Autosave" type="Timer" parent="."]
+wait_time = 60.0
+autostart = true
+
 [connection signal="toggled" from="MarginContainer/Main/Body/SideBar/SceneControl/DatapadSync" to="." method="_on_datapad_sync_toggled"]
+[connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

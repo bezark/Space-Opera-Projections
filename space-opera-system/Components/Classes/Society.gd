@@ -6,5 +6,6 @@ class_name Society
 var id: String
 
 @export var planet: PackedScene
-@export var colors : ColorPalette
-@export var archetype : Archetype
+@export var colors: ColorPalette
+@export var archetype: Archetype
+@export var actions: Array[SocietyAction]

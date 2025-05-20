@@ -1,6 +1,7 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=19 format=3 uid="uid://djbt0m1ou0owh"]
+[gd_resource type="Resource" script_class="SessionData" load_steps=20 format=3 uid="uid://djbt0m1ou0owh"]
 
 [ext_resource type="Script" uid="uid://bitm0ri2u6kmu" path="res://Components/Classes/Phase.gd" id="1_xolg1"]
+[ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="2_05xqa"]
 [ext_resource type="Script" uid="uid://bj0gi6wec2ufj" path="res://Components/Classes/Community.gd" id="2_xqyh8"]
 [ext_resource type="Script" uid="uid://b7drd8dk57bpq" path="res://Components/Classes/SPResource.gd" id="3_cl0gu"]
 [ext_resource type="Script" uid="uid://c1ec647xm7j1e" path="res://Components/Classes/SessionData.gd" id="4_jkowm"]
@@ -108,3 +109,4 @@ societies = Dictionary[String, ExtResource("5_gvxx2")]({
 })
 communities = Dictionary[String, ExtResource("2_xqyh8")]({})
 resources = Dictionary[String, ExtResource("3_cl0gu")]({})
+archetypes = Dictionary[String, ExtResource("2_05xqa")]({})

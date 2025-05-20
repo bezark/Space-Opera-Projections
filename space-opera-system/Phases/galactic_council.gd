@@ -14,3 +14,10 @@ func _process(delta):
 func _on_dais_controls_society_approached(society: Society) -> void:
 	#$TextureRect/MarginContainer/VBoxContainer/Label.text = society.title
 	print(society)
+
+
+func _on_dice_cam_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		$AnimationPlayer.play("dicecam_up")
+	else:
+		$AnimationPlayer.play("dicecam _down")
