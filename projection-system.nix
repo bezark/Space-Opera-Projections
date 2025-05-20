@@ -32,30 +32,55 @@
     options v4l2loopback devices=1 max_buffers=2 video_nr=4 exclusive_caps=0 max_open=2 card_label="VirtualCam #0"
   '';
 
+
   systemd.services.ffmpeg-v4l2 = {
-    description = "Stream HTTP camera into /dev/video4 via FFmpeg";
+    description = "UDP→/dev/video4 (low-latency)";
     wants       = [ "network-online.target" ];
     after       = [ "network-online.target" ];
-    # if you need group access to /dev/video4, you can add:
-    # serviceConfig.User = "johnb";
-    # serviceConfig.Group = "video";
-
     serviceConfig = {
-      # command to run
-      ExecStart = "${pkgs.ffmpeg}/bin/ffmpeg"
-        + " -i http://raspberrypi.taile14a22.ts.net:8080/video"
-        + " -vf format=yuyv422"
-        + " -f v4l2 /dev/video4";
+      ExecStart = ''
+        ${pkgs.ffmpeg}/bin/ffmpeg \
+          -fflags nobuffer -flags low_delay \
+          -i udp://@:8080?fifo_size=5000000 \
+          -c:v rawvideo \
+          -pix_fmt yuyv422 \
+          -f v4l2 /dev/video4
+      '';
       Restart    = "always";
       RestartSec = "5s";
-      # optional: log to journal
       StandardOutput = "journal";
       StandardError  = "journal";
     };
-
-    # make sure it starts on boot
-    wantedBy = [ "multi-user.target" ];
+    wantedBy   = [ "multi-user.target" ];
   };
+
+
+
+
+  # systemd.services.ffmpeg-v4l2 = {
+  #   description = "Stream HTTP camera into /dev/video4 via FFmpeg";
+  #   wants       = [ "network-online.target" ];
+  #   after       = [ "network-online.target" ];
+  #   # if you need group access to /dev/video4, you can add:
+  #   # serviceConfig.User = "johnb";
+  #   # serviceConfig.Group = "video";
+
+  #   serviceConfig = {
+  #     # command to run
+  #     ExecStart = "${pkgs.ffmpeg}/bin/ffmpeg"
+  #       + " -i http://raspberrypi.taile14a22.ts.net:8080/video"
+  #       + " -vf format=yuyv422"
+  #       + " -f v4l2 /dev/video4";
+  #     Restart    = "always";
+  #     RestartSec = "5s";
+  #     # optional: log to journal
+  #     StandardOutput = "journal";
+  #     StandardError  = "journal";
+  #   };
+
+  #   # make sure it starts on boot
+  #   wantedBy = [ "multi-user.target" ];
+  # };
 
   
   networking.hostName = "nixDesktop"; # Define your hostname.
@@ -510,7 +535,7 @@
     dic = "/home/johnb/Nextcloud/System/Scripts/run_dictation.sh";
   };
   
-  virtualisation.docker.enable = true;
+  # virtualisation.docker.enable = true;
 
   
   programs.zsh.shellAliases = {
