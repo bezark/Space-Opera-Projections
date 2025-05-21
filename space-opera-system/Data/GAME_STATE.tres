@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=70 format=3]
+[gd_resource type="Resource" script_class="SessionData" load_steps=69 format=3]
 
 [ext_resource type="Script" path="res://Components/Classes/Community.gd" id="1_lohdr"]
 [ext_resource type="Script" path="res://Components/Classes/Archetype.gd" id="2_jgbq0"]
@@ -20,14 +20,14 @@
 [sub_resource type="Resource" id="Resource_yl7wv"]
 script = ExtResource("2_qolqt")
 id = ""
-type = "Societal Phase"
-status = "paused"
+type = "Galactic Phase"
+status = "idle"
 round = 2
 time = {
-&"duration": 660.0,
-&"elapsed": 69.054,
-&"remaining": 590.0,
-&"remainingFormatted": "09:50"
+&"duration": 720.0,
+&"elapsed": 9.01,
+&"remaining": 710.0,
+&"remainingFormatted": "11:50"
 }
 
 [sub_resource type="Resource" id="Resource_bhwi7"]
@@ -241,16 +241,10 @@ archetype = ExtResource("9_3w1tv")
 actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_colxq"), SubResource("Resource_eqxcj")])
 
 [sub_resource type="Resource" id="Resource_hyjdu"]
-script = ExtResource("16_2ix7t")
-text = "Do the thing"
-statement = "We use lillypadz to Do the thing"
-spresource = SubResource("Resource_4df5w")
-
-[sub_resource type="Resource" id="Resource_gmhrj"]
 script = ExtResource("15_r4n1j")
 game_round = 2
-components = Array[ExtResource("16_2ix7t")]([SubResource("Resource_hyjdu")])
-voted = true
+components = Array[ExtResource("16_2ix7t")]([])
+voted = false
 
 [sub_resource type="Resource" id="Resource_nok2u"]
 script = ExtResource("1_lohdr")
@@ -267,9 +261,9 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "lHvo5": SubResource("Resource_nok2u")
 })
 archetype = ExtResource("8_08yu5")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_gmhrj")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_hyjdu")])
 
-[sub_resource type="Resource" id="Resource_572tl"]
+[sub_resource type="Resource" id="Resource_gmhrj"]
 script = ExtResource("15_r4n1j")
 game_round = 2
 components = Array[ExtResource("16_2ix7t")]([])
@@ -288,31 +282,31 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "u0fa0": SubResource("Resource_6640e")
 })
 archetype = ExtResource("3_y04g4")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_572tl")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_gmhrj")])
 
-[sub_resource type="Resource" id="Resource_kt62q"]
+[sub_resource type="Resource" id="Resource_572tl"]
 script = ExtResource("16_2ix7t")
 text = "attack the empire"
 statement = "We use feral cats to attack the empire"
 spresource = SubResource("Resource_85ky3")
 
-[sub_resource type="Resource" id="Resource_s04wv"]
+[sub_resource type="Resource" id="Resource_kt62q"]
 script = ExtResource("16_2ix7t")
 text = "embolden the cats"
 statement = "We use righteous anger to embolden the cats"
 spresource = SubResource("Resource_08yu5")
 
-[sub_resource type="Resource" id="Resource_nklb5"]
+[sub_resource type="Resource" id="Resource_s04wv"]
 script = ExtResource("15_r4n1j")
 game_round = 2
-components = Array[ExtResource("16_2ix7t")]([SubResource("Resource_kt62q"), SubResource("Resource_s04wv")])
+components = Array[ExtResource("16_2ix7t")]([SubResource("Resource_572tl"), SubResource("Resource_kt62q")])
 voted = false
 
 [sub_resource type="Resource" id="Resource_0e374"]
 script = ExtResource("1_lohdr")
 title = "Jason"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"BqPmG": SubResource("Resource_nloml")
+"JvqsG": SubResource("Resource_08yu5")
 })
 voice = "leader"
 
@@ -328,7 +322,7 @@ voice = "people"
 script = ExtResource("1_lohdr")
 title = "todd"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"HOzO6": SubResource("Resource_85ky3")
+"YaD-S": SubResource("Resource_vohyy")
 })
 voice = "leader"
 
@@ -336,7 +330,6 @@ voice = "leader"
 script = ExtResource("1_lohdr")
 title = "Quinn"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"QvweM": SubResource("Resource_hvns4"),
 "vi3Gq": SubResource("Resource_mt0pl")
 })
 voice = "people"
@@ -344,15 +337,14 @@ voice = "people"
 [sub_resource type="Resource" id="Resource_74bc5"]
 script = ExtResource("1_lohdr")
 title = "Bobby"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"JvqsG": SubResource("Resource_08yu5")
-})
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_t6lex"]
 script = ExtResource("1_lohdr")
 title = "Fredrick"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
+"BqPmG": SubResource("Resource_nloml"),
 "arNw1": SubResource("Resource_fq34q")
 })
 voice = "people"
@@ -360,15 +352,15 @@ voice = "people"
 [sub_resource type="Resource" id="Resource_0tr16"]
 script = ExtResource("1_lohdr")
 title = "Jimmy"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"YaD-S": SubResource("Resource_vohyy")
-})
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_5kibd"]
 script = ExtResource("1_lohdr")
 title = "Wizened Elders"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
+"HOzO6": SubResource("Resource_85ky3"),
+"QvweM": SubResource("Resource_hvns4"),
 "Ridpo": SubResource("Resource_j2myk")
 })
 voice = "people"
@@ -387,18 +379,18 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "o7kHM": SubResource("Resource_5kibd")
 })
 archetype = ExtResource("6_2ix7t")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_nklb5")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_s04wv")])
 
-[sub_resource type="Resource" id="Resource_ggql6"]
+[sub_resource type="Resource" id="Resource_nklb5"]
 script = ExtResource("16_2ix7t")
 text = ""
 statement = "We use scum to "
 spresource = SubResource("Resource_ghqc1")
 
-[sub_resource type="Resource" id="Resource_a5evr"]
+[sub_resource type="Resource" id="Resource_ggql6"]
 script = ExtResource("15_r4n1j")
 game_round = 2
-components = Array[ExtResource("16_2ix7t")]([SubResource("Resource_ggql6")])
+components = Array[ExtResource("16_2ix7t")]([SubResource("Resource_nklb5")])
 voted = false
 
 [sub_resource type="Resource" id="Resource_jcdtp"]
@@ -416,7 +408,7 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "jaCtF": SubResource("Resource_jcdtp")
 })
 archetype = ExtResource("6_jgbq0")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_a5evr")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_ggql6")])
 
 [resource]
 script = ExtResource("4_phj51")

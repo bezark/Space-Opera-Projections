@@ -1,4 +1,4 @@
-extends Window
+extends Control
 
 signal datapad_sync_changed(bool)
 signal scene_changed(scene:SceneData)
@@ -16,6 +16,8 @@ func _ready() -> void:
 		%SceneControl.add_child(new_button)
 		new_button.pressed.connect(scene_button_pressed.bind(scene))
 
+	
+	
 func check_for_controls():
 	var new_controls = get_tree().get_nodes_in_group("controller")
 	

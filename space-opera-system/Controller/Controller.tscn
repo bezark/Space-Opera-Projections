@@ -5,14 +5,18 @@
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="2_7hav4"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="3_u2oln"]
 
-[node name="Control" type="Window"]
+[node name="Control" type="Control"]
 auto_translate_mode = 1
-position = Vector2i(0, 36)
-size = Vector2i(1920, 1080)
+layout_mode = 3
+anchors_preset = 0
+offset_top = 36.0
+offset_right = 1920.0
+offset_bottom = 1116.0
 script = ExtResource("1_u2oln")
 structure = ExtResource("2_7hav4")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -30,16 +34,20 @@ layout_mode = 2
 [node name="Header" type="HBoxContainer" parent="MarginContainer/Main"]
 layout_mode = 2
 
+[node name="Time" type="Label" parent="MarginContainer/Main/Header"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "TIME"
+
 [node name="TimeLabel" type="Label" parent="MarginContainer/Main/Header"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "TIME:	"
 script = ExtResource("3_u2oln")
 
-[node name="Time" type="Label" parent="MarginContainer/Main/Header"]
+[node name="VSeparator" type="VSeparator" parent="MarginContainer/Main/Header"]
 layout_mode = 2
-size_flags_horizontal = 0
-text = "TIME"
+size_flags_horizontal = 6
 
 [node name="Body" type="HSplitContainer" parent="MarginContainer/Main"]
 layout_mode = 2

@@ -1,9 +1,10 @@
-[gd_scene load_steps=13 format=3 uid="uid://caxx5yulod7st"]
+[gd_scene load_steps=15 format=3 uid="uid://caxx5yulod7st"]
 
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="2_r34sj"]
 [ext_resource type="Script" uid="uid://dqxofb6qml4d" path="res://Phases/galactic_council.gd" id="2_x5rdb"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="4_7vble"]
 [ext_resource type="Script" uid="uid://c0wgsg0s7uq8u" path="res://Controller/Phases/dais_controls.gd" id="4_x5rdb"]
+[ext_resource type="Shader" uid="uid://3lnhpm3bddo" path="res://Assets/Shaders/spotlight.gdshader" id="5_7vble"]
 
 [sub_resource type="Gradient" id="Gradient_x5rdb"]
 offsets = PackedFloat32Array(0, 0.522863, 1)
@@ -25,7 +26,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 1)]
+"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_87m48"]
@@ -74,6 +75,14 @@ _data = {
 &"society_enter": SubResource("Animation_r2klm"),
 &"society_exit": SubResource("Animation_n606d")
 }
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_87m48"]
+shader = ExtResource("5_7vble")
+shader_parameter/circle_size = 0.5
+shader_parameter/feather = -0.05
+shader_parameter/circle_position = Vector2(0.5, 0.5)
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
 
 [node name="GalacticCouncil" type="Node3D"]
 script = ExtResource("2_x5rdb")
@@ -140,6 +149,8 @@ environment = ExtResource("4_7vble")
 [node name="Camera3D" type="Camera3D" parent="."]
 
 [node name="DiceCamTexture" parent="." instance=ExtResource("2_r34sj")]
+modulate = Color(1, 1, 1, 0)
+material = SubResource("ShaderMaterial_87m48")
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
