@@ -28,6 +28,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DiceCamTexture:material:shader_parameter/circle_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_87m48"]
 resource_name = "dicecam _down"
@@ -60,6 +72,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DiceCamTexture:material:shader_parameter/circle_size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.7),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [0.0, 0.5]
+}
 
 [sub_resource type="Animation" id="Animation_r2klm"]
 resource_name = "society_enter"
@@ -78,7 +102,7 @@ _data = {
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_87m48"]
 shader = ExtResource("5_7vble")
-shader_parameter/circle_size = 0.5
+shader_parameter/circle_size = 0.0
 shader_parameter/feather = -0.05
 shader_parameter/circle_position = Vector2(0.5, 0.5)
 shader_parameter/screen_width = 1920.0
@@ -151,15 +175,6 @@ environment = ExtResource("4_7vble")
 [node name="DiceCamTexture" parent="." instance=ExtResource("2_r34sj")]
 modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_87m48")
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -509.0
-offset_top = -266.0
-offset_right = 509.0
-offset_bottom = 266.0
 size_flags_horizontal = 1
 expand_mode = 5
 

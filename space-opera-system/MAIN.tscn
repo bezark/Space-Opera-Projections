@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=16 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -6,7 +6,6 @@
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
-[ext_resource type="Shader" uid="uid://3lnhpm3bddo" path="res://Assets/Shaders/spotlight.gdshader" id="6_5nrqa"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="7_5nrqa"]
 [ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="8_7ct82"]
@@ -19,15 +18,6 @@ viewport_path = NodePath("Circle")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7ct82"]
 viewport_path = NodePath("Pews")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgeht"]
-resource_local_to_scene = true
-shader = ExtResource("6_5nrqa")
-shader_parameter/circle_size = 0.3
-shader_parameter/feather = -0.004
-shader_parameter/circle_position = Vector2(0.515, 0.445)
-shader_parameter/screen_width = 1920.0
-shader_parameter/screen_height = 1200.0
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_iyt76"]
 viewport_path = NodePath("Circle/CanvasGroup/MappingSurface/SubViewport")
@@ -111,7 +101,6 @@ scale = Vector2(1.94982, 1)
 fit_margin = 0.0
 
 [node name="MappingSurface" type="Polygon2D" parent="Circle/CanvasGroup"]
-material = SubResource("ShaderMaterial_kgeht")
 position = Vector2(17.4375, -18)
 scale = Vector2(0.508861, 0.915741)
 texture = SubResource("ViewportTexture_iyt76")
@@ -146,6 +135,7 @@ texture = SubResource("ViewportTexture_5nrqa")
 polygon = PackedVector2Array(14.1102, 48.0485, -13.1024, 1206.67, 972.599, 1203.4, 1947.21, 1211.04, 1947.21, 618.079, 1926.05, 69.8888, 1050.2, 32.7604)
 
 [connection signal="datapad_sync_changed" from="VBoxContainer/Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
+[connection signal="scene_changed" from="VBoxContainer/Control" to="Circle/CanvasGroup/MappingSurface" method="scene_change"]
 [connection signal="scene_changed" from="VBoxContainer/Control" to="Pews/CanvasGroup/MappingSurface" method="scene_change"]
 [connection signal="phase_changed" from="DatapadSync" to="VBoxContainer/Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="phase_changed" from="DatapadSync" to="SceneChanger" method="_on_datapad_sync_phase_changed"]
