@@ -59,6 +59,7 @@ text = "Scenes"
 
 [node name="DatapadSync" type="CheckButton" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "Datapad Sync"
 
