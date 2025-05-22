@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="Archetypes" load_steps=11 format=3 uid="uid://ctg8p8ik3dmdd"]
+[gd_resource type="Resource" script_class="Archetypesx" load_steps=11 format=3 uid="uid://ctg8p8ik3dmdd"]
 
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_53wae"]
 [ext_resource type="Resource" uid="uid://boi6t3qx52xfi" path="res://Data/Archetypes/Mighty.tres" id="2_m1qwm"]

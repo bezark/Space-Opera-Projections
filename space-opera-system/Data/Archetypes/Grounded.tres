@@ -1,9 +1,11 @@
-[gd_resource type="Resource" script_class="Archetype" load_steps=2 format=3 uid="uid://cstw7o32k1fbm"]
+[gd_resource type="Resource" script_class="Archetype" load_steps=3 format=3 uid="uid://cstw7o32k1fbm"]
 
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_hmqxc"]
+[ext_resource type="Texture2D" uid="uid://boeqya7tjyo78" path="res://Assets/constellations/grounded.svg" id="2_3flpj"]
 
 [resource]
 script = ExtResource("1_hmqxc")
-title = ""
+title = "The Grounded"
 sign_name = ""
+sign = ExtResource("2_3flpj")
 metadata/_custom_type_script = "uid://b5hs4kdp8yai7"
