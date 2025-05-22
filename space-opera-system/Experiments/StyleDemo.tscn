@@ -1,8 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://hpl042o86xyx"]
+[gd_scene load_steps=11 format=3 uid="uid://hpl042o86xyx"]
 
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_70mjv"]
 [ext_resource type="PackedScene" uid="uid://bojmbshwtr1j1" path="res://Assets/1Toys/SolarSystem.tscn" id="2_e4b23"]
 [ext_resource type="Shader" uid="uid://4c4cmoyhfxml" path="res://Assets/Shaders/hologram.gdshader" id="3_w0ely"]
+[ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="4_e4b23"]
+[ext_resource type="Texture2D" uid="uid://cfqeelptromqf" path="res://icon.svg" id="4_w0ely"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_37w0w"]
 exposure_multiplier = 2.864
@@ -38,7 +40,17 @@ shader_parameter/shake_color_rate = 0.5
 [sub_resource type="ViewportTexture" id="ViewportTexture_7uc5l"]
 viewport_path = NodePath("SubViewport")
 
-[node name="StyleDemo" type="Node2D"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_w0ely"]
+shader = ExtResource("4_e4b23")
+shader_parameter/colors = PackedColorArray(0.999961, 0.637204, 0.581597, 0.968627, 0, 0, 0.803922, 1, 0.82015, 0.317585, 0.366793, 1, 0.741645, 0.206131, 0.338594, 1, 0, 0.65955, 9.62615e-07, 1, 0.789042, 0.625785, 0.454002, 1, 0.317647, 0.278431, 0.717647, 1, 0, 0.262745, 0, 1, 0.00266067, 0.130873, 0.622193, 1, 0.390205, 0.196481, 0.601933, 1, 0.701961, 0.576471, 0.184314, 1, 0.145098, 0.203922, 0.486275, 1, 0, 0.427451, 0.462745, 1, 0.133333, 0, 0.231373, 1)
+
+[node name="StyleDemo" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="SubViewport" type="SubViewport" parent="."]
 own_world_3d = true
@@ -52,3 +64,18 @@ material = SubResource("ShaderMaterial_2ps6r")
 offset_right = 40.0
 offset_bottom = 40.0
 texture = SubResource("ViewportTexture_7uc5l")
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(410, 538)
+texture = ExtResource("4_w0ely")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_w0ely")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
