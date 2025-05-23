@@ -15,4 +15,3 @@ func _process(delta):
 	if Input.is_action_pressed("ui_down"):
 		aether.emission_energy_multiplier-= 0.01
 		
-		

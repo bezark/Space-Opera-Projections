@@ -13,6 +13,7 @@ seamless = true
 noise = ExtResource("2_ssdb6")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_84j84"]
+seamless = true
 noise = ExtResource("2_ssdb6")
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b7wof"]

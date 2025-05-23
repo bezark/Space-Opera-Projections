@@ -1,48 +1,68 @@
-[gd_scene load_steps=11 format=3 uid="uid://hpl042o86xyx"]
+[gd_scene load_steps=22 format=3 uid="uid://hpl042o86xyx"]
 
-[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_70mjv"]
+[ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="2_1y5as"]
 [ext_resource type="PackedScene" uid="uid://bojmbshwtr1j1" path="res://Assets/1Toys/SolarSystem.tscn" id="2_e4b23"]
-[ext_resource type="Shader" uid="uid://4c4cmoyhfxml" path="res://Assets/Shaders/hologram.gdshader" id="3_w0ely"]
+[ext_resource type="Shader" uid="uid://coad30ohxvomb" path="res://Assets/Shaders/crt.gdshader" id="4_37w0w"]
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="4_e4b23"]
-[ext_resource type="Texture2D" uid="uid://cfqeelptromqf" path="res://icon.svg" id="4_w0ely"]
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_37w0w"]
-exposure_multiplier = 2.864
-
-[sub_resource type="World3D" id="World3D_1y5as"]
-environment = ExtResource("1_70mjv")
-camera_attributes = SubResource("CameraAttributesPractical_37w0w")
+[ext_resource type="Shader" uid="uid://bmp1m62x6so7b" path="res://Assets/Shaders/pink_warp.gdshader" id="4_iyhr7"]
+[ext_resource type="Texture2D" uid="uid://b5ppwoi7ndxnb" path="res://icon.svg" id="4_w0ely"]
+[ext_resource type="Texture2D" uid="uid://x3ye6q6cb4t7" path="res://Assets/Shaders/crtpix.png" id="5_1y5as"]
+[ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="6_2ps6r"]
+[ext_resource type="Shader" uid="uid://nf2ei1l2nvon" path="res://Assets/Shaders/monomonitor.gdshader" id="6_7uc5l"]
+[ext_resource type="Texture2D" uid="uid://ig2awqhcdbnm" path="res://Assets/Textures/masks for particles 2/masks for  particles 2/27.png" id="7_7uc5l"]
+[ext_resource type="Shader" uid="uid://bco3hpgboc2nw" path="res://Assets/Shaders/threshold_silhouette.gdshader" id="9_5omvu"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_2ps6r"]
-render_priority = 0
-shader = ExtResource("3_w0ely")
-shader_parameter/albedo_alpha = 1.0
-shader_parameter/tint_color = Color(1, 0.5, 0, 0.5)
-shader_parameter/edge_color = Color(1, 0, 0, 1)
-shader_parameter/edge_power = 0.5
-shader_parameter/edge_size = 1.0
-shader_parameter/edge_intensity = 0.8
-shader_parameter/scanline_tint = Color(1, 0.5, 0, 1)
-shader_parameter/scanline_intensity = 1.0
-shader_parameter/scanline_density = 5.0
-shader_parameter/scanline_thickness = 1.0
-shader_parameter/scanline_spacing = 1.0
-shader_parameter/scanline_angle = 0.0
-shader_parameter/scanline_speed = 0.2
-shader_parameter/enable_glitch = false
-shader_parameter/glitch_intensity = 0.5
-shader_parameter/shake_power = 0.5
-shader_parameter/shake_rate = 0.5
-shader_parameter/shake_speed = 5.0
-shader_parameter/shake_block_size = 30.5
-shader_parameter/shake_color_rate = 0.5
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_7uc5l"]
-viewport_path = NodePath("SubViewport")
+[sub_resource type="ViewportTexture" id="ViewportTexture_gve2s"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5omvu"]
+shader = ExtResource("4_37w0w")
+shader_parameter/pixel_texture = ExtResource("5_1y5as")
+shader_parameter/screen_size = Vector2(128, 128)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_vposd"]
+shader = ExtResource("9_5omvu")
+shader_parameter/threshold = 0.5
+shader_parameter/smoothness = 0.232
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/fg_color = Color(1, 1, 1, 1)
+shader_parameter/invert = true
+shader_parameter/intensity = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_w0ely"]
 shader = ExtResource("4_e4b23")
-shader_parameter/colors = PackedColorArray(0.999961, 0.637204, 0.581597, 0.968627, 0, 0, 0.803922, 1, 0.82015, 0.317585, 0.366793, 1, 0.741645, 0.206131, 0.338594, 1, 0, 0.65955, 9.62615e-07, 1, 0.789042, 0.625785, 0.454002, 1, 0.317647, 0.278431, 0.717647, 1, 0, 0.262745, 0, 1, 0.00266067, 0.130873, 0.622193, 1, 0.390205, 0.196481, 0.601933, 1, 0.701961, 0.576471, 0.184314, 1, 0.145098, 0.203922, 0.486275, 1, 0, 0.427451, 0.462745, 1, 0.133333, 0, 0.231373, 1)
+shader_parameter/colors = PackedColorArray(0.761011, 0.711022, 0.922931, 0.968627, 0, 0, 0.803922, 1, 0.388774, 0.483849, 0.835922, 1, 0.365272, 0.393672, 0.738368, 1, 0.762335, 0.311199, 0.859507, 1, 0.56861, 0.682326, 0.722168, 1, 0.317647, 0.278431, 0.717647, 1, 0, 0.262745, 0, 1, 0.00266067, 0.130873, 0.622193, 1, 0.390205, 0.196481, 0.601933, 1, 0.447743, 0.657338, 0.36987, 1, 0, 0.427451, 0.462745, 1, 0.133333, 0, 0.231373, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_7uc5l"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_t0xd1"]
+shader = ExtResource("4_iyhr7")
+shader_parameter/stretch = 0.8
+shader_parameter/thing1 = 0.2
+shader_parameter/thing2 = 0.0
+shader_parameter/thing3 = 1.2
+shader_parameter/scale = 2.333
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_iyhr7"]
+shader = ExtResource("6_2ps6r")
+shader_parameter/strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gmil0"]
+shader = ExtResource("2_1y5as")
+shader_parameter/radius = 5
+shader_parameter/offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_gve2s"]
+shader = ExtResource("6_7uc5l")
+shader_parameter/tiledtexture = ExtResource("7_7uc5l")
+shader_parameter/opacity = 1.0
+shader_parameter/pixel_size = 0.005
+shader_parameter/greyscale = false
+shader_parameter/contrast = 0.0
+shader_parameter/pixel_colors = Color(0.910165, 0.793828, 0.448426, 1)
+shader_parameter/background_color = Color(0, 0, 0, 1)
 
 [node name="StyleDemo" type="Control"]
 layout_mode = 3
@@ -51,25 +71,67 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="SubViewport" type="SubViewport" parent="."]
-own_world_3d = true
-world_3d = SubResource("World3D_1y5as")
-size = Vector2i(1920, 1200)
-
-[node name="SolarSystem" parent="SubViewport" instance=ExtResource("2_e4b23")]
-
-[node name="TextureRect" type="TextureRect" parent="."]
-material = SubResource("ShaderMaterial_2ps6r")
-offset_right = 40.0
-offset_bottom = 40.0
-texture = SubResource("ViewportTexture_7uc5l")
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Icon" type="Sprite2D" parent="."]
 position = Vector2(410, 538)
 texture = ExtResource("4_w0ely")
 
-[node name="ColorRect" type="ColorRect" parent="."]
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+material = SubResource("ShaderMaterial_2ps6r")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_target = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1920, 1200)
+render_target_update_mode = 4
+
+[node name="SolarSystem" parent="SubViewportContainer/SubViewport" instance=ExtResource("2_e4b23")]
+
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1200)
+
+[node name="TextureRect" type="TextureRect" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_gve2s")
+
+[node name="Icon" type="Sprite2D" parent="SubViewport"]
+material = SubResource("ShaderMaterial_5omvu")
+position = Vector2(798, 245)
+texture = ExtResource("4_w0ely")
+
+[node name="Thresh" type="ColorRect" parent="SubViewport"]
+material = SubResource("ShaderMaterial_vposd")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="PostProcessing" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="ColorSnap" type="ColorRect" parent="PostProcessing"]
 material = SubResource("ShaderMaterial_w0ely")
 layout_mode = 1
 anchors_preset = 15
@@ -79,3 +141,97 @@ grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy4" type="BackBufferCopy" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_7uc5l")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="Warp" type="ColorRect" parent="PostProcessing"]
+visible = false
+material = SubResource("ShaderMaterial_t0xd1")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy" type="BackBufferCopy" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_7uc5l")
+position = Vector2(734, 416)
+scale = Vector2(7.28, 4.06)
+copy_mode = 2
+
+[node name="Abberation" type="ColorRect" parent="PostProcessing"]
+visible = false
+material = SubResource("ShaderMaterial_iyhr7")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_7uc5l")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="Kuwahara" type="ColorRect" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_gmil0")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BackBufferCopy3" type="BackBufferCopy" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_7uc5l")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="Monitor" type="ColorRect" parent="PostProcessing"]
+visible = false
+material = SubResource("ShaderMaterial_gve2s")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy5" type="BackBufferCopy" parent="PostProcessing"]
+material = SubResource("ShaderMaterial_7uc5l")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="FINALMIX" type="ColorRect" parent="PostProcessing"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2

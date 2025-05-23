@@ -1,19 +1,20 @@
-[gd_scene load_steps=23 format=3 uid="uid://bojmbshwtr1j1"]
+[gd_scene load_steps=28 format=3 uid="uid://bojmbshwtr1j1"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_sksq8"]
-[ext_resource type="Texture2D" uid="uid://c7wjn2pin5i2q" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="2_xobol"]
+[ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="2_xobol"]
 [ext_resource type="PackedScene" uid="uid://dkg5lehh8sxx4" path="res://Assets/1Toys/Planets/cloudy_planet.tscn" id="3_bl21e"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="3_qhlf5"]
-[ext_resource type="Shader" uid="uid://4c4cmoyhfxml" path="res://Assets/Shaders/hologram.gdshader" id="4_bl21e"]
+[ext_resource type="Shader" uid="uid://4c4cmoyhfxml" path="res://Assets/hologram.gdshader" id="4_bl21e"]
 [ext_resource type="PackedScene" uid="uid://b7stcuhorj3v" path="res://Assets/1Toys/Planets/lava_planet.tscn" id="4_mjyf8"]
-[ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="4_xobol"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="5_vfaqs"]
 [ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="6_crrbq"]
+[ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="9_vfaqs"]
+[ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="10_vfaqs"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
 emission_enabled = true
 emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 6.75
+emission_energy_multiplier = 600.0
 backlight_enabled = true
 refraction_enabled = true
 
@@ -36,6 +37,7 @@ sky_material = SubResource("PanoramaSkyMaterial_dps3l")
 [sub_resource type="Environment" id="Environment_4jktx"]
 background_mode = 2
 sky = SubResource("Sky_8b321")
+ambient_light_source = 3
 glow_enabled = true
 glow_intensity = 1.32
 glow_blend_mode = 0
@@ -53,18 +55,59 @@ render_priority = 0
 next_pass = SubResource("StandardMaterial3D_tybqg")
 shader = ExtResource("4_bl21e")
 shader_parameter/albedo_texture = SubResource("NoiseTexture2D_qxs4y")
-shader_parameter/albedo_alpha = 1.0
+shader_parameter/albedo_alpha = 0.596
 shader_parameter/tint_color = Color(1, 0.5, 0, 0.5)
 shader_parameter/edge_color = Color(1, 0, 0, 1)
 shader_parameter/edge_power = 0.647
-shader_parameter/edge_size = 1.0
-shader_parameter/edge_intensity = 0.8
+shader_parameter/edge_size = 1.261
+shader_parameter/edge_intensity = 1.591
 shader_parameter/scanline_tint = Color(1, 0.5, 0, 1)
-shader_parameter/scanline_intensity = 1.059
-shader_parameter/scanline_density = 5.0
+shader_parameter/scanline_intensity = 0.881
+shader_parameter/scanline_density = 0.289
+shader_parameter/scanline_thickness = 2.624
+shader_parameter/scanline_spacing = 2.228
+shader_parameter/scanline_angle = 0.168
+shader_parameter/scanline_speed = 10.0
+shader_parameter/enable_glitch = false
+shader_parameter/glitch_intensity = 1.0
+shader_parameter/shake_power = 0.073
+shader_parameter/shake_rate = 0.5
+shader_parameter/shake_speed = 0.267
+shader_parameter/shake_block_size = 30.92
+shader_parameter/shake_color_rate = 1.0
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_mjyf8"]
+dof_blur_near_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_qhlf5"]
+lightmap_size_hint = Vector2i(12, 12)
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjyf8"]
+render_priority = 0
+shader = ExtResource("10_vfaqs")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 1.0
+shader_parameter/highlight_strength = 1.0
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ovnr5"]
+render_priority = 0
+shader = ExtResource("4_bl21e")
+shader_parameter/albedo_alpha = 1.0
+shader_parameter/tint_color = Color(1, 0.5, 0, 0.5)
+shader_parameter/edge_color = Color(1, 0, 0, 1)
+shader_parameter/edge_power = 1.0
+shader_parameter/edge_size = 3.025
+shader_parameter/edge_intensity = 2.0
+shader_parameter/scanline_tint = Color(1, 0.5, 0, 1)
+shader_parameter/scanline_intensity = 1.0
+shader_parameter/scanline_density = 0.244
 shader_parameter/scanline_thickness = 1.0
 shader_parameter/scanline_spacing = 1.0
-shader_parameter/scanline_angle = 0.0
+shader_parameter/scanline_angle = 0.558
 shader_parameter/scanline_speed = 0.2
 shader_parameter/enable_glitch = false
 shader_parameter/glitch_intensity = 0.5
@@ -74,20 +117,81 @@ shader_parameter/shake_speed = 5.0
 shader_parameter/shake_block_size = 30.5
 shader_parameter/shake_color_rate = 0.5
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_mjyf8"]
-dof_blur_near_enabled = true
+[sub_resource type="Shader" id="Shader_vfaqs"]
+code = "shader_type spatial;
+render_mode unshaded;
 
-[sub_resource type="QuadMesh" id="QuadMesh_qhlf5"]
+uniform sampler2D screen_tex : hint_screen_texture;
+uniform sampler2D depth_tex : hint_depth_texture;
+uniform float scale;
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjyf8"]
+bool hit_sphere(vec3 ray_origin, vec3 ray_dir, vec3 sphere_origin, float radius) {
+	vec3 oc = ray_origin - sphere_origin;
+	float a = dot(ray_dir, ray_dir);
+	float b = 2.0 * dot(ray_dir, oc);
+	float c = dot(oc, oc) - (radius * radius);
+	float disc = (b * b) - 4.0 * a * c;
+	return disc > 0.0;
+}
+
+vec3 get_world_position_from_uv(vec2 uv, float depth, mat4 inv_proj_m, mat4 inv_view_m) {
+	vec4 ndc = vec4((uv * 2.0) - 1.0, depth, 1.0);
+	vec4 view_p = inv_proj_m * ndc;
+	view_p.xyz /= view_p.w;
+	view_p = (inv_view_m * vec4(view_p.xyz, 1.0));
+	return view_p.xyz;
+}
+
+vec2 get_uv_from_world_position(vec3 position_w, mat4 proj_m, mat4 view_m) {
+	vec3 position_v = (view_m * vec4(position_w, 1.0)).xyz;
+	vec4 position_cs = proj_m * vec4(position_v.xyz, 1.0);
+	vec2 ndc = position_cs.xy / position_cs.w;
+	return ndc.xy * 0.5 + 0.5;
+}
+
+float fresnel(float amount, vec3 normal, vec3 view) {
+	return pow((1.0 - clamp(dot(normalize(normal), normalize(view)), 0.0, 1.0 )), amount);
+}
+
+void fragment() {
+	float depth = texture(depth_tex, SCREEN_UV).x;
+	vec3 frag_p = get_world_position_from_uv(SCREEN_UV, depth, INV_PROJECTION_MATRIX, INV_VIEW_MATRIX);
+	vec3 ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
+
+	bool hit = hit_sphere(CAMERA_POSITION_WORLD, ray_dir, NODE_POSITION_WORLD, scale * .3);
+	
+	vec4 screen_color = texture(screen_tex, SCREEN_UV);
+	vec3 color;
+	if (hit) {
+		color = vec3(0.0);
+	}
+	else {
+		vec2 bh_p = get_uv_from_world_position(NODE_POSITION_WORLD, PROJECTION_MATRIX, VIEW_MATRIX);
+		vec2 dis_dir = normalize(bh_p - SCREEN_UV) * 0.5;
+		float f =  1.0 - fresnel(0.5, NORMAL, VIEW);
+		
+		float fov = atan(-1.0 / PROJECTION_MATRIX[1][1] * 2.0);
+		float dist = distance(CAMERA_POSITION_WORLD, NODE_POSITION_WORLD);
+		float s = (2.0 * dist * tan(fov * 0.5)) / scale;
+		
+		vec2 uv = SCREEN_UV + (dis_dir * (f / s));
+		screen_color = texture(screen_tex, uv);
+		color = vec3(screen_color.r, screen_color.g, screen_color.b);
+		
+	}
+	ALBEDO = color;
+}"
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_crrbq"]
 render_priority = 0
-shader = ExtResource("4_xobol")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 0.4
-shader_parameter/highlight_strength = 0.1
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
+shader = SubResource("Shader_vfaqs")
+shader_parameter/scale = 10.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_y3678"]
+material = SubResource("ShaderMaterial_crrbq")
+flip_faces = true
+radius = 5.0
+height = 10.0
 
 [node name="SolarSystem" type="Node3D"]
 
@@ -99,6 +203,17 @@ radius = 50.0
 radial_segments = 64
 rings = 64
 material = SubResource("StandardMaterial3D_oyq1c")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Star"]
+transform = Transform3D(0.760034, -0.168201, 0.627739, -2.99532e-06, 0.965926, 0.258821, -0.649884, -0.196715, 0.734136, -329.54, 0.819688, -23.1794)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Star"]
+visible = false
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 600.0
+omni_range = 600.0
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
@@ -139,16 +254,25 @@ shader_params/u_cloud_blend = 0.5
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -347.302, 0, -61.9491)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(-0.966591, 0, -0.256323, 0, 1, 0, 0.256323, 0, -0.966591, -342.969, 0.819688, -23.1794)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -338.648, 1.17053, -9.92191)
 environment = ExtResource("3_qhlf5")
 attributes = SubResource("CameraAttributesPractical_mjyf8")
 near = 0.001
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-transform = Transform3D(-0.563803, 0.213761, -0.797767, -2.98333e-06, 0.965925, 0.258821, 0.82591, 0.145926, -0.54459, 0, 0, 0)
-shadow_enabled = true
+script = ExtResource("9_vfaqs")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.270874, 0, -1.02143)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.08145)
+extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_qhlf5")
 surface_material_override/0 = SubResource("ShaderMaterial_mjyf8")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -342.959, 0, 0)
+inner_radius = 100.0
+outer_radius = 99.0
+sides = 64
+material = SubResource("ShaderMaterial_ovnr5")
+
+[node name="Blackhole" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -326.402, 0, -13.8047)
+mesh = SubResource("SphereMesh_y3678")

@@ -267,7 +267,7 @@
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
   # Add the NDI package here
-  ndi
+  gcc
   # Add any other required libraries
 ];
 
@@ -398,6 +398,7 @@
 
     gcc
     scons
+    stdenv.cc.cc
 
     git
     github-desktop
