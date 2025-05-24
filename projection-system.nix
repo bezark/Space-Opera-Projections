@@ -148,43 +148,27 @@
   };
 
   # Enable the X11 windowing system.
-  services.xserver.enable = true;
-  services.xserver.videoDrivers = [ "amdgpu" ];
 
   hardware.opengl.driSupport32Bit = true;
   hardware.opengl.enable = true;
-  hardware.opengl = {
-  extraPackages = with pkgs; [
-    ocl-icd            # the OpenCL ICD loader (provides libOpenCL.so)
-    pocl               # a CPU‑only OpenCL runtime
-    # intel-compute-runtime  # Intel GPU ICD (Gen8+)
-    rocmPackages.clr.icd   # AMD GPU ICD (if you have an AMD card)
-  ];
-};
-
-  # hardware.opengl.extraPackages = with pkgs[
-  #   ocl-icd
-    
-  # ];
 
   #For power mode
   services.power-profiles-daemon.enable = true;
 
-  # Enable the GNOME Desktop Environment.
-   services.xserver.displayManager.gdm = {
-    enable = true; 
-    autoLogin = {
-      enable = true;
-      user = "johnb";  # Your username
-    };
-  };
-  services.xserver.desktopManager.gnome.enable = true;
   services.flatpak.enable = true;
-  # Configure keymap in X11
+
   services.xserver = {
-    layout = "us";
-    xkbVariant = "";
+    enable       = true;
+    videoDrivers = [ "amdgpu" ];
+    layout       = "us";
+    xkbVariant   = "";
+    displayManager.gdm = {
+      enable    = true;
+      autoLogin = { enable = true; user = "johnb"; };
+    };
+    desktopManager.gnome.enable = true;
   };
+
 
   # Enable CUPS to print documents.
 
@@ -232,7 +216,7 @@
 
   # Define a user account. Don't forget to set a password with 'passwd'.
   users.users.johnb = {
-    shell = pkgs.zsh;
+    shell = pkgs.fish;
     isNormalUser = true;
     extraGroups = [ "networkmanager" "wheel" "adbusers" "audio" "dialout" "input"];
     packages = with pkgs; [
@@ -244,6 +228,16 @@
     ];
   };
 
+   programs.fish.enable = true;
+    programs.bash = {
+    interactiveShellInit = ''
+      if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+      then
+        shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+        exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+      fi
+    '';
+  };
 
   # fileSystems."/boot" = lib.mkForce {
   #   device = "/dev/disk/by-uuid/3486-CD86";  # Matches your blkid output
@@ -264,12 +258,19 @@
   programs.adb.enable = true;
   programs.java.enable = true;
 
-  programs.nix-ld.enable = true;
-  programs.nix-ld.libraries = with pkgs; [
-  # Add the NDI package here
-  gcc
-  # Add any other required libraries
-];
+  # programs.nix-ld.enable = true;
+  # programs.nix-ld.libraries = with pkgs; [
+  #   gcc
+  #   stdenv.cc.cc.lib
+  #   libgcc
+
+  # ];
+#   programs.nix-ld.enable = true;
+#   programs.nix-ld.libraries = with pkgs; [
+#   # Add the NDI package here
+#   gcc
+#   # Add any other required libraries
+# ];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -282,6 +283,8 @@
     typescript-language-server
     vscode-langservers-extracted
     nixd
+    nix-ld
+
     markdown-oxide
 
     temurin-bin-17
@@ -299,8 +302,9 @@
     # opencl-clang
     # opencl-headers
     # ocl-icd
-    # stdenv.cc.cc.lib
-    # libgcc
+    stdenv.cc.cc.lib
+
+    libgcc
     # rocmPackages.clr
     
 
@@ -322,16 +326,19 @@
     # godot_4_3
     godot
     gdtoolkit_4
+
+
+    
     blender
 
-    slimevr
-    slimevr-server
+    # slimevr
+    # slimevr-server
     liblo
     
 
     krita
     gimp
-    orca-c
+    # orca-c
     obs-studio
     libcamera
 
@@ -344,7 +351,7 @@
     fzf
     tree
 
-    joycond-cemuhook
+    # joycond-cemuhook
     bluez
     # bluez-tools
     blueman
@@ -388,13 +395,14 @@
     tmux
     screen
 
-    audacity
-    gnome-sound-recorder
-    amberol
-    shortwave
+    # audacity
+    # gnome-sound-recorder
+    # amberol
+    # shortwave
 
-    wireguard-tools
+    # wireguard-tools
     # rustdesk
+    # 
 
     gcc
     scons
@@ -435,6 +443,8 @@
     xdotool
     ydotool
     zsh
+    fish
+    
 
     gnome-keyring
     libsecret
@@ -521,14 +531,14 @@
 
   programs.steam.enable = true;
 
-  environment.variables = { EDITOR = "ghostty"; VISUAL = "ghostty"; TERMINAL = "ghostty"; };
-
+    
   environment.sessionVariables = {
-    EDITOR = "ghostty";
+    LD_LIBRARY_PATH = "/run/current-system/sw/lib";
+  #   JAVA_HOME = "${pkgs.jdk11}/lib/openjdk";
+  #   LD_LIBRARY_PATH = [ "${pkgs.systemd}/lib" ];
+  #   ANDROID_SDK_ROOT = "${pkgs.android-studio}/libexec/android-sdk";
   };
 
-
-  
 
   programs.bash.shellAliases = {
     br = "broot";
