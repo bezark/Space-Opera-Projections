@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://bojmbshwtr1j1"]
+[gd_scene load_steps=29 format=3 uid="uid://bojmbshwtr1j1"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_sksq8"]
 [ext_resource type="Material" uid="uid://cxnnnk4bbuxtu" path="res://Assets/1Toys/whiteHot.tres" id="2_crrbq"]
@@ -11,6 +11,7 @@
 [ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="6_crrbq"]
 [ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="9_vfaqs"]
 [ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="10_vfaqs"]
+[ext_resource type="PackedScene" uid="uid://pdsgrmnhygwc" path="res://Assets/1Toys/black_hole.tscn" id="12_y3678"]
 
 [sub_resource type="Gradient" id="Gradient_y3678"]
 interpolation_mode = 2
@@ -270,3 +271,6 @@ material = SubResource("ShaderMaterial_ovnr5")
 [node name="Blackhole" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -326.402, 0, -13.8047)
 mesh = SubResource("SphereMesh_y3678")
+
+[node name="Blackhole2" parent="." instance=ExtResource("12_y3678")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -387)
