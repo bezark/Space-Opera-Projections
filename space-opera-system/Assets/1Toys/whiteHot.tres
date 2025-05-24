@@ -1,0 +1,8 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://cxnnnk4bbuxtu"]
+
+[resource]
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_energy_multiplier = 600.0
+backlight_enabled = true
+refraction_enabled = true

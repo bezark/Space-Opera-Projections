@@ -1,7 +1,8 @@
 [gd_scene load_steps=28 format=3 uid="uid://bojmbshwtr1j1"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_sksq8"]
-[ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="2_xobol"]
+[ext_resource type="Material" uid="uid://cxnnnk4bbuxtu" path="res://Assets/1Toys/whiteHot.tres" id="2_crrbq"]
+[ext_resource type="Texture2D" uid="uid://c7wjn2pin5i2q" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="2_xobol"]
 [ext_resource type="PackedScene" uid="uid://dkg5lehh8sxx4" path="res://Assets/1Toys/Planets/cloudy_planet.tscn" id="3_bl21e"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="3_qhlf5"]
 [ext_resource type="Shader" uid="uid://4c4cmoyhfxml" path="res://Assets/hologram.gdshader" id="4_bl21e"]
@@ -10,13 +11,6 @@
 [ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="6_crrbq"]
 [ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="9_vfaqs"]
 [ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="10_vfaqs"]
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_oyq1c"]
-emission_enabled = true
-emission = Color(1, 1, 1, 1)
-emission_energy_multiplier = 600.0
-backlight_enabled = true
-refraction_enabled = true
 
 [sub_resource type="Gradient" id="Gradient_y3678"]
 interpolation_mode = 2
@@ -202,7 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400.839, -1.19209e-07, -0.44
 radius = 50.0
 radial_segments = 64
 rings = 64
-material = SubResource("StandardMaterial3D_oyq1c")
+material = ExtResource("2_crrbq")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="Star"]
 transform = Transform3D(0.760034, -0.168201, 0.627739, -2.99532e-06, 0.965926, 0.258821, -0.649884, -0.196715, 0.734136, -329.54, 0.819688, -23.1794)

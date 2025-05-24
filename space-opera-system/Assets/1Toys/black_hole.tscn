@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://pdsgrmnhygwc"]
+[gd_scene load_steps=5 format=3 uid="uid://pdsgrmnhygwc"]
 
 [sub_resource type="Shader" id="Shader_3mjym"]
 code = "shader_type spatial;
@@ -68,11 +68,29 @@ void fragment() {
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_sjfy6"]
 render_priority = 0
 shader = SubResource("Shader_3mjym")
-shader_parameter/scale = 0.3
+shader_parameter/scale = 1.5
 
 [sub_resource type="SphereMesh" id="SphereMesh_q56d7"]
 material = SubResource("ShaderMaterial_sjfy6")
-flip_faces = true
+radius = 1.0
+height = 2.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tkx3k"]
+transparency = 2
+alpha_scissor_threshold = 0.435
+alpha_antialiasing_mode = 0
+albedo_color = Color(1, 1, 1, 0.709804)
+emission_enabled = true
+emission = Color(1, 0.768627, 0.654902, 1)
+emission_energy_multiplier = 2.38
 
 [node name="Blackhole" type="MeshInstance3D"]
 mesh = SubResource("SphereMesh_q56d7")
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.5, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 1.226
+outer_radius = 0.914
+sides = 64
+ring_sides = 64
+material = SubResource("StandardMaterial3D_tkx3k")
