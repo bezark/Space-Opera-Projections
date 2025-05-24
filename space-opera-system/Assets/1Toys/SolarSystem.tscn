@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://bojmbshwtr1j1"]
+[gd_scene load_steps=32 format=3 uid="uid://bojmbshwtr1j1"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_sksq8"]
 [ext_resource type="Material" uid="uid://cxnnnk4bbuxtu" path="res://Assets/1Toys/whiteHot.tres" id="2_crrbq"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="9_vfaqs"]
 [ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="10_vfaqs"]
 [ext_resource type="PackedScene" uid="uid://pdsgrmnhygwc" path="res://Assets/1Toys/black_hole.tscn" id="12_y3678"]
+[ext_resource type="Shader" uid="uid://ckydepyur828i" path="res://Assets/1Toys/particle.gdshader" id="13_ovnr5"]
 
 [sub_resource type="Gradient" id="Gradient_y3678"]
 interpolation_mode = 2
@@ -188,6 +189,79 @@ flip_faces = true
 radius = 5.0
 height = 10.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_tybqg"]
+shader = ExtResource("13_ovnr5")
+shader_parameter/inherit_emitter_velocity_percent = 6.0
+shader_parameter/direction = Vector3(1, 0, 0)
+shader_parameter/spread = 15.0
+shader_parameter/flatness = 0.0
+shader_parameter/initial_linear_velocity_min = 0.0
+shader_parameter/initial_angle_min = 0.0
+shader_parameter/angular_velocity_min = 0.0
+shader_parameter/linear_accel_min = 0.0
+shader_parameter/radial_accel_min = 0.0
+shader_parameter/tangent_accel_min = 0.0
+shader_parameter/damping_min = 0.0
+shader_parameter/hue_variation_min = 0.0
+shader_parameter/anim_speed_min = 0.0
+shader_parameter/anim_offset_min = 0.0
+shader_parameter/initial_linear_velocity_max = 0.0
+shader_parameter/initial_angle_max = 0.0
+shader_parameter/angular_velocity_max = 0.0
+shader_parameter/linear_accel_max = 0.0
+shader_parameter/radial_accel_max = 0.0
+shader_parameter/tangent_accel_max = 0.0
+shader_parameter/damping_max = 0.0
+shader_parameter/hue_variation_max = 0.0
+shader_parameter/anim_speed_max = 0.0
+shader_parameter/anim_offset_max = 0.0
+shader_parameter/lifetime_randomness = 0.0
+shader_parameter/color_value = Color(0, 0, 0, 1)
+shader_parameter/emission_value = 0.0
+shader_parameter/gravity = Vector3(0, 0, 0)
+shader_parameter/random_initial_axis = false
+shader_parameter/scale_min = 1.0
+shader_parameter/scale_max = 1.0
+shader_parameter/scale_over_velocity_range = Vector2(0, 5)
+shader_parameter/align_y = false
+shader_parameter/velocity_pivot = Vector3(0, 0, 0)
+shader_parameter/velocity_to_dir_tolerance = 0.02
+shader_parameter/directional_velocity_min = 0.0
+shader_parameter/directional_velocity_max = 0.0
+shader_parameter/directional_velocity_mode = 0
+shader_parameter/velocity_limit = false
+shader_parameter/velocity_limit_multiplier = 1.0
+shader_parameter/orbit_velocity_min = 0.0
+shader_parameter/orbit_velocity_max = 0.0
+shader_parameter/radial_velocity_min = 0.0
+shader_parameter/radial_velocity_max = 0.0
+shader_parameter/radial_velocity_prevent_overshoot = false
+shader_parameter/interpolate_to_end = 0.0
+shader_parameter/emission_shape_index = 0
+shader_parameter/emission_shape_offset = Vector3(0, 0, 0)
+shader_parameter/emission_shape_scale = Vector3(1, 1, 1)
+shader_parameter/emission_sphere_radius = 0.0
+shader_parameter/emission_box_extents = Vector3(0, 0, 0)
+shader_parameter/emission_texture_point_count = 0
+shader_parameter/emission_ring_axis = Vector3(0, 0, 0)
+shader_parameter/emission_ring_height = 0.0
+shader_parameter/emission_ring_radius = 0.0
+shader_parameter/emission_ring_inner_radius = 0.0
+shader_parameter/turbulence_noise_strength = 0.0
+shader_parameter/turbulence_noise_scale = 0.0
+shader_parameter/turbulence_influence_min = 0.0
+shader_parameter/turbulence_influence_max = 0.0
+shader_parameter/turbulence_initial_displacement_min = 0.0
+shader_parameter/turbulence_initial_displacement_max = 0.0
+shader_parameter/turbulence_noise_speed_random = 0.0
+shader_parameter/turbulence_noise_speed = Vector3(1, 1, 1)
+shader_parameter/collision_friction = 0.0
+shader_parameter/collision_bounce = 0.0
+shader_parameter/sub_emitter_amount_at_end = 0
+shader_parameter/sub_emitter_keep_velocity = false
+
+[sub_resource type="SphereMesh" id="SphereMesh_ovnr5"]
+
 [node name="SolarSystem" type="Node3D"]
 
 [node name="AetherResevoir" parent="." instance=ExtResource("1_sksq8")]
@@ -274,3 +348,9 @@ mesh = SubResource("SphereMesh_y3678")
 
 [node name="Blackhole2" parent="." instance=ExtResource("12_y3678")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -387)
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="Blackhole2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
+amount = 11
+process_material = SubResource("ShaderMaterial_tybqg")
+draw_pass_1 = SubResource("SphereMesh_ovnr5")
