@@ -1,8 +1,9 @@
-[gd_scene load_steps=18 format=3 uid="uid://dthkgobjiujtg"]
+[gd_scene load_steps=19 format=3 uid="uid://dthkgobjiujtg"]
 
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_0ngit"]
 [ext_resource type="Texture2D" uid="uid://du63o56n4jdim" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-01.png" id="1_54tce"]
 [ext_resource type="Texture2D" uid="uid://da7k1dj50n8mi" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-03.png" id="3_mf1x8"]
+[ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="4_mf1x8"]
 
 [sub_resource type="Gradient" id="Gradient_epvnt"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -637,11 +638,11 @@ _shader_parameters = {
 &"macro_variation2": Color(1, 1, 1, 1),
 &"macro_variation_slope": 0.333,
 &"mipmap_bias": 1.0,
-&"noise1_angle": 0.725,
+&"noise1_angle": 0.0,
 &"noise1_offset": Vector2(0.5, 0.5),
 &"noise1_scale": 0.04,
 &"noise2_scale": 0.076,
-&"noise3_scale": 0.345,
+&"noise3_scale": 0.225,
 &"noise_texture": SubResource("NoiseTexture2D_hmovc"),
 &"projection_angular_division": 2.0,
 &"projection_threshold": 0.8,
@@ -738,5 +739,12 @@ transform = Transform3D(0.99916, 0, -0.0409862, 0, 1, 0, 0.0409862, 0, 0.99916, 
 data_directory = "res://Assets/Terrains/test"
 material = SubResource("Terrain3DMaterial_0ngit")
 assets = SubResource("Terrain3DAssets_dnivq")
+cull_margin = 10000.0
 top_level = true
 metadata/_edit_lock_ = true
+
+[node name="PlanetAthmosphere" parent="." instance=ExtResource("4_mf1x8")]
+planet_radius = 48.7
+atmosphere_height = 10.945
+shader_params/u_atmosphere_ambient_color = Color(0.277817, 0.493875, 1, 1)
+shader_params/u_sphere_depth_factor = 3.305
