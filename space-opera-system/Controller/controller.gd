@@ -14,7 +14,10 @@ func _ready() -> void:
 		new_button.button_group = scene_button_group
 		new_button.text = phase.type
 		new_button.toggle_mode = true
+		new_button.name = phase.id
 		%SceneControl.add_child(new_button)
+		new_button.pressed.connect(scene_button_pressed.bind(phase.scene_data))
+
 
 	# for scene in structure.scene_data:
 	# 	var new_button = Button.new()
@@ -47,12 +50,15 @@ func _on_datapad_sync_toggled(toggled_on: bool) -> void:
 
 
 func _on_datapad_sync_phase_changed(phase: Phase) -> void:
-	check_for_controls.call_deferred()
+	if datapad_syncing:
+		var button : Button= %SceneControl.get_node(phase.id)
+		button.pressed.emit()
+		check_for_controls.call_deferred()
 
 
 func scene_button_pressed(val):
 	if not datapad_syncing:
-		scene_changed.emit(structure.scene_data[val])
+		scene_changed.emit(val)
 		check_for_controls.call_deferred()
 
 

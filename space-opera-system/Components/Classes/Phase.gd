@@ -5,6 +5,7 @@ class_name Phase
 @export var type: String
 @export var status: String
 @export var sp_round: int
+@export var scene_data : SceneData
 
 # @export var duration: float
 # @export var timeElapsed: float

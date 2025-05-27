@@ -2,7 +2,7 @@ extends Node
 
 signal phase_changed
 var syncing_datapad = true
-
+@export var structure : SceneStructure
 
 func _on_timer_timeout() -> void:
 	$FetchGameData.get_game()
@@ -158,5 +158,7 @@ func _on_fetch_playlist_playlist_fetched(playlist) -> void:
 			new_phase.type = phase.type
 			new_phase.sp_round = phase.round
 			new_phase.status = phase.status
+			new_phase.scene_data = structure.scene_data[phase.type]
 			# new_phase.time = phase.time
 			State.phases.append(new_phase)
+		State.save()

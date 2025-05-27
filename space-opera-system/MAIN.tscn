@@ -80,6 +80,7 @@ size_flags_vertical = 3
 
 [node name="DatapadSync" type="Node" parent="."]
 script = ExtResource("1_a1u8q")
+structure = ExtResource("4_tm5h3")
 
 [node name="FetchGameData" parent="DatapadSync" instance=ExtResource("2_78rud")]
 url = "http://datapad.dainsaint.com"
@@ -146,7 +147,6 @@ polygon = PackedVector2Array(14.1102, 48.0485, -13.1024, 1206.67, 972.599, 1203.
 [connection signal="scene_changed" from="VBoxContainer/Control" to="Circle/CanvasGroup/MappingSurface" method="scene_change"]
 [connection signal="scene_changed" from="VBoxContainer/Control" to="Pews/CanvasGroup/MappingSurface" method="scene_change"]
 [connection signal="phase_changed" from="DatapadSync" to="VBoxContainer/Control" method="_on_datapad_sync_phase_changed"]
-[connection signal="phase_changed" from="DatapadSync" to="SceneChanger" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="playlist_fetched" from="DatapadSync/FetchPlaylist" to="DatapadSync" method="_on_fetch_playlist_playlist_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
