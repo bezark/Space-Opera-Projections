@@ -6,6 +6,7 @@ var syncing_datapad = true
 
 func _on_timer_timeout() -> void:
 	$FetchGameData.get_game()
+	$FetchPlaylist.get_playlist()
 
 
 var previous_societies_hash = null
@@ -21,7 +22,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 		new_phase.type = phase.type
 		new_phase.status = phase.status
-		new_phase.round = phase.round
+		new_phase.sp_round = phase.round
 
 		new_phase.time.duration = phase.time.duration
 		new_phase.time.elapsed = phase.time.elapsed
@@ -127,7 +128,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				State.societies.erase(key)
 
 	previous_societies_hash = societies_hash
-	#State.save()
+	#State.save() 
 
 
 func _on_control_datapad_sync_changed(bool: Variant) -> void:
@@ -135,3 +136,27 @@ func _on_control_datapad_sync_changed(bool: Variant) -> void:
 		$Timer.start()
 	else:
 		$Timer.stop()
+
+
+var previous_phase_keys = null
+
+
+func _on_fetch_playlist_playlist_fetched(playlist) -> void:
+	var current_hash = playlist.hash()
+	if previous_phase_keys != current_hash:
+		print("a change")
+		State.phases = []
+		previous_phase_keys = current_hash
+
+		for phase in playlist:
+			print(phase)
+			# if State.phases.has(phase.id):
+			# 	return
+			#TODO: make this edit
+			var new_phase = Phase.new()
+			new_phase.id = phase.id
+			new_phase.type = phase.type
+			new_phase.sp_round = phase.round
+			new_phase.status = phase.status
+			# new_phase.time = phase.time
+			State.phases.append(new_phase)

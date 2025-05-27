@@ -1,14 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=17 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
+[ext_resource type="Script" uid="uid://dysbfeb5swpot" path="res://Components/DatapadAPI/fetch_playlist.gd" id="4_5nrqa"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="7_5nrqa"]
-[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="8_7ct82"]
+[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="8_7ct82"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kgeht"]
 size = Vector2(200, 200)
@@ -83,6 +84,9 @@ script = ExtResource("1_a1u8q")
 [node name="FetchGameData" parent="DatapadSync" instance=ExtResource("2_78rud")]
 url = "http://datapad.dainsaint.com"
 
+[node name="FetchPlaylist" type="HTTPRequest" parent="DatapadSync"]
+script = ExtResource("4_5nrqa")
+
 [node name="Timer" type="Timer" parent="DatapadSync"]
 one_shot = true
 autostart = true
@@ -144,6 +148,7 @@ polygon = PackedVector2Array(14.1102, 48.0485, -13.1024, 1206.67, 972.599, 1203.
 [connection signal="phase_changed" from="DatapadSync" to="VBoxContainer/Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="phase_changed" from="DatapadSync" to="SceneChanger" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
+[connection signal="playlist_fetched" from="DatapadSync/FetchPlaylist" to="DatapadSync" method="_on_fetch_playlist_playlist_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
 [connection signal="scene_changed" from="SceneChanger" to="Circle/CanvasGroup/MappingSurface" method="scene_change"]
 [connection signal="scene_changed" from="SceneChanger" to="Pews/CanvasGroup/MappingSurface" method="scene_change"]

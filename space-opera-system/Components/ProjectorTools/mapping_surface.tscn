@@ -2,7 +2,7 @@
 
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="1_y4248"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="2_gmhpb"]
-[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/setup.tscn" id="3_tqyg2"]
+[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="3_tqyg2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmhpb"]
 resource_local_to_scene = true

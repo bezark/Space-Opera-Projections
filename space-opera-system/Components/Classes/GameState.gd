@@ -2,7 +2,7 @@ extends Node
 class_name GameState
 
 @export var active_phase: Phase
-@export var phases: Dictionary[String, Phase]
+@export var phases: Array[Phase]
 
 @export var societies: Dictionary[String, Society]
 @export var communities: Dictionary[String, Community]

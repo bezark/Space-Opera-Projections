@@ -1,7 +1,7 @@
 [gd_scene load_steps=15 format=3 uid="uid://caxx5yulod7st"]
 
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="2_r34sj"]
-[ext_resource type="Script" uid="uid://dqxofb6qml4d" path="res://Phases/galactic_council.gd" id="2_x5rdb"]
+[ext_resource type="Script" uid="uid://dqxofb6qml4d" path="res://Phases/Templates/galactic_council.gd" id="2_x5rdb"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="4_7vble"]
 [ext_resource type="Script" uid="uid://c0wgsg0s7uq8u" path="res://Controller/Phases/dais_controls.gd" id="4_x5rdb"]
 [ext_resource type="Shader" uid="uid://3lnhpm3bddo" path="res://Assets/Shaders/spotlight.gdshader" id="5_7vble"]

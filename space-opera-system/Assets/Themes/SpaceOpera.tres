@@ -1,7 +1,11 @@
-[gd_resource type="Theme" load_steps=3 format=3 uid="uid://c8ysyp3qs4xu8"]
+[gd_resource type="Theme" load_steps=4 format=3 uid="uid://c8ysyp3qs4xu8"]
 
 [ext_resource type="FontFile" uid="uid://bo07wnay8k3dv" path="res://Assets/Themes/Montserrat/static/Montserrat-Light.ttf" id="1_fbbh0"]
 [ext_resource type="FontFile" uid="uid://b57he8cdpom2c" path="res://Assets/Themes/Comfortaa-VariableFont_wght.ttf" id="1_spm0i"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_fbbh0"]
+content_margin_right = 36.0
+bg_color = Color(0.113665, 0.113665, 0.113665, 1)
 
 [resource]
 Button/font_sizes/font_size = 24
@@ -11,3 +15,4 @@ Label/font_sizes/font_size = 64
 Label/fonts/font = ExtResource("1_fbbh0")
 LineEdit/font_sizes/font_size = 32
 LineEdit/fonts/font = ExtResource("1_spm0i")
+VScrollBar/styles/scroll = SubResource("StyleBoxFlat_fbbh0")

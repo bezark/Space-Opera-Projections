@@ -12,6 +12,7 @@ anchors_preset = 0
 offset_top = 36.0
 offset_right = 1920.0
 offset_bottom = 1116.0
+theme = ExtResource("1_55pmi")
 script = ExtResource("1_u2oln")
 structure = ExtResource("2_7hav4")
 
@@ -56,20 +57,25 @@ split_offset = 200
 [node name="SideBar" type="VBoxContainer" parent="MarginContainer/Main/Body"]
 layout_mode = 2
 
-[node name="SceneControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar"]
 layout_mode = 2
 text = "Scenes"
 
-[node name="DatapadSync" type="CheckButton" parent="MarginContainer/Main/Body/SideBar/SceneControl"]
+[node name="DatapadSync" type="CheckButton" parent="MarginContainer/Main/Body/SideBar"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "Datapad Sync"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Main/Body/SideBar"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SceneControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 2
+size_flags_vertical = 3
 
 [node name="ProjectorControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar"]
 layout_mode = 2
@@ -87,5 +93,5 @@ layout_mode = 2
 wait_time = 60.0
 autostart = true
 
-[connection signal="toggled" from="MarginContainer/Main/Body/SideBar/SceneControl/DatapadSync" to="." method="_on_datapad_sync_toggled"]
+[connection signal="toggled" from="MarginContainer/Main/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]
