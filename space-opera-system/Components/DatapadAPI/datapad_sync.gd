@@ -2,7 +2,7 @@ extends Node
 
 signal phase_changed
 var syncing_datapad = true
-@export var structure : SceneStructure
+@export var scene_structure : SceneStructure
 
 func _on_timer_timeout() -> void:
 	$FetchGameData.get_game()
@@ -16,25 +16,35 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 	$Timer.start()
 	if game:
 		### PHASE ###
-		var phase = game.currentPhase
+		var datapad_currentPhase_id = game.currentPhase.id
+		var matches = State.phases.filter(func(elem):
+			return elem["id"] == datapad_currentPhase_id
+			)
+		if matches.size()>0:
+			print("phase found")
+			print(matches)
+			State.active_phase = matches[0]
+			phase_changed.emit(State.active_phase)
+
 		var new_phase = Phase.new()
 		# new_phase.id = phase.id
 
-		new_phase.type = phase.type
-		new_phase.status = phase.status
-		new_phase.sp_round = phase.round
+		# new_phase.id = phase.id
+		# new_phase.type = phase.type
+		# new_phase.status = phase.status
+		# new_phase.sp_round = phase.round
 
-		new_phase.time.duration = phase.time.duration
-		new_phase.time.elapsed = phase.time.elapsed
-		new_phase.time.remaining = phase.time.remaining
-		new_phase.time.remainingFormatted = phase.time.remainingFormatted
+		# new_phase.time.duration = phase.time.duration
+		# new_phase.time.elapsed = phase.time.elapsed
+		# new_phase.time.remaining = phase.time.remaining
+		# new_phase.time.remainingFormatted = phase.time.remainingFormatted
 
 		# 	state.phases[phase.id] = new_phase
 
 		if !State.active_phase:
 			phase_changed.emit(new_phase)
 
-		elif new_phase.type != State.active_phase.type:
+		elif new_phase.id != State.active_phase.id:
 			phase_changed.emit(new_phase)
 		State.active_phase = new_phase
 
@@ -128,7 +138,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				State.societies.erase(key)
 
 	previous_societies_hash = societies_hash
-	#State.save() 
+	#State.save()
 
 
 func _on_control_datapad_sync_changed(bool: Variant) -> void:
@@ -149,7 +159,7 @@ func _on_fetch_playlist_playlist_fetched(playlist) -> void:
 		previous_phase_keys = current_hash
 
 		for phase in playlist:
-			print(phase)
+			#print(phase)
 			# if State.phases.has(phase.id):
 			# 	return
 			#TODO: make this edit
@@ -158,7 +168,11 @@ func _on_fetch_playlist_playlist_fetched(playlist) -> void:
 			new_phase.type = phase.type
 			new_phase.sp_round = phase.round
 			new_phase.status = phase.status
-			new_phase.scene_data = structure.scene_data[phase.type]
+			new_phase.scene_data = scene_structure.scene_data[phase.type]
 			# new_phase.time = phase.time
 			State.phases.append(new_phase)
-		State.save()
+			State.save()
+
+
+func _on_save_timer_timeout() -> void:
+	State.save()

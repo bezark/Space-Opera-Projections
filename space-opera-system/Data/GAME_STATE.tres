@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=102 format=3 uid="uid://b6osg64tgfgen"]
+[gd_resource type="Resource" script_class="SessionData" load_steps=60 format=3 uid="uid://civshce2ixeoj"]
 
 [ext_resource type="Script" uid="uid://bj0gi6wec2ufj" path="res://Components/Classes/Community.gd" id="1_lohdr"]
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="2_jgbq0"]
@@ -14,427 +14,20 @@
 [ext_resource type="Resource" uid="uid://rjkvde2cxadx" path="res://Data/Archetypes/Aesthetic.tres" id="8_08yu5"]
 [ext_resource type="Resource" uid="uid://cstw7o32k1fbm" path="res://Data/Archetypes/Grounded.tres" id="9_3w1tv"]
 [ext_resource type="Resource" uid="uid://cil2aln12ayt1" path="res://Data/Archetypes/Scholars.tres" id="10_fsgl3"]
-[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="12_fq34q"]
-[ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="13_6t4gm"]
-[ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Templates/Universal Phase.tscn" id="14_tfqbo"]
-[ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/Templates/societal.tscn" id="15_5fu5v"]
 [ext_resource type="Script" uid="uid://ceuamb4jewiu7" path="res://Components/Classes/SocietyAction.gd" id="15_r4n1j"]
-[ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/Templates/galactic_council.tscn" id="16_0tr16"]
 [ext_resource type="Script" uid="uid://dhpfpy8e64ra3" path="res://Components/Classes/SocietyActionComponent.gd" id="16_2ix7t"]
-[ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/Templates/individual.tscn" id="17_pvjkl"]
-[ext_resource type="PackedScene" uid="uid://cu2t0kq57aia" path="res://Phases/Templates/Break.tscn" id="18_4df5w"]
-[ext_resource type="PackedScene" uid="uid://csjt08a72pwbn" path="res://Phases/Templates/Generational Phase.tscn" id="19_nok2u"]
-[ext_resource type="PackedScene" uid="uid://wd1w3dgwxd4u" path="res://Phases/Templates/conclusion.tscn" id="20_wyoyg"]
 
 [sub_resource type="Resource" id="Resource_yl7wv"]
 script = ExtResource("2_qolqt")
 id = ""
 type = "Galactic Phase"
-status = "playing"
+status = "idle"
 sp_round = 3
 time = {
 &"duration": 720.0,
-&"elapsed": 682.125,
-&"remaining": 37.0,
-&"remainingFormatted": "00:37"
-}
-
-[sub_resource type="Resource" id="Resource_5flw6"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("12_fq34q")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_colxq"]
-script = ExtResource("2_qolqt")
-id = "KN4Rt"
-type = "Setup/Onboarding"
-status = "complete"
-sp_round = 0
-scene_data = SubResource("Resource_5flw6")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_gytiw"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("14_tfqbo")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_1ndvh"]
-script = ExtResource("2_qolqt")
-id = "TW6li"
-type = "Universal Phase"
-status = "complete"
-sp_round = 1
-scene_data = SubResource("Resource_gytiw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_1a61f"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("15_5fu5v")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_lmwvc"]
-script = ExtResource("2_qolqt")
-id = "r5gob"
-type = "Societal Phase"
-status = "complete"
-sp_round = 1
-scene_data = SubResource("Resource_1a61f")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_6asgw"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("16_0tr16")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_eqxcj"]
-script = ExtResource("2_qolqt")
-id = "qveE2"
-type = "Galactic Phase"
-status = "complete"
-sp_round = 1
-scene_data = SubResource("Resource_6asgw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_hyjdu"]
-script = ExtResource("2_qolqt")
-id = "ml6Q3"
-type = "Universal Phase"
-status = "complete"
-sp_round = 2
-scene_data = SubResource("Resource_gytiw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_gmhrj"]
-script = ExtResource("2_qolqt")
-id = "BJ7S8"
-type = "Societal Phase"
-status = "complete"
-sp_round = 2
-scene_data = SubResource("Resource_1a61f")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_572tl"]
-script = ExtResource("2_qolqt")
-id = "ao-zv"
-type = "Galactic Phase"
-status = "complete"
-sp_round = 2
-scene_data = SubResource("Resource_6asgw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_co6ix"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("17_pvjkl")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_kt62q"]
-script = ExtResource("2_qolqt")
-id = "iFRIY"
-type = "Individual Phase"
-status = "complete"
-sp_round = 2
-scene_data = SubResource("Resource_co6ix")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_fxxyp"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("18_4df5w")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_s04wv"]
-script = ExtResource("2_qolqt")
-id = "VZQ7m"
-type = "Break"
-status = "complete"
-sp_round = 2
-scene_data = SubResource("Resource_fxxyp")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_nklb5"]
-script = ExtResource("2_qolqt")
-id = "tJXlr"
-type = "Universal Phase"
-status = "complete"
-sp_round = 3
-scene_data = SubResource("Resource_gytiw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_ggql6"]
-script = ExtResource("2_qolqt")
-id = "mBIUo"
-type = "Societal Phase"
-status = "complete"
-sp_round = 3
-scene_data = SubResource("Resource_1a61f")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_a5evr"]
-script = ExtResource("2_qolqt")
-id = "KnY3K"
-type = "Galactic Phase"
-status = "playing"
-sp_round = 3
-scene_data = SubResource("Resource_6asgw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_onare"]
-script = ExtResource("2_qolqt")
-id = "vS8v2"
-type = "Universal Phase"
-status = "idle"
-sp_round = 4
-scene_data = SubResource("Resource_gytiw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_dsa3b"]
-script = ExtResource("2_qolqt")
-id = "MFyrT"
-type = "Societal Phase"
-status = "idle"
-sp_round = 4
-scene_data = SubResource("Resource_1a61f")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_shra4"]
-script = ExtResource("2_qolqt")
-id = "dr96n"
-type = "Galactic Phase"
-status = "idle"
-sp_round = 4
-scene_data = SubResource("Resource_6asgw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_bc0hh"]
-script = ExtResource("2_qolqt")
-id = "Z6ovG"
-type = "Individual Phase"
-status = "idle"
-sp_round = 4
-scene_data = SubResource("Resource_co6ix")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_ggefx"]
-script = ExtResource("2_qolqt")
-id = "Oa_Yg"
-type = "Break"
-status = "idle"
-sp_round = 4
-scene_data = SubResource("Resource_fxxyp")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_3hrcj"]
-script = ExtResource("2_qolqt")
-id = "vKnt4"
-type = "Universal Phase"
-status = "idle"
-sp_round = 5
-scene_data = SubResource("Resource_gytiw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_3lk5k"]
-script = ExtResource("2_qolqt")
-id = "sJnY3"
-type = "Societal Phase"
-status = "idle"
-sp_round = 5
-scene_data = SubResource("Resource_1a61f")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_qlcyy"]
-script = ExtResource("2_qolqt")
-id = "C7lmW"
-type = "Galactic Phase"
-status = "idle"
-sp_round = 5
-scene_data = SubResource("Resource_6asgw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_2ljst"]
-script = ExtResource("2_qolqt")
-id = "uf9xF"
-type = "Universal Phase"
-status = "idle"
-sp_round = 6
-scene_data = SubResource("Resource_gytiw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_q5gi0"]
-script = ExtResource("2_qolqt")
-id = "ebgeJ"
-type = "Societal Phase"
-status = "idle"
-sp_round = 6
-scene_data = SubResource("Resource_1a61f")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_m5ldu"]
-script = ExtResource("2_qolqt")
-id = "eTVTw"
-type = "Galactic Phase"
-status = "idle"
-sp_round = 6
-scene_data = SubResource("Resource_6asgw")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_fwjce"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("19_nok2u")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_t1oim"]
-script = ExtResource("2_qolqt")
-id = "lyb7N"
-type = "Generational Phase"
-status = "idle"
-sp_round = 6
-scene_data = SubResource("Resource_fwjce")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_i15f4"]
-script = ExtResource("13_6t4gm")
-scenes = Array[PackedScene]([ExtResource("20_wyoyg")])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_dv4tu"]
-script = ExtResource("2_qolqt")
-id = "YTkJJ"
-type = "Conclusion"
-status = "idle"
-sp_round = 6
-scene_data = SubResource("Resource_i15f4")
-time = {
-&"duration": 0,
-&"elapsed": 0.0,
-&"remaining": 0,
-&"remainingFormatted": ""
+&"elapsed": 676.125,
+&"remaining": 43.0,
+&"remainingFormatted": "00:43"
 }
 
 [sub_resource type="Resource" id="Resource_bhwi7"]
@@ -682,9 +275,7 @@ voice = "leader"
 [sub_resource type="Resource" id="Resource_6t4gm"]
 script = ExtResource("1_lohdr")
 title = "Lapiz"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"JvqsG": SubResource("Resource_08yu5")
-})
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_3w1tv"]
@@ -699,7 +290,7 @@ voice = "leader"
 script = ExtResource("1_lohdr")
 title = "Quinn"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"YaD-S": SubResource("Resource_vohyy")
+"vi3Gq": SubResource("Resource_mt0pl")
 })
 voice = "people"
 
@@ -707,7 +298,8 @@ voice = "people"
 script = ExtResource("1_lohdr")
 title = "Bobby"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"BqPmG": SubResource("Resource_nloml")
+"BqPmG": SubResource("Resource_nloml"),
+"JvqsG": SubResource("Resource_08yu5")
 })
 voice = "people"
 
@@ -715,7 +307,8 @@ voice = "people"
 script = ExtResource("1_lohdr")
 title = "Fredrick"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"AwCCh": SubResource("Resource_bhwi7")
+"AwCCh": SubResource("Resource_bhwi7"),
+"YaD-S": SubResource("Resource_vohyy")
 })
 voice = "people"
 
@@ -723,8 +316,7 @@ voice = "people"
 script = ExtResource("1_lohdr")
 title = "Jimmy"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"QvweM": SubResource("Resource_hvns4"),
-"vi3Gq": SubResource("Resource_mt0pl")
+"QvweM": SubResource("Resource_hvns4")
 })
 voice = "people"
 
@@ -763,7 +355,7 @@ actions = Array[ExtResource("15_r4n1j")]([])
 [resource]
 script = ExtResource("4_phj51")
 active_phase = SubResource("Resource_yl7wv")
-phases = Array[ExtResource("2_qolqt")]([SubResource("Resource_colxq"), SubResource("Resource_1ndvh"), SubResource("Resource_lmwvc"), SubResource("Resource_eqxcj"), SubResource("Resource_hyjdu"), SubResource("Resource_gmhrj"), SubResource("Resource_572tl"), SubResource("Resource_kt62q"), SubResource("Resource_s04wv"), SubResource("Resource_nklb5"), SubResource("Resource_ggql6"), SubResource("Resource_a5evr"), SubResource("Resource_onare"), SubResource("Resource_dsa3b"), SubResource("Resource_shra4"), SubResource("Resource_bc0hh"), SubResource("Resource_ggefx"), SubResource("Resource_3hrcj"), SubResource("Resource_3lk5k"), SubResource("Resource_qlcyy"), SubResource("Resource_2ljst"), SubResource("Resource_q5gi0"), SubResource("Resource_m5ldu"), SubResource("Resource_t1oim"), SubResource("Resource_dv4tu")])
+phases = Array[ExtResource("2_qolqt")]([])
 societies = Dictionary[String, ExtResource("5_idph4")]({
 "Feay0": SubResource("Resource_0m20m"),
 "V9xbw": SubResource("Resource_wyoyg"),

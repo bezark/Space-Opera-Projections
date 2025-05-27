@@ -27,5 +27,5 @@ func _http_request_completed(result, response_code, headers, body):
 	var response: Dictionary = json.get_data()
 	# print(response.name)
 	# print(response.societies)
-	#print(response)
+	print(response)
 	playlist_fetched.emit(response.phases[0])
