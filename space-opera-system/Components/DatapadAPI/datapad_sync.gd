@@ -154,7 +154,7 @@ var previous_phase_keys = null
 func _on_fetch_playlist_playlist_fetched(playlist) -> void:
 	var current_hash = playlist.hash()
 	if previous_phase_keys != current_hash:
-		print("a change")
+		print("Playlist hash changed")
 		State.phases = []
 		previous_phase_keys = current_hash
 
@@ -162,7 +162,7 @@ func _on_fetch_playlist_playlist_fetched(playlist) -> void:
 			#print(phase)
 			# if State.phases.has(phase.id):
 			# 	return
-			#TODO: make this edit
+			#TODO: make this edit existing phases instead of just creating new ones
 			var new_phase = Phase.new()
 			new_phase.id = phase.id
 			new_phase.type = phase.type
