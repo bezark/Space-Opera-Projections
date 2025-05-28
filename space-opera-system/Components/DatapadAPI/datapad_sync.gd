@@ -6,7 +6,7 @@ var syncing_datapad = true
 
 func _on_timer_timeout() -> void:
 	$FetchGameData.get_game()
-	$FetchPlaylist.get_playlist()
+	# $FetchPlaylist.get_playlist()
 
 
 var previous_societies_hash = null
@@ -15,16 +15,45 @@ var previous_societies_hash = null
 func _on_fetch_game_data_game_fetched(game) -> void:
 	$Timer.start()
 	if game:
-		### PHASE ###
+		### PHASEs ###
+		var phase_index = 0
+		for phase in game.phases[0]:
+			# print(phase)
+
+			if State.phases[phase_index]:
+				State.phases[phase_index].id = phase.id
+				State.phases[phase_index].sp_round = phase.round
+				State.phases[phase_index].status = phase.status
+				# State.phases[phase_index].time = phase.time
+				if State.phases[phase_index].type != phase.type:
+					prints(State.phases[phase_index].type ,phase.type)
+					State.phases[phase_index].type = phase.type
+					State.phases[phase_index].scene_data = scene_structure.scene_data[phase.type]
+
+			else:
+				var new_phase = Phase.new()
+				new_phase.id = phase.id
+				new_phase.type = phase.type
+				new_phase.sp_round = phase.round
+				new_phase.status = phase.status
+				new_phase.scene_data = scene_structure.scene_data[phase.type]
+				# new_phase.time = phase.time
+				State.phases[phase_index]= new_phase
+
+			phase_index += 1
+
+				
+
 		var datapad_currentPhase_id = game.currentPhase.id
-		var matches = State.phases.filter(func(elem):
-			return elem["id"] == datapad_currentPhase_id
-			)
-		if matches.size()>0:
-			print("phase found")
-			print(matches)
-			State.active_phase = matches[0]
-			phase_changed.emit(State.active_phase)
+		if State.active_phase.id != datapad_currentPhase_id:
+			var matches = State.phases.filter(func(elem):
+				return elem["id"] == datapad_currentPhase_id
+				)
+			if matches.size()>0:
+				print("phase found")
+				print(matches)
+				State.active_phase = matches[0]
+				phase_changed.emit(State.active_phase)
 
 		# var new_phase = Phase.new()
 		# new_phase.id = phase.id
@@ -64,7 +93,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 			this_society.title = society.name
 			this_society.archetype = State.archetypes[society.archetype]
 
-			print(this_society.title)
+			# print(this_society.title)
 
 			# this_society.communities = {}
 
@@ -84,7 +113,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				this_community.voice = community.voice
 				# this_community.resources = {}
 
-				print("- " + this_community.title)
+				# print("- " + this_community.title)
 
 				### RESOURCES ###
 
@@ -101,7 +130,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 					#this_resource.vital = resource.vital
 					this_resource.exhausted = resource.exhausted
 
-					print("-- " + this_resource.title)
+					# print("-- " + this_resource.title)
 
 					current_resources.append(resource.id)
 					State.resources.set(resource.id, this_resource)
@@ -121,7 +150,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 			this_society.actions.clear()
 			for action in society.actions:
-				print(action)
+				# print(action)
 				var new_action = SocietyAction.new()
 				new_action.game_round = action.round
 				new_action.voted = action.voted
@@ -138,7 +167,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				State.societies.erase(key)
 
 	previous_societies_hash = societies_hash
-	#State.save()
+	State.save()
 
 
 func _on_control_datapad_sync_changed(bool: Variant) -> void:
@@ -151,27 +180,27 @@ func _on_control_datapad_sync_changed(bool: Variant) -> void:
 var previous_phase_keys = null
 
 
-func _on_fetch_playlist_playlist_fetched(playlist) -> void:
-	var current_hash = playlist.hash()
-	if previous_phase_keys != current_hash:
-		print("Playlist hash changed")
-		State.phases = []
-		previous_phase_keys = current_hash
+# func _on_fetch_playlist_playlist_fetched(playlist) -> void:
+# 	var current_hash = playlist.hash()
+# 	if previous_phase_keys != current_hash:
+# 		print("Playlist hash changed")
+# 		State.phases = []
+# 		previous_phase_keys = current_hash
 
-		for phase in playlist:
-			#print(phase)
-			# if State.phases.has(phase.id):
-			# 	return
-			#TODO: make this edit existing phases instead of just creating new ones
-			var new_phase = Phase.new()
-			new_phase.id = phase.id
-			new_phase.type = phase.type
-			new_phase.sp_round = phase.round
-			new_phase.status = phase.status
-			new_phase.scene_data = scene_structure.scene_data[phase.type]
-			# new_phase.time = phase.time
-			State.phases.append(new_phase)
-			State.save()
+# 		for phase in playlist:
+# 			#print(phase)
+# 			# if State.phases.has(phase.id):
+# 			# 	return
+# 			#TODO: make this edit existing phases instead of just creating new ones
+# 			var new_phase = Phase.new()
+# 			new_phase.id = phase.id
+# 			new_phase.type = phase.type
+# 			new_phase.sp_round = phase.round
+# 			new_phase.status = phase.status
+# 			new_phase.scene_data = scene_structure.scene_data[phase.type]
+# 			# new_phase.time = phase.time
+# 			State.phases.append(new_phase)
+# 			State.save()
 
 
 func _on_save_timer_timeout() -> void:
