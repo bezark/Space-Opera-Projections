@@ -80,6 +80,7 @@ size_flags_vertical = 3
 
 [node name="DatapadSync" type="Node" parent="."]
 script = ExtResource("1_a1u8q")
+scene_structure = ExtResource("4_tm5h3")
 
 [node name="FetchGameData" parent="DatapadSync" instance=ExtResource("2_78rud")]
 url = "http://datapad.dainsaint.com"
