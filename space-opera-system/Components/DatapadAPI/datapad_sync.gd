@@ -26,7 +26,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 			State.active_phase = matches[0]
 			phase_changed.emit(State.active_phase)
 
-		var new_phase = Phase.new()
+		# var new_phase = Phase.new()
 		# new_phase.id = phase.id
 
 		# new_phase.id = phase.id
@@ -41,12 +41,12 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 		# 	state.phases[phase.id] = new_phase
 
-		if !State.active_phase:
-			phase_changed.emit(new_phase)
+		# if !State.active_phase:
+		# 	phase_changed.emit(new_phase)
 
-		elif new_phase.id != State.active_phase.id:
-			phase_changed.emit(new_phase)
-		State.active_phase = new_phase
+		# elif new_phase.id != State.active_phase.id:
+		# 	phase_changed.emit(new_phase)
+		# State.active_phase = new_phase
 
 	### SOCIETIES ###
 

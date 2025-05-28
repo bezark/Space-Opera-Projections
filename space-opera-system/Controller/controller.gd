@@ -51,7 +51,7 @@ func _on_datapad_sync_toggled(toggled_on: bool) -> void:
 
 func _on_datapad_sync_phase_changed(phase: Phase) -> void:
 	if datapad_syncing:
-		var button : Button= %SceneControl.get_node(phase.id)
+		#var button : Button= %SceneControl.get_node(phase.id)
 		#button.pressed.emit()
 		scene_changed.emit(phase.scene_data)
 		check_for_controls.call_deferred()
