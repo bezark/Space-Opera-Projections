@@ -12,7 +12,7 @@ script = ExtResource("1_oau11")
 id = "dog"
 type = "Universal Phase"
 status = "idle"
-round = 2
+sp_round = 0
 time = {
 &"duration": 240.0,
 &"elapsed": 0.0,
@@ -23,7 +23,7 @@ time = {
 [resource]
 script = ExtResource("2_itegd")
 active_phase = SubResource("Resource_oau11")
-phases = Dictionary[String, ExtResource("1_oau11")]({})
+phases = Array[ExtResource("1_oau11")]([])
 societies = Dictionary[String, ExtResource("3_t6ak0")]({})
 communities = Dictionary[String, ExtResource("3_e8wrl")]({})
 resources = Dictionary[String, ExtResource("4_ab24y")]({})

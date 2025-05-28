@@ -15,6 +15,7 @@ script = ExtResource("1_ehp8y")
 layout_mode = 0
 offset_right = 8.0
 offset_bottom = 8.0
+toggle_mode = true
 text = "yoyoyo"
 
 [connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

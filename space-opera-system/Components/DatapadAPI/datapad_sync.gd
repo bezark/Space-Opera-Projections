@@ -20,11 +20,12 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 		for phase in game.phases[0]:
 			# print(phase)
 
-			if State.phases[phase_index]:
+			if State.phases.size()>phase_index:
 				State.phases[phase_index].id = phase.id
 				State.phases[phase_index].sp_round = phase.round
 				State.phases[phase_index].status = phase.status
-				# State.phases[phase_index].time = phase.time
+				State.phases[phase_index].time.elapsed= phase.timeElapsed
+				State.phases[phase_index].time.duration= phase.duration
 				if State.phases[phase_index].type != phase.type:
 					prints(State.phases[phase_index].type ,phase.type)
 					State.phases[phase_index].type = phase.type
@@ -37,8 +38,9 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				new_phase.sp_round = phase.round
 				new_phase.status = phase.status
 				new_phase.scene_data = scene_structure.scene_data[phase.type]
-				# new_phase.time = phase.time
-				State.phases[phase_index]= new_phase
+				new_phase.time.elapsed= phase.timeElapsed
+				new_phase.time.duration= phase.duration
+				State.phases.append(new_phase)
 
 			phase_index += 1
 
@@ -54,6 +56,8 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				print(matches)
 				State.active_phase = matches[0]
 				phase_changed.emit(State.active_phase)
+
+		State.active_phase.time = game.currentPhase.time
 
 		# var new_phase = Phase.new()
 		# new_phase.id = phase.id
@@ -167,7 +171,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				State.societies.erase(key)
 
 	previous_societies_hash = societies_hash
-	State.save()
+	# State.save()
 
 
 func _on_control_datapad_sync_changed(bool: Variant) -> void:

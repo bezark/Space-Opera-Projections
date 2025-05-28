@@ -24,8 +24,9 @@ var previous_state = {}
 func _http_request_completed(result, response_code, headers, body):
 	var json = JSON.new()
 	json.parse(body.get_string_from_utf8())
-	var response: Dictionary = json.get_data()
+	if json.get_data():
+		var response: Dictionary = json.get_data()
 	# print(response.name)
 	# print(response.societies)
 	# print(response.phases)
-	game_fetched.emit(response)
+		game_fetched.emit(response)

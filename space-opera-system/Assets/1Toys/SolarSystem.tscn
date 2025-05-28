@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_sksq8"]
 [ext_resource type="Material" uid="uid://cxnnnk4bbuxtu" path="res://Assets/1Toys/whiteHot.tres" id="2_crrbq"]
-[ext_resource type="Texture2D" uid="uid://c7wjn2pin5i2q" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="2_xobol"]
+[ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="2_xobol"]
 [ext_resource type="PackedScene" uid="uid://dkg5lehh8sxx4" path="res://Assets/1Toys/Planets/cloudy_planet.tscn" id="3_bl21e"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="3_qhlf5"]
 [ext_resource type="Shader" uid="uid://4c4cmoyhfxml" path="res://Assets/hologram.gdshader" id="4_bl21e"]
@@ -347,7 +347,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -326.402, 0, -13.8047)
 mesh = SubResource("SphereMesh_y3678")
 
 [node name="Blackhole2" parent="." instance=ExtResource("12_y3678")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -387)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -327.505, 0, -28.4048)
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="Blackhole2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 0, 0)
