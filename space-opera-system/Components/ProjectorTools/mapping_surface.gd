@@ -11,6 +11,6 @@ func scene_change(scene_data: SceneData):
 	var ded_kidz = $SubViewport.get_children()
 	for kid in ded_kidz:
 		kid.queue_free()
-		#TODO: Add check for the same scene
-	var scene_to_load = scene_data.scenes[projector].instantiate()
+		#TODO: add multicamera
+	var scene_to_load = scene_data.scene.instantiate()
 	$SubViewport.add_child(scene_to_load)

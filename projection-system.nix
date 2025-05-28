@@ -315,6 +315,8 @@
 
     obsidian
 
+    gnome-pomodoro
+    gnome-solanum
     gnome-power-manager
     power-profiles-daemon
     pipewire

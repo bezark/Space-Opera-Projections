@@ -40,6 +40,7 @@ theme_override_constants/margin_bottom = 40
 
 [node name="Main" type="VSplitContainer" parent="MarginContainer"]
 layout_mode = 2
+split_offset = -200
 
 [node name="Header" type="HBoxContainer" parent="MarginContainer/Main"]
 layout_mode = 2
@@ -59,7 +60,6 @@ script = ExtResource("3_u2oln")
 [node name="Previews" type="HBoxContainer" parent="MarginContainer/Main/Header"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 4
 
 [node name="CSTAGED" type="TextureRect" parent="MarginContainer/Main/Header/Previews"]
 custom_minimum_size = Vector2(200, 200)
@@ -129,7 +129,29 @@ layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "Projectors"
 
-[node name="ActiveSceneControls" type="PanelContainer" parent="MarginContainer/Main/Body"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Main/Body"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Main/Body/VBoxContainer"]
+layout_mode = 2
+
+[node name="MakeUnique" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = " Make Unique..."
+
+[node name="Open" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Open in Editor..."
+
+[node name="Button3" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "asdfgasfga"
+
+[node name="Button4" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "asdfgasfga"
+
+[node name="ActiveSceneControls" type="PanelContainer" parent="MarginContainer/Main/Body/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 
@@ -138,4 +160,6 @@ wait_time = 5.0
 autostart = true
 
 [connection signal="toggled" from="MarginContainer/Main/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
+[connection signal="pressed" from="MarginContainer/Main/Body/VBoxContainer/HBoxContainer/MakeUnique" to="." method="_on_make_unique_pressed"]
+[connection signal="pressed" from="MarginContainer/Main/Body/VBoxContainer/HBoxContainer/Open" to="." method="_on_open_pressed"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

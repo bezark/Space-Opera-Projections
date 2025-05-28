@@ -1,9 +1,12 @@
+@tool
 extends Control
 
 signal datapad_sync_changed(bool)
 signal scene_changed(scene: SceneData)
 
 var datapad_syncing = true
+var selected_scene_data: SceneData
+var selected_id : String
 @export var structure: SceneStructure
 
 
@@ -16,8 +19,7 @@ func _ready() -> void:
 		new_button.toggle_mode = true
 		new_button.name = phase.id
 		%SceneControl.add_child(new_button)
-		new_button.pressed.connect(scene_button_pressed.bind(phase.scene_data))
-
+		new_button.pressed.connect(scene_button_pressed.bind(phase.scene_data,new_button.name))
 
 	# for scene in structure.scene_data:
 	# 	var new_button = Button.new()
@@ -51,14 +53,16 @@ func _on_datapad_sync_toggled(toggled_on: bool) -> void:
 
 func _on_datapad_sync_phase_changed(phase: Phase) -> void:
 	if datapad_syncing:
-		var button : Button= %SceneControl.get_node(phase.id)
+		var button: Button = %SceneControl.get_node(phase.id)
 		if button:
 			button.button_pressed = true
 		scene_changed.emit(phase.scene_data)
 		check_for_controls.call_deferred()
 
 
-func scene_button_pressed(val):
+func scene_button_pressed(val, id):
+	selected_scene_data = val
+	selected_id = id
 	if not datapad_syncing:
 		scene_changed.emit(val)
 		check_for_controls.call_deferred()
@@ -66,3 +70,39 @@ func scene_button_pressed(val):
 
 func _on_autosave_timeout() -> void:
 	State.save()
+
+
+func _on_make_unique_pressed() -> void:
+	var new_scenedata :SceneData= selected_scene_data.duplicate(true)
+	var new_scene = new_scenedata.scene
+	var new_path = str("res://Phases/Overrides/",selected_id,'.tscn')
+	ResourceSaver.save(new_scene, new_path)
+	new_scenedata.scene = load(new_path)
+	var phase_to_change = State.phases.find_custom(func(elem):
+				return elem["id"] == selected_id
+				)
+	State.phases[phase_to_change].scene_data = new_scenedata
+	State.save()
+	selected_scene_data = new_scenedata
+	State.load_state()
+	open_scene_message()
+	pass  # Replace with function body.
+
+
+func _on_open_pressed() -> void:
+	open_scene_message()
+
+func open_scene_message():
+	var peer = StreamPeerTCP.new()
+	if peer.connect_to_host("127.0.0.1", 7878) == OK:
+		peer.poll()
+		peer.put_var(selected_scene_data.scene.resource_path)
+		peer.disconnect_from_host()
+	else:
+		push_error("Couldn’t talk to the editor plugin!")
+
+	
+	
+	#SceneOpen.switch_scene(scene_path)
+	
+	#open_scene_from_path(scene_path)
