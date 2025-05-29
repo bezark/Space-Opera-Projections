@@ -11,6 +11,10 @@ var selected_id : String
 
 
 func _ready() -> void:
+	make_buttons()
+func make_buttons():
+	for ded_kid in %  SceneControl.get_children():
+		ded_kid.queue_free()
 	var scene_button_group = ButtonGroup.new()
 	for phase in State.phases:
 		var new_button = Button.new()
@@ -20,7 +24,8 @@ func _ready() -> void:
 		new_button.name = phase.id
 		%SceneControl.add_child(new_button)
 		new_button.pressed.connect(scene_button_pressed.bind(phase.scene_data,new_button.name))
-
+	if selected_id:
+		%SceneControl.get_node(selected_id).button_pressed = true
 	# for scene in structure.scene_data:
 	# 	var new_button = Button.new()
 	# 	new_button.button_group = scene_button_group
@@ -85,6 +90,7 @@ func _on_make_unique_pressed() -> void:
 	State.save()
 	selected_scene_data = new_scenedata
 	State.load_state()
+	make_buttons()
 	open_scene_message()
 	pass  # Replace with function body.
 
