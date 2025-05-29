@@ -1,8 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://b3krjl7ciw1cy"]
+[gd_scene load_steps=5 format=3 uid="uid://b3krjl7ciw1cy"]
 
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="1_y4248"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="2_gmhpb"]
-[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="3_tqyg2"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gmhpb"]
 resource_local_to_scene = true
@@ -18,14 +17,16 @@ texture = SubResource("ViewportTexture_y4248")
 polygon = PackedVector2Array(0, 0, 0, 1080, 1920, 1080, 1920, 0)
 uv = PackedVector2Array(-1.90735e-06, -4.48745e-09, -9.53674e-07, 1080, 1920, 1080, 1920, -1.38283e-05)
 script = ExtResource("2_gmhpb")
-active_scene = ExtResource("3_tqyg2")
 
 [node name="SubViewport" type="SubViewport" parent="."]
-own_world_3d = true
-msaa_3d = 3
-screen_space_aa = 1
-use_debanding = true
+disable_3d = true
 size = Vector2i(1920, 1200)
-size_2d_override_stretch = true
 
-[node name="GanerationalPhase" parent="SubViewport" instance=ExtResource("3_tqyg2")]
+[node name="ColorRect" type="ColorRect" parent="SubViewport"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -1,14 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=15 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
-[ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://Components/ProjectorTools/mapping_surface.tscn" id="5_kgeht"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
-[ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="7_5nrqa"]
-[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="8_7ct82"]
+[ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://Components/ProjectorTools/mapping_surface.tscn" id="6_kgeht"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm6fk"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -23,8 +21,13 @@ sky = SubResource("Sky_5nrqa")
 tonemap_mode = 2
 glow_enabled = true
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_kgeht"]
+resource_local_to_scene = true
+shader = ExtResource("6_iyt76")
+shader_parameter/size = 1.0
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_iyt76"]
-viewport_path = NodePath("Circle/CanvasGroup/MappingSurface/SubViewport")
+viewport_path = NodePath("SubViewport")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_xm6fk"]
 resource_local_to_scene = true
@@ -60,9 +63,10 @@ url = "http://datapad.dainsaint.com"
 one_shot = true
 autostart = true
 
-[node name="SceneChanger" type="Node" parent="."]
+[node name="SceneChanger" type="Node" parent="." node_paths=PackedStringArray("mapping_surfaces")]
 script = ExtResource("5_s83dy")
 structure = ExtResource("4_tm5h3")
+mapping_surfaces = [NodePath("../Circle/CanvasGroup/MappingSurface"), NodePath("../Pews/CanvasGroup/MappingSurface")]
 
 [node name="STAGED" type="Node3D" parent="SceneChanger"]
 
@@ -76,6 +80,15 @@ directional_shadow_max_distance = 1.0
 [node name="WorldEnvironment" type="WorldEnvironment" parent="SceneChanger/LIVE"]
 environment = SubResource("Environment_7ct82")
 
+[node name="SubViewport" type="SubViewport" parent="SceneChanger/LIVE"]
+msaa_3d = 3
+screen_space_aa = 1
+use_debanding = true
+size = Vector2i(1920, 1200)
+size_2d_override_stretch = true
+
+[node name="Camera3D" type="Camera3D" parent="SceneChanger/LIVE/SubViewport"]
+
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
 position = Vector2i(0, 36)
@@ -85,25 +98,11 @@ size = Vector2i(1920, 1200)
 scale = Vector2(1.94982, 1)
 fit_margin = 0.0
 
-[node name="MappingSurface" type="Polygon2D" parent="Circle/CanvasGroup"]
-position = Vector2(17.4375, -18)
-scale = Vector2(0.508861, 0.915741)
+[node name="MappingSurface" parent="Circle/CanvasGroup" instance=ExtResource("6_kgeht")]
+material = SubResource("ShaderMaterial_kgeht")
+scale = Vector2(0.507526, 1)
 texture = SubResource("ViewportTexture_iyt76")
-polygon = PackedVector2Array(914.142, -21.8402, -49.3858, -9.82811, -41.3228, 1184.83, 1915.97, 1164.08, 1888, 32.0001)
-uv = PackedVector2Array(1024, 1.90735e-05, 3.05176e-05, -4.57764e-05, -5.72205e-06, 1080, 1920, 1080, 1920, -2.28882e-05)
-polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(0, 3, 2), PackedInt32Array(0, 4, 3)]
-script = ExtResource("7_5nrqa")
-active_scene = ExtResource("8_7ct82")
-
-[node name="SubViewport" type="SubViewport" parent="Circle/CanvasGroup/MappingSurface"]
-own_world_3d = true
-msaa_3d = 3
-screen_space_aa = 1
-use_debanding = true
-size = Vector2i(1920, 1200)
-size_2d_override_stretch = true
-
-[node name="Camera3D" type="Camera3D" parent="Circle/CanvasGroup/MappingSurface/SubViewport"]
+title = "circle"
 
 [node name="Pews" type="Window" parent="."]
 position = Vector2i(0, 36)
@@ -112,17 +111,15 @@ size = Vector2i(1920, 1200)
 [node name="CanvasGroup" type="CanvasGroup" parent="Pews"]
 scale = Vector2(1.94982, 1)
 
-[node name="MappingSurface" parent="Pews/CanvasGroup" instance=ExtResource("5_kgeht")]
-process_mode = 4
+[node name="MappingSurface" parent="Pews/CanvasGroup" instance=ExtResource("6_kgeht")]
 material = SubResource("ShaderMaterial_xm6fk")
-position = Vector2(10.7702, -58)
-scale = Vector2(0.508861, 0.915741)
 texture = SubResource("ViewportTexture_5nrqa")
-polygon = PackedVector2Array(14.1102, 48.0485, -13.1024, 1206.67, 972.599, 1203.4, 1947.21, 1211.04, 1947.21, 618.079, 1926.05, 69.8888, 1050.2, 32.7604)
+polygon = PackedVector2Array(-7.99997, -8, -16, 1224, 918.546, 1124, 865.721, -10)
+uv = PackedVector2Array(-7.99997, -8, -16, 1224, 1936, 1224, 1928, 7.99998)
+title = "pews"
 
 [connection signal="datapad_sync_changed" from="VBoxContainer/Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
-[connection signal="scene_changed" from="VBoxContainer/Control" to="Circle/CanvasGroup/MappingSurface" method="scene_change"]
+[connection signal="scene_changed" from="VBoxContainer/Control" to="SceneChanger" method="_on_control_scene_changed"]
 [connection signal="phase_changed" from="DatapadSync" to="VBoxContainer/Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
-[connection signal="scene_changed" from="SceneChanger" to="Circle/CanvasGroup/MappingSurface" method="scene_change"]

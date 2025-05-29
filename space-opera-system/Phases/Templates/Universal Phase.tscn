@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://mbcy1e7l2o72"]
+[gd_scene load_steps=7 format=3 uid="uid://mbcy1e7l2o72"]
 
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_0ilj2"]
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_702qu"]
+[ext_resource type="Script" uid="uid://c2b5inaty02qd" path="res://Components/Classes/SpaceScene.gd" id="1_hlqov"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0ilj2"]
 
@@ -16,7 +17,11 @@ refraction_enabled = true
 dof_blur_far_enabled = true
 dof_blur_near_enabled = true
 
-[node name="UniversalPhase" type="Node3D"]
+[node name="UniversalPhase" type="Node3D" node_paths=PackedStringArray("circle", "pews")]
+script = ExtResource("1_hlqov")
+circle = NodePath("SubViewport")
+pews = NodePath("SubViewport2")
+metadata/_custom_type_script = "uid://c2b5inaty02qd"
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_0ilj2")
@@ -33,12 +38,22 @@ radial_segments = 64
 rings = 64
 material = SubResource("StandardMaterial3D_oyq1c")
 
-[node name="Camera3D" type="Camera3D" parent="."]
+[node name="SubViewport" type="SubViewport" parent="."]
+size = Vector2i(1920, 1200)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport"]
 transform = Transform3D(-0.258819, 0, -0.965926, 0, 1, 0, 0.965926, 0, -0.258819, -406.671, 0.819688, 0)
 environment = ExtResource("1_0ilj2")
 attributes = SubResource("CameraAttributesPractical_702qu")
+current = true
 fov = 37.8493
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="Camera3D"]
-transform = Transform3D(-0.965927, 0.0669844, -0.249998, -2.98023e-06, 0.965925, 0.258821, 0.258816, 0.250003, -0.933013, 0, 0, 0)
-shadow_enabled = true
+[node name="SubViewport2" type="SubViewport" parent="."]
+size = Vector2i(1920, 1200)
+
+[node name="Camera3D" type="Camera3D" parent="SubViewport2"]
+transform = Transform3D(-0.104129, 0, 0.994564, 0, 1, 0, -0.994564, 0, -0.104129, -379.477, 0.819688, 0)
+environment = ExtResource("1_0ilj2")
+attributes = SubResource("CameraAttributesPractical_702qu")
+current = true
+fov = 37.8493
