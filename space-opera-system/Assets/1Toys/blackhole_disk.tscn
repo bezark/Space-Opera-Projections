@@ -115,4 +115,8 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.739975, 0.417669, 0.0813718, 1)
 
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 100.0
+omni_range = 1000.0
+
 [connection signal="value_changed" from="Scale" to="." method="_on_scale_value_changed"]

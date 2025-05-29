@@ -34,7 +34,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Free fly camera/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/godOSC/plugin.cfg", "res://addons/livecontroller/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/Free fly camera/plugin.cfg", "res://addons/Todo_Manager/plugin.cfg", "res://addons/godOSC/plugin.cfg", "res://addons/livecontroller/plugin.cfg", "res://addons/orbit-controls/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
 
 [file_customization]
 
