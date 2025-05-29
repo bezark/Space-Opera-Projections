@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://hfn3lqg1fa0j"]
+
+[ext_resource type="Material" uid="uid://cxnnnk4bbuxtu" path="res://Assets/1Toys/whiteHot.tres" id="1_kqwdu"]
+
+[node name="Star" type="CSGSphere3D"]
+radius = 50.0
+radial_segments = 64
+rings = 64
+material = ExtResource("1_kqwdu")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.760034, -0.168201, 0.627739, -2.99532e-06, 0.965926, 0.258821, -0.649884, -0.196715, 0.734136, -329.54, 0.819688, -23.1794)
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 600.0
+omni_range = 600.0

@@ -151,9 +151,10 @@ text = "asdfgasfga"
 layout_mode = 2
 text = "asdfgasfga"
 
-[node name="ActiveSceneControls" type="PanelContainer" parent="MarginContainer/Main/Body/VBoxContainer"]
+[node name="ActiveSceneControls" type="FlowContainer" parent="MarginContainer/Main/Body/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_vertical = 3
 
 [node name="Autosave" type="Timer" parent="."]
 wait_time = 5.0
