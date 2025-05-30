@@ -1,18 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d3nh81q7dsdr4"]
+[gd_scene load_steps=6 format=3 uid="uid://d3nh81q7dsdr4"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
 [ext_resource type="Script" uid="uid://byxtn4120rsnl" path="res://Controller/controller.gd" id="1_u2oln"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="2_7hav4"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="3_u2oln"]
 
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_m55xu"]
-size = Vector2(200, 200)
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_nlu3g"]
-viewport_path = NodePath("Circle")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_671od"]
-viewport_path = NodePath("Pews")
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nlu3g"]
 
 [node name="Control" type="Control"]
 auto_translate_mode = 1
@@ -38,129 +31,99 @@ theme_override_constants/margin_top = 40
 theme_override_constants/margin_right = 40
 theme_override_constants/margin_bottom = 40
 
-[node name="Main" type="VSplitContainer" parent="MarginContainer"]
+[node name="Body" type="HSplitContainer" parent="MarginContainer"]
 layout_mode = 2
-split_offset = -200
+size_flags_vertical = 3
+split_offset = 200
 
-[node name="Header" type="HBoxContainer" parent="MarginContainer/Main"]
+[node name="SideBar" type="VBoxContainer" parent="MarginContainer/Body"]
+layout_mode = 2
+
+[node name="Timer" type="HBoxContainer" parent="MarginContainer/Body/SideBar"]
 layout_mode = 2
 size_flags_vertical = 2
 
-[node name="Time" type="Label" parent="MarginContainer/Main/Header"]
+[node name="Time" type="Label" parent="MarginContainer/Body/SideBar/Timer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "TIME"
 
-[node name="TimeLabel" type="Label" parent="MarginContainer/Main/Header"]
+[node name="TimeLabel" type="Label" parent="MarginContainer/Body/SideBar/Timer"]
 layout_mode = 2
 size_flags_horizontal = 0
 text = "0000"
 script = ExtResource("3_u2oln")
 
-[node name="Previews" type="HBoxContainer" parent="MarginContainer/Main/Header"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="CSTAGED" type="TextureRect" parent="MarginContainer/Main/Header/Previews"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-texture = SubResource("PlaceholderTexture2D_m55xu")
-
-[node name="PSTAGED" type="TextureRect" parent="MarginContainer/Main/Header/Previews"]
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-texture = SubResource("PlaceholderTexture2D_m55xu")
-
-[node name="CLIVE" type="TextureRect" parent="MarginContainer/Main/Header/Previews"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-texture = SubResource("ViewportTexture_nlu3g")
-expand_mode = 3
-
-[node name="PLIVE" type="TextureRect" parent="MarginContainer/Main/Header/Previews"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-texture = SubResource("ViewportTexture_671od")
-expand_mode = 3
-
-[node name="Body" type="HSplitContainer" parent="MarginContainer/Main"]
-layout_mode = 2
-size_flags_vertical = 3
-split_offset = 200
-
-[node name="SideBar" type="VBoxContainer" parent="MarginContainer/Main/Body"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar"]
+[node name="Label" type="Label" parent="MarginContainer/Body/SideBar"]
 layout_mode = 2
 text = "Scenes"
 
-[node name="DatapadSync" type="CheckButton" parent="MarginContainer/Main/Body/SideBar"]
+[node name="DatapadSync" type="CheckButton" parent="MarginContainer/Body/SideBar"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 32
 button_pressed = true
 text = "Datapad Sync"
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Main/Body/SideBar"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/Body/SideBar"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SceneControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar/ScrollContainer"]
+[node name="PhaseSelect" type="VBoxContainer" parent="MarginContainer/Body/SideBar/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ProjectorControl" type="VBoxContainer" parent="MarginContainer/Main/Body/SideBar"]
+[node name="ProjectorControl" type="VBoxContainer" parent="MarginContainer/Body/SideBar"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="MarginContainer/Main/Body/SideBar/ProjectorControl"]
+[node name="Label" type="Label" parent="MarginContainer/Body/SideBar/ProjectorControl"]
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "Projectors"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/Main/Body"]
+[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/Body"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Main/Body/VBoxContainer"]
+[node name="SystemControls" type="FlowContainer" parent="MarginContainer/Body/VBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
 
-[node name="MakeUnique" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
+[node name="SystemView" type="TextureRect" parent="MarginContainer/Body/VBoxContainer/SystemControls"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(200, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+texture = SubResource("PlaceholderTexture2D_nlu3g")
+expand_mode = 3
+
+[node name="Zoom" type="VBoxContainer" parent="MarginContainer/Body/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ZoomControls" type="FlowContainer" parent="MarginContainer/Body/VBoxContainer/Zoom"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MakeUnique" type="Button" parent="MarginContainer/Body/VBoxContainer/Zoom"]
 layout_mode = 2
 text = " Make Unique..."
 
-[node name="Open" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
+[node name="Open" type="Button" parent="MarginContainer/Body/VBoxContainer/Zoom"]
 layout_mode = 2
 text = "Open in Editor..."
 
-[node name="Button3" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "asdfgasfga"
-
-[node name="Button4" type="Button" parent="MarginContainer/Main/Body/VBoxContainer/HBoxContainer"]
-layout_mode = 2
-text = "asdfgasfga"
-
-[node name="ActiveSceneControls" type="FlowContainer" parent="MarginContainer/Main/Body/VBoxContainer"]
+[node name="UIControls" type="FlowContainer" parent="MarginContainer/Body/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Autosave" type="Timer" parent="."]
 wait_time = 5.0
 autostart = true
 
-[connection signal="toggled" from="MarginContainer/Main/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
-[connection signal="pressed" from="MarginContainer/Main/Body/VBoxContainer/HBoxContainer/MakeUnique" to="." method="_on_make_unique_pressed"]
-[connection signal="pressed" from="MarginContainer/Main/Body/VBoxContainer/HBoxContainer/Open" to="." method="_on_open_pressed"]
+[connection signal="toggled" from="MarginContainer/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
+[connection signal="pressed" from="MarginContainer/Body/VBoxContainer/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
+[connection signal="pressed" from="MarginContainer/Body/VBoxContainer/Zoom/Open" to="." method="_on_open_pressed"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

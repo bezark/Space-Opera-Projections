@@ -17,6 +17,7 @@ class_name CelestialBody
 
 @export var spin: float
 
+@onready var controls: GridContainer = $VBoxContainer/Controls
 
 
 
@@ -49,3 +50,7 @@ func _on_speed_value_changed(value: float) -> void:
 
 func _on_spin_value_changed(value: float) -> void:
 	spin = value
+
+
+func _on_title_toggled(toggled_on: bool) -> void:
+	controls.visible = toggled_on

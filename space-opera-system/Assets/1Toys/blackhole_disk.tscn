@@ -1,6 +1,7 @@
-[gd_scene load_steps=6 format=3 uid="uid://bgluraosox2oe"]
+[gd_scene load_steps=7 format=3 uid="uid://bgluraosox2oe"]
 
 [ext_resource type="Script" uid="uid://bcshhps4gpxlp" path="res://Assets/1Toys/blackhole.gd" id="1_nu81i"]
+[ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="2_put6h"]
 
 [sub_resource type="Shader" id="Shader_j4skb"]
 code = "shader_type spatial;
@@ -96,27 +97,37 @@ sides = 64
 ring_sides = 64
 material = SubResource("StandardMaterial3D_dee4i")
 
-[node name="Scale" type="VSlider" parent="." groups=["controller"]]
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 100.0
+omni_range = 1000.0
+
+[node name="HoleControls" type="FlowContainer" parent="." groups=["system_control"]]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_put6h")
+
+[node name="Button" type="Button" parent="HoleControls"]
+layout_mode = 2
+toggle_mode = true
+text = "Blackhole"
+
+[node name="Controls" type="FlowContainer" parent="HoleControls"]
+visible = false
+layout_mode = 2
+
+[node name="Scale" type="VSlider" parent="HoleControls/Controls"]
 custom_minimum_size = Vector2(0, 400)
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 max_value = 500.0
 step = 0.1
 
-[node name="ColorPickerButton" type="ColorPickerButton" parent="." groups=["controller"]]
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HoleControls/Controls"]
+layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.739975, 0.417669, 0.0813718, 1)
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
-light_energy = 100.0
-omni_range = 1000.0
-
-[connection signal="value_changed" from="Scale" to="." method="_on_scale_value_changed"]
+[connection signal="toggled" from="HoleControls/Button" to="HoleControls" method="_on_button_toggled"]
+[connection signal="value_changed" from="HoleControls/Controls/Scale" to="." method="_on_scale_value_changed"]

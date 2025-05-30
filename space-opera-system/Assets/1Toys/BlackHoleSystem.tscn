@@ -1,17 +1,14 @@
-[gd_scene load_steps=25 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=29 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="PackedScene" uid="uid://hfn3lqg1fa0j" path="res://Assets/1Toys/star.tscn" id="3_j4skb"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
-[ext_resource type="PackedScene" uid="uid://dkg5lehh8sxx4" path="res://Assets/1Toys/Planets/cloudy_planet.tscn" id="4_dee4i"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="6_q43nw"]
-[ext_resource type="PackedScene" uid="uid://b7stcuhorj3v" path="res://Assets/1Toys/Planets/lava_planet.tscn" id="8_qwjcd"]
+[ext_resource type="Texture2D" uid="uid://dkj6tq30oxsxw" path="res://Assets/1Toys/Planets/cloudy-water.tres" id="9_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Assets/1Toys/celestial_body.tscn" id="9_l1est"]
-[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="9_yfr1v"]
-[ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="10_qmfsb"]
-[ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="11_iomau"]
-[ext_resource type="Script" uid="uid://d2d0dewpswi7n" path="res://addons/orbit-controls/orbit-controls.gd" id="12_paiqf"]
+[ext_resource type="FastNoiseLite" uid="uid://12b5ftiyqkbp" path="res://Assets/1Toys/Planets/cloudywater.tres" id="10_d1v7t"]
+[ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="12_smirv"]
 
 [sub_resource type="Gradient" id="Gradient_y3678"]
 interpolation_mode = 2
@@ -38,22 +35,81 @@ glow_intensity = 1.32
 glow_blend_mode = 0
 adjustment_color_correction = SubResource("GradientTexture2D_ovnr5")
 
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_mjyf8"]
-dof_blur_near_enabled = true
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eowda"]
+width = 800
+height = 800
+invert = true
+seamless = true
+noise = ExtResource("10_d1v7t")
 
-[sub_resource type="QuadMesh" id="QuadMesh_qhlf5"]
-lightmap_size_hint = Vector2i(12, 12)
-size = Vector2(2, 2)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_84j84"]
+seamless = true
+noise = ExtResource("10_d1v7t")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_mjyf8"]
-render_priority = 0
-shader = ExtResource("11_iomau")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 1.0
-shader_parameter/highlight_strength = 1.0
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_b7wof"]
+seamless = true
+as_normal_map = true
+noise = ExtResource("10_d1v7t")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kd866"]
+seamless = true
+noise = ExtResource("10_d1v7t")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_x2bte"]
+seamless = true
+seamless_blend_skirt = 0.223
+normalize = false
+noise = ExtResource("10_d1v7t")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dps3l"]
+albedo_texture = ExtResource("9_j4skb")
+metallic = 1.0
+metallic_specular = 1.0
+metallic_texture = SubResource("NoiseTexture2D_84j84")
+metallic_texture_channel = 4
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_b7wof")
+clearcoat_roughness = 0.4
+heightmap_enabled = true
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = SubResource("NoiseTexture2D_eowda")
+subsurf_scatter_enabled = true
+subsurf_scatter_strength = 0.33
+subsurf_scatter_texture = SubResource("NoiseTexture2D_x2bte")
+subsurf_scatter_transmittance_enabled = true
+subsurf_scatter_transmittance_depth = 2.191
+refraction_texture = SubResource("NoiseTexture2D_kd866")
+
+[sub_resource type="Gradient" id="Gradient_lsvgl"]
+offsets = PackedFloat32Array(0, 0.180467, 0.392781, 0.573248, 0.707006, 1)
+colors = PackedColorArray(0.3844, 0.00463759, 0.3182, 1, 0.199824, 0.251399, 0.458957, 1, 0.635238, 0, 0.197052, 1, 0.621679, 0.00025068, 0.2036, 1, 0.768106, 0.622454, 0.146984, 1, 0.959299, 0.948842, 0.965013, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_chmqo"]
+noise_type = 2
+frequency = 0.0001
+offset = Vector3(0, 0, -169.7)
+fractal_octaves = 10
+fractal_gain = 0.9
+fractal_weighted_strength = 0.27
+domain_warp_type = 1
+domain_warp_amplitude = 16.5
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_lacunarity = 7.1
+domain_warp_fractal_gain = 1.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oyq1c"]
+width = 1024
+height = 1024
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_lsvgl")
+noise = SubResource("FastNoiseLite_chmqo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dee4i"]
+albedo_texture = SubResource("NoiseTexture2D_oyq1c")
+clearcoat_roughness = 0.4
 
 [sub_resource type="Gradient" id="Gradient_hs0wy"]
 offsets = PackedFloat32Array(0, 0.180467, 1)
@@ -88,7 +144,7 @@ clearcoat_roughness = 0.4
 
 [node name="Blackhole" parent="." instance=ExtResource("1_paiqf")]
 
-[node name="AetherResevoir" parent="." instance=ExtResource("1_j4skb")]
+[node name="Siphon" parent="." instance=ExtResource("1_j4skb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400.839, -1.19209e-07, -0.442535)
 
 [node name="Star" parent="." instance=ExtResource("3_j4skb")]
@@ -97,35 +153,58 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.484061, 0, -0.875034, 0, 1, 0, 0.875034, 0, 0.484061, -338.648, 1.17053, -9.92191)
-environment = ExtResource("9_yfr1v")
-attributes = SubResource("CameraAttributesPractical_mjyf8")
-near = 0.001
-script = ExtResource("10_qmfsb")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.08145)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_qhlf5")
-surface_material_override/0 = SubResource("ShaderMaterial_mjyf8")
-
 [node name="CelestialBody" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 body = NodePath("CloudyPlanet")
 distance = -672.003
 speed = 0.0
 
-[node name="CloudyPlanet" parent="CelestialBody" instance=ExtResource("4_dee4i")]
+[node name="CloudyPlanet" type="CSGSphere3D" parent="CelestialBody"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -672.003, 0, 0)
+radius = 10.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_dps3l")
+
+[node name="PlanetAthmosphere" parent="CelestialBody/CloudyPlanet" instance=ExtResource("6_q43nw")]
+planet_radius = 2.215
+atmosphere_height = 10.0
+sun_path = NodePath("../../../Blackhole")
+custom_shader = ExtResource("12_smirv")
+shader_params/u_day_color0 = Color(0.5, 0.8, 1, 1)
+shader_params/u_day_color1 = Color(0.5, 0.8, 1, 1)
+shader_params/u_night_color0 = Color(0.2, 0.4, 0.8, 1)
+shader_params/u_night_color1 = Color(0.2, 0.4, 0.8, 1)
+shader_params/u_day_night_transition_scale = 2.0
+shader_params/u_cloud_shape_texture = null
+shader_params/u_cloud_shape_invert = 0.0
+shader_params/u_cloud_coverage_bias = 0.0
+shader_params/u_cloud_shape_factor = 0.8
+shader_params/u_cloud_shape_scale = 1.0
+shader_params/u_cloud_coverage_cubemap = null
+shader_params/u_cloud_density_scale = 50.0
+shader_params/u_cloud_bottom = 0.2
+shader_params/u_cloud_top = 0.5
+shader_params/u_cloud_blend = 0.5
 
 [node name="Lava" parent="." node_paths=PackedStringArray("body", "sattelite") instance=ExtResource("9_l1est")]
 title = "lava"
 body = NodePath("LavaPlanet")
 sattelite = NodePath("../Moon")
 
-[node name="LavaPlanet" parent="Lava" instance=ExtResource("8_qwjcd")]
+[node name="LavaPlanet" type="CSGSphere3D" parent="Lava"]
 transform = Transform3D(0.9964, 0, 0.0847735, 0, 1, 0, -0.0847735, 0, 0.9964, -547.124, 11.7092, -0.717262)
 radius = 10.0
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_dee4i")
+
+[node name="PlanetAthmosphere" parent="Lava/LavaPlanet" instance=ExtResource("6_q43nw")]
+planet_radius = 9.0
+atmosphere_height = 2.0
+sun_path = NodePath("../../../Blackhole")
+shader_params/u_density = 1.465
+shader_params/u_atmosphere_modulate = Color(1, 0.686275, 0.498039, 1)
+shader_params/u_atmosphere_ambient_color = Color(0.350269, 0.0491121, 0.449726, 1)
 
 [node name="Moon" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 transform = Transform3D(0.9964, 0, 0.0847735, 0, 1, 0, -0.0847735, 0, 0.9964, -550.668, 18.2633, -54.3833)
@@ -146,16 +225,3 @@ sun_path = NodePath("../../../Blackhole")
 shader_params/u_density = 2.54
 shader_params/u_atmosphere_modulate = Color(1, 0.686275, 0.498039, 1)
 shader_params/u_atmosphere_ambient_color = Color(0.0241992, 0.241595, 0.405229, 1)
-
-[node name="Camera3D" type="Camera3D" parent="Moon/Moon"]
-transform = Transform3D(1, 0, -3.72529e-09, 0, 1, 0, 3.72529e-09, 0, 1, -5.47101, 3.07348, 10.4409)
-
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 800, 0)
-current = true
-
-[node name="OrbitControls" type="Node3D" parent="."]
-script = ExtResource("12_paiqf")
-debug = true
-_camera = NodePath("../Camera3D2")
-metadata/_custom_type_script = "uid://d2d0dewpswi7n"

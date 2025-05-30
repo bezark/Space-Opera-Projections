@@ -5,33 +5,35 @@
 [node name="CelestialBody" type="Node3D"]
 script = ExtResource("1_to1mt")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." groups=["controller"]]
+[node name="VBoxContainer" type="VBoxContainer" parent="." groups=["system_control"]]
 offset_right = 40.0
 offset_bottom = 40.0
 
-[node name="Title" type="Label" parent="VBoxContainer"]
+[node name="Title" type="Button" parent="VBoxContainer"]
 layout_mode = 2
+toggle_mode = true
 text = "Planet"
 
-[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+[node name="Controls" type="GridContainer" parent="VBoxContainer"]
+visible = false
 layout_mode = 2
 columns = 2
 
-[node name="DistanceLabel" type="Label" parent="VBoxContainer/GridContainer"]
+[node name="DistanceLabel" type="Label" parent="VBoxContainer/Controls"]
 layout_mode = 2
 text = "Distance"
 
-[node name="Distance" type="HSlider" parent="VBoxContainer/GridContainer"]
+[node name="Distance" type="HSlider" parent="VBoxContainer/Controls"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 max_value = 1000.0
 step = 0.1
 
-[node name="SpeedLabel" type="Label" parent="VBoxContainer/GridContainer"]
+[node name="SpeedLabel" type="Label" parent="VBoxContainer/Controls"]
 layout_mode = 2
 text = "Speed"
 
-[node name="Speed" type="HSlider" parent="VBoxContainer/GridContainer"]
+[node name="Speed" type="HSlider" parent="VBoxContainer/Controls"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 min_value = -0.1
@@ -39,11 +41,11 @@ max_value = 0.1
 step = 0.001
 value = -0.1
 
-[node name="SpinLabel" type="Label" parent="VBoxContainer/GridContainer"]
+[node name="SpinLabel" type="Label" parent="VBoxContainer/Controls"]
 layout_mode = 2
 text = "Spin"
 
-[node name="Spin" type="HSlider" parent="VBoxContainer/GridContainer"]
+[node name="Spin" type="HSlider" parent="VBoxContainer/Controls"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 min_value = -0.1
@@ -51,6 +53,7 @@ max_value = 0.1
 step = 0.001
 value = -0.1
 
-[connection signal="value_changed" from="VBoxContainer/GridContainer/Distance" to="." method="_on_distance_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/GridContainer/Speed" to="." method="_on_speed_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/GridContainer/Spin" to="." method="_on_spin_value_changed"]
+[connection signal="toggled" from="VBoxContainer/Title" to="." method="_on_title_toggled"]
+[connection signal="value_changed" from="VBoxContainer/Controls/Distance" to="." method="_on_distance_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Controls/Speed" to="." method="_on_speed_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Controls/Spin" to="." method="_on_spin_value_changed"]

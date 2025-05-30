@@ -22,6 +22,7 @@ func _on_control_scene_changed(scene: SceneData) -> void:
 	for kid in ded_kidz:
 		kid.queue_free()
 	var new_scene = scene.scene.instantiate()
+	# TODO: rework all of this
 	$LIVE.add_child(new_scene)
-	for surface in mapping_surfaces:
-		surface.texture.viewport_path = new_scene.get(surface.title).get_path()
+	#for surface in mapping_surfaces:
+		#surface.texture.viewport_path = new_scene.get(surface.title).get_path()

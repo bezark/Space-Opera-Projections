@@ -1,19 +1,32 @@
-@tool
 extends Control
 
 signal datapad_sync_changed(bool)
 signal scene_changed(scene: SceneData)
 
+@export var structure: SceneStructure
+
+@export var system_view : ViewportTexture
+
+
+
+
+
+
 var datapad_syncing = true
 var selected_scene_data: SceneData
 var selected_id : String
-@export var structure: SceneStructure
+
+
+
 
 
 func _ready() -> void:
-	make_buttons()
-func make_buttons():
-	for ded_kid in %  SceneControl.get_children():
+	make_phase_buttons()
+	check_for_controls.call_deferred()
+	%SystemView.set_deferred("texture", system_view)
+
+func make_phase_buttons():
+	for ded_kid in %PhaseSelect.get_children():
 		ded_kid.queue_free()
 	var scene_button_group = ButtonGroup.new()
 	for phase in State.phases:
@@ -22,10 +35,10 @@ func make_buttons():
 		new_button.text = phase.type
 		new_button.toggle_mode = true
 		new_button.name = phase.id
-		%SceneControl.add_child(new_button)
+		%PhaseSelect.add_child(new_button)
 		new_button.pressed.connect(scene_button_pressed.bind(phase.scene_data,new_button.name))
 	if selected_id:
-		%SceneControl.get_node(selected_id).button_pressed = true
+		%PhaseSelect.get_node(selected_id).button_pressed = true
 	# for scene in structure.scene_data:
 	# 	var new_button = Button.new()
 	# 	new_button.button_group = scene_button_group
@@ -36,14 +49,32 @@ func make_buttons():
 
 
 func check_for_controls():
-	var new_controls = get_tree().get_nodes_in_group("controller")
+	check_for_system_controls()
+	check_for_zoom_controls()
+	check_for_ui_controls()
+	
 
-	var ded_kidz = %ActiveSceneControls.get_children()
+
+func check_for_system_controls():
+	var new_controls = get_tree().get_nodes_in_group("system_control")
+	for nc in new_controls:
+		nc.call_deferred("reparent", %SystemControls)
+
+func check_for_zoom_controls():
+	var new_controls = get_tree().get_nodes_in_group("zoom_control")
+	var ded_kidz = %ZoomControls.get_children()
 	for kid in ded_kidz:
 		kid.queue_free()
 	for nc in new_controls:
-		nc.call_deferred("reparent", %ActiveSceneControls)
+		nc.call_deferred("reparent", %ZoomControls)
 
+func check_for_ui_controls():
+	var new_controls = get_tree().get_nodes_in_group("ui_control")
+	var ded_kidz = %UIControls.get_children()
+	for kid in ded_kidz:
+		kid.queue_free()
+	for nc in new_controls:
+		nc.call_deferred("reparent", %UIControls)
 
 func _process(delta: float) -> void:
 	if Input.is_action_just_pressed("ui_cancel"):
@@ -58,7 +89,7 @@ func _on_datapad_sync_toggled(toggled_on: bool) -> void:
 
 func _on_datapad_sync_phase_changed(phase: Phase) -> void:
 	if datapad_syncing:
-		var button: Button = %SceneControl.get_node(phase.id)
+		var button: Button = %PhaseSelect.get_node(phase.id)
 		if button:
 			button.button_pressed = true
 		scene_changed.emit(phase.scene_data)
@@ -90,7 +121,7 @@ func _on_make_unique_pressed() -> void:
 	State.save()
 	selected_scene_data = new_scenedata
 	State.load_state()
-	make_buttons()
+	make_phase_buttons()
 	open_scene_message()
 	pass  # Replace with function body.
 

@@ -50,7 +50,9 @@ folder_colors={
 
 [global_group]
 
-controller=""
+system_control=""
+zoom_control=""
+ui_control=""
 
 [godot_vmc_tracker]
 

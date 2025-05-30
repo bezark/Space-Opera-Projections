@@ -1,25 +1,36 @@
-[gd_scene load_steps=15 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=20 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
+[ext_resource type="PackedScene" uid="uid://4wik5qowm8jb" path="res://Assets/1Toys/BlackHoleSystem.tscn" id="5_iyt76"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
+[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="6_7ct82"]
 [ext_resource type="Shader" uid="uid://c4grps3kawas" path="res://Assets/Shaders/vignette.gdshader" id="6_iyt76"]
 [ext_resource type="PackedScene" uid="uid://b3krjl7ciw1cy" path="res://Components/ProjectorTools/mapping_surface.tscn" id="6_kgeht"]
+[ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="7_s83dy"]
+[ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="8_h2cot"]
 
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xm6fk"]
-sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
-ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+[sub_resource type="ViewportTexture" id="ViewportTexture_7ct82"]
+viewport_path = NodePath("Kin/SolarSystemViews/BirdsEye")
 
-[sub_resource type="Sky" id="Sky_5nrqa"]
-sky_material = SubResource("ProceduralSkyMaterial_xm6fk")
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_6t3px"]
+dof_blur_near_enabled = true
 
-[sub_resource type="Environment" id="Environment_7ct82"]
-background_mode = 2
-sky = SubResource("Sky_5nrqa")
-tonemap_mode = 2
-glow_enabled = true
+[sub_resource type="QuadMesh" id="QuadMesh_u0cts"]
+lightmap_size_hint = Vector2i(12, 12)
+size = Vector2(2, 2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn4fx"]
+render_priority = 0
+shader = ExtResource("8_h2cot")
+shader_parameter/shadows_enabled = true
+shader_parameter/highlights_enabled = true
+shader_parameter/shadow_strength = 1.0
+shader_parameter/highlight_strength = 1.0
+shader_parameter/highlight_color = Color(1, 1, 1, 1)
+shader_parameter/shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kgeht"]
 resource_local_to_scene = true
@@ -39,18 +50,11 @@ viewport_path = NodePath("SubViewport")
 
 [node name="Main" type="Node"]
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
+[node name="Control" parent="." instance=ExtResource("1_kgeht")]
+offset_top = 0.0
+offset_bottom = 1200.0
 size_flags_vertical = 3
-
-[node name="Control" parent="VBoxContainer" instance=ExtResource("1_kgeht")]
-layout_mode = 2
-size_flags_vertical = 3
+system_view = SubResource("ViewportTexture_7ct82")
 
 [node name="DatapadSync" type="Node" parent="."]
 script = ExtResource("1_a1u8q")
@@ -63,6 +67,55 @@ url = "http://datapad.dainsaint.com"
 one_shot = true
 autostart = true
 
+[node name="Kin" parent="." instance=ExtResource("5_iyt76")]
+
+[node name="SolarSystemViews" type="Node" parent="Kin"]
+
+[node name="BirdsEye" type="SubViewport" parent="Kin/SolarSystemViews"]
+msaa_3d = 3
+screen_space_aa = 1
+use_debanding = true
+size = Vector2i(1920, 1200)
+size_2d_override_stretch = true
+
+[node name="Camera3D" type="Camera3D" parent="Kin/SolarSystemViews/BirdsEye"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 800, 0)
+current = true
+
+[node name="Camera3D2" type="Camera3D" parent="Kin/SolarSystemViews/BirdsEye"]
+process_mode = 4
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -556.139, 21.3368, -43.9424)
+
+[node name="Camera3D3" type="Camera3D" parent="Kin/SolarSystemViews/BirdsEye"]
+process_mode = 4
+transform = Transform3D(0.484061, 0, -0.875034, 0, 1, 0, 0.875034, 0, 0.484061, -338.648, 1.17053, -9.92191)
+environment = ExtResource("6_7ct82")
+attributes = SubResource("CameraAttributesPractical_6t3px")
+near = 0.001
+script = ExtResource("7_s83dy")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Kin/SolarSystemViews/BirdsEye/Camera3D3"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.08145)
+extra_cull_margin = 16384.0
+mesh = SubResource("QuadMesh_u0cts")
+surface_material_override/0 = SubResource("ShaderMaterial_jn4fx")
+
+[node name="Zooms" type="Node3D" parent="."]
+visible = false
+
+[node name="ZoomViews" type="Node" parent="Zooms"]
+
+[node name="BirdsEye" type="SubViewport" parent="Zooms/ZoomViews"]
+msaa_3d = 3
+screen_space_aa = 1
+use_debanding = true
+size = Vector2i(1920, 1200)
+size_2d_override_stretch = true
+
+[node name="Camera3D" type="Camera3D" parent="Zooms/ZoomViews/BirdsEye"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 800, 0)
+current = true
+
 [node name="SceneChanger" type="Node" parent="." node_paths=PackedStringArray("mapping_surfaces")]
 script = ExtResource("5_s83dy")
 structure = ExtResource("4_tm5h3")
@@ -71,23 +124,6 @@ mapping_surfaces = [NodePath("../Circle/CanvasGroup/MappingSurface"), NodePath("
 [node name="STAGED" type="Node3D" parent="SceneChanger"]
 
 [node name="LIVE" type="Node3D" parent="SceneChanger"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SceneChanger/LIVE"]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_max_distance = 1.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="SceneChanger/LIVE"]
-environment = SubResource("Environment_7ct82")
-
-[node name="SubViewport" type="SubViewport" parent="SceneChanger/LIVE"]
-msaa_3d = 3
-screen_space_aa = 1
-use_debanding = true
-size = Vector2i(1920, 1200)
-size_2d_override_stretch = true
-
-[node name="Camera3D" type="Camera3D" parent="SceneChanger/LIVE/SubViewport"]
 
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
@@ -118,8 +154,8 @@ polygon = PackedVector2Array(45.6452, 39, 5.64155, 1073, 922.649, 1133, 868.798,
 uv = PackedVector2Array(-7.99997, -8, -16, 1224, 1936, 1224, 1928, 7.99998)
 title = "pews"
 
-[connection signal="datapad_sync_changed" from="VBoxContainer/Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
-[connection signal="scene_changed" from="VBoxContainer/Control" to="SceneChanger" method="_on_control_scene_changed"]
-[connection signal="phase_changed" from="DatapadSync" to="VBoxContainer/Control" method="_on_datapad_sync_phase_changed"]
+[connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
+[connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
+[connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
