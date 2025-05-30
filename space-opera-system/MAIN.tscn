@@ -114,7 +114,7 @@ scale = Vector2(1.94982, 1)
 [node name="MappingSurface" parent="Pews/CanvasGroup" instance=ExtResource("6_kgeht")]
 material = SubResource("ShaderMaterial_xm6fk")
 texture = SubResource("ViewportTexture_5nrqa")
-polygon = PackedVector2Array(-7.99997, -8, -16, 1224, 918.546, 1124, 865.721, -10)
+polygon = PackedVector2Array(45.6452, 39, 5.64155, 1073, 922.649, 1133, 868.798, 87)
 uv = PackedVector2Array(-7.99997, -8, -16, 1224, 1936, 1224, 1928, 7.99998)
 title = "pews"
 
