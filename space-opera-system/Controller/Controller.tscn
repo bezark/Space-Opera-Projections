@@ -1,11 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://d3nh81q7dsdr4"]
+[gd_scene load_steps=5 format=3 uid="uid://d3nh81q7dsdr4"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
 [ext_resource type="Script" uid="uid://byxtn4120rsnl" path="res://Controller/controller.gd" id="1_u2oln"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="2_7hav4"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="3_u2oln"]
-
-[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_nlu3g"]
 
 [node name="Control" type="Control"]
 auto_translate_mode = 1
@@ -85,17 +83,9 @@ text = "Projectors"
 [node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/Body"]
 layout_mode = 2
 
-[node name="SystemControls" type="FlowContainer" parent="MarginContainer/Body/VBoxContainer"]
+[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/Body/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-
-[node name="SystemView" type="TextureRect" parent="MarginContainer/Body/VBoxContainer/SystemControls"]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(200, 200)
-layout_mode = 2
-size_flags_horizontal = 3
-texture = SubResource("PlaceholderTexture2D_nlu3g")
-expand_mode = 3
 
 [node name="Zoom" type="VBoxContainer" parent="MarginContainer/Body/VBoxContainer"]
 layout_mode = 2

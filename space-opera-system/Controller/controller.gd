@@ -23,7 +23,7 @@ var selected_id : String
 func _ready() -> void:
 	make_phase_buttons()
 	check_for_controls.call_deferred()
-	%SystemView.set_deferred("texture", system_view)
+	#o%SystemView.set_deferred("texture", system_view)
 
 func make_phase_buttons():
 	for ded_kid in %PhaseSelect.get_children():
