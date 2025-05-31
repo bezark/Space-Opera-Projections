@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=23 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="7_s83dy"]
 [ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="8_h2cot"]
 [ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="9_s83dy"]
+[ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
 viewport_path = NodePath("SystemView")
@@ -47,10 +48,8 @@ shader_parameter/size = 1.0
 [sub_resource type="ViewportTexture" id="ViewportTexture_6t3px"]
 viewport_path = NodePath("SystemView")
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_xm6fk"]
-resource_local_to_scene = true
-shader = ExtResource("6_iyt76")
-shader_parameter/size = 1.0
+[sub_resource type="ViewportTexture" id="ViewportTexture_u0cts"]
+viewport_path = NodePath("ZoomView")
 
 [node name="Main" type="Node"]
 
@@ -125,10 +124,13 @@ size_2d_override_stretch = true
 
 [node name="Surface" parent="ZoomView" instance=ExtResource("9_s83dy")]
 
+[node name="Camera3D" type="Camera3D" parent="ZoomView"]
+transform = Transform3D(0.99916, 0, -0.0409862, 0, 1, 0, 0.0409862, 0, 0.99916, 1.23072, 14.0431, 57.2704)
+
 [node name="SceneChanger" type="Node" parent="." node_paths=PackedStringArray("mapping_surfaces")]
 script = ExtResource("5_s83dy")
 structure = ExtResource("4_tm5h3")
-mapping_surfaces = [NodePath("../Circle/CanvasGroup/MappingSurface"), NodePath("../Pews/CanvasGroup/MappingSurface")]
+mapping_surfaces = [NodePath("../Circle/CanvasGroup/MappingSurface"), null]
 
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
@@ -154,16 +156,17 @@ title = "circle"
 [node name="Pews" type="Window" parent="."]
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
-visible = false
 
 [node name="CanvasGroup" type="CanvasGroup" parent="Pews"]
 scale = Vector2(1.94982, 1)
 
-[node name="MappingSurface" parent="Pews/CanvasGroup" instance=ExtResource("6_kgeht")]
-material = SubResource("ShaderMaterial_xm6fk")
-polygon = PackedVector2Array(45.6452, 39, 5.64155, 1073, 922.649, 1133, 868.798, 87)
-uv = PackedVector2Array(-7.99997, -8, -16, 1224, 1936, 1224, 1928, 7.99998)
-title = "pews"
+[node name="MappingSurface" type="Polygon2D" parent="Pews/CanvasGroup"]
+position = Vector2(164.118, 729.5)
+texture = SubResource("ViewportTexture_u0cts")
+polygon = PackedVector2Array(520, -232, 0, -240, 24, 88, 520, 112)
+uv = PackedVector2Array(1920, 0, 0, -1.90735e-06, -1.00521e-06, 1200, 1920, 1200)
+script = ExtResource("13_h2cot")
+metadata/_custom_type_script = "uid://muokti5xk4km"
 
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
