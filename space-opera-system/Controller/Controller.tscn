@@ -91,9 +91,15 @@ layout_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ZoomControls" type="FlowContainer" parent="MarginContainer/Body/VBoxContainer/Zoom"]
+[node name="ZoomScroll" type="ScrollContainer" parent="MarginContainer/Body/VBoxContainer/Zoom"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="ZoomSelect" type="VBoxContainer" parent="MarginContainer/Body/VBoxContainer/Zoom/ZoomScroll"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="MakeUnique" type="Button" parent="MarginContainer/Body/VBoxContainer/Zoom"]
 layout_mode = 2
@@ -103,6 +109,13 @@ text = " Make Unique..."
 layout_mode = 2
 text = "Open in Editor..."
 
+[node name="ZoomControls" type="FlowContainer" parent="MarginContainer/Body/VBoxContainer/Zoom"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/Body/VBoxContainer/Zoom"]
+layout_mode = 2
+
 [node name="UIControls" type="FlowContainer" parent="MarginContainer/Body/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -110,7 +123,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Autosave" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 autostart = true
 
 [connection signal="toggled" from="MarginContainer/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]

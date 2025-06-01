@@ -1,8 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://mbcy1e7l2o72"]
+[gd_scene load_steps=6 format=3 uid="uid://mbcy1e7l2o72"]
 
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_0ilj2"]
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_702qu"]
-[ext_resource type="Script" uid="uid://c2b5inaty02qd" path="res://Components/Classes/SpaceScene.gd" id="1_hlqov"]
 
 [sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_0ilj2"]
 
@@ -17,11 +16,7 @@ refraction_enabled = true
 dof_blur_far_enabled = true
 dof_blur_near_enabled = true
 
-[node name="UniversalPhase" type="Node3D" node_paths=PackedStringArray("circle", "pews")]
-script = ExtResource("1_hlqov")
-circle = NodePath("SubViewport")
-pews = NodePath("SubViewport2")
-metadata/_custom_type_script = "uid://c2b5inaty02qd"
+[node name="UniversalPhase" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("1_0ilj2")

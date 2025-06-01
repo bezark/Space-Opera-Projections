@@ -8,7 +8,9 @@ class_name GameState
 @export var communities: Dictionary[String, Community]
 @export var resources: Dictionary[String, SPResource]
 
-@export var archetypes : Dictionary[String,Archetype]
+@export var archetypes: Dictionary[String,Archetype]
+@export var actions_queued: Array[SocietyAction]
+
 
 func save():
 	# print("---------------------")
@@ -19,9 +21,10 @@ func save():
 	current_session.resources = resources
 	#TODO: remove this unnecessary save
 	current_session.archetypes = archetypes
+	current_session.actions_queued = actions_queued
 	# ResourceSaver.save(current_session, "res://test_session.tres")
 	ResourceSaver.save(current_session, "res://Data/GAME_STATE.tres")
-	print('Saved')
+	print("Saved")
 
 
 func load_state():
@@ -31,6 +34,7 @@ func load_state():
 	societies = current_session.societies
 	resources = current_session.resources
 	archetypes = current_session.archetypes
+	actions_queued = current_session.actions_queued
 
 
 func _ready() -> void:

@@ -152,18 +152,35 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 			current_societies.append(society.id)
 
+			prints(this_society.actions.size(), society.actions.size())
+			# print(society.actions)
 			this_society.actions.clear()
+			var action_to_push : SocietyAction
 			for action in society.actions:
 				# print(action)
 				var new_action = SocietyAction.new()
 				new_action.game_round = action.round
 				new_action.voted = action.voted
+				new_action.parent_society = society.id
+
+
+
+				
 				for component in action.components:
 					var new_component = SocietyActionComponent.new()
 					new_component.text = component.text
 					new_component.statement = component.statement
 					new_component.spresource = State.resources[component.resource.id]
 					new_action.components.append(new_component)
+
+				if new_action.voted and new_action.components.size():
+					print(new_action.components[0].statement)
+					if State.active_phase.sp_round == new_action.game_round:
+						action_to_push = new_action
+						if !State.actions_queued.has(action_to_push):
+							State.actions_queued.append(action_to_push)
+							print(new_action.components[0].statement)
+
 				this_society.actions.append(new_action)
 
 		for key in State.societies.keys():
@@ -172,7 +189,6 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 	previous_societies_hash = societies_hash
 	# State.save()
-
 
 func _on_control_datapad_sync_changed(bool: Variant) -> void:
 	if bool:

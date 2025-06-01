@@ -2,6 +2,7 @@ extends Control
 
 signal datapad_sync_changed(bool)
 signal scene_changed(scene: SceneData)
+signal zoomed_in(zoom:PackedScene)
 
 @export var structure: SceneStructure
 
@@ -37,6 +38,21 @@ func make_phase_buttons():
 		new_button.name = phase.id
 		%PhaseSelect.add_child(new_button)
 		new_button.pressed.connect(scene_button_pressed.bind(phase.scene_data,new_button.name))
+	if selected_id:
+		%PhaseSelect.get_node(selected_id).button_pressed = true
+
+func make_zoom_buttons(scene_data:SceneData):
+	for ded_kid in %ZoomSelect.get_children():
+		ded_kid.queue_free()
+	var scene_button_group = ButtonGroup.new()
+	for zoom in scene_data.zooms:
+		var new_button = Button.new()
+		new_button.button_group = scene_button_group
+		new_button.text = zoom.resource_name
+		new_button.toggle_mode = true
+		# new_button.name = phase.id
+		%ZoomSelect.add_child(new_button)
+		new_button.pressed.connect(zoom_button_pressed.bind(zoom))
 	if selected_id:
 		%PhaseSelect.get_node(selected_id).button_pressed = true
 	# for scene in structure.scene_data:
@@ -93,6 +109,7 @@ func _on_datapad_sync_phase_changed(phase: Phase) -> void:
 		if button:
 			button.button_pressed = true
 		scene_changed.emit(phase.scene_data)
+		make_zoom_buttons(phase.scene_data)
 		check_for_controls.call_deferred()
 
 
@@ -101,7 +118,12 @@ func scene_button_pressed(val, id):
 	selected_id = id
 	if not datapad_syncing:
 		scene_changed.emit(val)
+		make_zoom_buttons(val)
 		check_for_controls.call_deferred()
+
+func zoom_button_pressed(zoom):
+	zoomed_in.emit(zoom)
+	check_for_controls.call_deferred()
 
 
 func _on_autosave_timeout() -> void:

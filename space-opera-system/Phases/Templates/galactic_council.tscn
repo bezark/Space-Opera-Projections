@@ -1,10 +1,13 @@
-[gd_scene load_steps=15 format=3 uid="uid://caxx5yulod7st"]
+[gd_scene load_steps=22 format=3 uid="uid://caxx5yulod7st"]
 
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="2_r34sj"]
 [ext_resource type="Script" uid="uid://dqxofb6qml4d" path="res://Phases/Templates/galactic_council.gd" id="2_x5rdb"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="4_7vble"]
 [ext_resource type="Script" uid="uid://c0wgsg0s7uq8u" path="res://Controller/Phases/dais_controls.gd" id="4_x5rdb"]
 [ext_resource type="Shader" uid="uid://3lnhpm3bddo" path="res://Assets/Shaders/spotlight.gdshader" id="5_7vble"]
+[ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="6_6e53m"]
+[ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="7_8hkse"]
+[ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="8_dvc2m"]
 
 [sub_resource type="Gradient" id="Gradient_x5rdb"]
 offsets = PackedFloat32Array(0, 0.522863, 1)
@@ -108,6 +111,21 @@ shader_parameter/circle_position = Vector2(0.5, 0.5)
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ypdo6"]
+shader = ExtResource("6_6e53m")
+shader_parameter/colors = PackedColorArray(0.761011, 0.711022, 0.922931, 0.968627, 0, 0, 0.803922, 1, 0.388774, 0.483849, 0.835922, 1, 0.365272, 0.393672, 0.738368, 1, 0.762335, 0.311199, 0.859507, 1, 0.56861, 0.682326, 0.722168, 1, 0.317647, 0.278431, 0.717647, 1, 0, 0.262745, 0, 1, 0.00266067, 0.130873, 0.622193, 1, 0.390205, 0.196481, 0.601933, 1, 0.447743, 0.657338, 0.36987, 1, 0, 0.427451, 0.462745, 1, 0.133333, 0, 0.231373, 1, 0.872706, 8.18223e-07, 8.66354e-07, 1, 0.832327, 0.351763, 7.70092e-07, 1, 0.906717, 0.858124, 0.510115, 1, 0.915945, 0.27236, 0.628792, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_hkk3e"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5uvxy"]
+shader = ExtResource("7_8hkse")
+shader_parameter/strength = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_3wxmf"]
+shader = ExtResource("8_dvc2m")
+shader_parameter/radius = 5
+shader_parameter/offset = Vector3(0, 0, 0)
+
 [node name="GalacticCouncil" type="Node3D"]
 script = ExtResource("2_x5rdb")
 
@@ -177,6 +195,62 @@ modulate = Color(1, 1, 1, 0)
 material = SubResource("ShaderMaterial_87m48")
 size_flags_horizontal = 1
 expand_mode = 5
+
+[node name="ColorSnap" type="ColorRect" parent="DiceCamTexture"]
+material = SubResource("ShaderMaterial_ypdo6")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy4" type="BackBufferCopy" parent="DiceCamTexture"]
+material = SubResource("ShaderMaterial_hkk3e")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="Abberation" type="ColorRect" parent="DiceCamTexture"]
+visible = false
+material = SubResource("ShaderMaterial_5uvxy")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy2" type="BackBufferCopy" parent="DiceCamTexture"]
+material = SubResource("ShaderMaterial_hkk3e")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="Kuwahara" type="ColorRect" parent="DiceCamTexture"]
+material = SubResource("ShaderMaterial_3wxmf")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+color = Color(1, 1, 1, 0)
+
+[node name="BackBufferCopy3" type="BackBufferCopy" parent="DiceCamTexture"]
+material = SubResource("ShaderMaterial_hkk3e")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
 
 [connection signal="society_approached" from="DaisControls" to="." method="_on_dais_controls_society_approached"]
 [connection signal="toggled" from="DaisControls/DiceCam" to="." method="_on_dice_cam_toggled"]
