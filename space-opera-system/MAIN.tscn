@@ -48,6 +48,7 @@ background_mode = 2
 adjustment_enabled = true
 
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_u0cts"]
+exposure_multiplier = 8.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6y3qq"]
 
@@ -176,8 +177,8 @@ mapping_surfaces = [null, null]
 
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
-position = Vector2i(0, 36)
-size = Vector2i(1920, 1200)
+title = " Circle"
+size = Vector2i(200, 200)
 
 [node name="System" type="Sprite2D" parent="Circle"]
 material = SubResource("ShaderMaterial_6y3qq")
@@ -288,7 +289,7 @@ script = ExtResource("15_u0cts")
 metadata/_custom_type_script = "uid://bid2eudkrel8k"
 
 [node name="Pews" type="Window" parent="."]
-position = Vector2i(0, 36)
+title = "Pews"
 size = Vector2i(1920, 1200)
 
 [node name="MappingSurface" type="Polygon2D" parent="Pews"]
