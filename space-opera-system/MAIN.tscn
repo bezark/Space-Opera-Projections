@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=40 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -9,7 +9,6 @@
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="6_7ct82"]
 [ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="7_s83dy"]
 [ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="8_h2cot"]
-[ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="9_s83dy"]
 [ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="11_6t3px"]
 [ext_resource type="Shader" uid="uid://lrjyje1bmtuv" path="res://Assets/Shaders/mixerdemo.tres" id="11_a8dnc"]
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="12_u0cts"]
@@ -166,8 +165,6 @@ use_debanding = true
 size = Vector2i(1920, 1200)
 size_2d_override_stretch = true
 
-[node name="Surface" parent="ZoomView" instance=ExtResource("9_s83dy")]
-
 [node name="Camera3D" type="Camera3D" parent="ZoomView"]
 transform = Transform3D(0.99916, 0, -0.0409862, 0, 1, 0, 0.0409862, 0, 0.99916, 1.23072, 14.0431, 57.2704)
 environment = SubResource("Environment_6t3px")
@@ -190,6 +187,7 @@ auto_translate_mode = 1
 title = " Circle"
 position = Vector2i(0, 36)
 size = Vector2i(200, 200)
+visible = false
 
 [node name="System" type="Sprite2D" parent="Circle"]
 material = SubResource("ShaderMaterial_6y3qq")
@@ -303,6 +301,7 @@ metadata/_custom_type_script = "uid://bid2eudkrel8k"
 title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
+visible = false
 
 [node name="LeftPew" type="Polygon2D" parent="Pews"]
 position = Vector2(328, 807)

@@ -161,7 +161,11 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 				var new_action = SocietyAction.new()
 				new_action.game_round = action.round
 				new_action.voted = action.voted
+				if new_action.voted:
+					new_action.voteTime = Time.get_unix_time_from_datetime_string(action.voteTime)
+
 				new_action.parent_society = society.id
+
 
 
 
@@ -177,11 +181,26 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 					print(new_action.components[0].statement)
 					if State.active_phase.sp_round == new_action.game_round:
 						action_to_push = new_action
-						if !State.actions_queued.has(action_to_push):
-							State.actions_queued.append(action_to_push)
-							print(new_action.components[0].statement)
+						var previous_action_from_society = State.actions_queued.find_custom(func(elem):
+							return elem["parent_society"] == action_to_push.parent_society
+						)
+						if previous_action_from_society>=0:
+							if State.actions_queued[previous_action_from_society].voteTime < action_to_push.voteTime:
+								State.actions_queued.remove_at(previous_action_from_society)
+						State.actions_queued.append(action_to_push)
+
+						# if !State.actions_queued.has(action_to_push):
+							# State.actions_queued.append(action_to_push)
+							# print(new_action.components[0].statement)
 
 				this_society.actions.append(new_action)
+
+
+		State.actions_queued.sort_custom(func(a,b):
+			if a.voteTime < b.voteTime:
+				return true
+			return false
+		)
 
 		for key in State.societies.keys():
 			if not current_societies.has(key):

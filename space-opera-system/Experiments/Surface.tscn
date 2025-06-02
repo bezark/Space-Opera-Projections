@@ -1,8 +1,8 @@
 [gd_scene load_steps=19 format=3 uid="uid://dthkgobjiujtg"]
 
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_0ngit"]
-[ext_resource type="Texture2D" uid="uid://du63o56n4jdim" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-01.png" id="1_54tce"]
-[ext_resource type="Texture2D" uid="uid://da7k1dj50n8mi" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-03.png" id="3_mf1x8"]
+[ext_resource type="Texture2D" uid="uid://cs1gw4cakj0ra" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-01.png" id="1_54tce"]
+[ext_resource type="Texture2D" uid="uid://rcaohaotjlas" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-03.png" id="3_mf1x8"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="4_mf1x8"]
 
 [sub_resource type="Gradient" id="Gradient_epvnt"]

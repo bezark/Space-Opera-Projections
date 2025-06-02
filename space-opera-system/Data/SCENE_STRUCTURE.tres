@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SceneStructure" load_steps=21 format=3 uid="uid://bun1tceqw2x5k"]
+[gd_resource type="Resource" script_class="SceneStructure" load_steps=20 format=3 uid="uid://bun1tceqw2x5k"]
 
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_rrmo7"]
 [ext_resource type="PackedScene" uid="uid://cu2t0kq57aia" path="res://Phases/Templates/Break.tscn" id="2_5hnk5"]
@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/Templates/galactic_council.tscn" id="4_fwuls"]
 [ext_resource type="PackedScene" uid="uid://csjt08a72pwbn" path="res://Phases/Templates/Generational Phase.tscn" id="5_vrc6x"]
 [ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/Templates/individual.tscn" id="6_6an8t"]
-[ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="7_fwuls"]
 [ext_resource type="Script" uid="uid://b1bgdwv5gx75c" path="res://Components/Classes/SceneStructure.gd" id="7_hmpjc"]
 [ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="7_kovmu"]
 [ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/Templates/societal.tscn" id="8_bheol"]
@@ -44,7 +43,7 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 [sub_resource type="Resource" id="Resource_co6ix"]
 script = ExtResource("1_rrmo7")
 scene = ExtResource("6_6an8t")
-zooms = Array[PackedScene]([ExtResource("7_fwuls"), ExtResource("2_5hnk5"), ExtResource("8_vrc6x")])
+zooms = Array[PackedScene]([ExtResource("2_5hnk5"), ExtResource("8_vrc6x")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
