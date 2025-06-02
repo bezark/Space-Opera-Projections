@@ -87,6 +87,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 	# prints(societies_hash, previous_societies_hash)
 	if societies_hash != previous_societies_hash:
 		# State.resources = {}
+		State.actions_queued.clear()
 
 		var current_societies = []
 
@@ -152,9 +153,13 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 			current_societies.append(society.id)
 
-			prints(this_society.actions.size(), society.actions.size())
+			### ACTIONS ###
+
+			# prints(this_society.actions.size(), society.actions.size())
 			# print(society.actions)
 			this_society.actions.clear()
+
+
 			var action_to_push : SocietyAction
 			for action in society.actions:
 				# print(action)
@@ -166,10 +171,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 				new_action.parent_society = society.id
 
-
-
-
-				
+			
 				for component in action.components:
 					var new_component = SocietyActionComponent.new()
 					new_component.text = component.text
@@ -177,16 +179,21 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 					new_component.spresource = State.resources[component.resource.id]
 					new_action.components.append(new_component)
 
+
+
+				
 				if new_action.voted and new_action.components.size():
-					print(new_action.components[0].statement)
+					# print(new_action.components[0].statement)
 					if State.active_phase.sp_round == new_action.game_round:
 						action_to_push = new_action
-						var previous_action_from_society = State.actions_queued.find_custom(func(elem):
+						var previous_actions_from_society = State.actions_queued.filter(func(elem):
 							return elem["parent_society"] == action_to_push.parent_society
 						)
-						if previous_action_from_society>=0:
-							if State.actions_queued[previous_action_from_society].voteTime < action_to_push.voteTime:
-								State.actions_queued.remove_at(previous_action_from_society)
+						for prev_action in previous_actions_from_society:
+							# print(prev_action)
+
+							if prev_action.voteTime < action_to_push.voteTime and prev_action.parent_society == action_to_push.parent_society:
+								State.actions_queued.erase(prev_action)
 						State.actions_queued.append(action_to_push)
 
 						# if !State.actions_queued.has(action_to_push):
@@ -202,6 +209,8 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 			return false
 		)
 
+		for action in State.actions_queued:
+			print(action.components[0].text)
 		for key in State.societies.keys():
 			if not current_societies.has(key):
 				State.societies.erase(key)
