@@ -25,8 +25,9 @@ State="*res://Components/Classes/GameState.gd"
 
 [display]
 
+window/size/viewport_width=2560
+window/size/viewport_height=1600
 window/size/initial_position_type=0
-window/size/initial_position=Vector2i(1920, 300)
 window/subwindows/embed_subwindows=false
 window/stretch/mode="canvas_items"
 

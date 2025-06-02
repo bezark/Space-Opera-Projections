@@ -8,10 +8,11 @@
 [node name="Control" type="Control"]
 auto_translate_mode = 1
 layout_mode = 3
-anchors_preset = 0
-offset_top = 36.0
-offset_right = 1920.0
-offset_bottom = 1116.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_55pmi")
 script = ExtResource("1_u2oln")
 structure = ExtResource("2_7hav4")
@@ -86,6 +87,7 @@ layout_mode = 2
 [node name="SystemControls" type="VBoxContainer" parent="MarginContainer/Body/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Zoom" type="VBoxContainer" parent="MarginContainer/Body/VBoxContainer"]
 layout_mode = 2
@@ -123,7 +125,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="Autosave" type="Timer" parent="."]
-wait_time = 5.0
+wait_time = 30.0
 autostart = true
 
 [connection signal="toggled" from="MarginContainer/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
