@@ -80,7 +80,8 @@ func check_for_zoom_controls():
 	var new_controls = get_tree().get_nodes_in_group("zoom_control")
 	var ded_kidz = %ZoomControls.get_children()
 	for kid in ded_kidz:
-		kid.queue_free()
+		if not kid.is_in_group("permanent"):
+			kid.queue_free()
 	for nc in new_controls:
 		nc.call_deferred("reparent", %ZoomControls)
 
@@ -88,7 +89,8 @@ func check_for_ui_controls():
 	var new_controls = get_tree().get_nodes_in_group("ui_control")
 	var ded_kidz = %UIControls.get_children()
 	for kid in ded_kidz:
-		kid.queue_free()
+		if not kid.is_in_group("permanent"):
+			kid.queue_free()
 	for nc in new_controls:
 		nc.call_deferred("reparent", %UIControls)
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=41 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=40 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -10,15 +10,14 @@
 [ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="7_s83dy"]
 [ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="8_h2cot"]
 [ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="9_a8dnc"]
+[ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="9_rhye5"]
 [ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="11_6t3px"]
 [ext_resource type="Shader" uid="uid://lrjyje1bmtuv" path="res://Assets/Shaders/mixerdemo.tres" id="11_a8dnc"]
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="12_u0cts"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
-[ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="14_a8dnc"]
 [ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="14_rhye5"]
-[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="15_jn4fx"]
-[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="15_u0cts"]
+[ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://society_ui.tscn" id="16_rhye5"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
 viewport_path = NodePath("SystemView")
@@ -94,8 +93,8 @@ shader_parameter/offset = Vector3(0, 0, 0)
 [sub_resource type="ViewportTexture" id="ViewportTexture_uocqw"]
 viewport_path = NodePath("ZoomView")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_u0cts"]
-viewport_path = NodePath("ZoomView")
+[sub_resource type="ViewportTexture" id="ViewportTexture_gix1a"]
+viewport_path = NodePath("SystemView")
 
 [node name="Main" type="Node"]
 
@@ -103,16 +102,16 @@ viewport_path = NodePath("ZoomView")
 size_flags_horizontal = 4
 size_flags_vertical = 3
 
-[node name="SystemPreview" type="TextureRect" parent="Control" groups=["system_control"]]
-custom_minimum_size = Vector2(480, 300)
+[node name="SystemPreview" type="TextureRect" parent="Control" groups=["permanent", "system_control"]]
+custom_minimum_size = Vector2(960, 600)
 layout_mode = 1
 offset_right = 480.0
 offset_bottom = 300.0
 texture = SubResource("ViewportTexture_6y3qq")
 expand_mode = 3
 
-[node name="ZoomPreview" type="TextureRect" parent="Control" groups=["zoom_control"]]
-custom_minimum_size = Vector2(480, 300)
+[node name="ZoomPreview" type="TextureRect" parent="Control" groups=["permanent", "zoom_control"]]
+custom_minimum_size = Vector2(960, 600)
 layout_mode = 1
 offset_right = 480.0
 offset_bottom = 300.0
@@ -135,19 +134,15 @@ size = Vector2i(1920, 1200)
 
 [node name="Kin" parent="SystemView" instance=ExtResource("5_iyt76")]
 
-[node name="Camera3D" type="Camera3D" parent="SystemView/Kin"]
+[node name="BirdsEye" type="Camera3D" parent="SystemView/Kin"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 800, 0)
 current = true
 
-[node name="Camera3D2" type="Camera3D" parent="SystemView/Kin"]
-process_mode = 4
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -556.139, 21.3368, -43.9424)
-
 [node name="Camera3D3" type="Camera3D" parent="SystemView/Kin"]
-process_mode = 4
-transform = Transform3D(0.484061, 0, -0.875034, 0, 1, 0, 0.875034, 0, 0.484061, -338.648, 1.17053, -9.92191)
+transform = Transform3D(0.484061, 0, -0.875034, 0, 1, 0, 0.875034, 0, 0.484061, -435.968, 1.17053, 128.376)
 environment = ExtResource("6_7ct82")
 attributes = SubResource("CameraAttributesPractical_6t3px")
+current = true
 near = 0.001
 script = ExtResource("7_s83dy")
 
@@ -156,6 +151,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.08145)
 extra_cull_margin = 16384.0
 mesh = SubResource("QuadMesh_u0cts")
 surface_material_override/0 = SubResource("ShaderMaterial_jn4fx")
+
+[node name="FreeFly" type="Camera3D" parent="SystemView/Kin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -347.461, 0, 0)
+current = true
+script = ExtResource("9_rhye5")
 
 [node name="ZoomView" type="SubViewport" parent="."]
 own_world_3d = true
@@ -187,8 +187,10 @@ mapping_surfaces = [null, null]
 
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
+msaa_2d = 1
 title = "Circle"
 position = Vector2i(0, 36)
+size = Vector2i(1920, 1200)
 
 [node name="System" type="Sprite2D" parent="Circle"]
 material = SubResource("ShaderMaterial_6y3qq")
@@ -197,6 +199,7 @@ scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_a8dnc")
 
 [node name="Zoom" type="Sprite2D" parent="Circle"]
+visible = false
 position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_g514o")
@@ -214,6 +217,7 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="ColorSnap" type="ColorRect" parent="Circle"]
+visible = false
 material = SubResource("ShaderMaterial_obmmj")
 anchors_preset = 15
 anchor_right = 1.0
@@ -266,7 +270,7 @@ position = Vector2(954, 532)
 scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
-[node name="DiceCamTexture" parent="Circle" instance=ExtResource("14_a8dnc")]
+[node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
 visible = false
 
 [node name="Mask" type="ColorRect" parent="Circle"]
@@ -276,27 +280,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
-
-[node name="UI" type="CanvasLayer" parent="Circle"]
-
-[node name="TimeLabel" type="Label" parent="Circle/UI"]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -111.0
-offset_top = -447.0
-offset_right = 112.0
-offset_bottom = -368.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("15_jn4fx")
-text = "Time"
-horizontal_alignment = 1
-script = ExtResource("15_u0cts")
-metadata/_custom_type_script = "uid://bid2eudkrel8k"
+metadata/_edit_lock_ = true
 
 [node name="Pews" type="Window" parent="."]
 title = "Pews"
@@ -307,7 +294,7 @@ size = Vector2i(1920, 1200)
 position = Vector2(328, 807)
 texture = SubResource("ViewportTexture_uocqw")
 polygon = PackedVector2Array(-272, 192, -272, -304, 560, -304, 560, 208)
-uv = PackedVector2Array(-192, -24, -56, -104, 96, -80, 80, 72)
+uv = PackedVector2Array(0, 1168, 360, 488, 1624, 79.9999, 1816, 1120)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
@@ -322,9 +309,9 @@ metadata/_custom_type_script = "uid://muokti5xk4km"
 [node name="BackRect" type="Polygon2D" parent="Pews"]
 position = Vector2(320, 729.5)
 scale = Vector2(1.94982, 1)
-texture = SubResource("ViewportTexture_u0cts")
+texture = SubResource("ViewportTexture_gix1a")
 polygon = PackedVector2Array(648, -576, 16, -576, 16, -232, 648, -232)
-uv = PackedVector2Array(1920, 0, 0, -1.90735e-06, -1.00521e-06, 1200, 1920, 1200)
+uv = PackedVector2Array(1920, 272, 0, 272, -3.8147e-06, 888, 1920, 888)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 

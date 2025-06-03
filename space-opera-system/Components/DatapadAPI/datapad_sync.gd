@@ -106,7 +106,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 			var current_communities = []
 			for community in society.communities:
-				# print(community)
+				#print(community)
 				if not this_society.communities.has(community.id):
 					if not State.communities.has(community.id):
 						this_society.communities[community.id] = Community.new()
@@ -115,7 +115,8 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 
 				var this_community = this_society.communities[community.id]
 				this_community.title = community.name
-				this_community.voice = community.voice
+				if community.has("voice"):
+					this_community.voice = community.voice
 				# this_community.resources = {}
 
 				# print("- " + this_community.title)

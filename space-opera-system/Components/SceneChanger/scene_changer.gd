@@ -4,8 +4,8 @@ signal scene_changed
 
 #@export var oldscenes: Dictionary[String, PackedScene]
 
-@export var structure : SceneStructure
-@export var mapping_surfaces :Array[MappingSurface]
+@export var structure: SceneStructure
+@export var mapping_surfaces: Array[MappingSurface]
 
 
 func _on_datapad_sync_phase_changed(phase: Phase):
@@ -13,15 +13,18 @@ func _on_datapad_sync_phase_changed(phase: Phase):
 
 	print(phase.type)
 	#scene_changed.emit(structure.scene_data[phase.type])
-	
 
 
 func _on_control_scene_changed(scene: SceneData) -> void:
 	print(scene.scene)
+	if scene.ui_controls:
+		var new_ui = scene.ui_controls.instantiate()
+		add_child(new_ui)
+
 	#var ded_kidz = $LIVE.get_children()
 	#for kid in ded_kidz:
-		#kid.queue_free()
+	#kid.queue_free()
 	#var new_scene = scene.scene.instantiate()
 	# TODO: rework all of this
 	#for surface in mapping_surfaces:
-		#surface.texture.viewport_path = new_scene.get(surface.title).get_path()
+	#surface.texture.viewport_path = new_scene.get(surface.title).get_path()

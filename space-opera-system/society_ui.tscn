@@ -1,0 +1,203 @@
+[gd_scene load_steps=18 format=3 uid="uid://b7x0paetbq6v7"]
+
+[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_ood2e"]
+[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_nl8h3"]
+[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="3_nc66i"]
+[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
+[ext_resource type="Texture2D" uid="uid://dpklgvn3umju3" path="res://Assets/constellations/aesthetic.svg" id="5_y0sm1"]
+[ext_resource type="PackedScene" uid="uid://oxissunlfv1c" path="res://Controller/Phases/galactic_phase_controls.tscn" id="6_sl87g"]
+[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="7_c6jvj"]
+[ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
+[ext_resource type="Shader" uid="uid://3lnhpm3bddo" path="res://Assets/Shaders/spotlight.gdshader" id="9_n4h2n"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_gix1a"]
+font = ExtResource("3_nc66i")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_obmmj"]
+font = ExtResource("4_n4h2n")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6x64"]
+font = ExtResource("7_c6jvj")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_s0s18"]
+font = ExtResource("3_nc66i")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_4sgve"]
+font = ExtResource("7_c6jvj")
+font_size = 64
+
+[sub_resource type="Animation" id="Animation_ood2e"]
+resource_name = "Enter"
+length = 3.0
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nl8h3"]
+_data = {
+&"Enter": SubResource("Animation_ood2e")
+}
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
+resource_local_to_scene = true
+shader = ExtResource("9_n4h2n")
+shader_parameter/circle_width = 0.5
+shader_parameter/circle_height = 0.3
+shader_parameter/feather = 0.05
+shader_parameter/circle_position = Vector2(0.5, 0.5)
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1200.0
+
+[node name="SocietyUI" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Diag1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 25.499
+offset_top = -566.0
+offset_right = 1006.5
+offset_bottom = 1001.0
+rotation = 0.523598
+color = Color(1, 0.41, 0.41, 1)
+
+[node name="Diag2" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = 1942.0
+offset_top = -235.0
+offset_right = 2923.0
+offset_bottom = 1332.0
+rotation = 0.523598
+color = Color(1, 0.41, 0.41, 1)
+
+[node name="TimeLabel" type="Label" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -111.0
+offset_top = -447.0
+offset_right = 112.0
+offset_bottom = -368.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ood2e")
+text = "Time"
+horizontal_alignment = 1
+script = ExtResource("2_nl8h3")
+metadata/_custom_type_script = "uid://bid2eudkrel8k"
+
+[node name="Archetype" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1450.0
+offset_top = 762.0
+offset_right = 1814.0
+offset_bottom = 841.0
+text = "Archetype"
+label_settings = SubResource("LabelSettings_gix1a")
+
+[node name="SocietyName" type="Label" parent="."]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 142.0
+offset_right = 1009.0
+offset_bottom = 343.0
+scale = Vector2(1, 2)
+text = "SOCIETY"
+label_settings = SubResource("LabelSettings_obmmj")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(1691, 596)
+scale = Vector2(0.381789, 0.381789)
+texture = ExtResource("5_y0sm1")
+
+[node name="GalacticPhaseControls" parent="." instance=ExtResource("6_sl87g")]
+visible = false
+layout_mode = 1
+offset_left = -4.0
+offset_top = 42.0
+offset_right = -4.0
+offset_bottom = 42.0
+
+[node name="Action" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 614.0
+offset_top = 292.0
+offset_right = 1271.0
+offset_bottom = 971.0
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Statement" type="HFlowContainer" parent="Action"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="WeUse" type="Label" parent="Action/Statement"]
+layout_mode = 2
+text = "We use"
+label_settings = SubResource("LabelSettings_p6x64")
+
+[node name="Resource" type="Label" parent="Action/Statement"]
+layout_mode = 2
+text = "RESOURCE"
+label_settings = SubResource("LabelSettings_s0s18")
+
+[node name="Action" type="Label" parent="Action/Statement"]
+layout_mode = 2
+text = "to take action"
+label_settings = SubResource("LabelSettings_4sgve")
+
+[node name="Statement3" type="HFlowContainer" parent="Action"]
+visible = false
+layout_mode = 2
+alignment = 1
+
+[node name="WeUse" type="Label" parent="Action/Statement3"]
+layout_mode = 2
+text = "We use"
+label_settings = SubResource("LabelSettings_p6x64")
+
+[node name="Resource" type="Label" parent="Action/Statement3"]
+layout_mode = 2
+text = "RESOURCE"
+label_settings = SubResource("LabelSettings_s0s18")
+
+[node name="Action" type="Label" parent="Action/Statement3"]
+layout_mode = 2
+text = "to take action"
+label_settings = SubResource("LabelSettings_4sgve")
+
+[node name="Statement2" type="HFlowContainer" parent="Action"]
+layout_mode = 2
+alignment = 1
+
+[node name="WeUse" type="Label" parent="Action/Statement2"]
+layout_mode = 2
+text = "We use"
+label_settings = SubResource("LabelSettings_p6x64")
+
+[node name="Resource" type="Label" parent="Action/Statement2"]
+layout_mode = 2
+text = "RESOURCE"
+label_settings = SubResource("LabelSettings_s0s18")
+
+[node name="Action" type="Label" parent="Action/Statement2"]
+layout_mode = 2
+text = "to take action"
+label_settings = SubResource("LabelSettings_4sgve")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_nl8h3")
+}
+
+[node name="DiceCamTexture" parent="." instance=ExtResource("8_nc66i")]
+material = SubResource("ShaderMaterial_s0s18")
+layout_mode = 1

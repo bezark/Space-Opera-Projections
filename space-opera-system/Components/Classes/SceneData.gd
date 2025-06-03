@@ -7,3 +7,5 @@ class_name SceneData
 @export var zooms: Array[PackedScene]
 
 @export var transition_time = 2.0
+
+@export var ui_controls: PackedScene

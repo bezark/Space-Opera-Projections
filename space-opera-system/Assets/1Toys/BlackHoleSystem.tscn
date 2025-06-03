@@ -154,6 +154,7 @@ visible = false
 environment = SubResource("Environment_4jktx")
 
 [node name="CelestialBody" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
+title = "Ice  Haus"
 body = NodePath("CloudyPlanet")
 distance = -672.003
 speed = 0.0
