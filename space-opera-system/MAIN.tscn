@@ -79,7 +79,7 @@ shader_parameter/Mask = SubResource("NoiseTexture2D_uocqw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obmmj"]
 shader = ExtResource("12_u0cts")
-shader_parameter/colors = PackedColorArray(0.761011, 0.711022, 0.922931, 0.968627, 0, 0, 0.803922, 1, 0.388774, 0.483849, 0.835922, 1, 0.365272, 0.393672, 0.738368, 1, 0.762335, 0.311199, 0.859507, 1, 0.56861, 0.682326, 0.722168, 1, 0.317647, 0.278431, 0.717647, 1, 0, 0.262745, 0, 1, 0.00266067, 0.130873, 0.622193, 1, 0.390205, 0.196481, 0.601933, 1, 0.447743, 0.657338, 0.36987, 1, 0, 0.427451, 0.462745, 1, 0.133333, 0, 0.231373, 1, 0.872706, 8.18223e-07, 8.66354e-07, 1, 0.832327, 0.351763, 7.70092e-07, 1, 0.906717, 0.858124, 0.510115, 1, 0.915945, 0.27236, 0.628792, 1)
+shader_parameter/colors = PackedColorArray(0.478431, 0.647059, 0.564706, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1, 0.698039, 0.180392, 0.00784314, 1, 0.396078, 0.0313726, 0.027451, 1, 0.72549, 0.494118, 0.564706, 1, 0.647059, 0.517647, 0.67451, 1, 0, 0, 0, 0)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ao5vc"]
 shader = ExtResource("13_jn4fx")
@@ -217,7 +217,6 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="ColorSnap" type="ColorRect" parent="Circle"]
-visible = false
 material = SubResource("ShaderMaterial_obmmj")
 anchors_preset = 15
 anchor_right = 1.0
@@ -289,6 +288,7 @@ metadata/_edit_lock_ = true
 title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
+visible = false
 
 [node name="LeftPew" type="Polygon2D" parent="Pews"]
 position = Vector2(328, 807)
