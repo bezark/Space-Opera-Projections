@@ -27,9 +27,11 @@ func _ready() -> void:
 		remote_transform.update_rotation = false
 		remote_transform.remote_path = sattelite.get_path()
 		body.add_child(remote_transform)
+		# sattelite.add_to_group("point_of_interest")
 	$VBoxContainer/Title.text = title
 	if body:
 		distance = body.position.x
+		body.add_to_group("point_of_interest")
 
 	rotation.y = fmod(speed * Time.get_unix_time_from_system(), TAU)
 

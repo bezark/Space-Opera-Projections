@@ -136,12 +136,12 @@ cameras = [NodePath("../Crane/OrbitalCamera"), NodePath("../FreeflyCamera"), Nod
 
 [node name="Crane" type="Node3D" parent="SystemView/Kin"]
 
-[node name="OrbitalCamera" type="Camera3D" parent="SystemView/Kin/Crane" node_paths=PackedStringArray("focus")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+[node name="OrbitalCamera" type="Camera3D" parent="SystemView/Kin/Crane"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 script = ExtResource("10_g514o")
-focus = NodePath("../..")
-sensitivity = 0.1
+sensitivity = 0.5
 damping = 0.1
+zoom_sensitivity = 20.0
 metadata/_custom_type_script = "uid://ghnhrkb3yrje"
 
 [node name="ZoomView" type="SubViewport" parent="."]
@@ -178,6 +178,7 @@ msaa_2d = 1
 title = "Circle"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
+visible = false
 
 [node name="System" type="Sprite2D" parent="Circle"]
 material = SubResource("ShaderMaterial_6y3qq")

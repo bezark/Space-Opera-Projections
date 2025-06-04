@@ -88,6 +88,7 @@ text = "0000"
 script = ExtResource("3_u2oln")
 
 [node name="DiceCamTexture" parent="MarginContainer/VBoxContainer/Body/SideBar" instance=ExtResource("6_671od")]
+visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Body/SideBar"]

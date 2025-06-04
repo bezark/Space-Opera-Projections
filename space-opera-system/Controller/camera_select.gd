@@ -19,4 +19,4 @@ func camera_selected(cam: Camera3D):
 		camera.current = false
 	cam.current = true
 	if cam.has_method("start"):
-		cam.start(cameras.pick_random())
+		cam.start()
