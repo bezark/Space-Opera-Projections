@@ -22,6 +22,8 @@ var selected_id : String
 
 
 func _ready() -> void:
+	#var window = get_viewport()
+	#window.title="Controller"
 	make_phase_buttons()
 	check_for_controls.call_deferred()
 	#o%SystemView.set_deferred("texture", system_view)

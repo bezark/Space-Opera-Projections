@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=37 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -6,13 +6,13 @@
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://4wik5qowm8jb" path="res://Assets/1Toys/BlackHoleSystem.tscn" id="5_iyt76"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
-[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="6_7ct82"]
-[ext_resource type="Script" uid="uid://cb0wu6k1c8oaj" path="res://camera.gd" id="7_s83dy"]
-[ext_resource type="Shader" uid="uid://frp1xnif4uxg" path="res://Assets/Shaders/3dPixelOutline.gdshader" id="8_h2cot"]
 [ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="9_a8dnc"]
+[ext_resource type="Script" uid="uid://wmb2pxmq1rys" path="res://addons/orbit_camera/orbit_camera.gd" id="9_g514o"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="9_rhye5"]
+[ext_resource type="Script" uid="uid://dm4yd3m2ekm5a" path="res://Controller/camera_select.gd" id="10_a8dnc"]
 [ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="11_6t3px"]
 [ext_resource type="Shader" uid="uid://lrjyje1bmtuv" path="res://Assets/Shaders/mixerdemo.tres" id="11_a8dnc"]
+[ext_resource type="Script" uid="uid://c2l8ahmfhfhuq" path="res://Components/Classes/SystemCamera.gd" id="11_g514o"]
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="12_u0cts"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
@@ -24,23 +24,6 @@ viewport_path = NodePath("SystemView")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s83dy"]
 viewport_path = NodePath("ZoomView")
-
-[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_6t3px"]
-dof_blur_near_enabled = true
-
-[sub_resource type="QuadMesh" id="QuadMesh_u0cts"]
-lightmap_size_hint = Vector2i(12, 12)
-size = Vector2(2, 2)
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_jn4fx"]
-render_priority = 0
-shader = ExtResource("8_h2cot")
-shader_parameter/shadows_enabled = true
-shader_parameter/highlights_enabled = true
-shader_parameter/shadow_strength = 1.0
-shader_parameter/highlight_strength = 1.0
-shader_parameter/highlight_color = Color(1, 1, 1, 1)
-shader_parameter/shadow_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Environment" id="Environment_6t3px"]
 background_mode = 2
@@ -79,7 +62,7 @@ shader_parameter/Mask = SubResource("NoiseTexture2D_uocqw")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obmmj"]
 shader = ExtResource("12_u0cts")
-shader_parameter/colors = PackedColorArray(0.478431, 0.647059, 0.564706, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1, 0.698039, 0.180392, 0.00784314, 1, 0.396078, 0.0313726, 0.027451, 1, 0.72549, 0.494118, 0.564706, 1, 0.647059, 0.517647, 0.67451, 1, 0, 0, 0, 0)
+shader_parameter/colors = PackedColorArray(0.478431, 0.647059, 0.564706, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1, 0.698039, 0.180392, 0.00784314, 1, 0.396078, 0.0313726, 0.027451, 1, 0.72549, 0.494118, 0.564706, 1, 0.647059, 0.517647, 0.67451, 1, 0.686275, 0.788235, 0.737255, 1, 0.584314, 0.717647, 0.65098, 1, 0.631373, 0.607843, 0.419608, 1, 0.384314, 0.517647, 0.45098, 1, 0.509804, 0.478431, 0.223529, 1, 0.309804, 0.278431, 0.0235294, 1, 0.862745, 0.815686, 0.560784, 1, 0.815686, 0.752941, 0.415686, 1, 0.615686, 0.552941, 0.215686, 1, 0.756863, 0.345098, 0.207843, 1, 0.556863, 0.145098, 0.00784314, 1, 0.517647, 0.223529, 0.223529, 1, 0.317647, 0.0235294, 0.0235294, 1, 0.780392, 0.596078, 0.65098, 1, 0.580392, 0.396078, 0.45098, 1, 0.717647, 0.615686, 0.741176, 1, 0.517647, 0.415686, 0.541176, 1)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ao5vc"]
 shader = ExtResource("13_jn4fx")
@@ -134,28 +117,26 @@ size = Vector2i(1920, 1200)
 
 [node name="Kin" parent="SystemView" instance=ExtResource("5_iyt76")]
 
-[node name="BirdsEye" type="Camera3D" parent="SystemView/Kin"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 800, 0)
-current = true
-
-[node name="Camera3D3" type="Camera3D" parent="SystemView/Kin"]
-transform = Transform3D(0.484061, 0, -0.875034, 0, 1, 0, 0.875034, 0, 0.484061, -435.968, 1.17053, 128.376)
-environment = ExtResource("6_7ct82")
-attributes = SubResource("CameraAttributesPractical_6t3px")
-current = true
-near = 0.001
-script = ExtResource("7_s83dy")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="SystemView/Kin/Camera3D3"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1.08145)
-extra_cull_margin = 16384.0
-mesh = SubResource("QuadMesh_u0cts")
-surface_material_override/0 = SubResource("ShaderMaterial_jn4fx")
-
-[node name="FreeFly" type="Camera3D" parent="SystemView/Kin"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -347.461, 0, 0)
+[node name="FreeflyCamera" type="Camera3D" parent="SystemView/Kin"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -625.159, 0, 0)
 current = true
 script = ExtResource("9_rhye5")
+metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
+
+[node name="BirdsEye" type="Camera3D" parent="SystemView/Kin"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 800, 0)
+script = ExtResource("11_g514o")
+metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
+
+[node name="CameraSelect" type="HBoxContainer" parent="SystemView/Kin" node_paths=PackedStringArray("cameras") groups=["permanent", "system_control"]]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("10_a8dnc")
+cameras = [NodePath(""), NodePath("../FreeflyCamera"), NodePath("../BirdsEye")]
+
+[node name="OrbitCamera" type="Camera3D" parent="SystemView/Kin"]
+script = ExtResource("9_g514o")
+metadata/_custom_type_script = "uid://wmb2pxmq1rys"
 
 [node name="ZoomView" type="SubViewport" parent="."]
 own_world_3d = true
@@ -217,6 +198,7 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="ColorSnap" type="ColorRect" parent="Circle"]
+visible = false
 material = SubResource("ShaderMaterial_obmmj")
 anchors_preset = 15
 anchor_right = 1.0
@@ -270,7 +252,6 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
-visible = false
 
 [node name="Mask" type="ColorRect" parent="Circle"]
 material = ExtResource("11_6t3px")
@@ -282,9 +263,9 @@ grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
-metadata/_edit_lock_ = true
 
 [node name="Pews" type="Window" parent="."]
+msaa_2d = 2
 title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
@@ -302,7 +283,7 @@ metadata/_custom_type_script = "uid://muokti5xk4km"
 position = Vector2(1358, 886)
 texture = SubResource("ViewportTexture_uocqw")
 polygon = PackedVector2Array(-304, 168, -304, -360, 560, -360, 560, 168)
-uv = PackedVector2Array(-192, -24, -56, -104, 96, -80, 80, 72)
+uv = PackedVector2Array(24, 1200, 24, 16, 1912, 8.00001, 1936, 1208)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
@@ -312,6 +293,13 @@ scale = Vector2(1.94982, 1)
 texture = SubResource("ViewportTexture_gix1a")
 polygon = PackedVector2Array(648, -576, 16, -576, 16, -232, 648, -232)
 uv = PackedVector2Array(1920, 272, 0, 272, -3.8147e-06, 888, 1920, 888)
+script = ExtResource("13_h2cot")
+metadata/_custom_type_script = "uid://muokti5xk4km"
+
+[node name="WholeThang" type="Polygon2D" parent="Pews"]
+position = Vector2(1007, 439)
+polygon = PackedVector2Array(-664, -331, 587, -313, 586, -21, 912, -19, 910, 675, 48, 670, 37, 151, -116, 148, -115, 667, -992, 659, -1005, -39, -661, -34)
+uv = PackedVector2Array(351.943, 139.833, 1559.94, 139.833, 1572.94, 513.833, 1895.94, 505.833, 1903.94, 1039.83, 1031.94, 1042.83, 1034.94, 506.833, 874.943, 500.833, 877.943, 1012.83, 40.9431, 984.833, 37.9431, 472.833, 367.943, 458.833)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 

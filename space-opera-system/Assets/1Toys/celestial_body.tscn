@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Assets/1Toys/celestial_body.gd" id="1_to1mt"]
 
-[node name="CelestialBody" type="Node3D"]
+[node name="CelestialBody" type="Node3D" groups=["point_of_interest"]]
 script = ExtResource("1_to1mt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." groups=["system_control"]]

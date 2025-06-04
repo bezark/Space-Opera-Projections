@@ -8,6 +8,8 @@ func _ready():
 
 func _input(event):
 	print(event)
+	if event== InputEventScreenDrag:
+		print(event)
 
 
 func _on_button_pressed():

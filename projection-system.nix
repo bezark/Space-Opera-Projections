@@ -106,6 +106,11 @@
     };
     interfaces = {
       "enp6s0" = {
+        useDHCP = false;
+        ipv4.addresses = [{
+          address = "192.168.50.1";
+          prefixLength = 24;
+        }];
         wakeOnLan = {
           enable = true;
         };

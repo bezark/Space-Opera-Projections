@@ -3,13 +3,13 @@ class_name CelestialBody
 
 @export var title: String
 @export var body: Node3D
+
 @export var sattelite: CelestialBody = null
 @export var distance: float:
 	set(val):
 		distance = val
 		if body:
 			body.position.x = distance
-
 
 @export var speed: float = 0.005:
 	set(val):
@@ -20,24 +20,23 @@ class_name CelestialBody
 @onready var controls: GridContainer = $VBoxContainer/Controls
 
 
-
 func _ready() -> void:
 	var parent = get_parent()
 	if sattelite:
 		var remote_transform = RemoteTransform3D.new()
 		remote_transform.update_rotation = false
-		remote_transform.remote_path=sattelite.get_path()
+		remote_transform.remote_path = sattelite.get_path()
 		body.add_child(remote_transform)
 	$VBoxContainer/Title.text = title
 	if body:
 		distance = body.position.x
-	
+
 	rotation.y = fmod(speed * Time.get_unix_time_from_system(), TAU)
 
 
 func _process(delta: float) -> void:
-	rotate_y(speed*delta)
-	body.rotate_y(spin*delta)
+	rotate_y(speed * delta)
+	body.rotate_y(spin * delta)
 
 
 func _on_distance_value_changed(value: float) -> void:
