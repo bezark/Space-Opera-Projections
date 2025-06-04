@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="PackedScene" uid="uid://hfn3lqg1fa0j" path="res://Assets/1Toys/star.tscn" id="3_j4skb"]
-[ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
+[ext_resource type="Texture2D" uid="uid://db4ro7730cn7b" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="6_q43nw"]
 [ext_resource type="Texture2D" uid="uid://dkj6tq30oxsxw" path="res://Assets/1Toys/Planets/cloudy-water.tres" id="9_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Assets/1Toys/celestial_body.tscn" id="9_l1est"]
@@ -143,6 +143,7 @@ clearcoat_roughness = 0.4
 [node name="BlackHoleSystem" type="Node3D"]
 
 [node name="Blackhole" parent="." groups=["point_of_interest"] instance=ExtResource("1_paiqf")]
+visible = false
 
 [node name="Siphon" parent="." groups=["point_of_interest"] instance=ExtResource("1_j4skb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400.839, -1.19209e-07, -0.442535)

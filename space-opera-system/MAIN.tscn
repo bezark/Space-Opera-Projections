@@ -7,9 +7,9 @@
 [ext_resource type="PackedScene" uid="uid://4wik5qowm8jb" path="res://Assets/1Toys/BlackHoleSystem.tscn" id="5_iyt76"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
 [ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="9_a8dnc"]
-[ext_resource type="Script" uid="uid://wmb2pxmq1rys" path="res://addons/orbit_camera/orbit_camera.gd" id="9_g514o"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="9_rhye5"]
 [ext_resource type="Script" uid="uid://dm4yd3m2ekm5a" path="res://Controller/camera_select.gd" id="10_a8dnc"]
+[ext_resource type="Script" uid="uid://ghnhrkb3yrje" path="res://Components/Cameras/orbit_camera.gd" id="10_g514o"]
 [ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="11_6t3px"]
 [ext_resource type="Shader" uid="uid://lrjyje1bmtuv" path="res://Assets/Shaders/mixerdemo.tres" id="11_a8dnc"]
 [ext_resource type="Script" uid="uid://c2l8ahmfhfhuq" path="res://Components/Classes/SystemCamera.gd" id="11_g514o"]
@@ -132,11 +132,17 @@ metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("10_a8dnc")
-cameras = [NodePath(""), NodePath("../FreeflyCamera"), NodePath("../BirdsEye")]
+cameras = [NodePath("../Crane/OrbitalCamera"), NodePath("../FreeflyCamera"), NodePath("../BirdsEye")]
 
-[node name="OrbitCamera" type="Camera3D" parent="SystemView/Kin"]
-script = ExtResource("9_g514o")
-metadata/_custom_type_script = "uid://wmb2pxmq1rys"
+[node name="Crane" type="Node3D" parent="SystemView/Kin"]
+
+[node name="OrbitalCamera" type="Camera3D" parent="SystemView/Kin/Crane" node_paths=PackedStringArray("focus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("10_g514o")
+focus = NodePath("../..")
+sensitivity = 0.1
+damping = 0.1
+metadata/_custom_type_script = "uid://ghnhrkb3yrje"
 
 [node name="ZoomView" type="SubViewport" parent="."]
 own_world_3d = true

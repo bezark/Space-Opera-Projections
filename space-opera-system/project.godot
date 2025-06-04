@@ -35,7 +35,7 @@ window/stretch/mode="canvas_items"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/godOSC/plugin.cfg", "res://addons/livecontroller/plugin.cfg", "res://addons/orbit_camera/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
+enabled=PackedStringArray("res://addons/Todo_Manager/plugin.cfg", "res://addons/godOSC/plugin.cfg", "res://addons/livecontroller/plugin.cfg", "res://addons/terrain_3d/plugin.cfg", "res://addons/zylann.atmosphere/tools/plugin.cfg")
 
 [file_customization]
 
@@ -119,6 +119,10 @@ look_down={
 "deadzone": 0.2,
 "events": []
 }
+
+[input_devices]
+
+pointing/android/enable_pan_and_scale_gestures=true
 
 [physics]
 

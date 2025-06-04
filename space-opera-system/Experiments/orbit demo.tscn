@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bg2rc14oxl6h6"]
+
+[ext_resource type="Script" uid="uid://ghnhrkb3yrje" path="res://Components/Cameras/orbit_camera.gd" id="1_rgi81"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_xgl4i"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_kla4h"]
+sky_material = SubResource("ProceduralSkyMaterial_xgl4i")
+
+[sub_resource type="Environment" id="Environment_3ibeb"]
+background_mode = 2
+sky = SubResource("Sky_kla4h")
+tonemap_mode = 2
+glow_enabled = true
+
+[node name="OrbitDemo" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+shadow_enabled = true
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_3ibeb")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="."]
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4, 1.5, 0)
+size = Vector3(1, 4, 1)
+
+[node name="Crane" type="Node3D" parent="."]
+
+[node name="OrbitalCamera" type="Camera3D" parent="Crane" node_paths=PackedStringArray("focus")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+script = ExtResource("1_rgi81")
+focus = NodePath("../../CSGBox3D2")
+sensitivity = 0.1
+damping = 0.1
+metadata/_custom_type_script = "uid://ghnhrkb3yrje"
