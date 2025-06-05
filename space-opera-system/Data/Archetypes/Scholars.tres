@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Archetype" load_steps=3 format=3 uid="uid://cil2aln12ayt1"]
 
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_c0n4i"]
-[ext_resource type="Texture2D" uid="uid://gljhqj470ise" path="res://Assets/constellations/scholars.svg" id="2_3d0hv"]
+[ext_resource type="Texture2D" uid="uid://bsmjbbh387ufk" path="res://Assets/ICONS/scholars_detail.svg" id="2_3d0hv"]
 
 [resource]
 script = ExtResource("1_c0n4i")
 title = "The Scholars"
 sign_name = ""
-sign = ExtResource("2_3d0hv")
+star_sign = ExtResource("2_3d0hv")
 metadata/_custom_type_script = "uid://b5hs4kdp8yai7"

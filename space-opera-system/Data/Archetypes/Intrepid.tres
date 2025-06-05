@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Archetype" load_steps=3 format=3 uid="uid://roeci46rncv3"]
 
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_mixc1"]
-[ext_resource type="Texture2D" uid="uid://til54i60h60o" path="res://Assets/constellations/intrepid.svg" id="2_3hpg5"]
+[ext_resource type="Texture2D" uid="uid://buj1wpxbf3mn6" path="res://Assets/ICONS/intrepid_detail.svg" id="2_3hpg5"]
 
 [resource]
 script = ExtResource("1_mixc1")
 title = "The Intrepid"
 sign_name = ""
-sign = ExtResource("2_3hpg5")
+star_sign = ExtResource("2_3hpg5")
 metadata/_custom_type_script = "uid://b5hs4kdp8yai7"

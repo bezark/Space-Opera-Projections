@@ -1,0 +1,31 @@
+[gd_scene load_steps=5 format=3 uid="uid://bcp7dejnegvyd"]
+
+[ext_resource type="Texture2D" uid="uid://byw7t3xfye7yu" path="res://icon.svg" id="1_jn5ve"]
+[ext_resource type="Shader" uid="uid://chqk7vw65ue6j" path="res://Assets/Shaders/mixer.tres" id="2_aa2ef"]
+[ext_resource type="Texture2D" uid="uid://dh71easxjkjiw" path="res://icon.png" id="3_aa2ef"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_nxwmh"]
+shader = ExtResource("2_aa2ef")
+shader_parameter/Zoom = ExtResource("3_aa2ef")
+
+[node name="Mixer" type="Node2D"]
+
+[node name="Icon" type="Sprite2D" parent="."]
+position = Vector2(790, 743.5)
+scale = Vector2(5.90625, 5.57031)
+texture = ExtResource("1_jn5ve")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_nxwmh")
+custom_minimum_size = Vector2(500, 500)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 363.0
+offset_top = 97.0
+offset_right = 2057.0
+offset_bottom = 1525.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3

@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=36 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -6,16 +6,17 @@
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://4wik5qowm8jb" path="res://Assets/1Toys/BlackHoleSystem.tscn" id="5_iyt76"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
-[ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="9_a8dnc"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="9_rhye5"]
 [ext_resource type="Script" uid="uid://dm4yd3m2ekm5a" path="res://Controller/camera_select.gd" id="10_a8dnc"]
 [ext_resource type="Script" uid="uid://ghnhrkb3yrje" path="res://Components/Cameras/orbit_camera.gd" id="10_g514o"]
+[ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Experiments/Surface.tscn" id="10_uocqw"]
 [ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="11_6t3px"]
-[ext_resource type="Shader" uid="uid://lrjyje1bmtuv" path="res://Assets/Shaders/mixerdemo.tres" id="11_a8dnc"]
 [ext_resource type="Script" uid="uid://c2l8ahmfhfhuq" path="res://Components/Classes/SystemCamera.gd" id="11_g514o"]
+[ext_resource type="Shader" uid="uid://bco3hpgboc2nw" path="res://Assets/Shaders/threshold_silhouette.gdshader" id="11_rhye5"]
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="12_u0cts"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
+[ext_resource type="Shader" uid="uid://chqk7vw65ue6j" path="res://Assets/Shaders/mixer.tres" id="13_obmmj"]
 [ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="14_rhye5"]
 [ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://society_ui.tscn" id="16_rhye5"]
 
@@ -32,33 +33,34 @@ adjustment_enabled = true
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_u0cts"]
 exposure_multiplier = 8.0
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_6y3qq"]
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_a8dnc"]
 viewport_path = NodePath("SystemView")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_g514o"]
 viewport_path = NodePath("ZoomView")
 
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_g514o"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g514o"]
+shader = ExtResource("11_rhye5")
+shader_parameter/threshold = 0.059
+shader_parameter/smoothness = 0.191
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/fg_color = Color(1, 1, 1, 1)
+shader_parameter/invert = false
+shader_parameter/intensity = 1.0
 
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_uocqw"]
-noise = SubResource("FastNoiseLite_g514o")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_obmmj"]
-viewport_path = NodePath("SystemView")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uocqw"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_ao5vc"]
+viewport_path = NodePath("SystemView")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_obmmj"]
 viewport_path = NodePath("ZoomView")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6x64"]
 resource_local_to_scene = true
-shader = ExtResource("11_a8dnc")
-shader_parameter/System = SubResource("ViewportTexture_obmmj")
-shader_parameter/Zoom = SubResource("ViewportTexture_ao5vc")
-shader_parameter/Mask = SubResource("NoiseTexture2D_uocqw")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uocqw"]
+shader = ExtResource("13_obmmj")
+shader_parameter/System = SubResource("ViewportTexture_ao5vc")
+shader_parameter/Zoom = SubResource("ViewportTexture_obmmj")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obmmj"]
 shader = ExtResource("12_u0cts")
@@ -152,8 +154,6 @@ use_debanding = true
 size = Vector2i(1920, 1200)
 size_2d_override_stretch = true
 
-[node name="Surface" parent="ZoomView" instance=ExtResource("9_a8dnc")]
-
 [node name="Camera3D" type="Camera3D" parent="ZoomView"]
 transform = Transform3D(0.99916, 0, -0.0409862, 0, 1, 0, 0.0409862, 0, 0.99916, 1.23072, 14.0431, 57.2704)
 environment = SubResource("Environment_6t3px")
@@ -166,6 +166,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="Surface" parent="ZoomView" instance=ExtResource("10_uocqw")]
+visible = false
 
 [node name="SceneChanger" type="Node" parent="." node_paths=PackedStringArray("mapping_surfaces")]
 script = ExtResource("5_s83dy")
@@ -181,7 +184,7 @@ size = Vector2i(1920, 1200)
 visible = false
 
 [node name="System" type="Sprite2D" parent="Circle"]
-material = SubResource("ShaderMaterial_6y3qq")
+visible = false
 position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_a8dnc")
@@ -192,17 +195,27 @@ position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_g514o")
 
-[node name="Mixer" type="ColorRect" parent="Circle"]
-visible = false
-material = SubResource("ShaderMaterial_p6x64")
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Silhouette" type="ColorRect" parent="Circle"]
+material = SubResource("ShaderMaterial_g514o")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="BackBufferCopy5" type="BackBufferCopy" parent="Circle"]
 material = SubResource("ShaderMaterial_uocqw")
 position = Vector2(954, 532)
 scale = Vector2(9.48, 5.22)
 copy_mode = 2
+
+[node name="Mixer" type="ColorRect" parent="Circle"]
+material = SubResource("ShaderMaterial_p6x64")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="ColorSnap" type="ColorRect" parent="Circle"]
 visible = false
@@ -259,6 +272,7 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
+visible = false
 
 [node name="Mask" type="ColorRect" parent="Circle"]
 material = ExtResource("11_6t3px")
