@@ -143,7 +143,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 script = ExtResource("10_g514o")
 sensitivity = 0.5
 damping = 0.1
-zoom_sensitivity = 20.0
+zoom_sensitivity = 10.0
 metadata/_custom_type_script = "uid://ghnhrkb3yrje"
 
 [node name="ZoomView" type="SubViewport" parent="."]
@@ -181,7 +181,6 @@ msaa_2d = 1
 title = "Circle"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
-visible = false
 
 [node name="System" type="Sprite2D" parent="Circle"]
 visible = false
@@ -272,7 +271,6 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
-visible = false
 
 [node name="Mask" type="ColorRect" parent="Circle"]
 material = ExtResource("11_6t3px")
@@ -290,7 +288,6 @@ msaa_2d = 2
 title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
-visible = false
 
 [node name="LeftPew" type="Polygon2D" parent="Pews"]
 position = Vector2(328, 807)

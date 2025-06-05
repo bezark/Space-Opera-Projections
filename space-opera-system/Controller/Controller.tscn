@@ -88,7 +88,6 @@ text = "0000"
 script = ExtResource("3_u2oln")
 
 [node name="DiceCamTexture" parent="MarginContainer/VBoxContainer/Body/SideBar" instance=ExtResource("6_671od")]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Body/SideBar"]
@@ -119,44 +118,44 @@ layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "Projectors"
 
-[node name="VBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
+[node name="Main" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
 
-[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
+[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Zoom" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
+[node name="Zoom" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ZoomScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom"]
+[node name="ZoomScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ZoomSelect" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom/ZoomScroll"]
+[node name="ZoomSelect" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom/ZoomScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MakeUnique" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom"]
+[node name="MakeUnique" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
 layout_mode = 2
 text = " Make Unique..."
 
-[node name="Open" type="Button" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom"]
+[node name="Open" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
 layout_mode = 2
 text = "Open in Editor..."
 
-[node name="ZoomControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom"]
+[node name="ZoomControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
 unique_name_in_owner = true
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom"]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
 layout_mode = 2
 
-[node name="UIControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/VBoxContainer"]
+[node name="UIControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -167,6 +166,6 @@ wait_time = 30.0
 autostart = true
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/VBoxContainer/Zoom/Open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Zoom/Open" to="." method="_on_open_pressed"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

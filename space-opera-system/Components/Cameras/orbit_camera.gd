@@ -6,6 +6,7 @@ class_name OrbitalCamera
 @export var damping := 4.0  # how quickly inertia decays (larger == stops faster)
 @export var deadzone := 0.2  # ignore any stick input smaller than this
 @export var zoom_sensitivity := 2.0
+@export var default_zoom = 20.
 
 @export var points_of_interest: Array[Node]
 
@@ -22,12 +23,21 @@ func _ready():
 
 func start() -> void:
 	focus = points_of_interest.pick_random()
-	crane.position = focus.global_transform.origin
+	crane.global_position = focus.global_position
+	global_position = focus.global_position
+	position.z += default_zoom
 	crane.call_deferred("reparent", focus)
 	look_at(focus.global_transform.origin, Vector3.UP)
+	# print(focus.position)
+	# print(crane.position)
+	# print(position)
+	print(focus.name)
 
 
 func _process(delta: float) -> void:
+	# if focus:
+	# 	look_at(focus.global_transform.origin, focus.transform.basis.y)
+
 	# 1) Read raw joystick/twin-stick input each frame:
 	var raw_input := Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	# (If you have an actual analog gamepad axis, you can also do:
@@ -61,9 +71,8 @@ func _process(delta: float) -> void:
 
 	# If angular_velocity is almost zero by now, we do nothing this frame.
 
-	var zoom_input = (
-		Input.get_action_strength("move_forward") - Input.get_action_strength("move_backward")
-	)
+	var zoom_input = Input.get_action_strength("look_down") - Input.get_action_strength("look_up")
 
 	var zoom_amount_this_frame = zoom_input * zoom_sensitivity * delta
 	translate(Vector3(0, 0, zoom_amount_this_frame))
+	# print(global_position)

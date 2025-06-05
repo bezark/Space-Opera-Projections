@@ -15,8 +15,11 @@ func _ready() -> void:
 
 
 func camera_selected(cam: Camera3D):
+	
 	for camera in cameras:
+		camera.process_mode = Node.PROCESS_MODE_DISABLED
 		camera.current = false
 	cam.current = true
+	cam.process_mode = Node.PROCESS_MODE_INHERIT
 	if cam.has_method("start"):
 		cam.start()
