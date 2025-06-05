@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="Archetype" load_steps=3 format=3 uid="uid://rjkvde2cxadx"]
 
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_h6dld"]
-[ext_resource type="Texture2D" uid="uid://ddmkp8b61u4wc" path="res://Assets/ICONS/aesthetic_detail.svg" id="2_5uth7"]
+[ext_resource type="Texture2D" uid="uid://2bohlwoc5r0a" path="res://Assets/ICONS/aesthetic_detail.svg" id="2_5uth7"]
 
 [resource]
 script = ExtResource("1_h6dld")

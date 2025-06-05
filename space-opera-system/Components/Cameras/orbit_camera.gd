@@ -22,7 +22,7 @@ func _ready():
 
 
 func start() -> void:
-	focus = points_of_interest.pick_random()
+	# focus = points_of_interest.pick_random()
 	crane.global_position = focus.global_position
 	global_position = focus.global_position
 	position.z += default_zoom

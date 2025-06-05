@@ -7,7 +7,7 @@ signal society_selected(soc: Society)
 
 
 func _ready() -> void:
-	text = society.title
+	text = society.archetype.title
 	pressed.connect(button_just_pressed)
 
 

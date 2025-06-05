@@ -2,13 +2,13 @@
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_ood2e"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_nl8h3"]
-[ext_resource type="FontFile" uid="uid://b32c7xrfevwg5" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="3_nc66i"]
-[ext_resource type="FontFile" uid="uid://bv3mdeles5fut" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
+[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="3_nc66i"]
+[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
 [ext_resource type="PackedScene" uid="uid://oxissunlfv1c" path="res://Controller/Phases/galactic_phase_controls.tscn" id="6_sl87g"]
-[ext_resource type="FontFile" uid="uid://d22xqoned5nb4" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="7_c6jvj"]
-[ext_resource type="Texture2D" uid="uid://7llimf0a14au" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
+[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="7_c6jvj"]
+[ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
-[ext_resource type="Texture2D" uid="uid://c3yf36bg0p5g5" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
+[ext_resource type="Texture2D" uid="uid://su81uegkbnft" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gix1a"]
 font = ExtResource("3_nc66i")
@@ -66,6 +66,7 @@ rotation = 0.523598
 color = Color(0.396078, 0.0313726, 0.027451, 1)
 
 [node name="DiceMask" type="Sprite2D" parent="."]
+visible = false
 clip_children = 2
 position = Vector2(984, 561)
 texture = ExtResource("9_y0sm1")
@@ -139,6 +140,7 @@ offset_right = -4.0
 offset_bottom = 42.0
 
 [node name="Action" type="VBoxContainer" parent="."]
+visible = false
 layout_mode = 1
 offset_left = 614.0
 offset_top = 292.0

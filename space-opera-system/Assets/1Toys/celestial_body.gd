@@ -1,8 +1,10 @@
 extends Node3D
 class_name CelestialBody
 
+
 @export var title: String
 @export var body: Node3D
+var key: String
 
 @export var sattelite: CelestialBody = null
 @export var distance: float:
@@ -16,6 +18,7 @@ class_name CelestialBody
 		speed = val
 
 @export var spin: float
+@export var zooms : Array[PackedScene]
 
 @onready var controls: GridContainer = $VBoxContainer/Controls
 
