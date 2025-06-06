@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d3nh81q7dsdr4"]
+[gd_scene load_steps=9 format=3 uid="uid://d3nh81q7dsdr4"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
 [ext_resource type="Script" uid="uid://byxtn4120rsnl" path="res://Controller/controller.gd" id="1_u2oln"]
@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="3_u2oln"]
 [ext_resource type="Script" uid="uid://cb1ama4ib1a3p" path="res://addons/touchscreen_joystick/scripts/touch_screen_joystick.gd" id="5_nlu3g"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="6_671od"]
+[ext_resource type="Script" uid="uid://6swu50awv3xi" path="res://Controller/celestial_body_add.gd" id="7_7vp4u"]
+[ext_resource type="Resource" uid="uid://dys78k5634li2" path="res://Data/ALL_BODIES.tres" id="8_y3tcv"]
 
 [node name="Control" type="Control"]
 auto_translate_mode = 1
@@ -125,10 +127,29 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
+[node name="System" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="CelestialBodyAdd" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System"]
+layout_mode = 2
+script = ExtResource("7_7vp4u")
+all_bodies = ExtResource("8_y3tcv")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System/CelestialBodyAdd"]
+custom_minimum_size = Vector2(0, 86)
+layout_mode = 2
+size_flags_vertical = 2
+
+[node name="Buttons" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System/CelestialBodyAdd/ScrollContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+size_flags_vertical = 3
 
 [node name="Zoom" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
 layout_mode = 2
@@ -190,6 +211,7 @@ wait_time = 30.0
 autostart = true
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
+[connection signal="body_selected" from="MarginContainer/VBoxContainer/Body/Main/Views/System/CelestialBodyAdd" to="." method="_on_celestial_body_add_body_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Open" to="." method="_on_open_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Body/Main/Faders/Zoom/HSlider" to="." method="zoom_slider_value_changed"]

@@ -140,7 +140,6 @@ offset_right = -4.0
 offset_bottom = 42.0
 
 [node name="Action" type="VBoxContainer" parent="."]
-visible = false
 layout_mode = 1
 offset_left = 614.0
 offset_top = 292.0

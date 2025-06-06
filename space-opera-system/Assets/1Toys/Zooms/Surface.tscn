@@ -673,6 +673,7 @@ data_directory = "res://Assets/1Toys/Zooms/gas"
 material = SubResource("Terrain3DMaterial_0ngit")
 assets = ExtResource("2_7enux")
 cull_margin = 10000.0
+free_editor_textures = false
 top_level = true
 metadata/_edit_lock_ = true
 

@@ -137,31 +137,35 @@ func _on_autosave_timeout() -> void:
 
 
 func _on_make_unique_pressed() -> void:
-	var new_scenedata :SceneData= selected_scene_data.duplicate(true)
-	var new_scene = new_scenedata.scene
-	var new_path = str("res://Phases/Overrides/",selected_id,'.tscn')
-	ResourceSaver.save(new_scene, new_path)
-	new_scenedata.scene = load(new_path)
-	var phase_to_change = State.phases.find_custom(func(elem):
-				return elem["id"] == selected_id
-				)
-	State.phases[phase_to_change].scene_data = new_scenedata
-	State.save()
-	selected_scene_data = new_scenedata
-	State.load_state()
-	make_phase_buttons()
-	open_scene_message()
+	#var new_scenedata :SceneData= selected_scene_data.duplicate(true)
+	#var new_scene = new_scenedata.scene
+	#var new_path = str("res://Phases/Overrides/",selected_id,'.tscn')
+	#ResourceSaver.save(new_scene, new_path)
+	#new_scenedata.scene = load(new_path)
+	#var phase_to_change = State.phases.find_custom(func(elem):
+				#return elem["id"] == selected_id
+				#)
+	#State.phases[phase_to_change].scene_data = new_scenedata
+	#State.save()
+	#selected_scene_data = new_scenedata
+	#State.load_state()
+	#make_phase_buttons()
+	#open_scene_message()
 	pass  # Replace with function body.
 
 
 func _on_open_pressed() -> void:
-	open_scene_message()
+	open_scene_message(selected_scene_data,false)
 
-func open_scene_message():
+func open_scene_message(scene_data:SceneData, zoomed:bool):
 	var peer = StreamPeerTCP.new()
 	if peer.connect_to_host("127.0.0.1", 7878) == OK:
 		peer.poll()
-		peer.put_var(selected_scene_data.scene.resource_path)
+		if zoomed:
+			for zoom in scene_data.zooms:
+				peer.put_var(zoom.resource_path)
+		else:
+			peer.put_var(scene_data.scene.resource_path)
 		peer.disconnect_from_host()
 	else:
 		push_error("Couldn’t talk to the editor plugin!")
@@ -175,3 +179,7 @@ func open_scene_message():
 
 func zoom_slider_value_changed(value: float) -> void:
 	view_fade_adjusted.emit(value)
+
+
+func _on_celestial_body_add_body_selected(scene_data: SceneData) -> void:
+	selected_scene_data = scene_data

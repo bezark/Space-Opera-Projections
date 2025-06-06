@@ -737,6 +737,7 @@ data_directory = "res://Assets/Terrains/test"
 material = SubResource("Terrain3DMaterial_0ngit")
 assets = SubResource("Terrain3DAssets_dnivq")
 cull_margin = 10000.0
+free_editor_textures = false
 top_level = true
 metadata/_edit_lock_ = true
 

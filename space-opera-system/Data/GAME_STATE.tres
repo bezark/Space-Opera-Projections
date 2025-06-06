@@ -772,8 +772,7 @@ parent_society = "Feay0"
 script = ExtResource("1_lohdr")
 title = "gaga"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"h463E": SubResource("Resource_fsgl3"),
-"kDphD": SubResource("Resource_yl7wv")
+"h463E": SubResource("Resource_fsgl3")
 })
 voice = "people"
 
@@ -789,7 +788,8 @@ voice = "leader"
 script = ExtResource("1_lohdr")
 title = "popo"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"JvqsG": SubResource("Resource_08yu5")
+"JvqsG": SubResource("Resource_08yu5"),
+"kDphD": SubResource("Resource_yl7wv")
 })
 voice = "people"
 
@@ -899,7 +899,7 @@ parent_society = "et0k8"
 script = ExtResource("1_lohdr")
 title = "Dirty Harries"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"FADd2": SubResource("Resource_4df5w")
+"BqPmG": SubResource("Resource_nloml")
 })
 voice = "leader"
 
@@ -913,7 +913,7 @@ voice = ""
 script = ExtResource("1_lohdr")
 title = "Pencils Down"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"QvweM": SubResource("Resource_hvns4")
+"arNw1": SubResource("Resource_fq34q")
 })
 voice = "people"
 
@@ -945,8 +945,8 @@ voice = "people"
 script = ExtResource("1_lohdr")
 title = "Elders"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"BqPmG": SubResource("Resource_nloml"),
-"arNw1": SubResource("Resource_fq34q")
+"FADd2": SubResource("Resource_4df5w"),
+"QvweM": SubResource("Resource_hvns4")
 })
 voice = "people"
 

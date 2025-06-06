@@ -6,6 +6,8 @@
 extends SystemCamera
 class_name FreeFlyCamera
 
+@export var orbital: SystemCamera
+
 @export var speed: float = 10.0
 @export var look_sensitivity: float = 1.5
 
@@ -13,9 +15,20 @@ var yaw: float = 0.0  # rotation around Y
 var pitch: float = 0.0  # rotation around X
 
 
+func start():
+	if orbital:
+		# global_position = orbital.global_position
+		# rotation = orbital.rotation
+		global_transform = orbital.global_transform
+		look_at(orbital.focus.global_transform.origin, Vector3.UP)
+		yaw = rotation.y
+		pitch = rotation.x
+
+
 func _physics_process(delta):
 	_process_look(delta)
 	_process_movement(delta)
+	pass
 
 
 func _process_look(delta):
