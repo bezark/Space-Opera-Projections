@@ -21,6 +21,7 @@ func _ready():
 	# (Optionally call start() here if you want to pick a random POI on start)
 	# start()
 	$Selectors/BodySelection.pois = points_of_interest
+	$Selectors/BodySelection.make_poi_buttons()
 
 func start() -> void:
 	# focus = points_of_interest.pick_random()
