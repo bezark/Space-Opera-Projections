@@ -4,6 +4,8 @@ signal datapad_sync_changed(bool)
 signal scene_changed(scene: SceneData)
 signal zoomed_in(zoom:PackedScene)
 
+signal view_fade_adjusted(val:float)
+
 @export var structure: SceneStructure
 
 @export var system_view : ViewportTexture
@@ -50,7 +52,7 @@ func make_zoom_buttons(scene_data:SceneData):
 	for zoom in scene_data.zooms:
 		var new_button = Button.new()
 		new_button.button_group = scene_button_group
-		new_button.text = zoom.resource_name
+		new_button.text = zoom.get_state().get_node_name(0)
 		new_button.toggle_mode = true
 		# new_button.name = phase.id
 		%ZoomSelect.add_child(new_button)
@@ -169,3 +171,7 @@ func open_scene_message():
 	#SceneOpen.switch_scene(scene_path)
 	
 	#open_scene_from_path(scene_path)
+
+
+func zoom_slider_value_changed(value: float) -> void:
+	view_fade_adjusted.emit(value)

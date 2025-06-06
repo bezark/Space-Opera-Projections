@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=30 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
@@ -8,6 +8,7 @@
 [ext_resource type="Texture2D" uid="uid://dkj6tq30oxsxw" path="res://Assets/1Toys/Planets/cloudy-water.tres" id="9_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Assets/1Toys/celestial_body.tscn" id="9_l1est"]
 [ext_resource type="FastNoiseLite" uid="uid://12b5ftiyqkbp" path="res://Assets/1Toys/Planets/cloudywater.tres" id="10_d1v7t"]
+[ext_resource type="Resource" uid="uid://d1j3idy1ataam" path="res://Assets/1Toys/CelestialBodies/spacestation.tres" id="11_paiqf"]
 [ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="12_smirv"]
 
 [sub_resource type="Gradient" id="Gradient_y3678"]
@@ -153,9 +154,10 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
 
-[node name="CelestialBody" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
+[node name="CelestialBody" parent="." node_paths=PackedStringArray("body", "sattelite") instance=ExtResource("9_l1est")]
 title = "Ice  Haus"
 body = NodePath("CloudyPlanet")
+sattelite = NodePath("../Station")
 distance = -672.003
 speed = 0.0
 
@@ -226,3 +228,9 @@ sun_path = NodePath("../../../Blackhole")
 shader_params/u_density = 2.54
 shader_params/u_atmosphere_modulate = Color(1, 0.686275, 0.498039, 1)
 shader_params/u_atmosphere_ambient_color = Color(0.0241992, 0.241595, 0.405229, 1)
+
+[node name="Station" parent="." groups=["point_of_interest"] instance=ExtResource("9_l1est")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -672.653, 0, 0)
+title = "station"
+scene_data = ExtResource("11_paiqf")
+distance = 20.0

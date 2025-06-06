@@ -17,9 +17,10 @@ var angular_velocity := Vector2.ZERO  # stored “velocity” from last frame
 func _ready():
 	points_of_interest = get_tree().get_nodes_in_group("point_of_interest")
 	crane = get_parent_node_3d()
+	focus = points_of_interest.pick_random()
 	# (Optionally call start() here if you want to pick a random POI on start)
 	# start()
-
+	$Selectors/BodySelection.pois = points_of_interest
 
 func start() -> void:
 	# focus = points_of_interest.pick_random()

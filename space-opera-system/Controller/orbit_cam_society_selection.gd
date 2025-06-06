@@ -1,9 +1,9 @@
 extends HBoxContainer
 
-@onready var orbital_camera: OrbitalCamera = $".."
+@onready var orbital_camera: OrbitalCamera = $"../.."
 
 @export var system: Node3D
-@onready var controller: Control = $"../../../../../Control"
+@onready var controller: Control = $"../../../../../../Control"
 
 
 func _ready() -> void:

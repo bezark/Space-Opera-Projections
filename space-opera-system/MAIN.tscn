@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=38 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -10,10 +10,11 @@
 [ext_resource type="Script" uid="uid://dm4yd3m2ekm5a" path="res://Controller/camera_select.gd" id="10_a8dnc"]
 [ext_resource type="Script" uid="uid://ghnhrkb3yrje" path="res://Components/Cameras/orbit_camera.gd" id="10_g514o"]
 [ext_resource type="Script" uid="uid://nwue00d57thv" path="res://Controller/orbit_cam_society_selection.gd" id="10_obmmj"]
-[ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Assets/1Toys/Zooms/Surface.tscn" id="10_uocqw"]
+[ext_resource type="Script" uid="uid://csty6801rlwrm" path="res://Controller/orbit_cam_body_selection.gd" id="10_uocqw"]
 [ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="11_6t3px"]
 [ext_resource type="Script" uid="uid://c2l8ahmfhfhuq" path="res://Components/Classes/SystemCamera.gd" id="11_g514o"]
 [ext_resource type="Shader" uid="uid://bco3hpgboc2nw" path="res://Assets/Shaders/threshold_silhouette.gdshader" id="11_rhye5"]
+[ext_resource type="Script" uid="uid://cbscf32yxsi1u" path="res://Components/zoom_manager.gd" id="11_uocqw"]
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="12_u0cts"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
@@ -147,11 +148,18 @@ damping = 0.1
 zoom_sensitivity = 10.0
 metadata/_custom_type_script = "uid://ghnhrkb3yrje"
 
-[node name="SocietySelection" type="HBoxContainer" parent="SystemView/Kin/Crane/OrbitalCamera" node_paths=PackedStringArray("system") groups=["permanent", "system_control"]]
+[node name="Selectors" type="VBoxContainer" parent="SystemView/Kin/Crane/OrbitalCamera" groups=["permanent", "system_control"]]
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="BodySelection" type="HFlowContainer" parent="SystemView/Kin/Crane/OrbitalCamera/Selectors"]
+layout_mode = 2
+script = ExtResource("10_uocqw")
+
+[node name="SocietySelection" type="HBoxContainer" parent="SystemView/Kin/Crane/OrbitalCamera/Selectors" node_paths=PackedStringArray("system")]
+layout_mode = 2
 script = ExtResource("10_obmmj")
-system = NodePath("../../..")
+system = NodePath("../../../..")
 
 [node name="ZoomView" type="SubViewport" parent="."]
 own_world_3d = true
@@ -160,21 +168,14 @@ screen_space_aa = 1
 use_debanding = true
 size = Vector2i(1920, 1200)
 size_2d_override_stretch = true
+script = ExtResource("11_uocqw")
 
 [node name="Camera3D" type="Camera3D" parent="ZoomView"]
 transform = Transform3D(0.99916, 0, -0.0409862, 0, 1, 0, 0.0409862, 0, 0.99916, 1.23072, 14.0431, 57.2704)
 environment = SubResource("Environment_6t3px")
 attributes = SubResource("CameraAttributesPhysical_u0cts")
 
-[node name="ColorRect" type="ColorRect" parent="ZoomView"]
-visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="Surface" parent="ZoomView" instance=ExtResource("10_uocqw")]
+[node name="Zoom" type="Node3D" parent="ZoomView"]
 
 [node name="SceneChanger" type="Node" parent="." node_paths=PackedStringArray("mapping_surfaces")]
 script = ExtResource("5_s83dy")
@@ -189,13 +190,11 @@ position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
 
 [node name="System" type="Sprite2D" parent="Circle"]
-visible = false
 position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_a8dnc")
 
 [node name="Zoom" type="Sprite2D" parent="Circle"]
-visible = false
 position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_g514o")
@@ -332,6 +331,8 @@ metadata/_custom_type_script = "uid://muokti5xk4km"
 
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
+[connection signal="view_fade_adjusted" from="Control" to="ZoomView" method="_on_control_view_fade_adjusted"]
+[connection signal="zoomed_in" from="Control" to="ZoomView" method="_on_control_zoomed_in"]
 [connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]

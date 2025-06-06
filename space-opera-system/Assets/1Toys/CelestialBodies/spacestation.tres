@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=3 format=3 uid="uid://d1j3idy1ataam"]
+
+[ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_sbbos"]
+[ext_resource type="PackedScene" uid="uid://bebs5n8py7uom" path="res://Assets/1Toys/Models/station.tscn" id="1_y3qls"]
+
+[resource]
+script = ExtResource("1_sbbos")
+scene = ExtResource("1_y3qls")
+zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"

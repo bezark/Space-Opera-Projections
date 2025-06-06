@@ -35,10 +35,10 @@ theme_override_constants/margin_bottom = 40
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Joysticks" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Move" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Move" type="Control" parent="MarginContainer/VBoxContainer/Joysticks"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 2
@@ -51,7 +51,7 @@ action_up = "move_up"
 action_down = "move_down"
 metadata/_custom_type_script = "uid://cb1ama4ib1a3p"
 
-[node name="Look" type="Control" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Look" type="Control" parent="MarginContainer/VBoxContainer/Joysticks"]
 custom_minimum_size = Vector2(300, 300)
 layout_mode = 2
 size_flags_horizontal = 10
@@ -118,54 +118,79 @@ layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "Projectors"
 
-[node name="Main" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
+[node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
 
-[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
+[node name="Views" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="Zoom" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
+[node name="Zoom" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="ZoomScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
+[node name="ZoomControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ZoomScroll" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="ZoomSelect" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom/ZoomScroll"]
+[node name="ZoomSelect" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/ZoomScroll"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="MakeUnique" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
+[node name="MakeUnique" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom"]
 layout_mode = 2
 text = " Make Unique..."
 
-[node name="Open" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
+[node name="Open" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom"]
 layout_mode = 2
 text = "Open in Editor..."
 
-[node name="ZoomControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
-unique_name_in_owner = true
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom"]
 layout_mode = 2
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Zoom"]
-layout_mode = 2
-
-[node name="UIControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
+[node name="UIControls" type="FlowContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="Faders" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
+layout_mode = 2
+
+[node name="Zoom" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Faders"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_constants/separation = 64
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Body/Main/Faders/Zoom"]
+layout_mode = 2
+text = "Zoom In"
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Body/Main/Faders/Zoom"]
+custom_minimum_size = Vector2(400, 0)
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.001
 
 [node name="Autosave" type="Timer" parent="."]
 wait_time = 30.0
 autostart = true
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Zoom/Open" to="." method="_on_open_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Open" to="." method="_on_open_pressed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Body/Main/Faders/Zoom/HSlider" to="." method="zoom_slider_value_changed"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://dkg5lehh8sxx4" path="res://Assets/1Toys/Planets/cloudy_planet.tscn" id="1_ln1lx"]
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_sl4i3"]
-[ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Assets/1Toys/Zooms/Surface.tscn" id="3_nrpwp"]
-[ext_resource type="PackedScene" uid="uid://btkq2oei0qw31" path="res://Assets/1Toys/Zooms/Surface2.tscn" id="4_3lwwg"]
+[ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/1Toys/Zooms/gasss.tscn" id="4_ln1lx"]
+[ext_resource type="PackedScene" uid="uid://5x10tqvu7gxf" path="res://Assets/1Toys/Zooms/Desert.tscn" id="4_nrpwp"]
 
 [resource]
 script = ExtResource("1_sl4i3")
 scene = ExtResource("1_ln1lx")
-zooms = Array[PackedScene]([ExtResource("3_nrpwp"), ExtResource("4_3lwwg")])
+zooms = Array[PackedScene]([ExtResource("4_ln1lx"), ExtResource("4_nrpwp")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"

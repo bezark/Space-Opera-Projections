@@ -4,6 +4,7 @@
 # – Look is unchanged from before.
 
 extends SystemCamera
+class_name FreeFlyCamera
 
 @export var speed: float = 10.0
 @export var look_sensitivity: float = 1.5

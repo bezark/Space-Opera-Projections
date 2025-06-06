@@ -1,10 +1,11 @@
 extends Node3D
 class_name CelestialBody
 
-
 @export var title: String
+
+@export var scene_data: SceneData
+
 @export var body: Node3D
-var key: String
 
 @export var sattelite: CelestialBody = null
 @export var distance: float:
@@ -18,13 +19,17 @@ var key: String
 		speed = val
 
 @export var spin: float
-@export var zooms : Array[PackedScene]
 
 @onready var controls: GridContainer = $VBoxContainer/Controls
 
 
 func _ready() -> void:
+	if scene_data:
+		var new_body = scene_data.scene.instantiate()
+		add_child(new_body)
+		body = new_body
 	var parent = get_parent()
+
 	if sattelite:
 		var remote_transform = RemoteTransform3D.new()
 		remote_transform.update_rotation = false
@@ -37,6 +42,9 @@ func _ready() -> void:
 		body.add_to_group("point_of_interest")
 
 	rotation.y = fmod(speed * Time.get_unix_time_from_system(), TAU)
+	$VBoxContainer/Controls/Distance.value = distance
+	$VBoxContainer/Controls/Speed.value = speed
+	$VBoxContainer/Controls/Spin.value = spin
 
 
 func _process(delta: float) -> void:
