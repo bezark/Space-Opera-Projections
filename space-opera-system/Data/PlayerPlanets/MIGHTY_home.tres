@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="SceneData" load_steps=5 format=3 uid="uid://44ufa8myo66y"]
 
-[ext_resource type="PackedScene" uid="uid://dkg5lehh8sxx4" path="res://Assets/1Toys/Planets/cloudy_planet.tscn" id="1_ln1lx"]
+[ext_resource type="PackedScene" uid="uid://cht1f4bhktdj0" path="res://Assets/1Toys/Planets/Gas.tscn" id="1_ln1lx"]
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_sl4i3"]
 [ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/1Toys/Zooms/gasss.tscn" id="4_ln1lx"]
 [ext_resource type="PackedScene" uid="uid://5x10tqvu7gxf" path="res://Assets/1Toys/Zooms/Desert.tscn" id="4_nrpwp"]

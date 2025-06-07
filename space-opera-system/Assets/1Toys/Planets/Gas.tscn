@@ -1,0 +1,36 @@
+[gd_scene load_steps=5 format=3 uid="uid://cht1f4bhktdj0"]
+
+[sub_resource type="Gradient" id="Gradient_lsvgl"]
+offsets = PackedFloat32Array(0, 0.180467, 0.392781, 0.573248, 0.707006, 1)
+colors = PackedColorArray(0.3844, 0.00463759, 0.3182, 1, 0.199824, 0.251399, 0.458957, 1, 0.635238, 0, 0.197052, 1, 0.621679, 0.00025068, 0.2036, 1, 0.768106, 0.622454, 0.146984, 1, 0.959299, 0.948842, 0.965013, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_chmqo"]
+noise_type = 2
+frequency = 0.0001
+offset = Vector3(0, 0, -169.7)
+fractal_octaves = 10
+fractal_gain = 0.9
+fractal_weighted_strength = 0.27
+domain_warp_type = 1
+domain_warp_amplitude = 16.5
+domain_warp_fractal_octaves = 2
+domain_warp_fractal_lacunarity = 7.1
+domain_warp_fractal_gain = 1.1
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oyq1c"]
+width = 1024
+height = 1024
+in_3d_space = true
+seamless = true
+color_ramp = SubResource("Gradient_lsvgl")
+noise = SubResource("FastNoiseLite_chmqo")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dps3l"]
+albedo_texture = SubResource("NoiseTexture2D_oyq1c")
+clearcoat_roughness = 0.4
+
+[node name="Gas" type="CSGSphere3D"]
+radius = 9.27
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_dps3l")

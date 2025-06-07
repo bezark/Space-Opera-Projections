@@ -1,0 +1,70 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7nga0dl7lwsr"]
+
+[ext_resource type="Texture2D" uid="uid://dh1uvawf13djl" path="res://Assets/Textures/Grating_22-256x256.png" id="1_t3q2u"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adgft"]
+albedo_color = Color(0.43134, 0.43134, 0.43134, 1)
+albedo_texture = ExtResource("1_t3q2u")
+metallic = 1.0
+metallic_specular = 0.0
+metallic_texture = ExtResource("1_t3q2u")
+emission_enabled = true
+emission = Color(0, 1, 0, 1)
+emission_energy_multiplier = 0.82
+emission_operator = 1
+rim_enabled = true
+rim = 0.7
+rim_tint = 0.0
+rim_texture = ExtResource("1_t3q2u")
+uv1_scale = Vector3(0.005, 0.005, 0.005)
+uv1_triplanar = true
+uv1_world_triplanar = true
+uv2_triplanar = true
+uv2_world_triplanar = true
+
+[node name="DysonSphere" type="Node3D"]
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 5, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 750.0
+outer_radius = 775.0
+sides = 64
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_adgft")
+
+[node name="CSGTorus3D2" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 0, 0, 0)
+inner_radius = 720.0
+outer_radius = 745.0
+sides = 64
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_adgft")
+
+[node name="CSGTorus3D3" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -3.53553, 0.707107, 0, -3.53553, -0.707107, 0, 0, 0)
+inner_radius = 695.0
+outer_radius = 710.0
+sides = 64
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_adgft")
+
+[node name="CSGTorus3D4" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 2.5, 0.866025, 0, -4.33013, 0.5, 0, 0, 0)
+inner_radius = 665.0
+outer_radius = 680.0
+sides = 64
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_adgft")
+
+[node name="CSGTorus3D5" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 4.82963, 0.258819, 0, -1.2941, 0.965926, 0, 0, 0)
+inner_radius = 635.0
+outer_radius = 650.0
+sides = 64
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_adgft")

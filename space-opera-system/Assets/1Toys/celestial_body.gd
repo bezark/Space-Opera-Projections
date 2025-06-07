@@ -24,6 +24,7 @@ class_name CelestialBody
 @onready var controls = $VBoxContainer/Controls
 @onready var all_controls: VBoxContainer = $VBoxContainer
 
+#var crane :  Node3D
 
 func _ready() -> void:
 	if scene_data:
@@ -44,6 +45,7 @@ func _ready() -> void:
 			remote_transform.remote_path = sattelite.get_path()
 			body.add_child(remote_transform)
 		# sattelite.add_to_group("point_of_interest")
+	print(name)
 	$VBoxContainer/Title.text = body.name
 	if body:
 		distance = body.position.x
@@ -80,7 +82,7 @@ func _on_delete_pressed() -> void:
 	State.celestial_body_deleted.emit()
 	all_controls.queue_free()
 	var kids = get_children()
-	var crane = find_child('Crane')
+	var crane = body.find_child('Crane')
 	if crane:
 		var kin = find_parent("Kin")
 		crane.reparent(kin)

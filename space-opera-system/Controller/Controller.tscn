@@ -128,6 +128,7 @@ layout_mode = 2
 size_flags_vertical = 3
 
 [node name="System" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
+custom_minimum_size = Vector2(960, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
@@ -149,7 +150,11 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Add..."
 
-[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
