@@ -22,5 +22,5 @@ func focus_on_home(society: Society):
 	# print(home)
 	# var focus = get_node(focus_path)
 	controller.make_zoom_buttons(society.home)
-	orbital_camera.focus = home
+	orbital_camera.focus = home.get_parent()
 	orbital_camera.start()

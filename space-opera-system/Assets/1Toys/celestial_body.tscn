@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Assets/1Toys/celestial_body.gd" id="1_to1mt"]
 
-[node name="CelestialBody" type="Node3D"]
+[node name="CelestialBody" type="Node3D" groups=["point_of_interest"]]
 script = ExtResource("1_to1mt")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="." groups=["system_control"]]
@@ -14,26 +14,29 @@ layout_mode = 2
 toggle_mode = true
 text = "Planet"
 
-[node name="Controls" type="GridContainer" parent="VBoxContainer"]
+[node name="Controls" type="HBoxContainer" parent="VBoxContainer"]
 visible = false
+layout_mode = 2
+
+[node name="Sliders" type="GridContainer" parent="VBoxContainer/Controls"]
 layout_mode = 2
 columns = 2
 
-[node name="DistanceLabel" type="Label" parent="VBoxContainer/Controls"]
+[node name="DistanceLabel" type="Label" parent="VBoxContainer/Controls/Sliders"]
 layout_mode = 2
 text = "Distance"
 
-[node name="Distance" type="HSlider" parent="VBoxContainer/Controls"]
+[node name="Distance" type="HSlider" parent="VBoxContainer/Controls/Sliders"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 max_value = 1000.0
 step = 0.1
 
-[node name="SpeedLabel" type="Label" parent="VBoxContainer/Controls"]
+[node name="SpeedLabel" type="Label" parent="VBoxContainer/Controls/Sliders"]
 layout_mode = 2
 text = "Speed"
 
-[node name="Speed" type="HSlider" parent="VBoxContainer/Controls"]
+[node name="Speed" type="HSlider" parent="VBoxContainer/Controls/Sliders"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 min_value = -0.1
@@ -41,11 +44,11 @@ max_value = 0.1
 step = 0.001
 value = -0.1
 
-[node name="SpinLabel" type="Label" parent="VBoxContainer/Controls"]
+[node name="SpinLabel" type="Label" parent="VBoxContainer/Controls/Sliders"]
 layout_mode = 2
 text = "Spin"
 
-[node name="Spin" type="HSlider" parent="VBoxContainer/Controls"]
+[node name="Spin" type="HSlider" parent="VBoxContainer/Controls/Sliders"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 min_value = -0.1
@@ -53,7 +56,12 @@ max_value = 0.1
 step = 0.001
 value = -0.1
 
+[node name="Delete" type="Button" parent="VBoxContainer/Controls"]
+layout_mode = 2
+text = "DELETE"
+
 [connection signal="toggled" from="VBoxContainer/Title" to="." method="_on_title_toggled"]
-[connection signal="value_changed" from="VBoxContainer/Controls/Distance" to="." method="_on_distance_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/Controls/Speed" to="." method="_on_speed_value_changed"]
-[connection signal="value_changed" from="VBoxContainer/Controls/Spin" to="." method="_on_spin_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Distance" to="." method="_on_distance_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Speed" to="." method="_on_speed_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Spin" to="." method="_on_spin_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Controls/Delete" to="." method="_on_delete_pressed"]

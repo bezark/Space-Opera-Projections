@@ -1,7 +1,7 @@
 extends SystemCamera
 class_name OrbitalCamera
 
-@export var focus: Node3D
+@export var focus: CelestialBody
 @export var sensitivity := 1.5  # how fast the camera turns per “unit” joystick input
 @export var damping := 4.0  # how quickly inertia decays (larger == stops faster)
 @export var deadzone := 0.2  # ignore any stick input smaller than this
@@ -20,20 +20,22 @@ func _ready():
 	focus = points_of_interest.pick_random()
 	# (Optionally call start() here if you want to pick a random POI on start)
 	# start()
-	$Selectors/BodySelection.pois = points_of_interest
-	$Selectors/BodySelection.make_poi_buttons()
+	%BodySelection.pois = points_of_interest
+	%BodySelection.make_poi_buttons()
+	
+
 
 func start() -> void:
 	# focus = points_of_interest.pick_random()
-	crane.global_position = focus.global_position
-	global_position = focus.global_position
+	crane.global_position = focus.body.global_position
+	global_position = focus.body.global_position
 	position.z += default_zoom
-	crane.call_deferred("reparent", focus)
-	look_at(focus.global_transform.origin, Vector3.UP)
+	crane.call_deferred("reparent", focus.body)
+	look_at(focus.body.global_transform.origin, Vector3.UP)
 	# print(focus.position)
 	# print(crane.position)
 	# print(position)
-	print(focus.name)
+	print(focus.body.name)
 
 
 func _process(delta: float) -> void:

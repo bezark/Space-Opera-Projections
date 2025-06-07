@@ -1,10 +1,11 @@
-[gd_scene load_steps=40 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=41 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://4wik5qowm8jb" path="res://Assets/1Toys/BlackHoleSystem.tscn" id="5_iyt76"]
+[ext_resource type="Script" uid="uid://bxgkoh0u75fya" path="res://Components/system_manager.gd" id="5_obmmj"]
 [ext_resource type="Script" uid="uid://cna8ubljiac6p" path="res://Components/SceneChanger/scene_changer.gd" id="5_s83dy"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="9_rhye5"]
 [ext_resource type="Script" uid="uid://dm4yd3m2ekm5a" path="res://Controller/camera_select.gd" id="10_a8dnc"]
@@ -124,6 +125,7 @@ autostart = true
 
 [node name="SystemView" type="SubViewport" parent="."]
 size = Vector2i(1920, 1200)
+script = ExtResource("5_obmmj")
 
 [node name="Kin" parent="SystemView" instance=ExtResource("5_iyt76")]
 
@@ -160,6 +162,7 @@ offset_right = 40.0
 offset_bottom = 40.0
 
 [node name="BodySelection" type="HFlowContainer" parent="SystemView/Kin/Crane/OrbitalCamera/Selectors"]
+unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("10_uocqw")
 
@@ -202,6 +205,7 @@ scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_a8dnc")
 
 [node name="Zoom" type="Sprite2D" parent="Circle"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_g514o")
@@ -342,9 +346,12 @@ position = Vector2(-49, 165)
 texture = SubResource("ViewportTexture_p6x64")
 
 [node name="Zoom" type="Sprite2D" parent="Pews/WholeThang"]
+modulate = Color(1, 1, 1, 0)
 position = Vector2(-4, 129)
 texture = SubResource("ViewportTexture_s0s18")
 
+[connection signal="body_added" from="Control" to="SystemView" method="_on_control_body_added"]
+[connection signal="controls_updated" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/BodySelection" method="_on_control_controls_updated"]
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
 [connection signal="view_fade_adjusted" from="Control" to="ZoomView" method="_on_control_view_fade_adjusted"]
@@ -352,3 +359,4 @@ texture = SubResource("ViewportTexture_s0s18")
 [connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
+[connection signal="cam_selected" from="SystemView/Kin/CameraSelect" to="SystemView" method="_on_camera_select_cam_selected"]

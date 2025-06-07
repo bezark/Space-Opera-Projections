@@ -11,6 +11,7 @@ class_name GameState
 @export var archetypes: Dictionary[String,Archetype]
 @export var actions_queued: Array[SocietyAction]
 
+signal celestial_body_deleted
 
 func save():
 	# print("---------------------")

@@ -1,9 +1,9 @@
 extends Button
 class_name  POIButton
 
-var poi : Node3D
+var poi : CelestialBody
 
-signal poi_selected(poi: Node3D)
+signal poi_selected(poi: CelestialBody)
 
 
 func _ready() -> void:

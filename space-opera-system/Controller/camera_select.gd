@@ -2,6 +2,8 @@ extends HBoxContainer
 
 @export var cameras: Array[Camera3D]
 
+signal cam_selected(cam: SystemCamera)
+
 
 func _ready() -> void:
 	var cam_group = ButtonGroup.new()
@@ -15,11 +17,11 @@ func _ready() -> void:
 
 
 func camera_selected(cam: Camera3D):
-	
 	for camera in cameras:
 		camera.process_mode = Node.PROCESS_MODE_DISABLED
 		camera.current = false
 	cam.current = true
 	cam.process_mode = Node.PROCESS_MODE_INHERIT
+	cam_selected.emit(cam)
 	if cam.has_method("start"):
 		cam.start()

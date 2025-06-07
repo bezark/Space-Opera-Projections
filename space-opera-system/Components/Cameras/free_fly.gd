@@ -20,7 +20,7 @@ func start():
 		# global_position = orbital.global_position
 		# rotation = orbital.rotation
 		global_transform = orbital.global_transform
-		look_at(orbital.focus.global_transform.origin, Vector3.UP)
+		look_at(orbital.focus.body.global_transform.origin, Vector3.UP)
 		yaw = rotation.y
 		pitch = rotation.x
 

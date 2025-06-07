@@ -1,15 +1,20 @@
-[gd_scene load_steps=30 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=38 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="1_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="PackedScene" uid="uid://hfn3lqg1fa0j" path="res://Assets/1Toys/star.tscn" id="3_j4skb"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="6_q43nw"]
+[ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/1Toys/Zooms/gasss.tscn" id="7_smirv"]
+[ext_resource type="PackedScene" uid="uid://5x10tqvu7gxf" path="res://Assets/1Toys/Zooms/Desert.tscn" id="8_dee4i"]
 [ext_resource type="Texture2D" uid="uid://dkj6tq30oxsxw" path="res://Assets/1Toys/Planets/cloudy-water.tres" id="9_j4skb"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Assets/1Toys/celestial_body.tscn" id="9_l1est"]
 [ext_resource type="FastNoiseLite" uid="uid://12b5ftiyqkbp" path="res://Assets/1Toys/Planets/cloudywater.tres" id="10_d1v7t"]
+[ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="10_paiqf"]
+[ext_resource type="PackedScene" uid="uid://cu2t0kq57aia" path="res://Phases/Templates/Break.tscn" id="11_j4skb"]
 [ext_resource type="Resource" uid="uid://d1j3idy1ataam" path="res://Assets/1Toys/CelestialBodies/spacestation.tres" id="11_paiqf"]
 [ext_resource type="Shader" uid="uid://56jx3slcuffk" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_clouds.gdshader" id="12_smirv"]
+[ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Assets/1Toys/Zooms/Surface.tscn" id="13_m4j4v"]
 
 [sub_resource type="Gradient" id="Gradient_y3678"]
 interpolation_mode = 2
@@ -35,6 +40,12 @@ glow_enabled = true
 glow_intensity = 1.32
 glow_blend_mode = 0
 adjustment_color_correction = SubResource("GradientTexture2D_ovnr5")
+
+[sub_resource type="Resource" id="Resource_q43nw"]
+script = ExtResource("10_paiqf")
+zooms = Array[PackedScene]([ExtResource("7_smirv"), ExtResource("8_dee4i")])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_eowda"]
 width = 800
@@ -83,6 +94,12 @@ subsurf_scatter_transmittance_enabled = true
 subsurf_scatter_transmittance_depth = 2.191
 refraction_texture = SubResource("NoiseTexture2D_kd866")
 
+[sub_resource type="Resource" id="Resource_xhn7u"]
+script = ExtResource("10_paiqf")
+zooms = Array[PackedScene]([ExtResource("13_m4j4v")])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
 [sub_resource type="Gradient" id="Gradient_lsvgl"]
 offsets = PackedFloat32Array(0, 0.180467, 0.392781, 0.573248, 0.707006, 1)
 colors = PackedColorArray(0.3844, 0.00463759, 0.3182, 1, 0.199824, 0.251399, 0.458957, 1, 0.635238, 0, 0.197052, 1, 0.621679, 0.00025068, 0.2036, 1, 0.768106, 0.622454, 0.146984, 1, 0.959299, 0.948842, 0.965013, 1)
@@ -111,6 +128,12 @@ noise = SubResource("FastNoiseLite_chmqo")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dee4i"]
 albedo_texture = SubResource("NoiseTexture2D_oyq1c")
 clearcoat_roughness = 0.4
+
+[sub_resource type="Resource" id="Resource_d1v7t"]
+script = ExtResource("10_paiqf")
+zooms = Array[PackedScene]([ExtResource("11_j4skb")])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="Gradient" id="Gradient_hs0wy"]
 offsets = PackedFloat32Array(0, 0.180467, 1)
@@ -141,11 +164,11 @@ noise = SubResource("FastNoiseLite_paiqf")
 albedo_texture = SubResource("NoiseTexture2D_j4skb")
 clearcoat_roughness = 0.4
 
-[node name="BlackHoleSystem" type="Node3D"]
+[node name="Kin" type="Node3D"]
 
-[node name="Blackhole" parent="." groups=["point_of_interest"] instance=ExtResource("1_paiqf")]
+[node name="Blackhole" parent="." instance=ExtResource("1_paiqf")]
 
-[node name="Siphon" parent="." groups=["point_of_interest"] instance=ExtResource("1_j4skb")]
+[node name="Siphon" parent="." instance=ExtResource("1_j4skb")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -400.839, -1.19209e-07, -0.442535)
 
 [node name="Star" parent="." instance=ExtResource("3_j4skb")]
@@ -154,21 +177,21 @@ visible = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
 
-[node name="CelestialBody" parent="." node_paths=PackedStringArray("body", "sattelite") instance=ExtResource("9_l1est")]
+[node name="Cloudy" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 title = "Ice  Haus"
+scene_data = SubResource("Resource_q43nw")
 body = NodePath("CloudyPlanet")
-sattelite = NodePath("../Station")
 distance = -672.003
 speed = 0.0
 
-[node name="CloudyPlanet" type="CSGSphere3D" parent="CelestialBody"]
+[node name="CloudyPlanet" type="CSGSphere3D" parent="Cloudy"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -672.003, 0, 0)
 radius = 10.0
 radial_segments = 64
 rings = 64
 material = SubResource("StandardMaterial3D_dps3l")
 
-[node name="PlanetAthmosphere" parent="CelestialBody/CloudyPlanet" instance=ExtResource("6_q43nw")]
+[node name="PlanetAthmosphere" parent="Cloudy/CloudyPlanet" instance=ExtResource("6_q43nw")]
 planet_radius = 2.215
 atmosphere_height = 10.0
 sun_path = NodePath("../../../Blackhole")
@@ -189,10 +212,11 @@ shader_params/u_cloud_bottom = 0.2
 shader_params/u_cloud_top = 0.5
 shader_params/u_cloud_blend = 0.5
 
-[node name="Lava" parent="." node_paths=PackedStringArray("body", "sattelite") instance=ExtResource("9_l1est")]
+[node name="Lava" parent="." node_paths=PackedStringArray("body", "sattelites") instance=ExtResource("9_l1est")]
 title = "lava"
+scene_data = SubResource("Resource_xhn7u")
 body = NodePath("LavaPlanet")
-sattelite = NodePath("../Moon")
+sattelites = [NodePath("../Moon")]
 
 [node name="LavaPlanet" type="CSGSphere3D" parent="Lava"]
 transform = Transform3D(0.9964, 0, 0.0847735, 0, 1, 0, -0.0847735, 0, 0.9964, -547.124, 11.7092, -0.717262)
@@ -212,6 +236,7 @@ shader_params/u_atmosphere_ambient_color = Color(0.350269, 0.0491121, 0.449726, 
 [node name="Moon" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 transform = Transform3D(0.9964, 0, 0.0847735, 0, 1, 0, -0.0847735, 0, 0.9964, -550.668, 18.2633, -54.3833)
 title = "moon"
+scene_data = SubResource("Resource_d1v7t")
 body = NodePath("Moon")
 
 [node name="Moon" type="CSGSphere3D" parent="Moon"]
