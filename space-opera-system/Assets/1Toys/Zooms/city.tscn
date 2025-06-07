@@ -1,0 +1,190 @@
+[gd_scene load_steps=16 format=3 uid="uid://cw1pdlvuehwmt"]
+
+[ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="1_lvmj5"]
+[ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="1_oi8ks"]
+[ext_resource type="Shader" uid="uid://c56iuq1v4arfk" path="res://Assets/Shaders/auoroa.gdshader" id="2_3fs7x"]
+[ext_resource type="Material" uid="uid://c8lhplnin6gvt" path="res://Assets/Materials/Building.tres" id="2_oi8ks"]
+[ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="4_yj5b2"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yj5b2"]
+sky_top_color = Color(0.000256007, 0.0266021, 0.10091, 1)
+sky_horizon_color = Color(0.0132366, 0.172931, 0.204817, 1)
+sky_curve = 0.439226
+ground_bottom_color = Color(0.175278, 0.170067, 0.201128, 1)
+ground_horizon_color = Color(0.655915, 0.678456, 0.690923, 1)
+
+[sub_resource type="Sky" id="Sky_3fs7x"]
+sky_material = SubResource("ProceduralSkyMaterial_yj5b2")
+
+[sub_resource type="Environment" id="Environment_j527a"]
+background_mode = 2
+sky = SubResource("Sky_3fs7x")
+tonemap_mode = 2
+glow_enabled = true
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_j527a"]
+frequency = 0.0012
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_tpq0m"]
+width = 1132
+noise = SubResource("FastNoiseLite_j527a")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwq83"]
+render_priority = 0
+shader = ExtResource("2_3fs7x")
+shader_parameter/speed = 0.945
+shader_parameter/color = Color(0, 0.650115, 0.790587, 1)
+shader_parameter/emission_strength = 6.15
+shader_parameter/noise = SubResource("NoiseTexture2D_tpq0m")
+shader_parameter/offset = 0.015
+shader_parameter/smoothness = 0.15
+shader_parameter/distort = 1.0
+shader_parameter/scale = -1.035
+shader_parameter/STEP = 0.06
+shader_parameter/BASE_DENSITY = 2.0
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_koroh"]
+material = SubResource("ShaderMaterial_pwq83")
+size = Vector2(10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tpq0m"]
+albedo_texture = ExtResource("1_lvmj5")
+metallic = 0.63
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_3fs7x"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -120.3
+angle_max = -61.8
+direction = Vector3(0, 10, 0)
+initial_velocity_min = 4.51
+initial_velocity_max = 85.78
+turbulence_enabled = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_j527a"]
+material = ExtResource("4_yj5b2")
+size = Vector2(0.1, 1)
+
+[node name="City" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_j527a")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.995653, 0.091703, -0.0162704, -0.0931352, 0.980343, -0.173937, 0, 0.174697, 0.984622, 0, 12.3363, -7.916)
+current = true
+script = ExtResource("1_oi8ks")
+metadata/_custom_type_script = "uid://c0w752ro86qws"
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
+transform = Transform3D(0.995653, 0.0827466, 0.0427453, 0.091703, -0.790814, -0.605148, -0.0162704, 0.606438, -0.794964, -0.0283931, 0.0889406, -1.23621)
+mesh = SubResource("PlaneMesh_koroh")
+skeleton = NodePath("../..")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.525, 7.46206, -20.6419)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.686205, 7.46206, -28.9178)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7964, 5.18179, -34.2898)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7964, 5.18179, -11.3169)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46424, 4.11642, -12.5912)
+size = Vector3(5.92859, 9.30872, 2.25)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81166, 7.46206, -34.3321)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1837, 5.18179, -16.8495)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7893, 5.18179, -16.8495)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.34658, 7.46206, -27.7021)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.8646, 7.46206, -35.978)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.61798, 5.18179, -41.35)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="."]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.61798, 5.18179, -18.3771)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1784, -1.90609, -7.06019)
+size = Vector3(1000, 1, 1000)
+material = ExtResource("2_oi8ks")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6426, 7.46206, -20.1811)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D16" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36671, 7.46206, -41.3923)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D17" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99469, 5.18179, -23.9097)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D18" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9677, 5.18179, -23.9097)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -15.1985)
+light_color = Color(1, 0.454902, 1, 1)
+light_energy = 10.232
+light_indirect_energy = 8.348
+light_size = 0.382
+omni_range = 4096.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.8221, 10, -26.4568)
+light_color = Color(6.73831e-06, 0.795482, 0.902117, 1)
+light_energy = 10.232
+light_indirect_energy = 8.348
+light_size = 0.382
+omni_range = 4096.0
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="."]
+transform = Transform3D(0.0353061, -0.918418, -0.394032, 0.77777, 0.272837, -0.566245, 0.627557, -0.286474, 0.723951, 1.21039, 11.7228, -12.3919)
+visible = false
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_3fs7x")
+draw_pass_1 = SubResource("QuadMesh_j527a")

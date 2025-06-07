@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=123 format=3]
+[gd_resource type="Resource" script_class="SessionData" load_steps=122 format=3]
 
 [ext_resource type="Script" path="res://Components/Classes/Community.gd" id="1_lohdr"]
 [ext_resource type="PackedScene" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
@@ -672,7 +672,7 @@ home = ExtResource("27_tfqbo")
 archetype = ExtResource("3_y04g4")
 actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_nok2u")])
 
-[sub_resource type="Resource" id="Resource_colxq"]
+[sub_resource type="Resource" id="Resource_jcdtp"]
 script = ExtResource("15_r4n1j")
 game_round = 1
 components = Array[ExtResource("25_fq34q")]([])
@@ -728,9 +728,9 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 })
 home = ExtResource("28_5fu5v")
 archetype = ExtResource("8_08yu5")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_colxq")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_jcdtp")])
 
-[sub_resource type="Resource" id="Resource_ujmga"]
+[sub_resource type="Resource" id="Resource_colxq"]
 script = ExtResource("15_r4n1j")
 game_round = 1
 components = Array[ExtResource("25_fq34q")]([])
@@ -750,18 +750,18 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "u0fa0": SubResource("Resource_6640e")
 })
 archetype = ExtResource("7_5kibd")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_ujmga")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_colxq")])
 
-[sub_resource type="Resource" id="Resource_7api5"]
+[sub_resource type="Resource" id="Resource_ujmga"]
 script = ExtResource("25_fq34q")
 text = "dddddd"
 statement = "We use feral cats to dddddd"
 spresource = SubResource("Resource_85ky3")
 
-[sub_resource type="Resource" id="Resource_ttdan"]
+[sub_resource type="Resource" id="Resource_7api5"]
 script = ExtResource("15_r4n1j")
 game_round = 1
-components = Array[ExtResource("25_fq34q")]([SubResource("Resource_7api5")])
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_ujmga")])
 voted = false
 voteTime = 0
 parent_society = "et0k8"
@@ -842,9 +842,9 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "kATHn": SubResource("Resource_0tr16")
 })
 archetype = ExtResource("5_r4n1j")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_ttdan")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_7api5")])
 
-[sub_resource type="Resource" id="Resource_l77ip"]
+[sub_resource type="Resource" id="Resource_ttdan"]
 script = ExtResource("15_r4n1j")
 game_round = 1
 components = Array[ExtResource("25_fq34q")]([])
@@ -854,33 +854,25 @@ parent_society = "yXHVO"
 
 [sub_resource type="Resource" id="Resource_hte2g"]
 script = ExtResource("1_lohdr")
-title = "Test "
+title = "ambitious Moms "
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_ob74m"]
 script = ExtResource("1_lohdr")
-title = "T"
+title = "inventive Plastic Makers "
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_jcdtp"]
-script = ExtResource("1_lohdr")
-title = "big ol shair"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"KB9VT": SubResource("Resource_ghqc1")
-})
-voice = "people"
+voice = "leader"
 
 [sub_resource type="Resource" id="Resource_0c1b5"]
 script = ExtResource("1_lohdr")
-title = "Test "
+title = "People PleasiNG TOUR GUIDES "
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
-voice = "people"
+voice = "leader"
 
 [sub_resource type="Resource" id="Resource_tjw4m"]
 script = ExtResource("1_lohdr")
-title = "Rt"
+title = "Implosive Munchers"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
@@ -889,12 +881,11 @@ script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
 "OXjLR": SubResource("Resource_hte2g"),
 "X7cLE": SubResource("Resource_ob74m"),
-"jaCtF": SubResource("Resource_jcdtp"),
 "odA1g": SubResource("Resource_0c1b5"),
 "q9htT": SubResource("Resource_tjw4m")
 })
 archetype = ExtResource("6_jgbq0")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_l77ip")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_ttdan")])
 
 [resource]
 script = ExtResource("4_phj51")
