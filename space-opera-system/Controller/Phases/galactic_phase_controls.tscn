@@ -1,26 +1,44 @@
-[gd_scene format=3 uid="uid://oxissunlfv1c"]
+[gd_scene load_steps=2 format=3 uid="uid://oxissunlfv1c"]
 
-[node name="GalacticPhaseControls" type="Control" groups=["ui_control"]]
-layout_mode = 3
+[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_ki3u5"]
+
+[node name="GalacticPhaseControls" type="VBoxContainer" groups=["ui_control"]]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ki3u5")
+
+[node name="ShowHide" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+text = "UI"
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+layout_mode = 2
 
 [node name="Prev" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Prev"
 
 [node name="Complete" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Complete"
 
 [node name="Next" type="Button" parent="HBoxContainer"]
 layout_mode = 2
+size_flags_horizontal = 3
 text = "Next"
+
+[node name="ActionView" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+text = "Action"
+
+[node name="DiceCam" type="Button" parent="."]
+layout_mode = 2
+toggle_mode = true
+text = "Dice Cam"
