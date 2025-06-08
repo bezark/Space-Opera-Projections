@@ -5,9 +5,9 @@
 [resource]
 resource_local_to_scene = true
 shader = ExtResource("1_lyysr")
-shader_parameter/circle_width = 0.885
-shader_parameter/circle_height = 0.495
+shader_parameter/circle_width = 0.8
+shader_parameter/circle_height = 0.5
 shader_parameter/feather = 0.05
-shader_parameter/circle_position = Vector2(0.5, 0.5)
+shader_parameter/circle_position = Vector2(0.5, 0.4)
 shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1200.0

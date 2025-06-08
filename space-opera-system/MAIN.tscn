@@ -1,4 +1,4 @@
-[gd_scene load_steps=42 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=44 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -22,6 +22,7 @@
 [ext_resource type="Shader" uid="uid://chqk7vw65ue6j" path="res://Assets/Shaders/mixer.tres" id="13_obmmj"]
 [ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="14_rhye5"]
 [ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://society_ui.tscn" id="16_rhye5"]
+[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
 viewport_path = NodePath("SystemView")
@@ -92,6 +93,10 @@ viewport_path = NodePath("ZoomView")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
 
+[sub_resource type="LabelSettings" id="LabelSettings_gix1a"]
+font = ExtResource("23_ao5vc")
+font_size = 64
+
 [node name="Main" type="Node"]
 
 [node name="Control" parent="." instance=ExtResource("1_kgeht")]
@@ -136,6 +141,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -625.159, 0, 0)
 current = true
 script = ExtResource("9_rhye5")
 orbital = NodePath("../Crane/OrbitalCamera")
+look_sensitivity = 0.5
 metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
 
 [node name="BirdsEye" type="Camera3D" parent="SystemView/Kin"]
@@ -311,6 +317,7 @@ position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
 
 [node name="LeftPew" type="Polygon2D" parent="Pews"]
+visible = false
 position = Vector2(328, 807)
 texture = SubResource("ViewportTexture_uocqw")
 polygon = PackedVector2Array(-272, 192, -272, -304, 560, -304, 560, 208)
@@ -319,6 +326,7 @@ script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
 [node name="RightPew" type="Polygon2D" parent="Pews"]
+visible = false
 position = Vector2(1358, 886)
 texture = SubResource("ViewportTexture_uocqw")
 polygon = PackedVector2Array(-304, 168, -304, -360, 560, -360, 560, 168)
@@ -327,26 +335,40 @@ script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
 [node name="BackRect" type="Polygon2D" parent="Pews"]
+clip_children = 2
 position = Vector2(320, 729.5)
 scale = Vector2(1.94982, 1)
 texture = SubResource("ViewportTexture_gix1a")
-polygon = PackedVector2Array(648, -576, 16, -576, 16, -232, 648, -232)
+polygon = PackedVector2Array(813.921, -522.5, -125.14, -585.5, -140.179, -327.334, -161.553, 262.5, 822.127, 118.5, 810.844, -140.5, 808.793, -245.5)
 uv = PackedVector2Array(1920, 272, 0, 272, -3.8147e-06, 888, 1920, 888)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
 [node name="System" type="Sprite2D" parent="Pews/BackRect"]
+visible = false
 position = Vector2(327.21, -125.5)
 scale = Vector2(0.512868, 1)
 texture = SubResource("ViewportTexture_p6x64")
 
 [node name="Zoom" type="Sprite2D" parent="Pews/BackRect"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(350.289, -161.5)
 scale = Vector2(0.512868, 1)
 texture = SubResource("ViewportTexture_s0s18")
 
+[node name="ColorRect" type="ColorRect" parent="Pews/BackRect"]
+custom_minimum_size = Vector2(1920, 1200)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
 [node name="WholeThang" type="Polygon2D" parent="Pews"]
+visible = false
 clip_children = 2
 position = Vector2(1007, 439)
 polygon = PackedVector2Array(-664, -331, 587, -313, 586, -21, 912, -19, 910, 675, 48, 670, 37, 151, -116, 148, -115, 667, -992, 659, -1005, -39, -661, -34)
@@ -378,10 +400,29 @@ size_flags_vertical = 3
 mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
+[node name="Label" type="Label" parent="Pews"]
+clip_contents = true
+custom_minimum_size = Vector2(1200, 72)
+offset_left = 532.0
+offset_top = 63.0
+offset_right = 1595.0
+offset_bottom = 220.0
+rotation = 0.0334699
+text = "Wow cool captions bro"
+label_settings = SubResource("LabelSettings_gix1a")
+
+[connection signal="action_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_action_toggled"]
 [connection signal="body_added" from="Control" to="SystemView" method="_on_control_body_added"]
+[connection signal="cam_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_cam_toggled"]
 [connection signal="controls_updated" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/BodySelection" method="_on_control_controls_updated"]
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
+[connection signal="next_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_next_society_pressed"]
+[connection signal="prev_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_prev_society_pressed"]
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
+[connection signal="society_complete_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_society_complete_pressed"]
+[connection signal="society_focused" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_society_focused"]
+[connection signal="society_focused" from="Control" to="Circle/SocietyUI" method="_on_control_society_focused"]
+[connection signal="ui_toggeled" from="Control" to="Circle/SocietyUI" method="_on_control_ui_toggeled"]
 [connection signal="view_fade_adjusted" from="Control" to="ZoomView" method="_on_control_view_fade_adjusted"]
 [connection signal="zoomed_in" from="Control" to="ZoomView" method="_on_control_zoomed_in"]
 [connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]

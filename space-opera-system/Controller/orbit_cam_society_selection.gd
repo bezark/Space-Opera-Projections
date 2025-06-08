@@ -24,3 +24,7 @@ func focus_on_home(society: Society):
 	controller.make_zoom_buttons(society.home)
 	orbital_camera.focus = home.get_parent()
 	orbital_camera.start()
+
+
+func _on_control_society_focused(action: SocietyAction) -> void:
+	focus_on_home(State.societies[action.parent_society])

@@ -1,10 +1,11 @@
-[gd_scene load_steps=33 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=34 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="PackedScene" uid="uid://cw1pdlvuehwmt" path="res://Assets/1Toys/Zooms/city.tscn" id="7_dee4i"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Assets/1Toys/celestial_body.tscn" id="9_l1est"]
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="10_paiqf"]
+[ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="11_q43nw"]
 [ext_resource type="PackedScene" uid="uid://8dwef6hk3vio" path="res://Assets/1Toys/Planets/moon.tscn" id="15_m4j4v"]
 [ext_resource type="PackedScene" uid="uid://c7nga0dl7lwsr" path="res://Assets/1Toys/DysonSphere.tscn" id="16_dee4i"]
 [ext_resource type="PackedScene" uid="uid://c0ex5nclh00h6" path="res://Assets/1Toys/Planets/Gemstone.tscn" id="16_q43nw"]
@@ -29,7 +30,7 @@ fill_to = Vector2(1, 1)
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
 panorama = ExtResource("3_smirv")
-energy_multiplier = 21.85
+energy_multiplier = 5.0
 
 [sub_resource type="Sky" id="Sky_8b321"]
 sky_material = SubResource("PanoramaSkyMaterial_dps3l")
@@ -130,6 +131,17 @@ body = NodePath("Gemstone")
 
 [node name="Gemstone" parent="Aesthetic" instance=ExtResource("16_q43nw")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -653.687, 0, 0)
+radius = 7.0
+
+[node name="PlanetAthmosphere" parent="Aesthetic/Gemstone" instance=ExtResource("11_q43nw")]
+planet_radius = 7.0
+atmosphere_height = 3.0
+sun_path = NodePath("../../../Blackhole")
+force_fullscreen = true
+shader_params/u_density = 0.56
+shader_params/u_scattering_strength = 0.1
+shader_params/u_atmosphere_modulate = Color(0.270588, 0.890196, 1, 1)
+shader_params/u_atmosphere_ambient_color = Color(0.25851, 0.000789152, 0.467935, 1)
 
 [node name="SeatOfEmpire" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 scene_data = SubResource("Resource_dee4i")
@@ -151,6 +163,15 @@ body = NodePath("Desert")
 
 [node name="Desert" parent="Faithful" instance=ExtResource("19_vk8jg")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1154.61, 0, 0)
+radius = 8.0
+
+[node name="PlanetAthmosphere" parent="Faithful/Desert" instance=ExtResource("11_q43nw")]
+planet_radius = 8.0
+atmosphere_height = 0.6
+sun_path = NodePath("../../../Blackhole")
+shader_params/u_density = 2.0
+shader_params/u_atmosphere_modulate = Color(0.817771, 0.701214, 0.70934, 1)
+shader_params/u_atmosphere_ambient_color = Color(0.334563, 0.242808, 0.140899, 1)
 
 [node name="AsteroidBelt" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 scene_data = SubResource("Resource_xhn7u")

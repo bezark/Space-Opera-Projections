@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://ckuf0ejlgxn5e"]
 
 [sub_resource type="Gradient" id="Gradient_lsvgl"]
-offsets = PackedFloat32Array(0, 0.180467, 0.392781, 0.573248, 0.707006, 1)
-colors = PackedColorArray(0.3844, 0.00463759, 0.3182, 1, 0.199824, 0.251399, 0.458957, 1, 0.635238, 0, 0.197052, 1, 0.621679, 0.00025068, 0.2036, 1, 0.768106, 0.622454, 0.146984, 1, 0.959299, 0.948842, 0.965013, 1)
+offsets = PackedFloat32Array(0, 0.158333, 0.322917, 0.452083, 0.627083, 0.83125, 1)
+colors = PackedColorArray(0.648159, 0.378649, 0.384968, 1, 0.621679, 0.00025068, 0.2036, 1, 0.510618, 0.230143, 0.233623, 1, 0.744302, 0.39746, 0.386278, 1, 0.497973, 0.256319, 0.237042, 1, 0.768106, 0.622454, 0.146984, 1, 0.959299, 0.948842, 0.965013, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_chmqo"]
 noise_type = 2
@@ -25,7 +25,7 @@ seamless = true
 color_ramp = SubResource("Gradient_lsvgl")
 noise = SubResource("FastNoiseLite_chmqo")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dps3l"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_q301v"]
 albedo_texture = SubResource("NoiseTexture2D_oyq1c")
 clearcoat_roughness = 0.4
 
@@ -33,4 +33,4 @@ clearcoat_roughness = 0.4
 radius = 9.27
 radial_segments = 64
 rings = 64
-material = SubResource("StandardMaterial3D_dps3l")
+material = SubResource("StandardMaterial3D_q301v")

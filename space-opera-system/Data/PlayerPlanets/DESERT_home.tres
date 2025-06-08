@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="SceneData" load_steps=4 format=3 uid="uid://1thessxw0snm"]
 
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_7bniq"]
-[ext_resource type="PackedScene" uid="uid://ckuf0ejlgxn5e" path="res://Assets/1Toys/Planets/Desert.tscn" id="1_jhfs0"]
+[ext_resource type="PackedScene" uid="uid://c0ex5nclh00h6" path="res://Assets/1Toys/Planets/Gemstone.tscn" id="1_jhfs0"]
 [ext_resource type="PackedScene" uid="uid://dthkgobjiujtg" path="res://Assets/1Toys/Zooms/Surface.tscn" id="3_vc127"]
 
 [resource]

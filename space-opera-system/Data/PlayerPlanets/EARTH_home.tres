@@ -1,0 +1,11 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=3 format=3 uid="uid://dbgqbdkieb20f"]
+
+[ext_resource type="PackedScene" uid="uid://3cwl5kgytcru" path="res://Assets/1Toys/Planets/Earth.tscn" id="1_eswxe"]
+[ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="2_h5asg"]
+
+[resource]
+script = ExtResource("2_h5asg")
+scene = ExtResource("1_eswxe")
+zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"

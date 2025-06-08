@@ -7,9 +7,18 @@ signal zoomed_in(zoom: PackedScene)
 signal view_fade_adjusted(val: float)
 signal controls_updated
 
+signal body_added(scene_data: SceneData)
+
+signal ui_toggeled(visible: bool)
+signal action_toggled(visible: bool)
+signal cam_toggled(visible: bool)
+signal next_society_pressed
+signal prev_society_pressed
+signal society_complete_pressed
+signal society_focused(action: SocietyAction)
+
 @export var structure: SceneStructure
 
-signal body_added(scene_data: SceneData)
 @export var system_view: ViewportTexture
 
 var datapad_syncing = true
@@ -65,10 +74,13 @@ func make_zoom_buttons(scene_data: SceneData):
 	# 	%SceneControl.add_child(new_button)
 	# 	new_button.pressed.connect(scene_button_pressed.bind(scene))
 
+
 func defered_check():
 	call_deferred("check_for_controls")
+
+
 func check_for_controls():
-	print('checkin...')
+	print("checkin...")
 	check_for_system_controls()
 	check_for_zoom_controls()
 	check_for_ui_controls()
@@ -90,7 +102,6 @@ func check_for_zoom_controls():
 			kid.queue_free()
 	for nc in new_controls:
 		nc.call_deferred("reparent", %ZoomControls)
-	
 
 
 func check_for_ui_controls():
@@ -192,3 +203,35 @@ func _on_celestial_body_add_body_selected(scene_data: SceneData) -> void:
 
 func _on_add_pressed() -> void:
 	body_added.emit(selected_scene_data)
+
+
+func _on_show_hide_toggled(toggled_on: bool) -> void:
+	print(State.actions_queued)
+	var action_on_deck = State.actions_queued.front()
+	var active_soc = State.societies[action_on_deck.parent_society]
+
+
+	society_focused.emit(action_on_deck)
+	ui_toggeled.emit(toggled_on)
+
+	$MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls.visible = toggled_on
+
+
+func _on_prev_pressed() -> void:
+	prev_society_pressed.emit()
+
+
+func _on_complete_pressed() -> void:
+	society_complete_pressed.emit()
+
+
+func _on_next_pressed() -> void:
+	next_society_pressed.emit()
+
+
+func _on_action_view_toggled(toggled_on: bool) -> void:
+	action_toggled.emit(toggled_on)
+
+
+func _on_dice_cam_toggled(toggled_on: bool) -> void:
+	cam_toggled.emit(toggled_on)
