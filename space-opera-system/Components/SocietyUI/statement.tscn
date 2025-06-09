@@ -1,0 +1,43 @@
+[gd_scene load_steps=7 format=3 uid="uid://bnmxckyv0m5ir"]
+
+[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="1_225cp"]
+[ext_resource type="Script" uid="uid://h8ouplejnddo" path="res://Components/SocietyUI/statement.gd" id="1_u841r"]
+[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="2_u841r"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_p6x64"]
+font = ExtResource("1_225cp")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_s0s18"]
+font = ExtResource("2_u841r")
+font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_4sgve"]
+font = ExtResource("1_225cp")
+font_size = 64
+
+[node name="Statement" type="HFlowContainer"]
+offset_right = 1195.0
+offset_bottom = 79.0
+alignment = 1
+script = ExtResource("1_u841r")
+
+[node name="WeUse" type="Label" parent="."]
+layout_mode = 2
+text = "We use "
+label_settings = SubResource("LabelSettings_p6x64")
+
+[node name="Resource" type="Label" parent="."]
+layout_mode = 2
+text = "RESOURCE"
+label_settings = SubResource("LabelSettings_s0s18")
+
+[node name="To" type="Label" parent="."]
+layout_mode = 2
+text = " to "
+label_settings = SubResource("LabelSettings_4sgve")
+
+[node name="Action" type="Label" parent="."]
+layout_mode = 2
+text = "to take action"
+label_settings = SubResource("LabelSettings_4sgve")

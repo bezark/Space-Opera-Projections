@@ -1,4 +1,4 @@
-[gd_scene load_steps=44 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=46 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -21,7 +21,7 @@
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
 [ext_resource type="Shader" uid="uid://chqk7vw65ue6j" path="res://Assets/Shaders/mixer.tres" id="13_obmmj"]
 [ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="14_rhye5"]
-[ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://society_ui.tscn" id="16_rhye5"]
+[ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://Components/SocietyUI/society_ui.tscn" id="16_rhye5"]
 [ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
@@ -76,7 +76,7 @@ shader_parameter/strength = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gix1a"]
 shader = ExtResource("14_rhye5")
-shader_parameter/radius = 8
+shader_parameter/radius = 5
 shader_parameter/offset = Vector3(0, 0, 0)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_uocqw"]
@@ -90,6 +90,11 @@ viewport_path = NodePath("SystemView")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s0s18"]
 viewport_path = NodePath("ZoomView")
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ao5vc"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_4sgve"]
+viewport_path = NodePath("SystemView")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
 
@@ -315,6 +320,7 @@ msaa_2d = 2
 title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
+visible = false
 
 [node name="LeftPew" type="Polygon2D" parent="Pews"]
 visible = false
@@ -377,6 +383,16 @@ uv = PackedVector2Array(351.943, 139.833, 1559.94, 139.833, 1572.94, 513.833, 18
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
+[node name="ColorRect" type="TextureRect" parent="Pews"]
+visible = false
+material = SubResource("CanvasItemMaterial_ao5vc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_4sgve")
+
 [node name="Dither" type="ColorRect" parent="Pews"]
 visible = false
 material = SubResource("ShaderMaterial_s0s18")
@@ -402,6 +418,7 @@ mouse_filter = 2
 color = Color(1, 1, 1, 0)
 
 [node name="Label" type="Label" parent="Pews"]
+visible = false
 clip_contents = true
 custom_minimum_size = Vector2(1200, 72)
 offset_left = 532.0

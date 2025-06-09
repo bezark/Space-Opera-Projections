@@ -1,35 +1,47 @@
-[gd_scene load_steps=25 format=3 uid="uid://b7x0paetbq6v7"]
+[gd_scene load_steps=20 format=3 uid="uid://b7x0paetbq6v7"]
 
-[ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/society_ui.gd" id="1_nc66i"]
+[ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/SocietyUI/society_ui.gd" id="1_nc66i"]
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_ood2e"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_nl8h3"]
-[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="3_nc66i"]
 [ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
-[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="7_c6jvj"]
 [ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
+[ext_resource type="PackedScene" uid="uid://bnmxckyv0m5ir" path="res://Components/SocietyUI/statement.tscn" id="8_y0sm1"]
 [ext_resource type="Texture2D" uid="uid://su81uegkbnft" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
-[ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="10_n4h2n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_obmmj"]
 font = ExtResource("4_n4h2n")
 font_size = 128
 
-[sub_resource type="LabelSettings" id="LabelSettings_p6x64"]
-font = ExtResource("7_c6jvj")
-font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_s0s18"]
-font = ExtResource("3_nc66i")
-font_size = 64
-
-[sub_resource type="LabelSettings" id="LabelSettings_4sgve"]
-font = ExtResource("7_c6jvj")
-font_size = 64
-
 [sub_resource type="Animation" id="Animation_2os0k"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_c6jvj"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_sl87g"]
 length = 3.0
@@ -66,93 +78,6 @@ tracks/0/keys = {
 
 [sub_resource type="Animation" id="Animation_n4h2n"]
 
-[sub_resource type="Animation" id="Animation_vld5g"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:modulate")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("SocietyName:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(151, 142)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Diag1:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(981.001, 1567)]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Diag1:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(-886, -566)]
-}
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Diag2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1942, -235)]
-}
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Icon:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1691, 596)]
-}
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath("DiceMask:modulate")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 1)]
-}
-
 [sub_resource type="Animation" id="Animation_q6muc"]
 resource_name = "UIDown"
 length = 5.0
@@ -178,7 +103,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.1, 0.533333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(151, 142), Vector2(-901, 142)]
+"values": [Vector2(151, 40), Vector2(-901, 40)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -253,7 +178,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-901, 142), Vector2(151, 142)]
+"values": [Vector2(-901, 40), Vector2(151, 40)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -303,6 +228,57 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector2(2755, 596), Vector2(1691, 596)]
 }
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DiceMask:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Action:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_g0m5a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DiceMask:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Action:modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nl8h3"]
 _data = {
@@ -312,7 +288,7 @@ _data = {
 &"DiceCamUp": SubResource("Animation_y0sm1"),
 &"NextSociety": SubResource("Animation_nc66i"),
 &"PreviousSociety": SubResource("Animation_n4h2n"),
-&"RESET": SubResource("Animation_vld5g"),
+&"RESET": SubResource("Animation_g0m5a"),
 &"UIDown": SubResource("Animation_q6muc"),
 &"UIUp": SubResource("Animation_y1ya3")
 }
@@ -344,10 +320,23 @@ offset_bottom = 1332.0
 rotation = 0.523598
 color = Color(0.42, 0.5795, 0.75, 1)
 
+[node name="Action" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_left = 266.0
+offset_top = 362.0
+offset_right = 1515.0
+offset_bottom = 907.0
+theme_override_constants/separation = 18
+alignment = 1
+
+[node name="Statement" parent="Action" instance=ExtResource("8_y0sm1")]
+layout_mode = 2
+
 [node name="DiceMask" type="Sprite2D" parent="."]
-visible = false
+modulate = Color(1, 1, 1, 0)
 clip_children = 2
-position = Vector2(984, 561)
+position = Vector2(1198.22, 681.5)
+scale = Vector2(1.22315, 1.22315)
 texture = ExtResource("9_y0sm1")
 
 [node name="DiceCamTexture" parent="DiceMask" instance=ExtResource("8_nc66i")]
@@ -385,9 +374,9 @@ metadata/_custom_type_script = "uid://bid2eudkrel8k"
 modulate = Color(0.698039, 0.180392, 0.00784314, 1)
 layout_mode = 0
 offset_left = 151.0
-offset_top = 142.0
+offset_top = 40.0
 offset_right = 1009.0
-offset_bottom = 343.0
+offset_bottom = 241.0
 scale = Vector2(1, 2)
 text = "SOCIETY"
 label_settings = SubResource("LabelSettings_obmmj")
@@ -401,89 +390,7 @@ position = Vector2(1691, 596)
 scale = Vector2(0.381789, 0.381789)
 texture = ExtResource("7_nc66i")
 
-[node name="Action" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-offset_left = 614.0
-offset_top = 292.0
-offset_right = 1271.0
-offset_bottom = 971.0
-theme_override_constants/separation = 18
-alignment = 1
-
-[node name="Statement" type="HFlowContainer" parent="Action"]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="WeUse" type="Label" parent="Action/Statement"]
-layout_mode = 2
-text = "We use"
-label_settings = SubResource("LabelSettings_p6x64")
-
-[node name="Resource" type="Label" parent="Action/Statement"]
-layout_mode = 2
-text = "RESOURCE"
-label_settings = SubResource("LabelSettings_s0s18")
-
-[node name="Action" type="Label" parent="Action/Statement"]
-layout_mode = 2
-text = "to take action"
-label_settings = SubResource("LabelSettings_4sgve")
-
-[node name="Statement3" type="HFlowContainer" parent="Action"]
-visible = false
-layout_mode = 2
-alignment = 1
-
-[node name="WeUse" type="Label" parent="Action/Statement3"]
-layout_mode = 2
-text = "We use"
-label_settings = SubResource("LabelSettings_p6x64")
-
-[node name="Resource" type="Label" parent="Action/Statement3"]
-layout_mode = 2
-text = "RESOURCE"
-label_settings = SubResource("LabelSettings_s0s18")
-
-[node name="Action" type="Label" parent="Action/Statement3"]
-layout_mode = 2
-text = "to take action"
-label_settings = SubResource("LabelSettings_4sgve")
-
-[node name="Statement2" type="HFlowContainer" parent="Action"]
-layout_mode = 2
-alignment = 1
-
-[node name="WeUse" type="Label" parent="Action/Statement2"]
-layout_mode = 2
-text = "We use"
-label_settings = SubResource("LabelSettings_p6x64")
-
-[node name="Resource" type="Label" parent="Action/Statement2"]
-layout_mode = 2
-text = "RESOURCE"
-label_settings = SubResource("LabelSettings_s0s18")
-
-[node name="Action" type="Label" parent="Action/Statement2"]
-layout_mode = 2
-text = "to take action"
-label_settings = SubResource("LabelSettings_4sgve")
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_nl8h3")
 }
-
-[node name="Mask" type="ColorRect" parent="."]
-visible = false
-material = ExtResource("10_n4h2n")
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-color = Color(0, 0, 0, 1)

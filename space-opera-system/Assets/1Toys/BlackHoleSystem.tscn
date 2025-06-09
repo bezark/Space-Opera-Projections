@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=32 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
@@ -18,16 +18,6 @@
 [ext_resource type="PackedScene" uid="uid://dtlmbwcqlbv82" path="res://Assets/1Toys/Planets/Ice.tscn" id="23_ii0dt"]
 [ext_resource type="PackedScene" uid="uid://dbxq7ep55wcw8" path="res://Assets/1Toys/Planets/ice_moon.tscn" id="24_pt8ev"]
 
-[sub_resource type="Gradient" id="Gradient_y3678"]
-interpolation_mode = 2
-offsets = PackedFloat32Array(0, 0.541756, 1)
-colors = PackedColorArray(0.298039, 0.0235294, 0.129412, 1, 0.764084, 0.394199, 0.629182, 1, 0.298857, 0.0238504, 0.130368, 1)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_ovnr5"]
-gradient = SubResource("Gradient_y3678")
-fill = 1
-fill_to = Vector2(1, 1)
-
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
 panorama = ExtResource("3_smirv")
 energy_multiplier = 5.0
@@ -41,15 +31,19 @@ sky = SubResource("Sky_8b321")
 ambient_light_source = 3
 ambient_light_color = Color(0.821789, 0.821789, 0.821789, 1)
 ambient_light_energy = 12.51
+sdfgi_enabled = true
 glow_enabled = true
 glow_intensity = 1.32
+glow_bloom = 0.11
 glow_blend_mode = 0
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0132
+volumetric_fog_density = 0.0096
 volumetric_fog_albedo = Color(0.130139, 0.066811, 0.276378, 1)
 volumetric_fog_emission = Color(0.181646, 0.0745004, 0.247674, 1)
-volumetric_fog_gi_inject = 1.05
-adjustment_color_correction = SubResource("GradientTexture2D_ovnr5")
+volumetric_fog_gi_inject = 2.68
+volumetric_fog_anisotropy = -0.9
+volumetric_fog_length = 22.58
+volumetric_fog_ambient_inject = 16.0
+adjustment_enabled = true
 
 [sub_resource type="Resource" id="Resource_smirv"]
 script = ExtResource("10_paiqf")
