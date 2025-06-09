@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=141 format=3 uid="uid://b8nk5pbxprji8"]
+[gd_resource type="Resource" script_class="SessionData" load_steps=143 format=3 uid="uid://cutrn6r0rfgbe"]
 
 [ext_resource type="Script" uid="uid://bj0gi6wec2ufj" path="res://Components/Classes/Community.gd" id="1_lohdr"]
 [ext_resource type="PackedScene" uid="uid://cu2t0kq57aia" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
@@ -731,7 +731,7 @@ voteTime = 0
 parent_society = "Feay0"
 
 [sub_resource type="ColorPalette" id="ColorPalette_5fu5v"]
-colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.647059, 0.517647, 0.67451, 1, 0.278431, 0.0784314, 0.196078, 1)
+colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.278431, 0.0784314, 0.196078, 1, 0.278431, 0.0784314, 0.196078, 1, 0.647059, 0.517647, 0.67451, 1)
 
 [sub_resource type="Resource" id="Resource_q3mqm"]
 script = ExtResource("1_lohdr")
@@ -868,7 +868,7 @@ archetype = ExtResource("8_08yu5")
 actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_colxq"), SubResource("Resource_fu5as")])
 
 [sub_resource type="ColorPalette" id="ColorPalette_nok2u"]
-colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.478431, 0.647059, 0.564706, 1, 0.42, 0.5795, 0.75, 1)
+colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.42, 0.5795, 0.75, 1, 0.42, 0.5795, 0.75, 1, 0.478431, 0.647059, 0.564706, 1)
 
 [sub_resource type="Resource" id="Resource_c830y"]
 script = ExtResource("1_lohdr")
@@ -912,6 +912,9 @@ components = Array[ExtResource("25_fq34q")]([SubResource("Resource_34h11")])
 voted = false
 voteTime = 0
 parent_society = "et0k8"
+
+[sub_resource type="ColorPalette" id="ColorPalette_wyoyg"]
+colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.396078, 0.0313726, 0.027451, 1, 0.396078, 0.0313726, 0.027451, 1, 0.698039, 0.180392, 0.00784314, 1)
 
 [sub_resource type="Resource" id="Resource_0e374"]
 script = ExtResource("1_lohdr")
@@ -989,6 +992,7 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "kATHn": SubResource("Resource_0tr16")
 })
 home = ExtResource("30_0m20m")
+colors = SubResource("ColorPalette_wyoyg")
 archetype = ExtResource("5_r4n1j")
 actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_un5f2")])
 
@@ -999,6 +1003,9 @@ components = Array[ExtResource("25_fq34q")]([])
 voted = false
 voteTime = 0
 parent_society = "yXHVO"
+
+[sub_resource type="ColorPalette" id="ColorPalette_0m20m"]
+colors = PackedColorArray(0.768627, 0.690196, 0.270588, 1, 0.388235, 0.34902, 0.0313726, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1)
 
 [sub_resource type="Resource" id="Resource_xgq1b"]
 script = ExtResource("1_lohdr")
@@ -1014,6 +1021,7 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "jaCtF": SubResource("Resource_xgq1b")
 })
 home = ExtResource("31_sr1pp")
+colors = SubResource("ColorPalette_0m20m")
 archetype = ExtResource("6_jgbq0")
 actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_ldkkt")])
 

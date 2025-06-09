@@ -12,8 +12,8 @@ signal body_added(scene_data: SceneData)
 signal ui_toggeled(visible: bool)
 signal action_toggled(visible: bool)
 signal cam_toggled(visible: bool)
-signal next_society_pressed
-signal prev_society_pressed
+signal next_society_pressed(action: SocietyAction)
+signal prev_society_pressed(action: SocietyAction)
 signal society_complete_pressed
 signal society_focused(action: SocietyAction)
 
@@ -205,19 +205,26 @@ func _on_add_pressed() -> void:
 	body_added.emit(selected_scene_data)
 
 
-func _on_show_hide_toggled(toggled_on: bool) -> void:
-	print(State.actions_queued)
-	var action_on_deck = State.actions_queued.front()
-	var active_soc = State.societies[action_on_deck.parent_society]
+var action_on_deck: SocietyAction
 
-	society_focused.emit(action_on_deck)
+
+func _on_show_hide_toggled(toggled_on: bool) -> void:
+	if toggled_on:
+		action_on_deck = State.actions_queued.front()
+		var active_soc = State.societies[action_on_deck.parent_society]
+
+		society_focused.emit(action_on_deck)
 	ui_toggeled.emit(toggled_on)
 
-	$MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls.visible = toggled_on
+	%GalacticPhaseControls.visible = toggled_on
 
 
 func _on_prev_pressed() -> void:
-	prev_society_pressed.emit()
+	var index = State.actions_queued.find(action_on_deck)
+	action_on_deck = State.actions_queued[wrapi(index - 1, 0, State.actions_queued.size())]
+	prev_society_pressed.emit(action_on_deck)
+
+	%GalacticPhaseControls.visible = true
 
 
 func _on_complete_pressed() -> void:
@@ -225,7 +232,11 @@ func _on_complete_pressed() -> void:
 
 
 func _on_next_pressed() -> void:
-	next_society_pressed.emit()
+	var index = State.actions_queued.find(action_on_deck)
+	action_on_deck = State.actions_queued[wrapi(index + 1, 0, State.actions_queued.size())]
+	next_society_pressed.emit(action_on_deck)
+
+	%GalacticPhaseControls.visible = true
 
 
 func _on_action_view_toggled(toggled_on: bool) -> void:

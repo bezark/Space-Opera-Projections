@@ -28,3 +28,15 @@ func focus_on_home(society: Society):
 
 func _on_control_society_focused(action: SocietyAction) -> void:
 	focus_on_home(State.societies[action.parent_society])
+
+
+func _on_control_next_society_pressed(action: SocietyAction) -> void:
+	await get_tree().create_timer(0.8).timeout
+	focus_on_home.call_deferred(State.societies[action.parent_society])
+	
+
+
+func _on_control_prev_society_pressed(action: SocietyAction) -> void:
+	await get_tree().create_timer(0.8).timeout
+	focus_on_home.call_deferred(State.societies[action.parent_society])
+	

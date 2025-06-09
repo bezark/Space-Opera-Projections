@@ -203,6 +203,7 @@ toggle_mode = true
 text = "UI"
 
 [node name="GalacticPhaseControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
+unique_name_in_owner = true
 visible = false
 layout_mode = 2
 size_flags_horizontal = 3

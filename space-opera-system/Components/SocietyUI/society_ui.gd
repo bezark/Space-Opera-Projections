@@ -1,5 +1,7 @@
 extends Control
 
+var action_on_deck: SocietyAction
+
 
 func _on_control_action_toggled(visible: bool) -> void:
 	if visible:
@@ -15,12 +17,14 @@ func _on_control_cam_toggled(visible: bool) -> void:
 		$AnimationPlayer.play("DiceCamDown")
 
 
-func _on_control_next_society_pressed() -> void:
-	pass  # Replace with function body.
+func _on_control_next_society_pressed(action: SocietyAction) -> void:
+	action_on_deck = action
+	$AnimationPlayer.play("NextSociety")
 
 
-func _on_control_prev_society_pressed() -> void:
-	pass  # Replace with function body.
+func _on_control_prev_society_pressed(action: SocietyAction) -> void:
+	action_on_deck = action
+	$AnimationPlayer.play("PrevSociety")
 
 
 func _on_control_society_complete_pressed() -> void:
@@ -57,3 +61,7 @@ func _on_control_society_focused(action: SocietyAction) -> void:
 		$Action.add_child(new_statement)
 
 		# print(component.statement)
+
+
+func swap_society():
+	_on_control_society_focused(action_on_deck)
