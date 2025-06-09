@@ -25,7 +25,6 @@ func _on_control_society_complete_pressed() -> void:
 
 
 func _on_control_ui_toggeled(visible: bool) -> void:
-	
 	if visible:
 		$AnimationPlayer.play("UIUp")
 	else:
@@ -36,3 +35,8 @@ func _on_control_society_focused(action: SocietyAction) -> void:
 	var active_soc = State.societies[action.parent_society]
 	$SocietyName.text = active_soc.archetype.title
 	$Icon.texture = active_soc.archetype.star_sign
+
+	$Icon.modulate = active_soc.colors.colors[0]
+	$Diag1.color = active_soc.colors.colors[1]
+	$Diag2.color = active_soc.colors.colors[2]
+	$SocietyName.modulate = active_soc.colors.colors[3]

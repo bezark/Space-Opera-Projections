@@ -44,6 +44,11 @@ ambient_light_energy = 12.51
 glow_enabled = true
 glow_intensity = 1.32
 glow_blend_mode = 0
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0132
+volumetric_fog_albedo = Color(0.130139, 0.066811, 0.276378, 1)
+volumetric_fog_emission = Color(0.181646, 0.0745004, 0.247674, 1)
+volumetric_fog_gi_inject = 1.05
 adjustment_color_correction = SubResource("GradientTexture2D_ovnr5")
 
 [sub_resource type="Resource" id="Resource_smirv"]
@@ -149,6 +154,15 @@ body = NodePath("City")
 
 [node name="City" parent="SeatOfEmpire" instance=ExtResource("17_xhn7u")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -788.089, 0, 0)
+radius = 12.0
+
+[node name="PlanetAthmosphere" parent="SeatOfEmpire/City" instance=ExtResource("11_q43nw")]
+planet_radius = 12.0
+atmosphere_height = 1.07
+sun_path = NodePath("../../../Blackhole")
+shader_params/u_density = 2.2
+shader_params/u_atmosphere_modulate = Color(0.65098, 0.584314, 0.552941, 1)
+shader_params/u_atmosphere_ambient_color = Color(0.06, 0.06, 0.25, 1)
 
 [node name="Enterprise" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 scene_data = SubResource("Resource_m4j4v")
@@ -156,6 +170,16 @@ body = NodePath("Earth")
 
 [node name="Earth" parent="Enterprise" instance=ExtResource("18_qwjcd")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -913.439, 0, 0)
+radius = 8.5
+
+[node name="PlanetAthmosphere" parent="Enterprise/Earth" instance=ExtResource("11_q43nw")]
+planet_radius = 8.5
+atmosphere_height = 0.695
+sun_path = NodePath("../../../Blackhole")
+force_fullscreen = true
+shader_params/u_density = 1.27
+shader_params/u_atmosphere_modulate = Color(0.278431, 0.67451, 1, 1)
+shader_params/u_atmosphere_ambient_color = Color(0.298039, 0.0823529, 0.129412, 1)
 
 [node name="Faithful" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
 scene_data = SubResource("Resource_q43nw")
@@ -210,6 +234,7 @@ body = NodePath("Volcanic")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1711.28, 0, 0)
 
 [node name="Intrepid" parent="." node_paths=PackedStringArray("body", "sattelites") instance=ExtResource("9_l1est")]
+transform = Transform3D(0.965926, 0.258819, 0, -0.258819, 0.965926, 0, 0, 0, 1, 0, 0, 0)
 scene_data = SubResource("Resource_vk8jg")
 body = NodePath("Ice")
 sattelites = [NodePath("../IntrepidMoon")]
@@ -218,7 +243,7 @@ sattelites = [NodePath("../IntrepidMoon")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1924.04, 0, 0)
 
 [node name="IntrepidMoon" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1905.44, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1858.59, 500.779, 0)
 scene_data = SubResource("Resource_mcu1l")
 body = NodePath("Moon")
 

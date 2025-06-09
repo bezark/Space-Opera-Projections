@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://b7x0paetbq6v7"]
+[gd_scene load_steps=25 format=3 uid="uid://b7x0paetbq6v7"]
 
 [ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/society_ui.gd" id="1_nc66i"]
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_ood2e"]
@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
 [ext_resource type="Texture2D" uid="uid://su81uegkbnft" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
+[ext_resource type="Material" uid="uid://cjp68ody3ft7o" path="res://Assets/CIRCLEMASK.tres" id="10_n4h2n"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_obmmj"]
 font = ExtResource("4_n4h2n")
@@ -77,7 +78,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Color(1, 1, 1, 1)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
@@ -317,7 +318,6 @@ _data = {
 }
 
 [node name="SocietyUI" type="Control"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -328,12 +328,12 @@ script = ExtResource("1_nc66i")
 
 [node name="Diag1" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -886.0
+offset_left = -0.00012207
 offset_top = -566.0
-offset_right = 95.001
+offset_right = 981.001
 offset_bottom = 1001.0
 rotation = 0.523598
-color = Color(0.396078, 0.0313726, 0.027451, 1)
+color = Color(0.42, 0.5795, 0.75, 1)
 
 [node name="Diag2" type="ColorRect" parent="."]
 layout_mode = 0
@@ -342,9 +342,10 @@ offset_top = -235.0
 offset_right = 2923.0
 offset_bottom = 1332.0
 rotation = 0.523598
-color = Color(0.396078, 0.0313726, 0.027451, 1)
+color = Color(0.42, 0.5795, 0.75, 1)
 
 [node name="DiceMask" type="Sprite2D" parent="."]
+visible = false
 clip_children = 2
 position = Vector2(984, 561)
 texture = ExtResource("9_y0sm1")
@@ -392,9 +393,10 @@ text = "SOCIETY"
 label_settings = SubResource("LabelSettings_obmmj")
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
 [node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.306254, 0.613288, 0.842957, 1)
+modulate = Color(0.768627, 0.690196, 0.270588, 1)
 position = Vector2(1691, 596)
 scale = Vector2(0.381789, 0.381789)
 texture = ExtResource("7_nc66i")
@@ -472,3 +474,16 @@ label_settings = SubResource("LabelSettings_4sgve")
 libraries = {
 &"": SubResource("AnimationLibrary_nl8h3")
 }
+
+[node name="Mask" type="ColorRect" parent="."]
+visible = false
+material = ExtResource("10_n4h2n")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0, 0, 0, 1)

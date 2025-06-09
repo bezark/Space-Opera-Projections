@@ -160,8 +160,8 @@ cameras = [NodePath("../Crane/OrbitalCamera"), NodePath("../FreeflyCamera"), Nod
 [node name="OrbitalCamera" type="Camera3D" parent="SystemView/Kin/Crane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 script = ExtResource("10_g514o")
-sensitivity = 0.5
-damping = 0.1
+sensitivity = 0.1
+damping = 0.275
 zoom_sensitivity = 10.0
 metadata/_custom_type_script = "uid://ghnhrkb3yrje"
 
@@ -339,8 +339,8 @@ clip_children = 2
 position = Vector2(320, 729.5)
 scale = Vector2(1.94982, 1)
 texture = SubResource("ViewportTexture_gix1a")
-polygon = PackedVector2Array(813.921, -522.5, -125.14, -585.5, -140.179, -327.334, -161.553, 262.5, 822.127, 118.5, 810.844, -140.5, 808.793, -245.5)
-uv = PackedVector2Array(1920, 272, 0, 272, -3.8147e-06, 888, 1920, 888)
+polygon = PackedVector2Array(813.921, -522.5, -125.14, -585.5, -140.179, -327.334, -161.553, 262.5, 809.099, 134.399, 810.844, -140.5, 808.793, -245.5)
+uv = PackedVector2Array(1920, 0, 4.47035e-07, -2.68221e-07, -1.90735e-06, 344, -1.90735e-06, 1200, 1920, 1200, 1920, 1008, 1920, 680)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
@@ -358,6 +358,7 @@ scale = Vector2(0.512868, 1)
 texture = SubResource("ViewportTexture_s0s18")
 
 [node name="ColorRect" type="ColorRect" parent="Pews/BackRect"]
+visible = false
 custom_minimum_size = Vector2(1920, 1200)
 anchors_preset = 15
 anchor_right = 1.0

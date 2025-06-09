@@ -318,7 +318,7 @@
 
     streamcontroller
 
-    obsidian
+    # obsidian
 
     gnome-pomodoro
     gnome-solanum
@@ -376,7 +376,7 @@
 
     steam-run
     patchelf
-    bottles
+    # bottles
     popsicle
     libvirt
 
@@ -395,12 +395,16 @@
 
 
     blanket
+
     helix
     nmap
     yazi
     broot
     tmux
     screen
+    pastel
+
+    wl-color-picker
 
     # audacity
     # gnome-sound-recorder

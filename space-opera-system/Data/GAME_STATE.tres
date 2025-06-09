@@ -1,36 +1,36 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=139 format=3]
+[gd_resource type="Resource" script_class="SessionData" load_steps=141 format=3 uid="uid://ksvjir6pj626"]
 
-[ext_resource type="Script" path="res://Components/Classes/Community.gd" id="1_lohdr"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
-[ext_resource type="Script" path="res://Components/Classes/Archetype.gd" id="2_jgbq0"]
-[ext_resource type="Script" path="res://Components/Classes/Phase.gd" id="2_qolqt"]
-[ext_resource type="Script" path="res://Components/Classes/SPResource.gd" id="3_pyy0l"]
-[ext_resource type="Script" path="res://Components/Classes/SceneData.gd" id="3_tfqbo"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Mighty.tres" id="3_y04g4"]
-[ext_resource type="Script" path="res://Components/Classes/SessionData.gd" id="4_phj51"]
-[ext_resource type="Script" path="res://Components/Classes/Society.gd" id="5_idph4"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Faithful.tres" id="5_r4n1j"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Curious.tres" id="6_2ix7t"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Enterprise.tres" id="6_jgbq0"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Intrepid.tres" id="7_5kibd"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Aesthetic.tres" id="8_08yu5"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Grounded.tres" id="9_3w1tv"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Scholars.tres" id="10_fsgl3"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/setup.tscn" id="15_6t4gm"]
-[ext_resource type="Script" path="res://Components/Classes/SocietyAction.gd" id="15_r4n1j"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/Universal Phase.tscn" id="16_tfqbo"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/societal.tscn" id="17_5fu5v"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/galactic_council.tscn" id="18_0tr16"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/individual.tscn" id="19_pvjkl"]
-[ext_resource type="PackedScene" path="res://Assets/1Toys/AetherResevoir.tscn" id="20_4df5w"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/Generational Phase.tscn" id="21_nok2u"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/conclusion.tscn" id="22_wyoyg"]
-[ext_resource type="Script" path="res://Components/Classes/SocietyActionComponent.gd" id="25_fq34q"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/GAS_home.tres" id="27_4df5w"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/GEMSTONE_home.tres" id="28_nok2u"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/ICE_home.tres" id="29_wyoyg"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/DESERT_home.tres" id="30_0m20m"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/EARTH_home.tres" id="31_sr1pp"]
+[ext_resource type="Script" uid="uid://bj0gi6wec2ufj" path="res://Components/Classes/Community.gd" id="1_lohdr"]
+[ext_resource type="PackedScene" uid="uid://cu2t0kq57aia" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
+[ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="2_jgbq0"]
+[ext_resource type="Script" uid="uid://bitm0ri2u6kmu" path="res://Components/Classes/Phase.gd" id="2_qolqt"]
+[ext_resource type="Script" uid="uid://b7drd8dk57bpq" path="res://Components/Classes/SPResource.gd" id="3_pyy0l"]
+[ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="3_tfqbo"]
+[ext_resource type="Resource" uid="uid://boi6t3qx52xfi" path="res://Data/Archetypes/Mighty.tres" id="3_y04g4"]
+[ext_resource type="Script" uid="uid://c1ec647xm7j1e" path="res://Components/Classes/SessionData.gd" id="4_phj51"]
+[ext_resource type="Script" uid="uid://7b8o4kmn3vob" path="res://Components/Classes/Society.gd" id="5_idph4"]
+[ext_resource type="Resource" uid="uid://y8gwtw6sduhy" path="res://Data/Archetypes/Faithful.tres" id="5_r4n1j"]
+[ext_resource type="Resource" uid="uid://dsxfj6kk3ky01" path="res://Data/Archetypes/Curious.tres" id="6_2ix7t"]
+[ext_resource type="Resource" uid="uid://8ufafn1v8btf" path="res://Data/Archetypes/Enterprise.tres" id="6_jgbq0"]
+[ext_resource type="Resource" uid="uid://roeci46rncv3" path="res://Data/Archetypes/Intrepid.tres" id="7_5kibd"]
+[ext_resource type="Resource" uid="uid://rjkvde2cxadx" path="res://Data/Archetypes/Aesthetic.tres" id="8_08yu5"]
+[ext_resource type="Resource" uid="uid://cstw7o32k1fbm" path="res://Data/Archetypes/Grounded.tres" id="9_3w1tv"]
+[ext_resource type="Resource" uid="uid://cil2aln12ayt1" path="res://Data/Archetypes/Scholars.tres" id="10_fsgl3"]
+[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="15_6t4gm"]
+[ext_resource type="Script" uid="uid://ceuamb4jewiu7" path="res://Components/Classes/SocietyAction.gd" id="15_r4n1j"]
+[ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Templates/Universal Phase.tscn" id="16_tfqbo"]
+[ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/Templates/societal.tscn" id="17_5fu5v"]
+[ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/Templates/galactic_council.tscn" id="18_0tr16"]
+[ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/Templates/individual.tscn" id="19_pvjkl"]
+[ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="20_4df5w"]
+[ext_resource type="PackedScene" uid="uid://csjt08a72pwbn" path="res://Phases/Templates/Generational Phase.tscn" id="21_nok2u"]
+[ext_resource type="PackedScene" uid="uid://wd1w3dgwxd4u" path="res://Phases/Templates/conclusion.tscn" id="22_wyoyg"]
+[ext_resource type="Script" uid="uid://dhpfpy8e64ra3" path="res://Components/Classes/SocietyActionComponent.gd" id="25_fq34q"]
+[ext_resource type="Resource" uid="uid://44ufa8myo66y" path="res://Data/PlayerPlanets/GAS_home.tres" id="27_4df5w"]
+[ext_resource type="Resource" uid="uid://da2sxkjh4qlsj" path="res://Data/PlayerPlanets/GEMSTONE_home.tres" id="28_nok2u"]
+[ext_resource type="Resource" uid="uid://b3jctnro7exx0" path="res://Data/PlayerPlanets/ICE_home.tres" id="29_wyoyg"]
+[ext_resource type="Resource" uid="uid://1thessxw0snm" path="res://Data/PlayerPlanets/DESERT_home.tres" id="30_0m20m"]
+[ext_resource type="Resource" uid="uid://dbgqbdkieb20f" path="res://Data/PlayerPlanets/EARTH_home.tres" id="31_sr1pp"]
 
 [sub_resource type="Resource" id="Resource_ppamq"]
 script = ExtResource("3_pyy0l")
@@ -731,7 +731,7 @@ voteTime = 0
 parent_society = "Feay0"
 
 [sub_resource type="ColorPalette" id="ColorPalette_5fu5v"]
-colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.278431, 0.0784314, 0.196078, 1, 0.647059, 0.517647, 0.67451, 1)
+colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.647059, 0.517647, 0.67451, 1, 0.278431, 0.0784314, 0.196078, 1)
 
 [sub_resource type="Resource" id="Resource_q3mqm"]
 script = ExtResource("1_lohdr")
@@ -775,6 +775,7 @@ resources = Dictionary[String, ExtResource("3_pyy0l")]({
 voice = "leader"
 
 [sub_resource type="Resource" id="Resource_0m20m"]
+resource_name = "Mighty"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
 "FRomU": SubResource("Resource_q3mqm"),
@@ -795,6 +796,9 @@ components = Array[ExtResource("25_fq34q")]([])
 voted = false
 voteTime = 0
 parent_society = "V9xbw"
+
+[sub_resource type="ColorPalette" id="ColorPalette_4df5w"]
+colors = PackedColorArray(0.42, 0.5795, 0.75, 1, 0.647059, 0.694118, 0.745098, 1, 0.647059, 0.694118, 0.745098, 1, 0.647059, 0.517647, 0.67451, 1)
 
 [sub_resource type="Resource" id="Resource_x7s76"]
 script = ExtResource("1_lohdr")
@@ -848,6 +852,7 @@ resources = Dictionary[String, ExtResource("3_pyy0l")]({
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_wyoyg"]
+resource_name = "Aesthetic"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
 "Bd8RN": SubResource("Resource_x7s76"),
@@ -858,8 +863,12 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "wyWh4": SubResource("Resource_wqdk8")
 })
 home = ExtResource("28_nok2u")
+colors = SubResource("ColorPalette_4df5w")
 archetype = ExtResource("8_08yu5")
 actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_colxq"), SubResource("Resource_fu5as")])
+
+[sub_resource type="ColorPalette" id="ColorPalette_nok2u"]
+colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.478431, 0.647059, 0.564706, 1, 0.42, 0.5795, 0.75, 1)
 
 [sub_resource type="Resource" id="Resource_c830y"]
 script = ExtResource("1_lohdr")
@@ -879,12 +888,14 @@ resources = Dictionary[String, ExtResource("3_pyy0l")]({
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_sr1pp"]
+resource_name = "Intrepid"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
 "Mj0UJ": SubResource("Resource_c830y"),
 "pT1pr": SubResource("Resource_m5lsc")
 })
 home = ExtResource("29_wyoyg")
+colors = SubResource("ColorPalette_nok2u")
 archetype = ExtResource("7_5kibd")
 actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_hte2g")])
 
@@ -965,6 +976,7 @@ resources = Dictionary[String, ExtResource("3_pyy0l")]({
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_pvjkl"]
+resource_name = "Faithful"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
 "B95dD": SubResource("Resource_0e374"),
