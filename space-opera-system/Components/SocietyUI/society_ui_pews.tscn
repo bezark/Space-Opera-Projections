@@ -1,0 +1,5 @@
+[gd_scene load_steps=2 format=3 uid="uid://bfjbhi2njpdko"]
+
+[ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://Components/SocietyUI/society_ui.tscn" id="1_u6qsd"]
+
+[node name="SocietyUI" instance=ExtResource("1_u6qsd")]

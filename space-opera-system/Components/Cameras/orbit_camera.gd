@@ -22,7 +22,6 @@ func _ready():
 	# start()
 	%BodySelection.pois = points_of_interest
 	%BodySelection.make_poi_buttons()
-	
 
 
 func start() -> void:
@@ -35,7 +34,20 @@ func start() -> void:
 	# print(focus.position)
 	# print(crane.position)
 	# print(position)
-	print(focus.body.name)
+	# print(focus.body.name)
+
+
+func fly() -> void:
+	crane.global_position = focus.body.global_position
+	global_position = focus.body.global_position
+	position.z += default_zoom
+	crane.call_deferred("reparent", focus.body)
+	look_at(focus.body.global_transform.origin, Vector3.UP)
+	print("flyyyy")
+	# print(focus.position)
+	# print(crane.position)
+	# print(position)
+	# print(focus.body.name)
 
 
 func _process(delta: float) -> void:

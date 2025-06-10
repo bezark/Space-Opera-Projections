@@ -4,6 +4,8 @@ extends HBoxContainer
 
 @export var system: Node3D
 @onready var controller: Control = $"../../../../../../Control"
+var next_soc: Society
+var home
 
 
 func _ready() -> void:
@@ -17,11 +19,18 @@ func _ready() -> void:
 
 func focus_on_home(society: Society):
 	var packed_home: PackedScene = society.home.scene
-	var home = system.find_child(packed_home.get_state().get_node_name(0))
-
-	# print(home)
-	# var focus = get_node(focus_path)
+	home = system.find_child(packed_home.get_state().get_node_name(0))
 	controller.make_zoom_buttons(society.home)
+	fly_home(home)
+
+
+func quick_focus_on_home(society: Society):
+	var packed_home: PackedScene = society.home.scene
+	home = system.find_child(packed_home.get_state().get_node_name(0))
+	controller.make_zoom_buttons(society.home)
+
+
+func fly_home(node):
 	orbital_camera.focus = home.get_parent()
 	orbital_camera.start()
 
@@ -31,12 +40,17 @@ func _on_control_society_focused(action: SocietyAction) -> void:
 
 
 func _on_control_next_society_pressed(action: SocietyAction) -> void:
-	await get_tree().create_timer(0.8).timeout
-	focus_on_home.call_deferred(State.societies[action.parent_society])
-	
+	next_soc = State.societies[action.parent_society]
+	quick_focus_on_home(next_soc)
+	$Delay.start()
 
 
 func _on_control_prev_society_pressed(action: SocietyAction) -> void:
-	await get_tree().create_timer(0.8).timeout
-	focus_on_home.call_deferred(State.societies[action.parent_society])
-	
+	next_soc = State.societies[action.parent_society]
+	quick_focus_on_home(next_soc)
+	$Delay.start()
+
+
+func _on_delay_timeout() -> void:
+	orbital_camera.focus = home.get_parent()
+	orbital_camera.fly()

@@ -88,3 +88,7 @@ func _on_delete_pressed() -> void:
 		crane.reparent(kin)
 	queue_free()
 	
+
+
+func _on_orbit_pressed() -> void:
+	pass # Replace with function body.
