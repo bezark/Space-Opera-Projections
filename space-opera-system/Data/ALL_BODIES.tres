@@ -1,7 +1,7 @@
 [gd_resource type="Resource" script_class="AllCelestialBodies" load_steps=8 format=3 uid="uid://dys78k5634li2"]
 
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_4ghr2"]
-[ext_resource type="Resource" uid="uid://d1j3idy1ataam" path="res://Assets/1Toys/CelestialBodies/spacestation.tres" id="2_gjgxi"]
+[ext_resource type="Resource" uid="uid://d1j3idy1ataam" path="res://Assets/1Toys/spacestation.tres" id="2_gjgxi"]
 [ext_resource type="Script" uid="uid://21eslsjjv735" path="res://Components/Classes/AllCelestialBodies.gd" id="2_hukp0"]
 [ext_resource type="Resource" uid="uid://1thessxw0snm" path="res://Data/PlayerPlanets/DESERT_home.tres" id="3_tfc5e"]
 [ext_resource type="Resource" uid="uid://44ufa8myo66y" path="res://Data/PlayerPlanets/GAS_home.tres" id="4_2kv53"]

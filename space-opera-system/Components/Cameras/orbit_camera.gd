@@ -18,36 +18,32 @@ func _ready():
 	points_of_interest = get_tree().get_nodes_in_group("point_of_interest")
 	crane = get_parent_node_3d()
 	focus = points_of_interest.pick_random()
+	State.celestial_body_focused.connect(new_focus)
 	# (Optionally call start() here if you want to pick a random POI on start)
 	# start()
-	%BodySelection.pois = points_of_interest
-	%BodySelection.make_poi_buttons()
+	# %BodySelection.pois = points_of_interest
+	# %BodySelection.make_poi_buttons()
+
+
+func new_focus(body: CelestialBody):
+	focus = body
+	start()
 
 
 func start() -> void:
-	# focus = points_of_interest.pick_random()
 	crane.global_position = focus.body.global_position
 	global_position = focus.body.global_position
 	position.z += default_zoom
 	crane.call_deferred("reparent", focus.body)
 	look_at(focus.body.global_transform.origin, Vector3.UP)
-	# print(focus.position)
-	# print(crane.position)
-	# print(position)
-	# print(focus.body.name)
 
 
-func fly() -> void:
-	crane.global_position = focus.body.global_position
-	global_position = focus.body.global_position
-	position.z += default_zoom
-	crane.call_deferred("reparent", focus.body)
-	look_at(focus.body.global_transform.origin, Vector3.UP)
-	print("flyyyy")
-	# print(focus.position)
-	# print(crane.position)
-	# print(position)
-	# print(focus.body.name)
+# func fly() -> void:
+# 	crane.global_position = focus.body.global_position
+# 	global_position = focus.body.global_position
+# 	position.z += default_zoom
+# 	crane.call_deferred("reparent", focus.body)
+# 	look_at(focus.body.global_transform.origin, Vector3.UP)
 
 
 func _process(delta: float) -> void:

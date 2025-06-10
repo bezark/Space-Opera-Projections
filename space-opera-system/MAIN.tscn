@@ -99,11 +99,12 @@ font_size = 64
 
 [node name="Main" type="Node"]
 
-[node name="Control" parent="." instance=ExtResource("1_kgeht")]
+[node name="Control" parent="." node_paths=PackedStringArray("system_view") instance=ExtResource("1_kgeht")]
 size_flags_horizontal = 4
 size_flags_vertical = 3
+system_view = NodePath("SystemPreview")
 
-[node name="SystemPreview" type="TextureRect" parent="Control" groups=["permanent", "system_control"]]
+[node name="SystemPreview" type="TextureRect" parent="Control" groups=["Header", "permanent"]]
 custom_minimum_size = Vector2(960, 600)
 layout_mode = 1
 offset_right = 480.0
@@ -160,8 +161,8 @@ metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
 [node name="OrbitalCamera" type="Camera3D" parent="SystemView/Kin/Crane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 script = ExtResource("10_g514o")
-sensitivity = 0.1
-damping = 0.275
+sensitivity = 0.2
+damping = 0.2
 zoom_sensitivity = 10.0
 metadata/_custom_type_script = "uid://ghnhrkb3yrje"
 

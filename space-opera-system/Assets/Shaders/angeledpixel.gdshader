@@ -82,4 +82,3 @@ void fragment() {
 		ALBEDO = mix(original_color, FogColor, fog_factor);
 	}
 }
-

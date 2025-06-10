@@ -56,6 +56,7 @@ zoom_control=""
 ui_control=""
 permanent=""
 point_of_interest=""
+Header=""
 
 [godot_vmc_tracker]
 

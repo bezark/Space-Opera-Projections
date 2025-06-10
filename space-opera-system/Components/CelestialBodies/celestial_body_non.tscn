@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cwpjuoua2bh07"]
+
+[ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Components/CelestialBodies/celestial_body.tscn" id="1_jfuu7"]
+
+[node name="CelestialBody" instance=ExtResource("1_jfuu7")]
+
+[node name="DistanceLabel" parent="VBoxContainer/Controls/Sliders" index="0"]
+visible = false
+
+[node name="Distance" parent="VBoxContainer/Controls/Sliders" index="1"]
+visible = false
+
+[node name="Well2" type="Button" parent="VBoxContainer/Controls/VBoxContainer" index="1"]
+layout_mode = 2
+toggle_mode = true
+text = "Well"
+
+[connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Well" to="." method="_on_well_toggled"]

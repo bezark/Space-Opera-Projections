@@ -6,6 +6,7 @@ class_name CelestialBody
 @export var scene_data: SceneData
 
 @export var body: Node3D
+@export var well : Node3D
 
 @export var sattelites: Array[Node]
 @export var atmosphere : Node
@@ -91,4 +92,8 @@ func _on_delete_pressed() -> void:
 
 
 func _on_orbit_pressed() -> void:
-	pass # Replace with function body.
+	State.celestial_body_focused.emit(self)
+
+
+func _on_well_toggled(toggled_on: bool) -> void:
+	well.visible = toggled_on

@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://w861i1qcxaxq"]
+
+[ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="1_2d368"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wqj7l"]
+albedo_texture = ExtResource("1_2d368")
+
+[node name="Well" type="CSGSphere3D"]
+operation = 2
+radius = 5.0
+radial_segments = 100
+rings = 64
+material = SubResource("StandardMaterial3D_wqj7l")

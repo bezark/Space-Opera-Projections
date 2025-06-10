@@ -1,8 +1,8 @@
 extends SubViewport
 
 var active_cam: SystemCamera
-const CELESTIAL_BODY = preload("res://Assets/1Toys/celestial_body.tscn")
 
+const CELESTIAL_BODY = preload("res://Components/CelestialBodies/celestial_body.tscn")
 
 func _on_camera_select_cam_selected(cam: SystemCamera) -> void:
 	active_cam = cam

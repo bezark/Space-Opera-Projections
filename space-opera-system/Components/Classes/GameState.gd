@@ -12,6 +12,8 @@ class_name GameState
 @export var actions_queued: Array[SocietyAction]
 
 signal celestial_body_deleted
+signal celestial_body_focused(body: CelestialBody)
+
 
 func save():
 	# print("---------------------")

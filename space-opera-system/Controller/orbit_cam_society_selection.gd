@@ -21,7 +21,7 @@ func focus_on_home(society: Society):
 	var packed_home: PackedScene = society.home.scene
 	home = system.find_child(packed_home.get_state().get_node_name(0))
 	controller.make_zoom_buttons(society.home)
-	fly_home(home)
+	fly_home()
 
 
 func quick_focus_on_home(society: Society):
@@ -30,7 +30,7 @@ func quick_focus_on_home(society: Society):
 	controller.make_zoom_buttons(society.home)
 
 
-func fly_home(node):
+func fly_home():
 	orbital_camera.focus = home.get_parent()
 	orbital_camera.start()
 
@@ -53,4 +53,4 @@ func _on_control_prev_society_pressed(action: SocietyAction) -> void:
 
 func _on_delay_timeout() -> void:
 	orbital_camera.focus = home.get_parent()
-	orbital_camera.fly()
+	orbital_camera.start()

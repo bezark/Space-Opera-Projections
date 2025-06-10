@@ -151,6 +151,12 @@ size_flags_vertical = 3
 layout_mode = 2
 text = "Add..."
 
+[node name="Preview" type="CenterContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
 [node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -158,9 +164,8 @@ size_flags_vertical = 3
 [node name="SystemControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/System/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
-theme_override_constants/separation = 12
 
 [node name="Zoom" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views"]
 layout_mode = 2

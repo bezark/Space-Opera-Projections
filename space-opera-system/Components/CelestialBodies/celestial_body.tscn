@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://bxr57mvk3crpc"]
 
-[ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Assets/1Toys/celestial_body.gd" id="1_to1mt"]
+[ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="1_to1mt"]
 
 [node name="CelestialBody" type="Node3D" groups=["point_of_interest"]]
 script = ExtResource("1_to1mt")
@@ -64,6 +64,12 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "Orbit"
 
+[node name="Well" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+toggle_mode = true
+text = "Well"
+
 [node name="Delete" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -73,4 +79,5 @@ text = "DELETE"
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Distance" to="." method="_on_distance_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Speed" to="." method="_on_speed_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Spin" to="." method="_on_spin_value_changed"]
+[connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Orbit" to="." method="_on_orbit_pressed"]
 [connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Delete" to="." method="_on_delete_pressed"]

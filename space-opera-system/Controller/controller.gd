@@ -19,7 +19,7 @@ signal society_focused(action: SocietyAction)
 
 @export var structure: SceneStructure
 
-@export var system_view: ViewportTexture
+@export var system_view: TextureRect
 
 var datapad_syncing = true
 var selected_scene_data: SceneData
@@ -32,7 +32,7 @@ func _ready() -> void:
 	make_phase_buttons()
 	check_for_controls.call_deferred()
 	State.celestial_body_deleted.connect(check_for_controls)
-	#o%SystemView.set_deferred("texture", system_view)
+	system_view.call_deferred("reparent", %Preview)
 
 
 func make_phase_buttons():
@@ -89,7 +89,7 @@ func check_for_controls():
 
 func check_for_system_controls():
 	var new_controls = get_tree().get_nodes_in_group("system_control")
-	print(new_controls)
+	# print(new_controls)
 	for nc in new_controls:
 		nc.call_deferred("reparent", %SystemControls)
 
