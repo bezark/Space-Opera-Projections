@@ -31,9 +31,10 @@ func _on_control_society_complete_pressed() -> void:
 	pass  # Replace with function body.
 
 
-func _on_control_ui_toggeled(visible: bool) -> void:
-	if visible:
+func _on_control_ui_toggeled(shown: bool) -> void:
+	if shown:
 		$AnimationPlayer.play("UIUp")
+		visible = shown
 	else:
 		$AnimationPlayer.play("UIDown")
 

@@ -305,6 +305,7 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
+visible = false
 
 [node name="Mask" type="ColorRect" parent="Circle"]
 material = ExtResource("11_6t3px")
@@ -404,6 +405,7 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_4sgve")
 
 [node name="SocietyUI" parent="Pews/BackRect" instance=ExtResource("23_gix1a")]
+visible = false
 anchors_preset = 10
 anchor_bottom = 0.0
 offset_top = -739.0

@@ -23,10 +23,12 @@ layout_mode = 2
 columns = 2
 
 [node name="DistanceLabel" type="Label" parent="VBoxContainer/Controls/Sliders"]
+visible = false
 layout_mode = 2
 text = "Distance"
 
 [node name="Distance" type="HSlider" parent="VBoxContainer/Controls/Sliders"]
+visible = false
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
 max_value = 1000.0
@@ -80,4 +82,5 @@ text = "DELETE"
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Speed" to="." method="_on_speed_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Spin" to="." method="_on_spin_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Orbit" to="." method="_on_orbit_pressed"]
+[connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Well" to="." method="_on_well_toggled"]
 [connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Delete" to="." method="_on_delete_pressed"]

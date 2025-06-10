@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://u6wig7865ius"]
+
+[ext_resource type="Texture2D" uid="uid://bwyvlw4yxxlg5" path="res://Assets/Textures/Animal_17-256x256.png" id="1_xgkjn"]
+[ext_resource type="Texture2D" uid="uid://bltcu4vk1sdgj" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-60.png" id="2_g6oin"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6oin"]
+albedo_texture = ExtResource("1_xgkjn")
+emission_enabled = true
+emission_energy_multiplier = 2.98
+emission_operator = 1
+emission_on_uv2 = true
+emission_texture = ExtResource("2_g6oin")
+uv1_scale = Vector3(2, 2, 2)
+
+[node name="Meadow" type="CSGSphere3D"]
+radius = 9.27
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_g6oin")
