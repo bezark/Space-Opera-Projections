@@ -1,6 +1,7 @@
-[gd_scene load_steps=44 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=45 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
+[ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="PackedScene" uid="uid://cw1pdlvuehwmt" path="res://Assets/1Toys/Zooms/city.tscn" id="7_dee4i"]
 [ext_resource type="PackedScene" uid="uid://w861i1qcxaxq" path="res://Assets/1Toys/well.tscn" id="8_qwjcd"]
@@ -341,11 +342,79 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
 
-[node name="DysonSphere" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
+[node name="DysonSphere" type="Node3D" parent="." node_paths=PackedStringArray("body") groups=["point_of_interest"]]
+script = ExtResource("3_qmfsb")
 body = NodePath("DysonSphere")
 
-[node name="DysonSphere" parent="DysonSphere" instance=ExtResource("16_dee4i")]
+[node name="VBoxContainer" type="VBoxContainer" parent="DysonSphere" groups=["system_control"]]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Button" parent="DysonSphere/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Planet"
+
+[node name="Controls" type="HBoxContainer" parent="DysonSphere/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Sliders" type="GridContainer" parent="DysonSphere/VBoxContainer/Controls"]
+layout_mode = 2
+columns = 2
+
+[node name="DistanceLabel" type="Label" parent="DysonSphere/VBoxContainer/Controls/Sliders"]
+visible = false
+layout_mode = 2
+text = "Distance"
+
+[node name="Distance" type="HSlider" parent="DysonSphere/VBoxContainer/Controls/Sliders"]
+visible = false
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+max_value = 1000.0
+step = 0.1
+
+[node name="SpeedLabel" type="Label" parent="DysonSphere/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="HSlider" parent="DysonSphere/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="SpinLabel" type="Label" parent="DysonSphere/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Spin"
+
+[node name="Spin" type="HSlider" parent="DysonSphere/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DysonSphere/VBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="Orbit" type="Button" parent="DysonSphere/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Orbit"
+
+[node name="Delete" type="Button" parent="DysonSphere/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "DELETE"
+
+[node name="DysonSphere" parent="DysonSphere" node_paths=PackedStringArray("target") instance=ExtResource("16_dee4i")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+target = NodePath("../../Intrepid/Ice")
 
 [node name="Aesthetic" parent="." node_paths=PackedStringArray("body", "well") instance=ExtResource("9_l1est")]
 scene_data = SubResource("Resource_smirv")
@@ -563,3 +632,10 @@ body = NodePath("Moon")
 
 [node name="Moon" parent="IntrepidMoon" instance=ExtResource("24_pt8ev")]
 transform = Transform3D(0.9964, 0, -0.0847735, 0, 1, 0, 0.0847735, 0, 0.9964, 0, 0, -70.7587)
+
+[connection signal="toggled" from="DysonSphere/VBoxContainer/Title" to="DysonSphere" method="_on_title_toggled"]
+[connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Distance" to="DysonSphere" method="_on_distance_value_changed"]
+[connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Speed" to="DysonSphere" method="_on_speed_value_changed"]
+[connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Spin" to="DysonSphere" method="_on_spin_value_changed"]
+[connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Orbit" to="DysonSphere" method="_on_orbit_pressed"]
+[connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Delete" to="DysonSphere" method="_on_delete_pressed"]

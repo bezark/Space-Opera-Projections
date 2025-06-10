@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=46 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -91,6 +91,9 @@ viewport_path = NodePath("ZoomView")
 [sub_resource type="ViewportTexture" id="ViewportTexture_4sgve"]
 viewport_path = NodePath("SystemView")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_gix1a"]
+viewport_path = NodePath("Pews/Pre")
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gix1a"]
@@ -161,7 +164,7 @@ metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
 [node name="OrbitalCamera" type="Camera3D" parent="SystemView/Kin/Crane"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 script = ExtResource("10_g514o")
-sensitivity = 0.2
+sensitivity = 0.1
 damping = 0.2
 zoom_sensitivity = 10.0
 metadata/_custom_type_script = "uid://ghnhrkb3yrje"
@@ -324,94 +327,71 @@ title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
 
-[node name="LeftPew" type="Polygon2D" parent="Pews"]
-visible = false
-position = Vector2(328, 807)
-polygon = PackedVector2Array(-272, 192, -272, -304, 560, -304, 560, 208)
-uv = PackedVector2Array(0, 1168, 360, 488, 1624, 79.9999, 1816, 1120)
-script = ExtResource("13_h2cot")
-metadata/_custom_type_script = "uid://muokti5xk4km"
+[node name="Pre" type="SubViewport" parent="Pews"]
+size = Vector2i(1920, 1299)
 
-[node name="RightPew" type="Polygon2D" parent="Pews"]
-visible = false
-position = Vector2(1358, 886)
-polygon = PackedVector2Array(-304, 168, -304, -360, 560, -360, 560, 168)
-uv = PackedVector2Array(24, 1200, 24, 16, 1912, 8.00001, 1936, 1208)
-script = ExtResource("13_h2cot")
-metadata/_custom_type_script = "uid://muokti5xk4km"
-
-[node name="WholeThang" type="Polygon2D" parent="Pews"]
-process_mode = 4
-visible = false
-clip_children = 2
-position = Vector2(1007, 439)
-polygon = PackedVector2Array(-664, -331, 587, -313, 586, -21, 912, -19, 910, 675, 48, 670, 37, 151, -116, 148, -115, 667, -992, 659, -1005, -39, -661, -34)
-uv = PackedVector2Array(351.943, 139.833, 1559.94, 139.833, 1572.94, 513.833, 1895.94, 505.833, 1903.94, 1039.83, 1031.94, 1042.83, 1034.94, 506.833, 874.943, 500.833, 877.943, 1012.83, 40.9431, 984.833, 37.9431, 472.833, 367.943, 458.833)
-script = ExtResource("13_h2cot")
-metadata/_custom_type_script = "uid://muokti5xk4km"
-
-[node name="BackRect" type="Polygon2D" parent="Pews"]
-clip_children = 2
-position = Vector2(320, 729.5)
-scale = Vector2(1.94982, 1)
-polygon = PackedVector2Array(813.921, -522.5, -125.14, -585.5, -140.179, -327.334, -161.553, 262.5, 809.099, 134.399, 810.844, -140.5, 808.793, -245.5)
-uv = PackedVector2Array(1920, 0, 4.47035e-07, -2.68221e-07, -1.90735e-06, 344, -1.90735e-06, 1200, 1920, 1200, 1920, 1008, 1920, 680)
-script = ExtResource("13_h2cot")
-metadata/_custom_type_script = "uid://muokti5xk4km"
-
-[node name="System" type="Sprite2D" parent="Pews/BackRect"]
-position = Vector2(327.21, -125.5)
-scale = Vector2(0.512868, 1)
+[node name="System" type="Sprite2D" parent="Pews/Pre"]
+position = Vector2(958.001, 604)
+scale = Vector2(1, 1)
 texture = SubResource("ViewportTexture_p6x64")
 
-[node name="Zoom" type="Sprite2D" parent="Pews/BackRect"]
+[node name="Zoom" type="Sprite2D" parent="Pews/Pre"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(350.289, -161.5)
-scale = Vector2(0.512868, 1)
+position = Vector2(1003, 568)
+scale = Vector2(1, 1)
 texture = SubResource("ViewportTexture_s0s18")
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Pews/BackRect"]
-position = Vector2(350.289, -161.5)
-scale = Vector2(0.512868, 1)
+[node name="BackBufferCopy" type="BackBufferCopy" parent="Pews/Pre"]
+position = Vector2(1003, 568)
+scale = Vector2(1, 1)
 copy_mode = 2
 
-[node name="Kuwahara" type="ColorRect" parent="Pews/BackRect"]
+[node name="Kuwahara" type="ColorRect" parent="Pews/Pre"]
 material = SubResource("ShaderMaterial_gix1a")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -164.118
-offset_top = -729.5
-offset_right = -164.118
-offset_bottom = -729.5
+offset_left = -0.000549316
+offset_right = -0.000549316
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 mouse_filter = 2
 
-[node name="ColorRect" type="TextureRect" parent="Pews/BackRect"]
+[node name="ColorRect" type="TextureRect" parent="Pews/Pre"]
 visible = false
 material = SubResource("CanvasItemMaterial_ao5vc")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -164.118
-offset_top = -729.5
-offset_right = 1755.88
-offset_bottom = 470.5
+offset_left = -0.000549316
+offset_right = 1920.0
+offset_bottom = 1200.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_4sgve")
 
-[node name="SocietyUI" parent="Pews/BackRect" instance=ExtResource("23_gix1a")]
+[node name="SocietyUI" parent="Pews/Pre" instance=ExtResource("23_gix1a")]
 visible = false
 anchors_preset = 10
 anchor_bottom = 0.0
-offset_top = -739.0
-offset_right = 1317.0
-offset_bottom = 819.0
+offset_left = 320.0
+offset_top = -9.5
+offset_right = 1637.0
+offset_bottom = 1548.5
 grow_vertical = 1
+
+[node name="BackRect" type="Polygon2D" parent="Pews"]
+clip_children = 2
+position = Vector2(320, 729.5)
+scale = Vector2(1.94982, 1)
+texture = SubResource("ViewportTexture_gix1a")
+polygon = PackedVector2Array(813.921, -522.5, -125.14, -585.5, -140.179, -327.334, -161.553, 262.5, 809.099, 134.399, 810.844, -140.5, 808.793, -245.5)
+uv = PackedVector2Array(1920, 0, 4.47035e-07, -2.68221e-07, -1.90735e-06, 344, -1.90735e-06, 1200, 1920, 1200, 1920, 1008, 1920, 680)
+polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(2, 6, 0), PackedInt32Array(2, 5, 6), PackedInt32Array(3, 5, 4), PackedInt32Array(2, 3, 5)]
+script = ExtResource("13_h2cot")
+metadata/_custom_type_script = "uid://muokti5xk4km"
 
 [node name="Dither" type="ColorRect" parent="Pews"]
 visible = false
@@ -438,26 +418,26 @@ text = "Wow cool captions bro"
 label_settings = SubResource("LabelSettings_gix1a")
 
 [connection signal="action_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_action_toggled"]
-[connection signal="action_toggled" from="Control" to="Pews/BackRect/SocietyUI" method="_on_control_action_toggled"]
+[connection signal="action_toggled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_action_toggled"]
 [connection signal="body_added" from="Control" to="SystemView" method="_on_control_body_added"]
 [connection signal="cam_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_cam_toggled"]
-[connection signal="cam_toggled" from="Control" to="Pews/BackRect/SocietyUI" method="_on_control_cam_toggled"]
+[connection signal="cam_toggled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_cam_toggled"]
 [connection signal="controls_updated" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/BodySelection" method="_on_control_controls_updated"]
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="next_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_next_society_pressed"]
 [connection signal="next_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_next_society_pressed"]
-[connection signal="next_society_pressed" from="Control" to="Pews/BackRect/SocietyUI" method="_on_control_next_society_pressed"]
+[connection signal="next_society_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_next_society_pressed"]
 [connection signal="prev_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_prev_society_pressed"]
 [connection signal="prev_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_prev_society_pressed"]
-[connection signal="prev_society_pressed" from="Control" to="Pews/BackRect/SocietyUI" method="_on_control_prev_society_pressed"]
+[connection signal="prev_society_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_prev_society_pressed"]
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
 [connection signal="society_complete_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_society_complete_pressed"]
-[connection signal="society_complete_pressed" from="Control" to="Pews/BackRect/SocietyUI" method="_on_control_society_complete_pressed"]
+[connection signal="society_complete_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_society_complete_pressed"]
 [connection signal="society_focused" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_society_focused"]
 [connection signal="society_focused" from="Control" to="Circle/SocietyUI" method="_on_control_society_focused"]
-[connection signal="society_focused" from="Control" to="Pews/BackRect/SocietyUI" method="_on_control_society_focused"]
+[connection signal="society_focused" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_society_focused"]
 [connection signal="ui_toggeled" from="Control" to="Circle/SocietyUI" method="_on_control_ui_toggeled"]
-[connection signal="ui_toggeled" from="Control" to="Pews/BackRect/SocietyUI" method="_on_control_ui_toggeled"]
+[connection signal="ui_toggeled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_ui_toggeled"]
 [connection signal="view_fade_adjusted" from="Control" to="ZoomView" method="_on_control_view_fade_adjusted"]
 [connection signal="zoomed_in" from="Control" to="ZoomView" method="_on_control_zoomed_in"]
 [connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]
