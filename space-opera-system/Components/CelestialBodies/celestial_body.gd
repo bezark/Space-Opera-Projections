@@ -97,3 +97,7 @@ func _on_orbit_pressed() -> void:
 
 func _on_well_toggled(toggled_on: bool) -> void:
 	well.visible = toggled_on
+
+
+func _on_target_pressed() -> void:
+	%DysonSphere.target = self

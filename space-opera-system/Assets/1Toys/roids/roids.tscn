@@ -1,0 +1,38 @@
+[gd_scene load_steps=7 format=3 uid="uid://b1rg66bfkyj4c"]
+
+[ext_resource type="ArrayMesh" uid="uid://c6scn8wnpk7if" path="res://Assets/1Toys/roids/r1.tres" id="1_wjg8w"]
+[ext_resource type="PackedScene" uid="uid://6copf4p32y56" path="res://Assets/1Toys/roids/Asteroid_2a_LOD.fbx" id="2_11vnk"]
+[ext_resource type="PackedScene" uid="uid://c6kho7gd1d55u" path="res://Assets/1Toys/roids/Asteroid_2b.fbx" id="3_2s0ts"]
+[ext_resource type="ArrayMesh" uid="uid://br005r8upqypy" path="res://Assets/1Toys/roids/r2.tres" id="3_11vnk"]
+[ext_resource type="PackedScene" uid="uid://dnn14pssppdtu" path="res://Assets/1Toys/roids/Asteroid_2c_LOD.fbx" id="4_ahhbk"]
+[ext_resource type="PackedScene" uid="uid://tu02fxda10mw" path="res://Assets/1Toys/roids/Asteroid_2b_LOD.fbx" id="5_0u11x"]
+
+[node name="Roids" type="Node3D"]
+
+[node name="Asteroid_2a" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.15969, -1.19209e-07, -1.00896)
+
+[node name="Asteroid_2a" type="MeshInstance3D" parent="Asteroid_2a"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+mesh = ExtResource("1_wjg8w")
+skeleton = NodePath("")
+
+[node name="Asteroid_2a_LOD" parent="." instance=ExtResource("2_11vnk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.717662, 0, 1.51939)
+
+[node name="Asteroid_2b" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.71175, 0, 0.148946)
+
+[node name="Asteroid_2b" type="MeshInstance3D" parent="Asteroid_2b"]
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, 0, 0, 0)
+mesh = ExtResource("3_11vnk")
+skeleton = NodePath("")
+
+[node name="Asteroid_2c_LOD" parent="." instance=ExtResource("4_ahhbk")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.67102, 0, -2.58576)
+
+[node name="Asteroid_2b2" parent="." instance=ExtResource("3_2s0ts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.76008, 0, -0.740833)
+
+[node name="Asteroid_2b_LOD" parent="." instance=ExtResource("5_0u11x")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.32301, 0, 1.73589)

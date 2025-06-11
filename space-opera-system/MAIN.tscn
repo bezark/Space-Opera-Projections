@@ -332,18 +332,15 @@ size = Vector2i(1920, 1299)
 
 [node name="System" type="Sprite2D" parent="Pews/Pre"]
 position = Vector2(958.001, 604)
-scale = Vector2(1, 1)
 texture = SubResource("ViewportTexture_p6x64")
 
 [node name="Zoom" type="Sprite2D" parent="Pews/Pre"]
 modulate = Color(1, 1, 1, 0)
 position = Vector2(1003, 568)
-scale = Vector2(1, 1)
 texture = SubResource("ViewportTexture_s0s18")
 
 [node name="BackBufferCopy" type="BackBufferCopy" parent="Pews/Pre"]
 position = Vector2(1003, 568)
-scale = Vector2(1, 1)
 copy_mode = 2
 
 [node name="Kuwahara" type="ColorRect" parent="Pews/Pre"]

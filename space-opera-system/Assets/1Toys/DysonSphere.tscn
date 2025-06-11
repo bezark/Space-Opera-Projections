@@ -1,9 +1,8 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7nga0dl7lwsr"]
+[gd_scene load_steps=10 format=3 uid="uid://c7nga0dl7lwsr"]
 
 [ext_resource type="Script" uid="uid://bnombtxodds0l" path="res://Assets/1Toys/dyson_sphere.gd" id="1_3okud"]
 [ext_resource type="Texture2D" uid="uid://dh1uvawf13djl" path="res://Assets/Textures/Grating_22-256x256.png" id="1_t3q2u"]
 [ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="2_adgft"]
-[ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="3_1dr62"]
 [ext_resource type="Script" uid="uid://cwg2sgdy4cpu8" path="res://Assets/1Toys/ring.gd" id="3_lt2cx"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_adgft"]
@@ -30,11 +29,11 @@ length = 25.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ring1:position")
+tracks/0/path = NodePath("Rings/Ring1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 9.61),
+"times": PackedFloat32Array(1.86667, 9.61),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
@@ -42,11 +41,11 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Ring2:position")
+tracks/1/path = NodePath("Rings/Ring2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 13.0667),
+"times": PackedFloat32Array(1.86667, 13.0667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -300)]
@@ -54,11 +53,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Ring3:position")
+tracks/2/path = NodePath("Rings/Ring3:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 17.3667),
+"times": PackedFloat32Array(1.86667, 17.3667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -589)]
@@ -66,11 +65,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ring4:position")
+tracks/3/path = NodePath("Rings/Ring4:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 21.1667),
+"times": PackedFloat32Array(1.86667, 21.1667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -849)]
@@ -78,11 +77,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ring5:position")
+tracks/4/path = NodePath("Rings/Ring5:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0, 24.4667),
+"times": PackedFloat32Array(1.86667, 23.7667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 0, -1141)]
@@ -94,35 +93,95 @@ tracks/5/path = NodePath(".:armed")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(1.12035, 1.75241, 24.9333),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true]
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rings/Ring1:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 5.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(7.1079e-16, 1.0472, 1.5708), Vector3(3.4446e-21, 1.5708, 1.5708)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rings/Ring5:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 5.56667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-4.40147e-15, -3.14159, 1.5708), Vector3(6.39518e-21, 1.5708, 1.5708)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rings/Ring2:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 5.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-1.92836e-09, 1.5708, 0.261799), Vector3(3.4446e-21, 1.5708, 1.5708)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Rings/Ring3:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 6),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(2.18557e-08, 1.5708, 1.0472), Vector3(-3.49714e-06, 1.5708, 1.5708)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Rings/Ring4:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0, 5.43333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-3.78552e-08, 1.5708, 2.61799), Vector3(6.39518e-21, 1.5708, 1.5708)]
 }
 
 [sub_resource type="Animation" id="Animation_3okud"]
 resource_name = "Disarm"
-length = 25.0
+length = 35.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ring1:position")
+tracks/0/path = NodePath("Rings/Ring1:position")
 tracks/0/interp = 2
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.1, 11.9),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.03333, 11.9, 36.5376),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(0, 0, 0)]
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0), Vector3(0, 0, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Ring2:position")
+tracks/1/path = NodePath("Rings/Ring2:position")
 tracks/1/interp = 2
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.233334, 15.0333),
+"times": PackedFloat32Array(1.03333, 15.0333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -300), Vector3(0, 0, 0)]
@@ -130,11 +189,11 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Ring3:position")
+tracks/2/path = NodePath("Rings/Ring3:position")
 tracks/2/interp = 2
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0.0333333, 18.1667),
+"times": PackedFloat32Array(1.03333, 18.1667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -589), Vector3(0, 0, 0)]
@@ -142,11 +201,11 @@ tracks/2/keys = {
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ring4:position")
+tracks/3/path = NodePath("Rings/Ring4:position")
 tracks/3/interp = 2
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 21.2333),
+"times": PackedFloat32Array(1.03333, 21.2333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -849), Vector3(0, 0, 0)]
@@ -154,11 +213,11 @@ tracks/3/keys = {
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ring5:position")
+tracks/4/path = NodePath("Rings/Ring5:position")
 tracks/4/interp = 2
 tracks/4/loop_wrap = true
 tracks/4/keys = {
-"times": PackedFloat32Array(0.266666, 23.6667),
+"times": PackedFloat32Array(1.03333, 23.4333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector3(0, 0, -1141), Vector3(0, 0, 0)]
@@ -170,10 +229,70 @@ tracks/5/path = NodePath(".:armed")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0, 24.5667),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(1.26667, 2.3, 31.2),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
-"values": [true, false]
+"values": [true, false, true]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rings/Ring5:rotation")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(1.03333, 24.8, 29.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.4446e-21, 1.5708, 1.5708), Vector3(6.39518e-21, 1.5708, 1.5708), Vector3(7.1079e-16, 1.0472, 1.5708)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rings/Ring4:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(1.03333, 24.1333, 28.3122),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(6.39518e-21, 1.5708, 1.5708), Vector3(6.39518e-21, 1.5708, 1.5708), Vector3(-4.40147e-15, -3.14159, 1.5708)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rings/Ring3:rotation")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(1.03333, 18.1794, 28.3122),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(3.4446e-21, 1.5708, 1.5708), Vector3(-3.49714e-06, 1.5708, 1.5708), Vector3(-1.92835e-09, 1.5708, 0.261799)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Rings/Ring2:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(1.03333, 24.0667, 28.3122),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.49714e-06, 1.5708, 1.5708), Vector3(3.4446e-21, 1.5708, 1.5708), Vector3(2.18557e-08, 1.5708, 1.0472)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Rings/Ring1:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(1.03333, 24.2, 28.3122),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(6.39518e-21, 1.5708, 1.5708), Vector3(3.4446e-21, 1.5708, 1.5708), Vector3(-3.78552e-08, 1.5708, 2.61799)]
 }
 
 [sub_resource type="Animation" id="Animation_ex6fs"]
@@ -181,70 +300,130 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Ring2:position")
+tracks/0/path = NodePath("Rings/Ring3:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-3.49714e-06, 1.5708, 1.5708)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Ring3:position")
+tracks/1/path = NodePath("Rings/Ring1:rotation")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(3.4446e-21, 1.5708, 1.5708)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Ring4:position")
+tracks/2/path = NodePath("Rings/Ring5:rotation")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(6.39518e-21, 1.5708, 1.5708)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("Ring5:position")
+tracks/3/path = NodePath("Rings/Ring2:rotation")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(3.4446e-21, 1.5708, 1.5708)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
 tracks/4/enabled = true
-tracks/4/path = NodePath("Ring1:position")
+tracks/4/path = NodePath("Rings/Ring4:rotation")
 tracks/4/interp = 1
 tracks/4/loop_wrap = true
 tracks/4/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(6.39518e-21, 1.5708, 1.5708)]
 }
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath(".:armed")
+tracks/5/path = NodePath("Rings/Ring1:position")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Rings/Ring2:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Rings/Ring3:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Rings/Ring4:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Rings/Ring5:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".:armed")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
@@ -262,8 +441,17 @@ _data = {
 script = ExtResource("1_3okud")
 armed = true
 
-[node name="Ring1" type="CSGTorus3D" parent="."]
-transform = Transform3D(1.91069e-15, 2.18557e-07, 1, 1, -2.18557e-07, 0, 4.37114e-08, 5, -4.37114e-08, 0, 0, 0)
+[node name="Beam" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 0, 0, 0)
+radius = 18.707
+height = 41.181
+sides = 40
+material = ExtResource("2_adgft")
+
+[node name="Rings" type="Node3D" parent="."]
+
+[node name="Ring1" type="CSGTorus3D" parent="Rings"]
+transform = Transform3D(1.31043e-11, 1.81e-05, 1, 1, -1.81e-05, -3.4446e-21, 3.61999e-06, 5, -3.61999e-06, 0, 0, 0)
 inner_radius = 732.79
 outer_radius = 775.0
 sides = 64
@@ -273,8 +461,8 @@ material = SubResource("StandardMaterial3D_adgft")
 script = ExtResource("3_lt2cx")
 spin_velocity = 0.05
 
-[node name="Ring2" type="CSGTorus3D" parent="."]
-transform = Transform3D(1.91069e-15, 2.18557e-07, 1, 1, -2.18557e-07, 0, 4.37114e-08, 5, -4.37114e-08, 0, 0, 0)
+[node name="Ring2" type="CSGTorus3D" parent="Rings"]
+transform = Transform3D(1.31043e-11, 1.81e-05, 1, 1, -1.81e-05, -3.4446e-21, 3.61999e-06, 5, -3.61999e-06, 0, 0, 0)
 inner_radius = 634.444
 outer_radius = 691.068
 sides = 64
@@ -284,8 +472,8 @@ material = SubResource("StandardMaterial3D_adgft")
 script = ExtResource("3_lt2cx")
 spin_velocity = -0.1
 
-[node name="Ring3" type="CSGTorus3D" parent="."]
-transform = Transform3D(1.91069e-15, 1.31134e-07, 1, 1, -1.31134e-07, 0, 4.37114e-08, 3, -4.37114e-08, 0, 0, 0)
+[node name="Ring3" type="CSGTorus3D" parent="Rings"]
+transform = Transform3D(-3.49713e-06, 1.086e-05, 1, 1, -1.086e-05, 3.49714e-06, 3.62e-06, 3, -3.61999e-06, 0, 0, 0)
 inner_radius = 543.549
 outer_radius = 595.702
 sides = 64
@@ -295,8 +483,8 @@ material = SubResource("StandardMaterial3D_adgft")
 script = ExtResource("3_lt2cx")
 spin_velocity = 0.3
 
-[node name="Ring4" type="CSGTorus3D" parent="."]
-transform = Transform3D(1.91069e-15, 1.31134e-07, 1, 1, -1.31134e-07, 0, 4.37114e-08, 3, -4.37114e-08, 0, 0, 0)
+[node name="Ring4" type="CSGTorus3D" parent="Rings"]
+transform = Transform3D(1.31043e-11, 1.086e-05, 1, 1, -1.086e-05, -6.39518e-21, 3.61999e-06, 3, -3.61999e-06, 0, 0, 0)
 inner_radius = 407.952
 outer_radius = 455.634
 sides = 64
@@ -306,25 +494,16 @@ material = SubResource("StandardMaterial3D_adgft")
 script = ExtResource("3_lt2cx")
 spin_velocity = -0.5
 
-[node name="Ring5" type="CSGTorus3D" parent="."]
-transform = Transform3D(1.91069e-15, 1.31134e-07, 1, 1, -1.31134e-07, 0, 4.37114e-08, 3, -4.37114e-08, 0, 0, 0)
-inner_radius = 234.024
-outer_radius = 275.03
+[node name="Ring5" type="CSGTorus3D" parent="Rings"]
+transform = Transform3D(1.31043e-11, 1.086e-05, 1, 1, -1.086e-05, -6.39518e-21, 3.61999e-06, 3, -3.61999e-06, 0, 0, 0)
+inner_radius = 325.086
+outer_radius = 355.753
 sides = 64
 ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_adgft")
 script = ExtResource("3_lt2cx")
 spin_velocity = 0.7
-
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, -2.18557e-07, 1, 0, -5, -4.37114e-08, 0, 0, -863)
-radius = 20.0
-height = 382.497
-cone = true
-material = ExtResource("2_adgft")
-
-[node name="Blackhole" parent="." instance=ExtResource("3_1dr62")]
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
