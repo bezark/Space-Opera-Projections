@@ -142,6 +142,7 @@ step = 0.01
 
 [node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
+theme_override_constants/separation = 18
 
 [node name="Views" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
 layout_mode = 2
@@ -218,7 +219,7 @@ text = "Open in Editor..."
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 6
+size_flags_vertical = 3
 
 [node name="ShowHide" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
 layout_mode = 2
@@ -265,16 +266,18 @@ text = "Dice Cam"
 [node name="Post" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
 unique_name_in_owner = true
 layout_mode = 2
-size_flags_vertical = 3
+size_flags_vertical = 2
 script = ExtResource("9_3ch2h")
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Post"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 4
 text = "POST"
 
 [node name="Faders" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
 layout_mode = 2
+size_flags_horizontal = 0
 
 [node name="Zoom" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Faders"]
 layout_mode = 2

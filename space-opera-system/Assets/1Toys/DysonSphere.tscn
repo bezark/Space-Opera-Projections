@@ -295,6 +295,21 @@ tracks/10/keys = {
 "values": [Vector3(6.39518e-21, 1.5708, 1.5708), Vector3(3.4446e-21, 1.5708, 1.5708), Vector3(-3.78552e-08, 1.5708, 2.61799), Vector3(-3.78552e-08, 1.5708, 2.61799)]
 }
 
+[sub_resource type="Animation" id="Animation_n70ua"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:armed")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
 [sub_resource type="Animation" id="Animation_ex6fs"]
 resource_name = "START"
 length = 35.0
@@ -431,21 +446,6 @@ tracks/10/keys = {
 "values": [Vector3(-3.78552e-08, 1.5708, 2.61799)]
 }
 
-[sub_resource type="Animation" id="Animation_n70ua"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:armed")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [true]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n70ua"]
 _data = {
 &"Arm": SubResource("Animation_lt2cx"),
@@ -469,7 +469,7 @@ material = ExtResource("2_adgft")
 [node name="Rings" type="Node3D" parent="."]
 
 [node name="Ring1" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(3.11607e-06, 9.21395e-06, 1, 0.500003, -4.33012, 3.78552e-08, 0.866023, 2.50002, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(3.11607e-06, 9.21394e-06, 1, 0.500003, -4.33012, 3.78492e-08, 0.866023, 2.50002, -3.61999e-06, 0, 0, 0)
 inner_radius = 732.79
 outer_radius = 775.0
 sides = 64
@@ -480,7 +480,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = 0.05
 
 [node name="Ring2" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, 0.866027, 2.49999, -2.18557e-08, -0.499998, 4.33013, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, 0.866027, 2.49999, -2.18592e-08, -0.499998, 4.33013, -3.61999e-06, 0, 0, 0)
 inner_radius = 634.444
 outer_radius = 691.068
 sides = 64
@@ -491,7 +491,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = -0.1
 
 [node name="Ring3" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-3.49714e-06, 2.80517e-06, 1, 0.258819, 2.89778, 1.92836e-09, -0.965926, 0.776456, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(-3.49714e-06, 2.80518e-06, 1, 0.258819, 2.89778, 1.92753e-09, -0.965926, 0.776457, -3.61999e-06, 0, 0, 0)
 inner_radius = 543.549
 outer_radius = 595.702
 sides = 64
@@ -502,7 +502,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = 0.3
 
 [node name="Ring4" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(3.61999e-06, 3, -2.53518e-06, 1, -1.086e-05, 4.40147e-15, -9.17293e-12, -7.60554e-06, -1, 0, 0, 0)
+transform = Transform3D(3.61999e-06, 3, -2.53518e-06, 1, -1.086e-05, 4.38508e-15, -9.17295e-12, -7.60554e-06, -1, 0, 0, 0)
 inner_radius = 407.952
 outer_radius = 455.634
 sides = 64
@@ -513,7 +513,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = -0.5
 
 [node name="Ring5" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-1.80999e-06, -1.49999, 0.866027, 1, -1.086e-05, -7.1079e-16, 3.13501e-06, 2.59808, 0.499998, 0, 0, 0)
+transform = Transform3D(-1.80999e-06, -1.49999, 0.866027, 1, -1.086e-05, 4.91211e-12, 3.13501e-06, 2.59808, 0.499997, 0, 0, 0)
 inner_radius = 325.086
 outer_radius = 355.753
 sides = 64

@@ -1,8 +1,6 @@
-[gd_scene load_steps=20 format=3 uid="uid://b7x0paetbq6v7"]
+[gd_scene load_steps=18 format=3 uid="uid://b7x0paetbq6v7"]
 
 [ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/SocietyUI/society_ui.gd" id="1_nc66i"]
-[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_ood2e"]
-[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="2_nl8h3"]
 [ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
 [ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
@@ -479,26 +477,6 @@ anchor_bottom = 0.5
 offset_left = -1920.0
 offset_top = -1080.0
 metadata/_edit_lock_ = true
-
-[node name="TimeLabel" type="Label" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -111.0
-offset_top = -447.0
-offset_right = 112.0
-offset_bottom = -368.0
-grow_horizontal = 2
-grow_vertical = 2
-theme = ExtResource("1_ood2e")
-text = "Time"
-horizontal_alignment = 1
-script = ExtResource("2_nl8h3")
-metadata/_custom_type_script = "uid://bid2eudkrel8k"
 
 [node name="SocietyName" type="Label" parent="."]
 modulate = Color(0.698039, 0.180392, 0.00784314, 1)

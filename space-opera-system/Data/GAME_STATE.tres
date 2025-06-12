@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=147 format=3]
+[gd_resource type="Resource" script_class="SessionData" load_steps=155 format=3]
 
 [ext_resource type="Script" path="res://Components/Classes/Community.gd" id="1_lohdr"]
 [ext_resource type="PackedScene" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
@@ -43,14 +43,14 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 script = ExtResource("2_qolqt")
 id = "KN4Rt"
 type = "Setup/Onboarding"
-status = "idle"
+status = "paused"
 sp_round = 0
 scene_data = SubResource("Resource_5flw6")
 time = {
 "duration": 1200.0,
-"elapsed": 0.0,
-"remaining": 1200.0,
-"remainingFormatted": "20:00"
+"elapsed": 20.085,
+"remaining": 1179.0,
+"remainingFormatted": "19:39"
 }
 
 [sub_resource type="Resource" id="Resource_gytiw"]
@@ -244,7 +244,7 @@ sp_round = 3
 scene_data = SubResource("Resource_hte2g")
 time = {
 &"duration": 240.0,
-&"elapsed": 188.161,
+&"elapsed": 0.0,
 &"remaining": 0,
 &"remainingFormatted": ""
 }
@@ -258,7 +258,7 @@ sp_round = 3
 scene_data = SubResource("Resource_c830y")
 time = {
 &"duration": 600.0,
-&"elapsed": 1900.28,
+&"elapsed": 0.0,
 &"remaining": 0,
 &"remainingFormatted": ""
 }
@@ -272,7 +272,7 @@ sp_round = 3
 scene_data = SubResource("Resource_m5lsc")
 time = {
 &"duration": 720.0,
-&"elapsed": 676.125,
+&"elapsed": 0.0,
 &"remaining": 0,
 &"remainingFormatted": ""
 }
@@ -517,7 +517,7 @@ exhausted = true
 
 [sub_resource type="Resource" id="Resource_1rgfw"]
 script = ExtResource("3_pyy0l")
-title = "Rocket Scientists"
+title = "Analytical Thinking"
 relationship = ""
 vital = false
 exhausted = false
@@ -587,7 +587,7 @@ exhausted = false
 
 [sub_resource type="Resource" id="Resource_ghqc1"]
 script = ExtResource("3_pyy0l")
-title = "scum"
+title = "Traditional Teachings "
 relationship = ""
 vital = false
 exhausted = false
@@ -650,7 +650,7 @@ exhausted = false
 
 [sub_resource type="Resource" id="Resource_5mvme"]
 script = ExtResource("3_pyy0l")
-title = "Plentiful Lumber "
+title = "Personal Shields "
 relationship = ""
 vital = false
 exhausted = false
@@ -770,6 +770,41 @@ exhausted = false
 [sub_resource type="Resource" id="Resource_r4n1j"]
 script = ExtResource("3_pyy0l")
 title = "hey now"
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_nok2u"]
+script = ExtResource("3_pyy0l")
+title = "Soothing Songs "
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_colxq"]
+script = ExtResource("3_pyy0l")
+title = "Massive Factories "
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_nklb5"]
+script = ExtResource("3_pyy0l")
+title = "Speedy Buses "
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_0c1b5"]
+script = ExtResource("3_pyy0l")
+title = "People Power"
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_ob74m"]
+script = ExtResource("3_pyy0l")
+title = "Predictive Algorithms"
 relationship = ""
 vital = false
 exhausted = false
@@ -934,7 +969,7 @@ colors = SubResource("ColorPalette_nok2u")
 archetype = ExtResource("7_5kibd")
 actions = Array[ExtResource("15_r4n1j")]([])
 
-[sub_resource type="Resource" id="Resource_nok2u"]
+[sub_resource type="Resource" id="Resource_jsv6q"]
 script = ExtResource("15_r4n1j")
 game_round = 0
 components = Array[ExtResource("25_fq34q")]([])
@@ -947,7 +982,7 @@ colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.396078, 0.0313726, 
 
 [sub_resource type="Resource" id="Resource_0e374"]
 script = ExtResource("1_lohdr")
-title = "Dirty Harries"
+title = "Revered Priests"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
 "FADd2": SubResource("Resource_4df5w")
 })
@@ -991,7 +1026,7 @@ voice = "leader"
 
 [sub_resource type="Resource" id="Resource_74bc5"]
 script = ExtResource("1_lohdr")
-title = "Jeffrey Bezos"
+title = "Techno Druids"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
 "HOzO6": SubResource("Resource_85ky3")
 })
@@ -999,7 +1034,7 @@ voice = "people"
 
 [sub_resource type="Resource" id="Resource_t6lex"]
 script = ExtResource("1_lohdr")
-title = "Elders"
+title = "Militant Clerics"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
 "BqPmG": SubResource("Resource_nloml"),
 "arNw1": SubResource("Resource_fq34q")
@@ -1008,10 +1043,22 @@ voice = "people"
 
 [sub_resource type="Resource" id="Resource_0tr16"]
 script = ExtResource("1_lohdr")
-title = "Jimmy"
+title = "Skeptical Clerics"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
 "AwCCh": SubResource("Resource_bhwi7")
 })
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_cu8e1"]
+script = ExtResource("1_lohdr")
+title = "Traditionalist Healers"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_4bpff"]
+script = ExtResource("1_lohdr")
+title = "Loving Caretakers"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_pvjkl"]
@@ -1020,10 +1067,12 @@ script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
 "B95dD": SubResource("Resource_0e374"),
 "EyA7h": SubResource("Resource_53r54"),
+"KlJb3": SubResource("Resource_4bpff"),
 "LiQVN": SubResource("Resource_6t4gm"),
 "Qw0Xm": SubResource("Resource_3w1tv"),
 "R9tmF": SubResource("Resource_tfqbo"),
 "SoR4E": SubResource("Resource_p8617"),
+"SpvYw": SubResource("Resource_cu8e1"),
 "UDMgC": SubResource("Resource_74bc5"),
 "cV-Kn": SubResource("Resource_t6lex"),
 "kATHn": SubResource("Resource_0tr16")
@@ -1031,38 +1080,51 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 home = ExtResource("30_0m20m")
 colors = SubResource("ColorPalette_wyoyg")
 archetype = ExtResource("5_r4n1j")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_nok2u")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_jsv6q")])
 
 [sub_resource type="ColorPalette" id="ColorPalette_0m20m"]
 colors = PackedColorArray(0.768627, 0.690196, 0.270588, 1, 0.388235, 0.34902, 0.0313726, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1)
 
 [sub_resource type="Resource" id="Resource_7f5lb"]
 script = ExtResource("1_lohdr")
-title = "8"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+title = "Adaptable Workers "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({
+"YUnCl": SubResource("Resource_0c1b5")
+})
 voice = "leader"
 
 [sub_resource type="Resource" id="Resource_72fa1"]
 script = ExtResource("1_lohdr")
-title = "Grand Pines"
+title = "Kindhearted Executives "
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"WQCc4": SubResource("Resource_5mvme")
+"WQCc4": SubResource("Resource_5mvme"),
+"k2NDZ": SubResource("Resource_colxq")
 })
 voice = "leader"
 
 [sub_resource type="Resource" id="Resource_xgq1b"]
 script = ExtResource("1_lohdr")
-title = "big ol shair"
+title = "Loyalist Teachers"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"KB9VT": SubResource("Resource_ghqc1")
+"KB9VT": SubResource("Resource_ghqc1"),
+"LMFBh": SubResource("Resource_nok2u")
+})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_jcdtp"]
+script = ExtResource("1_lohdr")
+title = "Protective Oracles "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({
+"bs1hB": SubResource("Resource_ob74m")
 })
 voice = "leader"
 
 [sub_resource type="Resource" id="Resource_uqg5d"]
 script = ExtResource("1_lohdr")
-title = "Y"
+title = "Anarchic Drivers"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"Bq4uh": SubResource("Resource_1rgfw")
+"Bq4uh": SubResource("Resource_1rgfw"),
+"K_aIg": SubResource("Resource_nklb5")
 })
 voice = "leader"
 
@@ -1072,6 +1134,7 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 "OlD1Z": SubResource("Resource_7f5lb"),
 "fr_Re": SubResource("Resource_72fa1"),
 "jaCtF": SubResource("Resource_xgq1b"),
+"lCWsE": SubResource("Resource_jcdtp"),
 "menqQ": SubResource("Resource_uqg5d")
 })
 home = ExtResource("31_sr1pp")
@@ -1106,6 +1169,8 @@ resources = Dictionary[String, ExtResource("3_pyy0l")]({
 "JvqsG": SubResource("Resource_08yu5"),
 "KB9VT": SubResource("Resource_ghqc1"),
 "KE7q4": SubResource("Resource_8tnxr"),
+"K_aIg": SubResource("Resource_nklb5"),
+"LMFBh": SubResource("Resource_nok2u"),
 "Mqfth": SubResource("Resource_5fu5v"),
 "P1q_z": SubResource("Resource_xrrvu"),
 "Qfp44": SubResource("Resource_ttdan"),
@@ -1114,11 +1179,14 @@ resources = Dictionary[String, ExtResource("3_pyy0l")]({
 "SCrpz": SubResource("Resource_hhsrb"),
 "ViflM": SubResource("Resource_l77ip"),
 "WQCc4": SubResource("Resource_5mvme"),
+"YUnCl": SubResource("Resource_0c1b5"),
 "YaD-S": SubResource("Resource_vohyy"),
 "arNw1": SubResource("Resource_fq34q"),
 "bN5UO": SubResource("Resource_gjidi"),
+"bs1hB": SubResource("Resource_ob74m"),
 "h463E": SubResource("Resource_fsgl3"),
 "iXBCa": SubResource("Resource_ujmga"),
+"k2NDZ": SubResource("Resource_colxq"),
 "kDphD": SubResource("Resource_yl7wv"),
 "kEi8c": SubResource("Resource_28icp"),
 "oxn07": SubResource("Resource_kgwu7"),

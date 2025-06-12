@@ -1,4 +1,4 @@
-[gd_scene load_steps=52 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=57 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -25,10 +25,13 @@
 [ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://Components/SocietyUI/society_ui.tscn" id="16_rhye5"]
 [ext_resource type="Script" uid="uid://bkmpbc1ivad15" path="res://Controller/fire_controls.gd" id="16_v375m"]
 [ext_resource type="Shader" uid="uid://bq3tf0k03miar" path="res://Assets/Shaders/fire.gdshader" id="17_4sgve"]
+[ext_resource type="Shader" uid="uid://bxyime1jx4303" path="res://Assets/Shaders/distortion.gdshader" id="20_0e8f2"]
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
 [ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 [ext_resource type="PackedScene" uid="uid://bfjbhi2njpdko" path="res://Components/SocietyUI/society_ui_pews.tscn" id="23_gix1a"]
 [ext_resource type="Script" uid="uid://u7ix08t77ok4" path="res://Components/ProjectorTools/black.gd" id="24_4sgve"]
+[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
+[ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="28_0e8f2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
 viewport_path = NodePath("SystemView")
@@ -50,7 +53,7 @@ viewport_path = NodePath("SystemView")
 viewport_path = NodePath("ZoomView")
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_v375m"]
-frequency = 0.0042
+frequency = 0.0043
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hhat6"]
 seamless = true
@@ -66,15 +69,21 @@ shader_parameter/poster_color = 6.0
 shader_parameter/fire_alpha = 1.0
 shader_parameter/fire_speed = Vector2(0.015, 0.5)
 shader_parameter/fire_aperture = 0.22
-shader_parameter/vignette_radius = 0.25
+shader_parameter/vignette_radius = 0.147
 shader_parameter/vignette_falloff = 0.25
 shader_parameter/noise_influence = 1.0
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uocqw"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obmmj"]
 shader = ExtResource("12_u0cts")
 shader_parameter/colors = PackedColorArray(0.478431, 0.647059, 0.564706, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1, 0.698039, 0.180392, 0.00784314, 1, 0.396078, 0.0313726, 0.027451, 1, 0.72549, 0.494118, 0.564706, 1, 0.647059, 0.517647, 0.67451, 1, 0.686275, 0.788235, 0.737255, 1, 0.584314, 0.717647, 0.65098, 1, 0.631373, 0.607843, 0.419608, 1, 0.384314, 0.517647, 0.45098, 1, 0.509804, 0.478431, 0.223529, 1, 0.309804, 0.278431, 0.0235294, 1, 0.862745, 0.815686, 0.560784, 1, 0.815686, 0.752941, 0.415686, 1, 0.615686, 0.552941, 0.215686, 1, 0.756863, 0.345098, 0.207843, 1, 0.556863, 0.145098, 0.00784314, 1, 0.517647, 0.223529, 0.223529, 1, 0.317647, 0.0235294, 0.0235294, 1, 0.780392, 0.596078, 0.65098, 1, 0.580392, 0.396078, 0.45098, 1, 0.717647, 0.615686, 0.741176, 1, 0.517647, 0.415686, 0.541176, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uocqw"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_1yskb"]
+shader = ExtResource("20_0e8f2")
+shader_parameter/strength = 0.115
+shader_parameter/speed = 0.17
+shader_parameter/disp = Vector2(2.275, 1.35)
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_ao5vc"]
 shader = ExtResource("13_jn4fx")
@@ -108,6 +117,10 @@ shader_parameter/intensity = 0.464
 [sub_resource type="LabelSettings" id="LabelSettings_rpep8"]
 font = ExtResource("23_ao5vc")
 font_size = 64
+
+[sub_resource type="LabelSettings" id="LabelSettings_1yskb"]
+font = ExtResource("27_2jiyu")
+font_size = 190
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
 
@@ -173,6 +186,7 @@ current = true
 script = ExtResource("9_rhye5")
 orbital = NodePath("../Crane/OrbitalCamera")
 look_sensitivity = 0.5
+planetary = false
 metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
 
 [node name="BirdsEye" type="Camera3D" parent="SystemView/Kin"]
@@ -235,13 +249,21 @@ mapping_surfaces = [null, null]
 size = Vector2i(1920, 1200)
 script = ExtResource("16_hhat6")
 
-[node name="System" type="Sprite2D" parent="Post"]
-position = Vector2(958.001, 604)
+[node name="System" type="TextureRect" parent="Post"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("ViewportTexture_hhat6")
 
-[node name="Zoom" type="Sprite2D" parent="Post"]
+[node name="Zoom" type="TextureRect" parent="Post"]
 modulate = Color(1, 1, 1, 0)
-position = Vector2(1003, 568)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 texture = SubResource("ViewportTexture_s0s18")
 
 [node name="FireButton" type="Button" parent="Post" groups=["permanent", "ui_control"]]
@@ -251,30 +273,41 @@ offset_bottom = 31.0
 toggle_mode = true
 text = "Fire"
 
-[node name="FireControls" type="HFlowContainer" parent="Post/FireButton"]
-layout_mode = 2
+[node name="FireControls" type="HFlowContainer" parent="Post" groups=["permanent", "ui_control"]]
+offset_left = -0.000549316
 offset_top = 52.0
 offset_right = 1032.0
 offset_bottom = 116.0
 script = ExtResource("16_v375m")
 
-[node name="HSlider" type="HSlider" parent="Post/FireButton/FireControls"]
+[node name="HSlider" type="HSlider" parent="Post/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="HSlider2" type="HSlider" parent="Post/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="HSlider3" type="HSlider" parent="Post/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+max_value = 1.0
+step = 0.001
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Post/FireControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="HSlider2" type="HSlider" parent="Post/FireButton/FireControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorPickerButton" type="ColorPickerButton" parent="Post/FireButton/FireControls"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="ColorPickerButton2" type="ColorPickerButton" parent="Post/FireButton/FireControls"]
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="Post/FireControls"]
 layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="Fire" type="ColorRect" parent="Post"]
+visible = false
 material = SubResource("ShaderMaterial_p6x64")
 anchors_preset = 15
 anchor_right = 1.0
@@ -284,15 +317,26 @@ offset_right = -0.000488281
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="ColorSnap" type="ColorRect" parent="Post"]
+visible = false
+material = SubResource("ShaderMaterial_obmmj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
 [node name="BackBufferCopy5" type="BackBufferCopy" parent="Post"]
 material = SubResource("ShaderMaterial_uocqw")
 position = Vector2(953.999, 532)
 scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
-[node name="ColorSnap" type="ColorRect" parent="Post"]
-visible = false
-material = SubResource("ShaderMaterial_obmmj")
+[node name="Distortion" type="ColorRect" parent="Post"]
+material = SubResource("ShaderMaterial_1yskb")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -405,6 +449,28 @@ text = "TEST"
 label_settings = SubResource("LabelSettings_rpep8")
 script = ExtResource("23_4sgve")
 
+[node name="TimeLabel" type="Label" parent="Circle"]
+visible = false
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -198.0
+offset_top = 179.0
+offset_right = 199.0
+offset_bottom = 477.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+text = "0000"
+label_settings = SubResource("LabelSettings_1yskb")
+script = ExtResource("28_0e8f2")
+
+[node name="TimerButton" type="Button" parent="Circle/TimeLabel" groups=["permanent", "ui_control"]]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "Timer"
+
 [node name="Black" type="ColorRect" parent="Circle"]
 anchors_preset = 15
 anchor_right = 1.0
@@ -500,6 +566,7 @@ label_settings = SubResource("LabelSettings_gix1a")
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
 [connection signal="society_complete_pressed" from="Control" to="Post/SocietyUI" method="_on_control_society_complete_pressed"]
 [connection signal="society_complete_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_society_complete_pressed"]
+[connection signal="society_fake_focused" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_society_fake_focused"]
 [connection signal="society_focused" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_society_focused"]
 [connection signal="society_focused" from="Control" to="Post/SocietyUI" method="_on_control_society_focused"]
 [connection signal="society_focused" from="Control" to="Circle/SocietyUI" method="_on_control_society_focused"]
@@ -512,8 +579,10 @@ label_settings = SubResource("LabelSettings_gix1a")
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
 [connection signal="cam_selected" from="SystemView/CameraSelect" to="SystemView" method="_on_camera_select_cam_selected"]
 [connection signal="timeout" from="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection/Delay" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_delay_timeout"]
-[connection signal="toggled" from="Post/FireButton" to="Post/FireButton/FireControls" method="_on_fire_toggled"]
-[connection signal="value_changed" from="Post/FireButton/FireControls/HSlider" to="Post/FireButton/FireControls" method="_on_h_slider_value_changed"]
-[connection signal="value_changed" from="Post/FireButton/FireControls/HSlider2" to="Post/FireButton/FireControls" method="_on_h_slider_2_value_changed"]
-[connection signal="color_changed" from="Post/FireButton/FireControls/ColorPickerButton" to="Post/FireButton/FireControls" method="_on_color_picker_button_color_changed"]
-[connection signal="color_changed" from="Post/FireButton/FireControls/ColorPickerButton2" to="Post/FireButton/FireControls" method="_on_color_picker_button_2_color_changed"]
+[connection signal="toggled" from="Post/FireButton" to="Post/FireControls" method="_on_fire_toggled"]
+[connection signal="value_changed" from="Post/FireControls/HSlider" to="Post/FireControls" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Post/FireControls/HSlider2" to="Post/FireControls" method="_on_h_slider_2_value_changed"]
+[connection signal="value_changed" from="Post/FireControls/HSlider3" to="Post/FireControls" method="_on_h_slider_3_value_changed"]
+[connection signal="color_changed" from="Post/FireControls/ColorPickerButton" to="Post/FireControls" method="_on_color_picker_button_color_changed"]
+[connection signal="color_changed" from="Post/FireControls/ColorPickerButton2" to="Post/FireControls" method="_on_color_picker_button_2_color_changed"]
+[connection signal="toggled" from="Circle/TimeLabel/TimerButton" to="Circle/TimeLabel" method="_on_timer_button_toggled"]

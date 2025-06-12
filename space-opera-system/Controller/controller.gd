@@ -20,6 +20,7 @@ signal next_society_pressed(action: SocietyAction)
 signal prev_society_pressed(action: SocietyAction)
 signal society_complete_pressed
 signal society_focused(action: SocietyAction)
+signal society_fake_focused
 
 signal shader_changed(name)
 
@@ -204,6 +205,10 @@ func open_scene_message(scene_data: SceneData, zoomed: bool):
 
 func zoom_slider_value_changed(value: float) -> void:
 	view_fade_adjusted.emit(value)
+	if value > 0.5:
+		State.zoomed_in.emit(true)
+	else:
+		State.zoomed_in.emit(false)
 
 
 func _on_celestial_body_add_body_selected(scene_data: SceneData) -> void:
@@ -221,9 +226,11 @@ func _on_show_hide_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		action_on_deck = State.actions_queued.front()
 		if action_on_deck:
-			var active_soc = State.societies[action_on_deck.parent_society]
+			# var active_soc = State.societies[action_on_deck.parent_society]
 
-		society_focused.emit(action_on_deck)
+			society_focused.emit(action_on_deck)
+		else:
+			society_fake_focused.emit()
 	ui_toggeled.emit(toggled_on)
 
 	%GalacticPhaseControls.visible = toggled_on

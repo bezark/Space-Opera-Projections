@@ -6,6 +6,7 @@ extends HFlowContainer
 @onready var controller: Control = $"../../../../../../Control"
 var next_soc: Society
 var home
+var focus_index : String
 
 
 func _ready() -> void:
@@ -19,6 +20,7 @@ func _ready() -> void:
 
 func focus_on_home(society: Society):
 	var packed_home: PackedScene = society.home.scene
+	focus_index = State.societies.find_key(society)
 	home = system.find_child(packed_home.get_state().get_node_name(0))
 	controller.make_zoom_buttons(society.home)
 	fly_home()
@@ -54,3 +56,9 @@ func _on_control_prev_society_pressed(action: SocietyAction) -> void:
 func _on_delay_timeout() -> void:
 	orbital_camera.focus = home.get_parent()
 	orbital_camera.start()
+
+
+func _on_control_society_fake_focused() -> void:
+	var dummy = SocietyAction.new()
+	dummy.parent_society = focus_index
+	controller.society_focused.emit(dummy)

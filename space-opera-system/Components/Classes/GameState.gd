@@ -13,6 +13,7 @@ class_name GameState
 
 signal celestial_body_deleted
 signal celestial_body_focused(body: CelestialBody)
+signal zoomed_in(val:bool)
 
 
 func save():

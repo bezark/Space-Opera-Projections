@@ -10,11 +10,20 @@ class_name FreeFlyCamera
 
 @export var speed: float = 10.0
 @export var look_sensitivity: float = 1.5
-
+@export var planetary: bool = true
+var active :bool
 var yaw: float = 0.0  # rotation around Y
 var pitch: float = 0.0  # rotation around X
 
-
+func _ready() -> void:
+	State.zoomed_in.connect(activate)
+	active = !planetary
+	
+func activate(value):
+	if planetary:
+		active = value
+		
+		
 func start():
 	if orbital:
 		# global_position = orbital.global_position
@@ -26,8 +35,9 @@ func start():
 
 
 func _physics_process(delta):
-	_process_look(delta)
-	_process_movement(delta)
+	if active:
+		_process_look(delta)
+		_process_movement(delta)
 	pass
 
 

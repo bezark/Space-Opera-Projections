@@ -1,0 +1,23 @@
+[gd_scene load_steps=7 format=3 uid="uid://hxr5i1k6fk7w"]
+
+[ext_resource type="ArrayMesh" uid="uid://cd8pvkitvnonx" path="res://Assets/1Toys/ships/corvette01.obj" id="1_axndr"]
+[ext_resource type="Texture2D" uid="uid://duw6d7v0uawkn" path="res://Assets/1Toys/ships/corvette01_diffuse.png" id="2_ckmdl"]
+[ext_resource type="Texture2D" uid="uid://cp2j6tvg6w6gr" path="res://Assets/1Toys/ships/corvette01_emission.png" id="3_o4xxu"]
+[ext_resource type="Texture2D" uid="uid://ej2k1pvytb1r" path="res://Assets/1Toys/ships/corvette01_metalness.png" id="4_mfrru"]
+[ext_resource type="Texture2D" uid="uid://b7g0iwucywwia" path="res://Assets/1Toys/ships/corvette01_normal.png" id="5_khkjt"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_347lq"]
+albedo_texture = ExtResource("2_ckmdl")
+metallic = 1.0
+metallic_texture = ExtResource("4_mfrru")
+emission_enabled = true
+emission = Color(0, 0.054902, 0.603922, 1)
+emission_energy_multiplier = 13.31
+emission_operator = 1
+emission_texture = ExtResource("3_o4xxu")
+normal_enabled = true
+normal_texture = ExtResource("5_khkjt")
+
+[node name="Corvette02" type="MeshInstance3D"]
+mesh = ExtResource("1_axndr")
+surface_material_override/0 = SubResource("StandardMaterial3D_347lq")

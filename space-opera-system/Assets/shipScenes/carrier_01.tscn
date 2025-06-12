@@ -1,0 +1,17 @@
+[gd_scene load_steps=6 format=3 uid="uid://cn4mb82u56moa"]
+
+[ext_resource type="ArrayMesh" uid="uid://xgu14var13j4" path="res://Assets/1Toys/ships/carrier01.obj" id="1_cf04s"]
+[ext_resource type="Texture2D" uid="uid://bomkn2acdfxyl" path="res://Assets/1Toys/ships/carrier01_diffuse.png" id="2_fsrug"]
+[ext_resource type="Texture2D" uid="uid://bx10wnmst2sbu" path="res://Assets/1Toys/ships/carrier01_metalness.png" id="3_5it46"]
+[ext_resource type="Texture2D" uid="uid://3yrbet2y1jxw" path="res://Assets/1Toys/ships/carrier01_normal.png" id="4_ip0fp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wadmq"]
+albedo_texture = ExtResource("2_fsrug")
+metallic = 1.0
+metallic_texture = ExtResource("3_5it46")
+normal_enabled = true
+normal_texture = ExtResource("4_ip0fp")
+
+[node name="Carrier01" type="MeshInstance3D"]
+mesh = ExtResource("1_cf04s")
+surface_material_override/0 = SubResource("StandardMaterial3D_wadmq")
