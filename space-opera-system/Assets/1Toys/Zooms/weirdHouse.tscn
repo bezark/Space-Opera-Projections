@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://c666ft2w1n6op"]
+
+[ext_resource type="Texture2D" uid="uid://b6nllhkqogatu" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-17.png" id="1_inyou"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqkah"]
+albedo_texture = ExtResource("1_inyou")
+uv1_scale = Vector3(3.37, 3.37, 3.37)
+
+[node name="WeirdHouse" type="Node3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+radius = 5.0
+material = SubResource("StandardMaterial3D_iqkah")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+radius = 4.0
+material = SubResource("StandardMaterial3D_iqkah")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+radius = 3.0
+material = SubResource("StandardMaterial3D_iqkah")

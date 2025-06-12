@@ -1,16 +1,21 @@
-[gd_scene load_steps=3 format=3 uid="uid://bpbllvcqftidr"]
+[gd_scene load_steps=5 format=3 uid="uid://bpbllvcqftidr"]
 
 [ext_resource type="Script" uid="uid://bvm8jb46s50a2" path="res://Components/live-captions/live_captions.gd" id="1_3ppnj"]
+[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="2_4u2dm"]
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="2_7ko6x"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpep8"]
+font = ExtResource("2_4u2dm")
+font_size = 64
 
 [node name="LiveCaptions" type="Node"]
 script = ExtResource("1_3ppnj")
 
 [node name="STTLabel" type="Label" parent="."]
-offset_left = 264.0
-offset_top = 214.0
-offset_right = 304.0
-offset_bottom = 237.0
+offset_right = 40.0
+offset_bottom = 23.0
+text = "TEST"
+label_settings = SubResource("LabelSettings_rpep8")
 script = ExtResource("2_7ko6x")
 
 [connection signal="tree_exiting" from="." to="." method="_on_tree_exiting"]

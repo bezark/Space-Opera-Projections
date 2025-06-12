@@ -4,6 +4,10 @@ signal datapad_sync_changed(bool)
 signal scene_changed(scene: SceneData)
 signal zoomed_in(zoom: PackedScene)
 
+signal pew_changed(val:float)
+signal circle_changed(val:float)
+
+
 signal view_fade_adjusted(val: float)
 signal controls_updated
 
@@ -52,11 +56,13 @@ func make_phase_buttons():
 
 
 func make_zoom_buttons(scene_data: SceneData):
+	print("zoo")
 	for ded_kid in %ZoomSelect.get_children():
 		ded_kid.queue_free()
 	var scene_button_group = ButtonGroup.new()
 	if scene_data.zooms.size():
 		for zoom in scene_data.zooms:
+			print(zoom)
 			var new_button = Button.new()
 			new_button.button_group = scene_button_group
 			new_button.text = zoom.get_state().get_node_name(0)
@@ -245,3 +251,11 @@ func _on_action_view_toggled(toggled_on: bool) -> void:
 
 func _on_dice_cam_toggled(toggled_on: bool) -> void:
 	cam_toggled.emit(toggled_on)
+
+
+func _on_pews_value_changed(value: float) -> void:
+	pew_changed.emit(value)
+
+
+func _on_circle_value_changed(value: float) -> void:
+	circle_changed.emit(value)

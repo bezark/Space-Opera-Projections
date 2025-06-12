@@ -1,7 +1,8 @@
-[gd_scene load_steps=46 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=50 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
+[ext_resource type="Script" uid="uid://bvm8jb46s50a2" path="res://Components/live-captions/live_captions.gd" id="1_s0s18"]
 [ext_resource type="PackedScene" uid="uid://dqqg2f25lvxyt" path="res://Components/DatapadAPI/FetchGameData.tscn" id="2_78rud"]
 [ext_resource type="Resource" uid="uid://bun1tceqw2x5k" path="res://Data/SCENE_STRUCTURE.tres" id="4_tm5h3"]
 [ext_resource type="PackedScene" uid="uid://4wik5qowm8jb" path="res://Assets/1Toys/BlackHoleSystem.tscn" id="5_iyt76"]
@@ -19,11 +20,13 @@
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="12_u0cts"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
-[ext_resource type="Shader" uid="uid://chqk7vw65ue6j" path="res://Assets/Shaders/mixer.tres" id="13_obmmj"]
 [ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="14_rhye5"]
 [ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://Components/SocietyUI/society_ui.tscn" id="16_rhye5"]
+[ext_resource type="Shader" uid="uid://bq3tf0k03miar" path="res://Assets/Shaders/fire.gdshader" id="17_4sgve"]
+[ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
 [ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 [ext_resource type="PackedScene" uid="uid://bfjbhi2njpdko" path="res://Components/SocietyUI/society_ui_pews.tscn" id="23_gix1a"]
+[ext_resource type="Script" uid="uid://u7ix08t77ok4" path="res://Components/ProjectorTools/black.gd" id="24_4sgve"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
 viewport_path = NodePath("SystemView")
@@ -55,17 +58,26 @@ shader_parameter/intensity = 0.464
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_uocqw"]
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_ao5vc"]
-viewport_path = NodePath("SystemView")
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_v375m"]
+frequency = 0.0042
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_obmmj"]
-viewport_path = NodePath("ZoomView")
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hhat6"]
+seamless = true
+noise = SubResource("FastNoiseLite_v375m")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6x64"]
 resource_local_to_scene = true
-shader = ExtResource("13_obmmj")
-shader_parameter/System = SubResource("ViewportTexture_ao5vc")
-shader_parameter/Zoom = SubResource("ViewportTexture_obmmj")
+shader = ExtResource("17_4sgve")
+shader_parameter/noise_tex = SubResource("NoiseTexture2D_hhat6")
+shader_parameter/root_color = Color(1.15514e-06, 0.903241, 0.965465, 1)
+shader_parameter/tip_color = Color(0.807424, 0.210834, 0.876413, 1)
+shader_parameter/poster_color = 6.0
+shader_parameter/fire_alpha = 1.0
+shader_parameter/fire_speed = Vector2(0.015, 0.5)
+shader_parameter/fire_aperture = 0.22
+shader_parameter/vignette_radius = 0.25
+shader_parameter/vignette_falloff = 0.25
+shader_parameter/noise_influence = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obmmj"]
 shader = ExtResource("12_u0cts")
@@ -80,6 +92,10 @@ shader = ExtResource("14_rhye5")
 shader_parameter/radius = 5
 shader_parameter/offset = Vector3(0, 0, 0)
 
+[sub_resource type="LabelSettings" id="LabelSettings_rpep8"]
+font = ExtResource("23_ao5vc")
+font_size = 64
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_p6x64"]
 viewport_path = NodePath("SystemView")
 
@@ -91,16 +107,19 @@ viewport_path = NodePath("ZoomView")
 [sub_resource type="ViewportTexture" id="ViewportTexture_4sgve"]
 viewport_path = NodePath("SystemView")
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
+
 [sub_resource type="ViewportTexture" id="ViewportTexture_gix1a"]
 viewport_path = NodePath("Pews/Pre")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_gix1a"]
 font = ExtResource("23_ao5vc")
 font_size = 64
 
 [node name="Main" type="Node"]
+
+[node name="LiveCaptions" type="Node" parent="."]
+script = ExtResource("1_s0s18")
 
 [node name="Control" parent="." node_paths=PackedStringArray("system_view") instance=ExtResource("1_kgeht")]
 size_flags_horizontal = 4
@@ -178,7 +197,7 @@ unique_name_in_owner = true
 layout_mode = 2
 script = ExtResource("10_uocqw")
 
-[node name="SocietySelection" type="HBoxContainer" parent="SystemView/Kin/Crane/OrbitalCamera/Selectors" node_paths=PackedStringArray("system")]
+[node name="SocietySelection" type="HFlowContainer" parent="SystemView/Kin/Crane/OrbitalCamera/Selectors" node_paths=PackedStringArray("system")]
 process_priority = 1
 process_physics_priority = 1
 layout_mode = 2
@@ -244,7 +263,7 @@ position = Vector2(954, 532)
 scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
-[node name="Mixer" type="ColorRect" parent="Circle"]
+[node name="Fire" type="ColorRect" parent="Circle"]
 visible = false
 material = SubResource("ShaderMaterial_p6x64")
 anchors_preset = 15
@@ -310,6 +329,28 @@ copy_mode = 2
 [node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
 visible = false
 
+[node name="STTLabel" type="Label" parent="Circle"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -77.0
+offset_top = 101.0
+offset_right = 78.0
+offset_bottom = 180.0
+grow_horizontal = 2
+text = "TEST"
+label_settings = SubResource("LabelSettings_rpep8")
+script = ExtResource("23_4sgve")
+
+[node name="Black" type="ColorRect" parent="Circle"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("24_4sgve")
+
 [node name="Mask" type="ColorRect" parent="Circle"]
 material = ExtResource("11_6t3px")
 anchors_preset = 15
@@ -317,7 +358,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-size_flags_horizontal = 3
+size_flags_horizontal = 6
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
@@ -373,22 +414,7 @@ texture = SubResource("ViewportTexture_4sgve")
 visible = false
 anchors_preset = 10
 anchor_bottom = 0.0
-offset_left = 320.0
-offset_top = -9.5
-offset_right = 1637.0
-offset_bottom = 1548.5
 grow_vertical = 1
-
-[node name="BackRect" type="Polygon2D" parent="Pews"]
-clip_children = 2
-position = Vector2(320, 729.5)
-scale = Vector2(1.94982, 1)
-texture = SubResource("ViewportTexture_gix1a")
-polygon = PackedVector2Array(813.921, -522.5, -125.14, -585.5, -140.179, -327.334, -161.553, 262.5, 809.099, 134.399, 810.844, -140.5, 808.793, -245.5)
-uv = PackedVector2Array(1920, 0, 4.47035e-07, -2.68221e-07, -1.90735e-06, 344, -1.90735e-06, 1200, 1920, 1200, 1920, 1008, 1920, 680)
-polygons = [PackedInt32Array(0, 2, 1), PackedInt32Array(2, 6, 0), PackedInt32Array(2, 5, 6), PackedInt32Array(3, 5, 4), PackedInt32Array(2, 3, 5)]
-script = ExtResource("13_h2cot")
-metadata/_custom_type_script = "uid://muokti5xk4km"
 
 [node name="Dither" type="ColorRect" parent="Pews"]
 visible = false
@@ -399,8 +425,32 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Pews"]
-copy_mode = 2
+[node name="Back" type="Polygon2D" parent="Pews"]
+clip_children = 2
+texture = SubResource("ViewportTexture_gix1a")
+polygon = PackedVector2Array(48, 147, 1910, 228, 1895, 1186, 0, 1200)
+uv = PackedVector2Array(3.33786e-06, -1.90735e-06, 1920, 48, 1912, 1200, 0, 1200)
+script = ExtResource("13_h2cot")
+metadata/_custom_type_script = "uid://muokti5xk4km"
+
+[node name="Black" type="ColorRect" parent="Pews"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0)
+script = ExtResource("24_4sgve")
+
+[node name="STTLabel" type="Label" parent="Pews"]
+offset_left = 394.0
+offset_top = 47.0
+offset_right = 549.0
+offset_bottom = 126.0
+rotation = 0.0223881
+text = "TEST"
+label_settings = SubResource("LabelSettings_rpep8")
+script = ExtResource("23_4sgve")
 
 [node name="Label" type="Label" parent="Pews"]
 visible = false
@@ -414,16 +464,21 @@ rotation = 0.0334699
 text = "Wow cool captions bro"
 label_settings = SubResource("LabelSettings_gix1a")
 
+[connection signal="tree_exiting" from="LiveCaptions" to="LiveCaptions" method="_on_tree_exiting"]
+[connection signal="words_spoken" from="LiveCaptions" to="Circle/STTLabel" method="_on_live_captions_words_spoken"]
+[connection signal="words_spoken" from="LiveCaptions" to="Pews/STTLabel" method="_on_live_captions_words_spoken"]
 [connection signal="action_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_action_toggled"]
 [connection signal="action_toggled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_action_toggled"]
 [connection signal="body_added" from="Control" to="SystemView" method="_on_control_body_added"]
 [connection signal="cam_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_cam_toggled"]
 [connection signal="cam_toggled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_cam_toggled"]
+[connection signal="circle_changed" from="Control" to="Circle/Black" method="fade"]
 [connection signal="controls_updated" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/BodySelection" method="_on_control_controls_updated"]
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="next_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_next_society_pressed"]
 [connection signal="next_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_next_society_pressed"]
 [connection signal="next_society_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_next_society_pressed"]
+[connection signal="pew_changed" from="Control" to="Pews/Black" method="fade"]
 [connection signal="prev_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_prev_society_pressed"]
 [connection signal="prev_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_prev_society_pressed"]
 [connection signal="prev_society_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_prev_society_pressed"]

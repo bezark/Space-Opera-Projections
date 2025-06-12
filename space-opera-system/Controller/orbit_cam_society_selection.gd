@@ -1,4 +1,4 @@
-extends HBoxContainer
+extends HFlowContainer
 
 @onready var orbital_camera: OrbitalCamera = $"../.."
 

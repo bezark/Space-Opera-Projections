@@ -1,10 +1,12 @@
 [gd_scene load_steps=3 format=3 uid="uid://b0s5bhp5q3yfr"]
 
-[ext_resource type="Texture2D" uid="uid://2ar7x1a804ap" path="res://Components/DiceCam/dice_camera_texture.tres" id="1_s1hst"]
 [ext_resource type="PackedScene" uid="uid://v2iy6svfm1gl" path="res://Components/DiceCam/dice_cam_webcam_control.tscn" id="2_e68kq"]
 
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4wfqf"]
+size = Vector2(1920, 1080)
+
 [node name="DiceCamTexture" type="Sprite2D"]
-texture = ExtResource("1_s1hst")
+texture = SubResource("PlaceholderTexture2D_4wfqf")
 
 [node name="DiceCamWebcamControl" parent="." instance=ExtResource("2_e68kq")]
 DEVICE_NAME = "Laptop Camera: Laptop Camera"

@@ -16,7 +16,8 @@ func _process(delta: float) -> void:
 			look_at(target.body.global_position)
 
 
-#func _ready() -> void:
+func _ready() -> void:
+	armed = false
 #$AnimationPlayer.play("Arm")
 
 

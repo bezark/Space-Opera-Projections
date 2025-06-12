@@ -465,8 +465,8 @@ layout_mode = 2
 [node name="DiceMask" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 clip_children = 2
-position = Vector2(1198.22, 681.5)
-scale = Vector2(1.22315, 1.22315)
+position = Vector2(1064, 471)
+scale = Vector2(0.730556, 0.730556)
 texture = ExtResource("9_y0sm1")
 
 [node name="DiceCamTexture" parent="DiceMask" instance=ExtResource("8_nc66i")]

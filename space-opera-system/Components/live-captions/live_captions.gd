@@ -9,33 +9,34 @@ var dbus_pid = null
 
 
 func _ready() -> void:
-	if not Engine.is_editor_hint():
-		# Start dbus-monitor asynchronously, capture stdin/stdout pipe
-		var proc_info = (
-			OS
-			. execute_with_pipe(
-				"bash",
-				[
-					"-c",
-					"dbus-monitor \"type='signal',interface='net.sapples.LiveCaptions.External',path='/net/sapples/LiveCaptions/External',member='TextStream'\""
-				],
-				false
-			)
+	#if not Engine.is_editor_hint():
+	# Start dbus-monitor asynchronously, capture stdin/stdout pipe
+	var proc_info = (
+		OS
+		. execute_with_pipe(
+			"bash",
+			[
+				"-c",
+				"dbus-monitor \"type='signal',interface='net.sapples.LiveCaptions.External',path='/net/sapples/LiveCaptions/External',member='TextStream'\""
+			],
+			false
 		)
-		_process_io = proc_info["stdio"]
-		dbus_pid = proc_info["pid"]
-		print(dbus_pid)
+	)
+	_process_io = proc_info["stdio"]
+	dbus_pid = proc_info["pid"]
+	print(dbus_pid)
 
-		# Spawn a thread to read lines as they arrive
-		_thread = Thread.new()
-		_thread.start(_read_dbus_stream, Thread.PRIORITY_HIGH)
+	# Spawn a thread to read lines as they arrive
+	_thread = Thread.new()
+	_thread.start(_read_dbus_stream, Thread.PRIORITY_HIGH)
 
 
 func _read_dbus_stream() -> void:
-	while _process_io.is_open() and _process_io.get_error() == OK:
+	while _process_io.is_open():# and _process_io.get_error() == OK:
+		#print('goo')
 		var line = _process_io.get_line()
 		if line != "":
-			print(line)
+			#print(line)
 			# Dispatch back to main thread for any Godot‑API work
 			#line = line.split("string \"")
 
@@ -55,7 +56,9 @@ func _read_dbus_stream() -> void:
 
 
 func new_words(words):
-	stt_label.text = words
+	words_spoken.emit(words)
+	#print(words)
+	#stt_label.text = words
 
 
 func _process(delta: float) -> void:

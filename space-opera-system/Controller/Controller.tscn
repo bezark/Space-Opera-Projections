@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://d3nh81q7dsdr4"]
+[gd_scene load_steps=11 format=3 uid="uid://d3nh81q7dsdr4"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
 [ext_resource type="Script" uid="uid://byxtn4120rsnl" path="res://Controller/controller.gd" id="1_u2oln"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="6_671od"]
 [ext_resource type="Script" uid="uid://6swu50awv3xi" path="res://Controller/celestial_body_add.gd" id="7_7vp4u"]
 [ext_resource type="Resource" uid="uid://dys78k5634li2" path="res://Data/ALL_BODIES.tres" id="8_y3tcv"]
+[ext_resource type="Script" uid="uid://dk0qqxl8cglk1" path="res://Controller/post.gd" id="9_3ch2h"]
+[ext_resource type="Script" uid="uid://bkmpbc1ivad15" path="res://Controller/fire_controls.gd" id="10_btpsi"]
 
 [node name="Control" type="Control"]
 auto_translate_mode = 1
@@ -69,9 +71,11 @@ metadata/_custom_type_script = "uid://cb1ama4ib1a3p"
 [node name="Body" type="HSplitContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+focus_mode = 1
 split_offset = 200
 
 [node name="SideBar" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
+custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
 
 [node name="Timer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/SideBar"]
@@ -90,7 +94,6 @@ text = "0000"
 script = ExtResource("3_u2oln")
 
 [node name="DiceCamTexture" parent="MarginContainer/VBoxContainer/Body/SideBar" instance=ExtResource("6_671od")]
-visible = false
 layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Body/SideBar"]
@@ -120,6 +123,23 @@ layout_mode = 2
 layout_mode = 2
 theme_type_variation = &"HeaderSmall"
 text = "Projectors"
+
+[node name="Sliders" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/SideBar/ProjectorControl"]
+layout_mode = 2
+
+[node name="Pews" type="VSlider" parent="MarginContainer/VBoxContainer/Body/SideBar/ProjectorControl/Sliders"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+max_value = 1.0
+step = 0.01
+
+[node name="Circle" type="VSlider" parent="MarginContainer/VBoxContainer/Body/SideBar/ProjectorControl/Sliders"]
+custom_minimum_size = Vector2(0, 300)
+layout_mode = 2
+size_flags_horizontal = 6
+max_value = 1.0
+step = 0.01
 
 [node name="Main" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body"]
 layout_mode = 2
@@ -243,9 +263,40 @@ layout_mode = 2
 toggle_mode = true
 text = "Dice Cam"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom"]
-visible = false
+[node name="Post" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom"]
 layout_mode = 2
+size_flags_vertical = 3
+script = ExtResource("9_3ch2h")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "POST"
+
+[node name="Fire" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post"]
+layout_mode = 2
+toggle_mode = true
+text = "Fire"
+
+[node name="FireControls" type="HFlowContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post"]
+layout_mode = 2
+script = ExtResource("10_btpsi")
+
+[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider2" type="HSlider" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
 
 [node name="Faders" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
 layout_mode = 2
@@ -272,6 +323,8 @@ wait_time = 30.0
 autostart = true
 
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/SideBar/DatapadSync" to="." method="_on_datapad_sync_toggled"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Body/SideBar/ProjectorControl/Sliders/Pews" to="." method="_on_pews_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer/Body/SideBar/ProjectorControl/Sliders/Circle" to="." method="_on_circle_value_changed"]
 [connection signal="body_selected" from="MarginContainer/VBoxContainer/Body/Main/Views/System/CelestialBodyAdd" to="." method="_on_celestial_body_add_body_selected"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/System/CelestialBodyAdd/Add" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
@@ -282,5 +335,6 @@ autostart = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer/Next" to="." method="_on_next_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/ActionView" to="." method="_on_action_view_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/DiceCam" to="." method="_on_dice_cam_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post/Fire" to="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Post/FireControls" method="_on_fire_toggled"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Body/Main/Faders/Zoom/HSlider" to="." method="zoom_slider_value_changed"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

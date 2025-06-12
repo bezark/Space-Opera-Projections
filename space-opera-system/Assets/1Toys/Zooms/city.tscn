@@ -1,10 +1,12 @@
-[gd_scene load_steps=16 format=3 uid="uid://cw1pdlvuehwmt"]
+[gd_scene load_steps=18 format=3 uid="uid://cw1pdlvuehwmt"]
 
 [ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="1_lvmj5"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="1_oi8ks"]
+[ext_resource type="Script" uid="uid://7vonoxyx1d4i" path="res://Assets/1Toys/Zooms/city.gd" id="1_tpq0m"]
 [ext_resource type="Shader" uid="uid://c56iuq1v4arfk" path="res://Assets/Shaders/auoroa.gdshader" id="2_3fs7x"]
 [ext_resource type="Material" uid="uid://c8lhplnin6gvt" path="res://Assets/Materials/Building.tres" id="2_oi8ks"]
 [ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="4_yj5b2"]
+[ext_resource type="Texture2D" uid="uid://bhq1j7cfmxg55" path="res://Assets/1Toys/UEC.png" id="6_j527a"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_yj5b2"]
 sky_top_color = Color(0.000256007, 0.0266021, 0.10091, 1)
@@ -66,6 +68,7 @@ material = ExtResource("4_yj5b2")
 size = Vector2(0.1, 1)
 
 [node name="City" type="Node3D"]
+script = ExtResource("1_tpq0m")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_j527a")
@@ -78,91 +81,339 @@ metadata/_custom_type_script = "uid://c0w752ro86qws"
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Camera3D"]
 transform = Transform3D(0.995653, 0.0827466, 0.0427453, 0.091703, -0.790814, -0.605148, -0.0162704, 0.606438, -0.794964, -0.0283931, 0.0889406, -1.23621)
+visible = false
 mesh = SubResource("PlaneMesh_koroh")
 skeleton = NodePath("../..")
 
-[node name="CSGBox3D6" type="CSGBox3D" parent="."]
+[node name="Buildings" type="Node3D" parent="."]
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.525, 7.46206, -20.6419)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D7" type="CSGBox3D" parent="."]
-transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 0.686205, 7.46206, -28.9178)
-size = Vector3(5.92859, 16, 3.30957)
+[node name="CSGBox3D7" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -0.478895, 7.46206, -28.9178)
+size = Vector3(5.92859, 16, 9.48254)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D8" type="CSGBox3D" parent="."]
+[node name="CSGBox3D8" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7964, 5.18179, -34.2898)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D9" type="CSGBox3D" parent="."]
+[node name="CSGBox3D9" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -16.7964, 5.18179, -11.3169)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D2" type="CSGBox3D" parent="."]
+[node name="CSGBox3D2" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.46424, 4.11642, -12.5912)
 size = Vector3(5.92859, 9.30872, 2.25)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D3" type="CSGBox3D" parent="."]
+[node name="CSGBox3D3" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.81166, 7.46206, -34.3321)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D4" type="CSGBox3D" parent="."]
+[node name="CSGBox3D4" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.1837, 5.18179, -16.8495)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D5" type="CSGBox3D" parent="."]
+[node name="CSGBox3D5" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.7893, 5.18179, -16.8495)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D10" type="CSGBox3D" parent="."]
+[node name="CSGBox3D10" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -7.34658, 7.46206, -27.7021)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D11" type="CSGBox3D" parent="."]
+[node name="CSGBox3D11" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 13.8646, 7.46206, -35.978)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D12" type="CSGBox3D" parent="."]
+[node name="CSGBox3D12" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.61798, 5.18179, -41.35)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D13" type="CSGBox3D" parent="."]
+[node name="CSGBox3D13" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -3.61798, 5.18179, -18.3771)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D14" type="CSGBox3D" parent="."]
+[node name="CSGBox3D14" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.1784, -1.90609, -7.06019)
 size = Vector3(1000, 1, 1000)
 material = ExtResource("2_oi8ks")
 
-[node name="CSGBox3D15" type="CSGBox3D" parent="."]
+[node name="CSGBox3D15" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.6426, 7.46206, -20.1811)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D16" type="CSGBox3D" parent="."]
+[node name="CSGBox3D16" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.36671, 7.46206, -41.3923)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D17" type="CSGBox3D" parent="."]
+[node name="CSGBox3D17" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.99469, 5.18179, -23.9097)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
-[node name="CSGBox3D18" type="CSGBox3D" parent="."]
+[node name="CSGBox3D18" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 24.9677, 5.18179, -23.9097)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D19" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -40.7644, 18.483, -31.3082)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D20" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -20.7183, 18.483, -39.5841)
+size = Vector3(5.92859, 16, 9.48254)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D21" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -37.0358, 16.2027, -44.9561)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D22" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -37.0358, 16.2027, -21.9832)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D23" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.7751, 15.1373, -23.2575)
+size = Vector3(5.92859, 9.30872, 2.25)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D24" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26.051, 18.483, -44.9984)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D25" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -31.4231, 16.2027, -27.5158)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D26" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.45007, 16.2027, -27.5158)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D27" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -27.5859, 18.483, -38.3684)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D28" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -6.37477, 18.483, -46.6443)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D29" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.8573, 16.2027, -52.0163)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D30" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -23.8573, 16.2027, -29.0434)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D32" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.59677, 18.483, -30.8474)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D33" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.8727, 18.483, -52.0586)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D34" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2447, 16.2027, -34.576)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D35" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.72833, 16.2027, -34.576)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D31" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.2105, 10.522, -29.8298)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D36" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 38.2566, 10.522, -38.1057)
+size = Vector3(5.92859, 16, 9.48254)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D37" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.9391, 8.24173, -43.4777)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D38" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 21.9391, 8.24173, -20.5048)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D39" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 41.1998, 7.17636, -21.7791)
+size = Vector3(5.92859, 9.30872, 2.25)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D40" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 32.9239, 10.522, -43.52)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D41" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5518, 8.24173, -26.0374)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D42" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 50.5248, 8.24173, -26.0374)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D43" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 31.3889, 10.522, -36.89)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D44" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 52.6001, 10.522, -45.1659)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D45" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35.1175, 8.24173, -50.5379)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D46" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 35.1175, 8.24173, -27.565)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D47" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9139, 1.15385, -16.2481)
+size = Vector3(1000, 1, 1000)
+material = ExtResource("2_oi8ks")
+
+[node name="CSGBox3D48" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.3781, 10.522, -29.369)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D49" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 46.1022, 10.522, -50.5802)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D50" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.7302, 8.24173, -33.0976)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D51" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 63.7032, 8.24173, -33.0976)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D52" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -2.02885, 21.5429, -40.4961)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D53" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 18.0173, 21.5429, -48.772)
+size = Vector3(5.92859, 16, 9.48254)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D54" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.69975, 19.2626, -54.144)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D55" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.69975, 19.2626, -31.1711)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D56" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.9604, 18.1973, -32.4454)
+size = Vector3(5.92859, 9.30872, 2.25)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D57" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6845, 21.5429, -54.1863)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D58" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31245, 19.2626, -36.7037)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D59" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.2854, 19.2626, -36.7037)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D60" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 11.1496, 21.5429, -47.5563)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D61" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 32.3608, 21.5429, -55.8322)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D62" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.8782, 19.2626, -61.2042)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D63" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 14.8782, 19.2626, -38.2313)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D64" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.1388, 21.5429, -40.0353)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D65" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.8629, 21.5429, -61.2465)
+size = Vector3(5.92859, 16, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D66" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.4908, 19.2626, -43.7639)
+size = Vector3(5.92859, 11.4395, 3.30957)
+material = SubResource("StandardMaterial3D_tpq0m")
+
+[node name="CSGBox3D67" type="CSGBox3D" parent="Buildings"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 43.4639, 19.2626, -43.7639)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_tpq0m")
 
@@ -183,8 +434,31 @@ light_size = 0.382
 omni_range = 4096.0
 
 [node name="GPUParticles3D" type="GPUParticles3D" parent="."]
-transform = Transform3D(0.0353061, -0.918418, -0.394032, 0.77777, 0.272837, -0.566245, 0.627557, -0.286474, 0.723951, 1.21039, 11.7228, -12.3919)
-visible = false
+transform = Transform3D(0.588905, -0.433573, -0.68206, 0.764575, 0.572398, 0.296287, 0.261949, -0.69597, 0.668586, 2.60239, 7.95187, -14.5887)
 amount = 100
 process_material = SubResource("ParticleProcessMaterial_3fs7x")
 draw_pass_1 = SubResource("QuadMesh_j527a")
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="."]
+transform = Transform3D(-0.629712, 0.745399, -0.218731, 0.479735, 0.594609, 0.645209, 0.610998, 0.301363, -0.732026, -13.731, 12.9426, -23.0045)
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_3fs7x")
+draw_pass_1 = SubResource("QuadMesh_j527a")
+
+[node name="Auoroa" type="Button" parent="." groups=["zoom_control"]]
+offset_right = 8.0
+offset_bottom = 8.0
+text = "Auoroa"
+
+[node name="Parties" type="Button" parent="." groups=["zoom_control"]]
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "Parties"
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.04052, 13.9239, -25.6921)
+modulate = Color(1, 0.0117647, 1, 1)
+texture = ExtResource("6_j527a")
+
+[connection signal="toggled" from="Parties" to="." method="_on_parties_toggled"]

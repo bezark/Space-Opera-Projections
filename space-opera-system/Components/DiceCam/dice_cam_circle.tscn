@@ -1,0 +1,28 @@
+[gd_scene load_steps=6 format=3 uid="uid://b7pwebo5x1gpd"]
+
+[ext_resource type="PackedScene" uid="uid://v2iy6svfm1gl" path="res://Components/DiceCam/dice_cam_webcam_control.tscn" id="1_tmbo8"]
+[ext_resource type="Shader" uid="uid://qgid7w8wfup4" path="res://Assets/Shaders/spotlight2.gdshader" id="1_xwr31"]
+[ext_resource type="Texture2D" uid="uid://2ar7x1a804ap" path="res://Components/DiceCam/dice_camera_texture.tres" id="2_taw1r"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_la31i"]
+shader = ExtResource("1_xwr31")
+shader_parameter/circle_size = 0.5
+shader_parameter/feather = 0.05
+shader_parameter/circle_position = Vector2(0.5, 0.5)
+shader_parameter/screen_width = 1920.0
+shader_parameter/screen_height = 1080.0
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_4wfqf"]
+size = Vector2(1920, 1080)
+
+[node name="DiceCamCircle" type="Sprite2D"]
+clip_children = 2
+material = SubResource("ShaderMaterial_la31i")
+position = Vector2(1062, 551)
+texture = SubResource("PlaceholderTexture2D_4wfqf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_taw1r")
+
+[node name="DiceCamWebcamControl" parent="." instance=ExtResource("1_tmbo8")]
+DEVICE_NAME = "Laptop Camera: Laptop Camera"

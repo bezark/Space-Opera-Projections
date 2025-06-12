@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://pt657as7h6v7"]
+
+[ext_resource type="Texture2D" uid="uid://ccqneobfjxvkw" path="res://Assets/Textures/Terrain_05-256x256.png" id="1_mthnw"]
+[ext_resource type="Texture2D" uid="uid://du5ui2xveq3pe" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-15.png" id="2_3v54j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kilpo"]
+albedo_texture = ExtResource("1_mthnw")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_35qv1"]
+albedo_texture = ExtResource("2_3v54j")
+
+[node name="Sanctions" type="CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 0.6, 0, 0, 0, 1, 0, 0, 0)
+operation = 2
+radius = 7.5
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_kilpo")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.866025, -0.5, 0, 0.5, -0.866025, 0, 0, 0, 1, -0.629109, -2.46018, 0)
+operation = 2
+radius = 5.009
+height = 20.9385
+sides = 64
+cone = true
+material = SubResource("StandardMaterial3D_35qv1")
