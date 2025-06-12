@@ -16,7 +16,7 @@ content_margin_right = 36.0
 bg_color = Color(0.113665, 0.113665, 0.113665, 1)
 
 [resource]
-Button/font_sizes/font_size = 32
+Button/font_sizes/font_size = 24
 Button/fonts/font = ExtResource("1_fbbh0")
 Button/styles/pressed = SubResource("StyleBoxFlat_p1oir")
 CheckButton/font_sizes/font_size = 18

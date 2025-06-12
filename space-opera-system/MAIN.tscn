@@ -1,4 +1,4 @@
-[gd_scene load_steps=50 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=52 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -21,7 +21,9 @@
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
 [ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="14_rhye5"]
+[ext_resource type="Script" uid="uid://si5f8voa1aex" path="res://Components/ProjectorTools/post.gd" id="16_hhat6"]
 [ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://Components/SocietyUI/society_ui.tscn" id="16_rhye5"]
+[ext_resource type="Script" uid="uid://bkmpbc1ivad15" path="res://Controller/fire_controls.gd" id="16_v375m"]
 [ext_resource type="Shader" uid="uid://bq3tf0k03miar" path="res://Assets/Shaders/fire.gdshader" id="17_4sgve"]
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
 [ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
@@ -41,22 +43,11 @@ adjustment_enabled = true
 [sub_resource type="CameraAttributesPhysical" id="CameraAttributesPhysical_u0cts"]
 exposure_multiplier = 8.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_a8dnc"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_hhat6"]
 viewport_path = NodePath("SystemView")
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_g514o"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_s0s18"]
 viewport_path = NodePath("ZoomView")
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_g514o"]
-shader = ExtResource("11_rhye5")
-shader_parameter/threshold = 0.5
-shader_parameter/smoothness = 0.05
-shader_parameter/bg_color = Color(0, 0, 0, 1)
-shader_parameter/fg_color = Color(1, 1, 1, 1)
-shader_parameter/invert = true
-shader_parameter/intensity = 0.464
-
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uocqw"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_v375m"]
 frequency = 0.0042
@@ -79,6 +70,8 @@ shader_parameter/vignette_radius = 0.25
 shader_parameter/vignette_falloff = 0.25
 shader_parameter/noise_influence = 1.0
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_uocqw"]
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_obmmj"]
 shader = ExtResource("12_u0cts")
 shader_parameter/colors = PackedColorArray(0.478431, 0.647059, 0.564706, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1, 0.698039, 0.180392, 0.00784314, 1, 0.396078, 0.0313726, 0.027451, 1, 0.72549, 0.494118, 0.564706, 1, 0.647059, 0.517647, 0.67451, 1, 0.686275, 0.788235, 0.737255, 1, 0.584314, 0.717647, 0.65098, 1, 0.631373, 0.607843, 0.419608, 1, 0.384314, 0.517647, 0.45098, 1, 0.509804, 0.478431, 0.223529, 1, 0.309804, 0.278431, 0.0235294, 1, 0.862745, 0.815686, 0.560784, 1, 0.815686, 0.752941, 0.415686, 1, 0.615686, 0.552941, 0.215686, 1, 0.756863, 0.345098, 0.207843, 1, 0.556863, 0.145098, 0.00784314, 1, 0.517647, 0.223529, 0.223529, 1, 0.317647, 0.0235294, 0.0235294, 1, 0.780392, 0.596078, 0.65098, 1, 0.580392, 0.396078, 0.45098, 1, 0.717647, 0.615686, 0.741176, 1, 0.517647, 0.415686, 0.541176, 1)
@@ -92,25 +85,34 @@ shader = ExtResource("14_rhye5")
 shader_parameter/radius = 5
 shader_parameter/offset = Vector3(0, 0, 0)
 
-[sub_resource type="LabelSettings" id="LabelSettings_rpep8"]
-font = ExtResource("23_ao5vc")
-font_size = 64
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_p6x64"]
-viewport_path = NodePath("SystemView")
-
-[sub_resource type="ViewportTexture" id="ViewportTexture_s0s18"]
-viewport_path = NodePath("ZoomView")
-
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ao5vc"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4sgve"]
 viewport_path = NodePath("SystemView")
 
+[sub_resource type="ViewportTexture" id="ViewportTexture_a8dnc"]
+viewport_path = NodePath("Post")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_g514o"]
+viewport_path = NodePath("ZoomView")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_g514o"]
+shader = ExtResource("11_rhye5")
+shader_parameter/threshold = 0.5
+shader_parameter/smoothness = 0.05
+shader_parameter/bg_color = Color(0, 0, 0, 1)
+shader_parameter/fg_color = Color(1, 1, 1, 1)
+shader_parameter/invert = true
+shader_parameter/intensity = 0.464
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpep8"]
+font = ExtResource("23_ao5vc")
+font_size = 64
+
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_gix1a"]
-viewport_path = NodePath("Pews/Pre")
+viewport_path = NodePath("Post")
 
 [sub_resource type="LabelSettings" id="LabelSettings_gix1a"]
 font = ExtResource("23_ao5vc")
@@ -229,6 +231,135 @@ script = ExtResource("5_s83dy")
 structure = ExtResource("4_tm5h3")
 mapping_surfaces = [null, null]
 
+[node name="Post" type="SubViewport" parent="."]
+size = Vector2i(1920, 1200)
+script = ExtResource("16_hhat6")
+
+[node name="System" type="Sprite2D" parent="Post"]
+position = Vector2(958.001, 604)
+texture = SubResource("ViewportTexture_hhat6")
+
+[node name="Zoom" type="Sprite2D" parent="Post"]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1003, 568)
+texture = SubResource("ViewportTexture_s0s18")
+
+[node name="FireButton" type="Button" parent="Post" groups=["permanent", "ui_control"]]
+offset_left = -0.000549316
+offset_right = 37.9995
+offset_bottom = 31.0
+toggle_mode = true
+text = "Fire"
+
+[node name="FireControls" type="HFlowContainer" parent="Post/FireButton"]
+layout_mode = 2
+offset_top = 52.0
+offset_right = 1032.0
+offset_bottom = 116.0
+script = ExtResource("16_v375m")
+
+[node name="HSlider" type="HSlider" parent="Post/FireButton/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HSlider2" type="HSlider" parent="Post/FireButton/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="Post/FireButton/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="ColorPickerButton2" type="ColorPickerButton" parent="Post/FireButton/FireControls"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Fire" type="ColorRect" parent="Post"]
+material = SubResource("ShaderMaterial_p6x64")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.000549316
+offset_right = -0.000488281
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="BackBufferCopy5" type="BackBufferCopy" parent="Post"]
+material = SubResource("ShaderMaterial_uocqw")
+position = Vector2(953.999, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="ColorSnap" type="ColorRect" parent="Post"]
+visible = false
+material = SubResource("ShaderMaterial_obmmj")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy4" type="BackBufferCopy" parent="Post"]
+visible = false
+material = SubResource("ShaderMaterial_uocqw")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="Abberation" type="ColorRect" parent="Post"]
+visible = false
+material = SubResource("ShaderMaterial_ao5vc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy6" type="BackBufferCopy" parent="Post"]
+visible = false
+material = SubResource("ShaderMaterial_uocqw")
+position = Vector2(9997.92, 3309.04)
+scale = Vector2(89.8704, 27.2484)
+copy_mode = 2
+
+[node name="Kuwahara" type="ColorRect" parent="Post"]
+material = SubResource("ShaderMaterial_gix1a")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.000549316
+offset_right = -0.000549316
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="ColorRect" type="TextureRect" parent="Post"]
+visible = false
+material = SubResource("CanvasItemMaterial_ao5vc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -0.000549316
+offset_right = 1920.0
+offset_bottom = 1200.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("ViewportTexture_4sgve")
+
+[node name="SocietyUI" parent="Post" instance=ExtResource("23_gix1a")]
+visible = false
+anchors_preset = 10
+anchor_bottom = 0.0
+grow_vertical = 1
+
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
 msaa_2d = 1
@@ -236,12 +367,13 @@ title = "Circle"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
 
-[node name="System" type="Sprite2D" parent="Circle"]
+[node name="View" type="Sprite2D" parent="Circle"]
 position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
 texture = SubResource("ViewportTexture_a8dnc")
 
 [node name="Zoom" type="Sprite2D" parent="Circle"]
+visible = false
 modulate = Color(1, 1, 1, 0)
 position = Vector2(963, 587.5)
 scale = Vector2(0.9975, 0.9975)
@@ -256,80 +388,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="BackBufferCopy5" type="BackBufferCopy" parent="Circle"]
-visible = false
-material = SubResource("ShaderMaterial_uocqw")
-position = Vector2(954, 532)
-scale = Vector2(9.48, 5.22)
-copy_mode = 2
-
-[node name="Fire" type="ColorRect" parent="Circle"]
-visible = false
-material = SubResource("ShaderMaterial_p6x64")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="ColorSnap" type="ColorRect" parent="Circle"]
-visible = false
-material = SubResource("ShaderMaterial_obmmj")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="BackBufferCopy4" type="BackBufferCopy" parent="Circle"]
-material = SubResource("ShaderMaterial_uocqw")
-position = Vector2(954, 532)
-scale = Vector2(9.48, 5.22)
-copy_mode = 2
-
-[node name="Abberation" type="ColorRect" parent="Circle"]
-visible = false
-material = SubResource("ShaderMaterial_ao5vc")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="BackBufferCopy2" type="BackBufferCopy" parent="Circle"]
-material = SubResource("ShaderMaterial_uocqw")
-position = Vector2(954, 532)
-scale = Vector2(9.48, 5.22)
-copy_mode = 2
-
-[node name="Kuwahara" type="ColorRect" parent="Circle"]
-material = SubResource("ShaderMaterial_gix1a")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-color = Color(1, 1, 1, 0)
-
-[node name="BackBufferCopy3" type="BackBufferCopy" parent="Circle"]
-material = SubResource("ShaderMaterial_uocqw")
-position = Vector2(954, 532)
-scale = Vector2(9.48, 5.22)
-copy_mode = 2
-
 [node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
 visible = false
 
 [node name="STTLabel" type="Label" parent="Circle"]
+visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -367,54 +430,6 @@ msaa_2d = 2
 title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
-
-[node name="Pre" type="SubViewport" parent="Pews"]
-size = Vector2i(1920, 1299)
-
-[node name="System" type="Sprite2D" parent="Pews/Pre"]
-position = Vector2(958.001, 604)
-texture = SubResource("ViewportTexture_p6x64")
-
-[node name="Zoom" type="Sprite2D" parent="Pews/Pre"]
-modulate = Color(1, 1, 1, 0)
-position = Vector2(1003, 568)
-texture = SubResource("ViewportTexture_s0s18")
-
-[node name="BackBufferCopy" type="BackBufferCopy" parent="Pews/Pre"]
-position = Vector2(1003, 568)
-copy_mode = 2
-
-[node name="Kuwahara" type="ColorRect" parent="Pews/Pre"]
-material = SubResource("ShaderMaterial_gix1a")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.000549316
-offset_right = -0.000549316
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="ColorRect" type="TextureRect" parent="Pews/Pre"]
-visible = false
-material = SubResource("CanvasItemMaterial_ao5vc")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -0.000549316
-offset_right = 1920.0
-offset_bottom = 1200.0
-grow_horizontal = 2
-grow_vertical = 2
-texture = SubResource("ViewportTexture_4sgve")
-
-[node name="SocietyUI" parent="Pews/Pre" instance=ExtResource("23_gix1a")]
-visible = false
-anchors_preset = 10
-anchor_bottom = 0.0
-grow_vertical = 1
 
 [node name="Dither" type="ColorRect" parent="Pews"]
 visible = false
@@ -467,33 +482,38 @@ label_settings = SubResource("LabelSettings_gix1a")
 [connection signal="tree_exiting" from="LiveCaptions" to="LiveCaptions" method="_on_tree_exiting"]
 [connection signal="words_spoken" from="LiveCaptions" to="Circle/STTLabel" method="_on_live_captions_words_spoken"]
 [connection signal="words_spoken" from="LiveCaptions" to="Pews/STTLabel" method="_on_live_captions_words_spoken"]
+[connection signal="action_toggled" from="Control" to="Post/SocietyUI" method="_on_control_action_toggled"]
 [connection signal="action_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_action_toggled"]
-[connection signal="action_toggled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_action_toggled"]
 [connection signal="body_added" from="Control" to="SystemView" method="_on_control_body_added"]
+[connection signal="cam_toggled" from="Control" to="Post/SocietyUI" method="_on_control_cam_toggled"]
 [connection signal="cam_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_cam_toggled"]
-[connection signal="cam_toggled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_cam_toggled"]
 [connection signal="circle_changed" from="Control" to="Circle/Black" method="fade"]
 [connection signal="controls_updated" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/BodySelection" method="_on_control_controls_updated"]
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="next_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_next_society_pressed"]
+[connection signal="next_society_pressed" from="Control" to="Post/SocietyUI" method="_on_control_next_society_pressed"]
 [connection signal="next_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_next_society_pressed"]
-[connection signal="next_society_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_next_society_pressed"]
 [connection signal="pew_changed" from="Control" to="Pews/Black" method="fade"]
 [connection signal="prev_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_prev_society_pressed"]
+[connection signal="prev_society_pressed" from="Control" to="Post/SocietyUI" method="_on_control_prev_society_pressed"]
 [connection signal="prev_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_prev_society_pressed"]
-[connection signal="prev_society_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_prev_society_pressed"]
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
+[connection signal="society_complete_pressed" from="Control" to="Post/SocietyUI" method="_on_control_society_complete_pressed"]
 [connection signal="society_complete_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_society_complete_pressed"]
-[connection signal="society_complete_pressed" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_society_complete_pressed"]
 [connection signal="society_focused" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_society_focused"]
+[connection signal="society_focused" from="Control" to="Post/SocietyUI" method="_on_control_society_focused"]
 [connection signal="society_focused" from="Control" to="Circle/SocietyUI" method="_on_control_society_focused"]
-[connection signal="society_focused" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_society_focused"]
+[connection signal="ui_toggeled" from="Control" to="Post/SocietyUI" method="_on_control_ui_toggeled"]
 [connection signal="ui_toggeled" from="Control" to="Circle/SocietyUI" method="_on_control_ui_toggeled"]
-[connection signal="ui_toggeled" from="Control" to="Pews/Pre/SocietyUI" method="_on_control_ui_toggeled"]
-[connection signal="view_fade_adjusted" from="Control" to="ZoomView" method="_on_control_view_fade_adjusted"]
+[connection signal="view_fade_adjusted" from="Control" to="Post" method="_on_control_view_fade_adjusted"]
 [connection signal="zoomed_in" from="Control" to="ZoomView" method="_on_control_zoomed_in"]
 [connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]
 [connection signal="game_fetched" from="DatapadSync/FetchGameData" to="DatapadSync" method="_on_fetch_game_data_game_fetched"]
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
 [connection signal="cam_selected" from="SystemView/CameraSelect" to="SystemView" method="_on_camera_select_cam_selected"]
 [connection signal="timeout" from="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection/Delay" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_delay_timeout"]
+[connection signal="toggled" from="Post/FireButton" to="Post/FireButton/FireControls" method="_on_fire_toggled"]
+[connection signal="value_changed" from="Post/FireButton/FireControls/HSlider" to="Post/FireButton/FireControls" method="_on_h_slider_value_changed"]
+[connection signal="value_changed" from="Post/FireButton/FireControls/HSlider2" to="Post/FireButton/FireControls" method="_on_h_slider_2_value_changed"]
+[connection signal="color_changed" from="Post/FireButton/FireControls/ColorPickerButton" to="Post/FireButton/FireControls" method="_on_color_picker_button_color_changed"]
+[connection signal="color_changed" from="Post/FireButton/FireControls/ColorPickerButton2" to="Post/FireButton/FireControls" method="_on_color_picker_button_2_color_changed"]

@@ -21,6 +21,8 @@ signal prev_society_pressed(action: SocietyAction)
 signal society_complete_pressed
 signal society_focused(action: SocietyAction)
 
+signal shader_changed(name)
+
 @export var structure: SceneStructure
 
 @export var system_view: TextureRect
@@ -28,6 +30,7 @@ signal society_focused(action: SocietyAction)
 var datapad_syncing = true
 var selected_scene_data: SceneData
 var selected_id: String
+
 
 
 func _ready() -> void:
@@ -217,7 +220,8 @@ var action_on_deck: SocietyAction
 func _on_show_hide_toggled(toggled_on: bool) -> void:
 	if toggled_on:
 		action_on_deck = State.actions_queued.front()
-		var active_soc = State.societies[action_on_deck.parent_society]
+		if action_on_deck:
+			var active_soc = State.societies[action_on_deck.parent_society]
 
 		society_focused.emit(action_on_deck)
 	ui_toggeled.emit(toggled_on)

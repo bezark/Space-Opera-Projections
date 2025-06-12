@@ -8,6 +8,6 @@ func _on_control_zoomed_in(zoom: PackedScene) -> void:
 	$Zoom.add_child(new_zoom)
 
 #FIXME: MOVE  this lol
-func _on_control_view_fade_adjusted(val: float) -> void:
-	$"../Circle/Zoom".modulate = Color(1.,1.,1., val)
-	$"../Pews/Pre/Zoom".modulate = Color(1.,1.,1., val)
+#func _on_control_view_fade_adjusted(val: float) -> void:
+	#$"../Circle/Zoom".modulate = Color(1.,1.,1., val)
+	#$"../Pews/Pre/Zoom".modulate = Color(1.,1.,1., val)
