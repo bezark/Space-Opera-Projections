@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://big5ok45fifb6"]
+
+[ext_resource type="Texture2D" uid="uid://cgddppqhl5gtv" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-96.png" id="1_6g6hu"]
+[ext_resource type="Script" uid="uid://dlubhinthjott" path="res://Assets/1Toys/Zooms/float.gd" id="1_x1ia8"]
+
+[sub_resource type="Curve3D" id="Curve3D_1jd6i"]
+closed = true
+_data = {
+"points": PackedVector3Array(40.124, 4.16997, -0.0633125, -40.124, -4.16997, 0.0633125, -17.2789, 7.78474, 26.0537, 9.92881, -19.5093, 8.83739, -9.92881, 19.5093, -8.83739, -9.92489, 37.6458, 89.7033, 3.51728, -16.4514, -4.9379, -3.51728, 16.4514, 4.9379, -57.7796, 53.9596, 115.268, 3.13211, -22.6109, -11.1302, -3.13211, 22.6109, 11.1302, -79.2842, 74.1886, 158.316, 4.06425, -15.4724, 9.42697, -4.06425, 15.4724, -9.42697, -39.2568, 105.412, 147.602, 6.13835, -9.29117, 12.2917, -6.13835, 9.29117, -12.2917, -0.564438, 120.803, 122.341, -5.39134, -7.24065, 0.962166, 5.39134, 7.24065, -0.962166, 30.5214, 104.972, 73.6278, -8.74242, -1.77719, 8.24463, 8.74242, 1.77719, -8.24463, 45.1756, 88.7007, 41.7874, -7.91036, -1.78809, 7.31502, 7.91036, 1.78809, -7.31502, 36.4399, 72.6271, 25.6196, 0, 0, 0, 0, 0, 0, 16.5572, 35.4897, 18.3189),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 10
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x1ia8"]
+albedo_texture = ExtResource("1_6g6hu")
+
+[node name="Path3D" type="Path3D"]
+curve = SubResource("Curve3D_1jd6i")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.00157789, -0.10337, 0.994638, 0, 0.994639, 0.10337, -0.999993, 0.000163107, -0.00156944, -17.2789, 7.78474, 26.0537)
+script = ExtResource("1_x1ia8")
+
+[node name="Baloon" type="CSGSphere3D" parent="PathFollow3D"]
+material_override = SubResource("StandardMaterial3D_x1ia8")
+radius = 16.6001
+
+[node name="CSGTorus3D" type="CSGTorus3D" parent="PathFollow3D/Baloon"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)
+inner_radius = 9.6087

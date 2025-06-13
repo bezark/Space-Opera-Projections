@@ -25,4 +25,4 @@ texture = SubResource("PlaceholderTexture2D_4wfqf")
 texture = ExtResource("2_taw1r")
 
 [node name="DiceCamWebcamControl" parent="." instance=ExtResource("1_tmbo8")]
-DEVICE_NAME = "Laptop Camera: Laptop Camera"
+DEVICE_NAME = "Logitech BRIO"

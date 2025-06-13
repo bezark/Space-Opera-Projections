@@ -1,4 +1,4 @@
-[gd_scene load_steps=58 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=60 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://u6wig7865ius" path="res://Assets/1Toys/Planets/Meadow.tscn" id="13_yfr1v"]
 [ext_resource type="PackedScene" uid="uid://8dwef6hk3vio" path="res://Assets/1Toys/Planets/moon.tscn" id="15_m4j4v"]
 [ext_resource type="PackedScene" uid="uid://c7nga0dl7lwsr" path="res://Assets/1Toys/DysonSphere.tscn" id="16_dee4i"]
+[ext_resource type="PackedScene" uid="uid://5x10tqvu7gxf" path="res://Assets/1Toys/Zooms/Desert.tscn" id="16_ii0dt"]
 [ext_resource type="PackedScene" uid="uid://c0ex5nclh00h6" path="res://Assets/1Toys/Planets/Gemstone.tscn" id="16_q43nw"]
 [ext_resource type="Script" uid="uid://kjavq4i37ayq" path="res://addons/tile_path_3d/tile_path_3d.gd" id="17_mcu1l"]
 [ext_resource type="PackedScene" uid="uid://b67cago41ch8b" path="res://Assets/1Toys/Planets/City.tscn" id="17_xhn7u"]
@@ -262,9 +263,15 @@ zooms = Array[PackedScene]([ExtResource("13_ggr6d")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
-[sub_resource type="Resource" id="Resource_q43nw"]
+[sub_resource type="Resource" id="Resource_pt8ev"]
 script = ExtResource("10_paiqf")
 zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
+[sub_resource type="Resource" id="Resource_q43nw"]
+script = ExtResource("10_paiqf")
+zooms = Array[PackedScene]([ExtResource("16_ii0dt")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -574,6 +581,7 @@ material = SubResource("StandardMaterial3D_vk8jg")
 
 [node name="Meadow" parent="." node_paths=PackedStringArray("body", "well") instance=ExtResource("9_l1est")]
 transform = Transform3D(0.998927, -0.0463219, 0, 0.0463219, 0.998927, 0, 0, 0, 1, 0, 0, 0)
+scene_data = SubResource("Resource_pt8ev")
 body = NodePath("Meadow")
 well = NodePath("Meadow/Well")
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=57 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=68 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -29,6 +29,7 @@
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
 [ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 [ext_resource type="PackedScene" uid="uid://bfjbhi2njpdko" path="res://Components/SocietyUI/society_ui_pews.tscn" id="23_gix1a"]
+[ext_resource type="Script" uid="uid://b5kytadtsro01" path="res://Phases/societal_phase_que.gd" id="24_1yskb"]
 [ext_resource type="Script" uid="uid://u7ix08t77ok4" path="res://Components/ProjectorTools/black.gd" id="24_4sgve"]
 [ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="28_0e8f2"]
@@ -98,6 +99,359 @@ shader_parameter/offset = Vector3(0, 0, 0)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4sgve"]
 viewport_path = NodePath("SystemView")
+
+[sub_resource type="LabelSettings" id="LabelSettings_obmmj"]
+font = ExtResource("27_2jiyu")
+font_size = 128
+
+[sub_resource type="Animation" id="Animation_2os0k"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.83333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_c6jvj"]
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_sl87g"]
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DiceMask:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.94862),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y0sm1"]
+resource_name = "DiceCamUp"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("DiceMask:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0333333, 2.86667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_nc66i"]
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -2799, -0.25, 0, 0.25, 0, -2799, -0.25, 0, 0.25, 0, 3350, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 1.76667, 1.86667, 1.9, 3.06667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SocietyName:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(151, -0.25, 0, 0.25, 0, -794.469, -0.25, 0, 0.25, 0, -794.469, -0.25, 0, 0.25, 0, 151, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.61283, 1.9, 2.86667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1691, -0.25, 0, 0.25, 0, 1454.86, -0.25, 0, 0.25, 0, 1454.86, -0.25, 0, 0.25, 0, 1691, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.02283, 1.85384, 2.86667)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swap_society"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_gyt04"]
+resource_name = "PrevSociety"
+length = 5.0
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 3351, -0.25, 0, 0.25, 0, 3351, -0.25, 0, 0.25, 0, -2830, -0.25, 0, 0.25, 0, 0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0.2, 1.76667, 1.86667, 1.8895, 3.06667)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SocietyName:position:x")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(151, -0.25, 0, 0.25, 0, 1015, -0.25, 0, 0.25, 0, 1015, -0.25, 0, 0.25, 0, 151, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.61283, 1.85616, 2.86667)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Icon:position:x")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0, 0, 0),
+"points": PackedFloat32Array(1691, -0.25, 0, 0.25, 0, 2224, -0.25, 0, 0.25, 0, 2224, -0.25, 0, 0.25, 0, 1691, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0, 1.02283, 1.8895, 2.86667)
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(1.8),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"swap_society"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_q6muc"]
+resource_name = "UIDown"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.1, 1.66667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SocietyName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0.1, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(151, 40), Vector2(-901, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Diag1:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.16667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(981.001, 1567)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Diag1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.166667, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-0.00012207, -566), Vector2(-886, -566)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Diag2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.133333, 0.533333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1942, -235), Vector2(3355, -235)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1691, 596), Vector2(2755, 596)]
+}
+
+[sub_resource type="Animation" id="Animation_y1ya3"]
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.26667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("SocietyName:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-901, 40), Vector2(151, 40)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Diag1:size")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(2.16667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(981.001, 1567)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Diag1:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.0333334, 0.633333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-886, -566), Vector2(-0.00012207, -566)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Diag2:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0.0333333, 0.566667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(3355, -235), Vector2(1942, -235)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Icon:position")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0.1, 0.733333),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2755, 596), Vector2(1691, 596)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("DiceMask:modulate")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Action:modulate")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_nl8h3"]
+_data = {
+&"ActionDown": SubResource("Animation_2os0k"),
+&"ActionUp": SubResource("Animation_c6jvj"),
+&"DiceCamDown": SubResource("Animation_sl87g"),
+&"DiceCamUp": SubResource("Animation_y0sm1"),
+&"NextSociety": SubResource("Animation_nc66i"),
+&"PrevSociety": SubResource("Animation_gyt04"),
+&"UIDown": SubResource("Animation_q6muc"),
+&"UIUp": SubResource("Animation_y1ya3")
+}
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_a8dnc"]
 viewport_path = NodePath("Post")
@@ -185,7 +539,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -625.159, 0, 0)
 current = true
 script = ExtResource("9_rhye5")
 orbital = NodePath("../Crane/OrbitalCamera")
-look_sensitivity = 0.5
+look_sensitivity = 0.2
 planetary = false
 metadata/_custom_type_script = "uid://c2l8ahmfhfhuq"
 
@@ -404,6 +758,56 @@ anchors_preset = 10
 anchor_bottom = 0.0
 grow_vertical = 1
 
+[node name="SocietalPhaseQue" type="Control" parent="Post"]
+layout_mode = 3
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+script = ExtResource("24_1yskb")
+
+[node name="Diag1" type="ColorRect" parent="Post/SocietalPhaseQue"]
+layout_mode = 0
+offset_left = -0.00012207
+offset_top = -566.0
+offset_right = 981.001
+offset_bottom = 1001.0
+rotation = 0.523598
+color = Color(0, 0, 0, 1)
+
+[node name="Diag2" type="ColorRect" parent="Post/SocietalPhaseQue"]
+layout_mode = 0
+offset_left = 1942.0
+offset_top = -235.0
+offset_right = 2923.0
+offset_bottom = 1332.0
+rotation = 0.523598
+color = Color(0, 0, 0, 1)
+
+[node name="SocietyName" type="Label" parent="Post/SocietalPhaseQue"]
+layout_mode = 0
+offset_left = 151.0
+offset_top = 40.0
+offset_right = 1248.0
+offset_bottom = 241.0
+scale = Vector2(1, 2)
+text = "THE SOCIETAL PHASE"
+label_settings = SubResource("LabelSettings_obmmj")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Post/SocietalPhaseQue"]
+libraries = {
+&"": SubResource("AnimationLibrary_nl8h3")
+}
+
+[node name="Button" type="Button" parent="Post/SocietalPhaseQue" groups=["permanent", "ui_control"]]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "Societal Cue"
+
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
 msaa_2d = 1
@@ -450,7 +854,6 @@ label_settings = SubResource("LabelSettings_rpep8")
 script = ExtResource("23_4sgve")
 
 [node name="TimeLabel" type="Label" parent="Circle"]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -545,6 +948,20 @@ rotation = 0.0334699
 text = "Wow cool captions bro"
 label_settings = SubResource("LabelSettings_gix1a")
 
+[node name="TimeLabel" type="Label" parent="Pews"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -76.0
+offset_top = 382.0
+offset_right = 321.0
+offset_bottom = 680.0
+grow_horizontal = 2
+size_flags_horizontal = 0
+text = "0000"
+label_settings = SubResource("LabelSettings_1yskb")
+script = ExtResource("28_0e8f2")
+
 [connection signal="tree_exiting" from="LiveCaptions" to="LiveCaptions" method="_on_tree_exiting"]
 [connection signal="words_spoken" from="LiveCaptions" to="Circle/STTLabel" method="_on_live_captions_words_spoken"]
 [connection signal="words_spoken" from="LiveCaptions" to="Pews/STTLabel" method="_on_live_captions_words_spoken"]
@@ -585,4 +1002,6 @@ label_settings = SubResource("LabelSettings_gix1a")
 [connection signal="value_changed" from="Post/FireControls/HSlider3" to="Post/FireControls" method="_on_h_slider_3_value_changed"]
 [connection signal="color_changed" from="Post/FireControls/ColorPickerButton" to="Post/FireControls" method="_on_color_picker_button_color_changed"]
 [connection signal="color_changed" from="Post/FireControls/ColorPickerButton2" to="Post/FireControls" method="_on_color_picker_button_2_color_changed"]
+[connection signal="toggled" from="Post/SocietalPhaseQue/Button" to="Post/SocietalPhaseQue" method="_on_button_toggled"]
 [connection signal="toggled" from="Circle/TimeLabel/TimerButton" to="Circle/TimeLabel" method="_on_timer_button_toggled"]
+[connection signal="toggled" from="Circle/TimeLabel/TimerButton" to="Pews/TimeLabel" method="_on_timer_button_toggled"]

@@ -463,20 +463,16 @@ layout_mode = 2
 [node name="DiceMask" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 clip_children = 2
-position = Vector2(1064, 471)
-scale = Vector2(0.730556, 0.730556)
+position = Vector2(1159, 648)
+scale = Vector2(1.04939, 1.04939)
 texture = ExtResource("9_y0sm1")
 
 [node name="DiceCamTexture" parent="DiceMask" instance=ExtResource("8_nc66i")]
 custom_minimum_size = Vector2(1920, 1080)
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -1920.0
-offset_top = -1080.0
-metadata/_edit_lock_ = true
+offset_left = -1102.55
+offset_top = -621.313
+offset_right = -635.545
+offset_bottom = -358.313
 
 [node name="SocietyName" type="Label" parent="."]
 modulate = Color(0.698039, 0.180392, 0.00784314, 1)

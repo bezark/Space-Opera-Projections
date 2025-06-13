@@ -9,4 +9,3 @@ size = Vector2(1920, 1080)
 texture = SubResource("PlaceholderTexture2D_4wfqf")
 
 [node name="DiceCamWebcamControl" parent="." instance=ExtResource("2_e68kq")]
-DEVICE_NAME = "Laptop Camera: Laptop Camera"

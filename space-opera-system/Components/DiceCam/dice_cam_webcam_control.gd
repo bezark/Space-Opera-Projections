@@ -4,7 +4,7 @@ extends Node
 var camera_feed: CameraFeed
 
 # Hardcoded device name and format
-@export var DEVICE_NAME = "Logitech BRIO"  # Replace with your camera's name
+@export var DEVICE_NAME = "Game Capture HD60 S+:Game Capt"  # Replace with your camera's name
 @export var FORMAT_INDEX = 114  # Use the first available format
 @export var camera_texture: CameraTexture
 

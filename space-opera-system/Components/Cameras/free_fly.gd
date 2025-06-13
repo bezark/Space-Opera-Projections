@@ -8,8 +8,8 @@ class_name FreeFlyCamera
 
 @export var orbital: SystemCamera
 
-@export var speed: float = 10.0
-@export var look_sensitivity: float = 1.5
+@export var speed: float = 6.0
+@export var look_sensitivity: float = 0.4
 @export var planetary: bool = true
 var active :bool
 var yaw: float = 0.0  # rotation around Y

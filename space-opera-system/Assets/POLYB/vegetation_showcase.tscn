@@ -1,15 +1,15 @@
 [gd_scene load_steps=17 format=3 uid="uid://cu66ry02txxkw"]
 
-[ext_resource type="PackedScene" uid="uid://ba6pjbml0igrx" path="res://PolyBlocks/EffectBlocks/assets/other/dust.tscn" id="1_735at"]
-[ext_resource type="PackedScene" uid="uid://dftx2rlgbrpiq" path="res://PolyBlocks/EffectBlocks/assets/other/fireflies.tscn" id="2_02qlj"]
-[ext_resource type="ArrayMesh" uid="uid://dvtakusqvh0em" path="res://PolyBlocks/EffectBlocks/source_files/meshes/tree.mesh" id="3_3371v"]
-[ext_resource type="Shader" path="res://PolyBlocks/EffectBlocks/source_files/shaders/vegetation.gdshader" id="4_r801v"]
-[ext_resource type="Texture2D" uid="uid://cue203ti8uyi2" path="res://PolyBlocks/EffectBlocks/source_files/textures/EffectsBlocks_tree_leaves.png" id="5_djn2u"]
-[ext_resource type="PackedScene" uid="uid://2y25hpxtk3ow" path="res://PolyBlocks/EffectBlocks/assets/other/falling_leaves.tscn" id="6_2eq5o"]
-[ext_resource type="ArrayMesh" uid="uid://b2ug0foj4qt16" path="res://PolyBlocks/EffectBlocks/source_files/meshes/bush.mesh" id="7_5b734"]
-[ext_resource type="Shader" path="res://PolyBlocks/EffectBlocks/source_files/shaders/vegetation_sway.gdshader" id="8_u1vnx"]
-[ext_resource type="Script" path="res://PolyBlocks/EffectBlocks/source_files/scripts/tree_night.gd" id="9_sfsgn"]
-[ext_resource type="PackedScene" uid="uid://uch8qkb3b6nc" path="res://PolyBlocks/EffectBlocks/assets/other/god_rays.tscn" id="10_wdwhj"]
+[ext_resource type="PackedScene" uid="uid://ba6pjbml0igrx" path="res://Assets/POLYB/dust.tscn" id="1_735at"]
+[ext_resource type="PackedScene" uid="uid://dftx2rlgbrpiq" path="res://Assets/POLYB/fireflies.tscn" id="2_02qlj"]
+[ext_resource type="ArrayMesh" uid="uid://dvtakusqvh0em" path="res://Assets/POLYB/tree.mesh" id="3_3371v"]
+[ext_resource type="Shader" uid="uid://ccklvynt16yu5" path="res://Assets/POLYB/vegetation.gdshader" id="4_r801v"]
+[ext_resource type="Texture2D" uid="uid://cue203ti8uyi2" path="res://Assets/POLYB/EffectsBlocks_tree_leaves.png" id="5_djn2u"]
+[ext_resource type="PackedScene" uid="uid://2y25hpxtk3ow" path="res://Assets/POLYB/falling_leaves.tscn" id="6_2eq5o"]
+[ext_resource type="ArrayMesh" uid="uid://b2ug0foj4qt16" path="res://Assets/POLYB/bush.mesh" id="7_5b734"]
+[ext_resource type="Shader" uid="uid://bpwde7tefiywv" path="res://Assets/POLYB/vegetation_sway.gdshader" id="8_u1vnx"]
+[ext_resource type="Script" uid="uid://be0i6d6l3t0qa" path="res://Assets/POLYB/tree_night.gd" id="9_sfsgn"]
+[ext_resource type="PackedScene" uid="uid://uch8qkb3b6nc" path="res://Assets/POLYB/god_rays.tscn" id="10_wdwhj"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_ajdeb"]
 
@@ -21,36 +21,36 @@ render_priority = 0
 shader = ExtResource("4_r801v")
 shader_parameter/windSpeed = 0.5
 shader_parameter/windStrength = 0.1
-shader_parameter/nightColor = Color(0.1, 0.2, 0.4, 1)
-shader_parameter/nightTime = 0.0
 shader_parameter/windNoise = SubResource("NoiseTexture2D_ryosw")
 shader_parameter/albedo = ExtResource("5_djn2u")
+shader_parameter/nightColor = Color(0.1, 0.2, 0.4, 1)
+shader_parameter/nightTime = 0.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_j3o8p"]
 render_priority = 0
 shader = ExtResource("8_u1vnx")
 shader_parameter/windSpeed = 1.0
+shader_parameter/albedo = ExtResource("5_djn2u")
 shader_parameter/nightColor = Color(0.1, 0.2, 0.4, 1)
 shader_parameter/nightTime = 0.0
-shader_parameter/albedo = ExtResource("5_djn2u")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kk76e"]
 render_priority = 0
 shader = ExtResource("4_r801v")
 shader_parameter/windSpeed = 0.5
 shader_parameter/windStrength = 0.1
-shader_parameter/nightColor = Color(0.1, 0.2, 0.4, 1)
-shader_parameter/nightTime = 0.9
 shader_parameter/windNoise = SubResource("NoiseTexture2D_ryosw")
 shader_parameter/albedo = ExtResource("5_djn2u")
+shader_parameter/nightColor = Color(0.1, 0.2, 0.4, 1)
+shader_parameter/nightTime = 0.9
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_fdraa"]
 render_priority = 0
 shader = ExtResource("8_u1vnx")
 shader_parameter/windSpeed = 1.0
+shader_parameter/albedo = ExtResource("5_djn2u")
 shader_parameter/nightColor = Color(0.1, 0.2, 0.4, 1)
 shader_parameter/nightTime = 0.8
-shader_parameter/albedo = ExtResource("5_djn2u")
 
 [node name="VegetationShowcase" type="Node3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.27525, 0, -4.1929)
