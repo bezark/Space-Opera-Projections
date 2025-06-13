@@ -44,13 +44,13 @@ const STATEMENT = preload("res://Components/SocietyUI/statement.tscn")
 
 func _on_control_society_focused(action: SocietyAction) -> void:
 	var active_soc = State.societies[action.parent_society]
-	$SocietyName.text = active_soc.archetype.title
+	$The/SocietyName.text = active_soc.archetype.title
 	$Icon.texture = active_soc.archetype.star_sign
 
 	$Icon.modulate = active_soc.colors.colors[0]
 	$Diag1.color = active_soc.colors.colors[1]
 	$Diag2.color = active_soc.colors.colors[2]
-	$SocietyName.modulate = active_soc.colors.colors[3]
+	$The.modulate = active_soc.colors.colors[3]
 
 	for old_component in $Action.get_children():
 		old_component.queue_free()

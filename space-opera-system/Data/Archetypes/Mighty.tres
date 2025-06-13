@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Archetype" load_steps=3 format=3 uid="uid://boi6t3qx52xfi"]
 
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_6cpb4"]
-[ext_resource type="Texture2D" uid="uid://8xg0y6sgvw74" path="res://Assets/ICONS/mighty_detail.svg" id="2_d51ld"]
+[ext_resource type="Texture2D" uid="uid://bn4tm3jou43rg" path="res://Assets/ICONS/mighty_detail.svg" id="2_d51ld"]
 
 [resource]
 script = ExtResource("1_6cpb4")
-title = "The Mighty"
+title = "Mighty"
 sign_name = ""
 star_sign = ExtResource("2_d51ld")
 metadata/_custom_type_script = "uid://b5hs4kdp8yai7"

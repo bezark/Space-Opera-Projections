@@ -1,4 +1,4 @@
-[gd_scene load_steps=68 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=67 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -28,7 +28,6 @@
 [ext_resource type="Shader" uid="uid://bxyime1jx4303" path="res://Assets/Shaders/distortion.gdshader" id="20_0e8f2"]
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
 [ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
-[ext_resource type="PackedScene" uid="uid://bfjbhi2njpdko" path="res://Components/SocietyUI/society_ui_pews.tscn" id="23_gix1a"]
 [ext_resource type="Script" uid="uid://b5kytadtsro01" path="res://Phases/societal_phase_que.gd" id="24_1yskb"]
 [ext_resource type="Script" uid="uid://u7ix08t77ok4" path="res://Components/ProjectorTools/black.gd" id="24_4sgve"]
 [ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
@@ -752,11 +751,7 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_4sgve")
 
-[node name="SocietyUI" parent="Post" instance=ExtResource("23_gix1a")]
-visible = false
-anchors_preset = 10
-anchor_bottom = 0.0
-grow_vertical = 1
+[node name="SocietyUI" parent="Post" instance=ExtResource("16_rhye5")]
 
 [node name="SocietalPhaseQue" type="Control" parent="Post"]
 layout_mode = 3
@@ -836,9 +831,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SocietyUI" parent="Circle" instance=ExtResource("16_rhye5")]
-visible = false
-
 [node name="STTLabel" type="Label" parent="Circle"]
 visible = false
 anchors_preset = 5
@@ -854,6 +846,7 @@ label_settings = SubResource("LabelSettings_rpep8")
 script = ExtResource("23_4sgve")
 
 [node name="TimeLabel" type="Label" parent="Circle"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -966,29 +959,21 @@ script = ExtResource("28_0e8f2")
 [connection signal="words_spoken" from="LiveCaptions" to="Circle/STTLabel" method="_on_live_captions_words_spoken"]
 [connection signal="words_spoken" from="LiveCaptions" to="Pews/STTLabel" method="_on_live_captions_words_spoken"]
 [connection signal="action_toggled" from="Control" to="Post/SocietyUI" method="_on_control_action_toggled"]
-[connection signal="action_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_action_toggled"]
 [connection signal="body_added" from="Control" to="SystemView" method="_on_control_body_added"]
 [connection signal="cam_toggled" from="Control" to="Post/SocietyUI" method="_on_control_cam_toggled"]
-[connection signal="cam_toggled" from="Control" to="Circle/SocietyUI" method="_on_control_cam_toggled"]
 [connection signal="circle_changed" from="Control" to="Circle/Black" method="fade"]
 [connection signal="controls_updated" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/BodySelection" method="_on_control_controls_updated"]
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
 [connection signal="next_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_next_society_pressed"]
 [connection signal="next_society_pressed" from="Control" to="Post/SocietyUI" method="_on_control_next_society_pressed"]
-[connection signal="next_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_next_society_pressed"]
 [connection signal="pew_changed" from="Control" to="Pews/Black" method="fade"]
 [connection signal="prev_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_prev_society_pressed"]
 [connection signal="prev_society_pressed" from="Control" to="Post/SocietyUI" method="_on_control_prev_society_pressed"]
-[connection signal="prev_society_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_prev_society_pressed"]
 [connection signal="scene_changed" from="Control" to="SceneChanger" method="_on_control_scene_changed"]
-[connection signal="society_complete_pressed" from="Control" to="Post/SocietyUI" method="_on_control_society_complete_pressed"]
-[connection signal="society_complete_pressed" from="Control" to="Circle/SocietyUI" method="_on_control_society_complete_pressed"]
 [connection signal="society_fake_focused" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_society_fake_focused"]
 [connection signal="society_focused" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_society_focused"]
 [connection signal="society_focused" from="Control" to="Post/SocietyUI" method="_on_control_society_focused"]
-[connection signal="society_focused" from="Control" to="Circle/SocietyUI" method="_on_control_society_focused"]
 [connection signal="ui_toggeled" from="Control" to="Post/SocietyUI" method="_on_control_ui_toggeled"]
-[connection signal="ui_toggeled" from="Control" to="Circle/SocietyUI" method="_on_control_ui_toggeled"]
 [connection signal="view_fade_adjusted" from="Control" to="Post" method="_on_control_view_fade_adjusted"]
 [connection signal="zoomed_in" from="Control" to="ZoomView" method="_on_control_zoomed_in"]
 [connection signal="phase_changed" from="DatapadSync" to="Control" method="_on_datapad_sync_phase_changed"]

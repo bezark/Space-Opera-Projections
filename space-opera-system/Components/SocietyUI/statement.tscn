@@ -19,7 +19,6 @@ font_size = 64
 [node name="Statement" type="HFlowContainer"]
 offset_right = 1195.0
 offset_bottom = 79.0
-alignment = 1
 script = ExtResource("1_u841r")
 
 [node name="WeUse" type="Label" parent="."]

@@ -5,7 +5,7 @@
 
 [resource]
 script = ExtResource("1_h6dld")
-title = "The Aesthetic"
+title = "Aesthetic"
 sign_name = ""
 star_sign = ExtResource("2_5uth7")
 metadata/_custom_type_script = "uid://b5hs4kdp8yai7"

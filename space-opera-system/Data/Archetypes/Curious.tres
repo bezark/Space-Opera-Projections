@@ -1,11 +1,11 @@
 [gd_resource type="Resource" script_class="Archetype" load_steps=3 format=3 uid="uid://dsxfj6kk3ky01"]
 
 [ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="1_s85sc"]
-[ext_resource type="Texture2D" uid="uid://7llimf0a14au" path="res://Assets/ICONS/curious_detail.svg" id="2_u71cu"]
+[ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="2_u71cu"]
 
 [resource]
 script = ExtResource("1_s85sc")
-title = "The Curious"
+title = "Curious"
 sign_name = ""
 star_sign = ExtResource("2_u71cu")
 metadata/_custom_type_script = "uid://b5hs4kdp8yai7"

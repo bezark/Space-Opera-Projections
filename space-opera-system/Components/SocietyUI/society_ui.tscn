@@ -1,11 +1,16 @@
-[gd_scene load_steps=18 format=3 uid="uid://b7x0paetbq6v7"]
+[gd_scene load_steps=20 format=3 uid="uid://b7x0paetbq6v7"]
 
 [ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/SocietyUI/society_ui.gd" id="1_nc66i"]
 [ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
+[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="5_eiv5d"]
 [ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
 [ext_resource type="PackedScene" uid="uid://bnmxckyv0m5ir" path="res://Components/SocietyUI/statement.tscn" id="8_y0sm1"]
 [ext_resource type="Texture2D" uid="uid://su81uegkbnft" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g0m5a"]
+font = ExtResource("5_eiv5d")
+font_size = 64
 
 [sub_resource type="LabelSettings" id="LabelSettings_obmmj"]
 font = ExtResource("4_n4h2n")
@@ -25,6 +30,18 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("The/SocietyName:self_modulate")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_c6jvj"]
 length = 2.0
@@ -39,6 +56,42 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Back:color")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0901961, 0.0901961, 0.0901961, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("The:self_modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.0666667, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("The/SocietyName:self_modulate")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.82),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_sl87g"]
@@ -88,7 +141,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SocietyName:position:x")
+tracks/1/path = NodePath("The/SocietyName:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -139,7 +192,7 @@ tracks/0/keys = {
 tracks/1/type = "bezier"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SocietyName:position:x")
+tracks/1/path = NodePath("The/SocietyName:position:x")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -213,7 +266,7 @@ tracks/2/keys = {
 tracks/3/type = "bezier"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath("SocietyName:position:x")
+tracks/3/path = NodePath("The/SocietyName:position:x")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
@@ -231,6 +284,66 @@ tracks/4/keys = {
 "handle_modes": PackedInt32Array(0),
 "points": PackedFloat32Array(1691, -0.25, 0, 0.25, 0),
 "times": PackedFloat32Array(0)
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("The/SocietyName:self_modulate")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("The:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(158, -48)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Icon:position")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(195, 596)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Back:color")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.0901961, 0.0901961, 0.0901961, 0)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("The:self_modulate")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_q6muc"]
@@ -251,58 +364,46 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SocietyName:position")
+tracks/1/path = NodePath("Diag1:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0.1, 0.533333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(151, 40), Vector2(-901, 40)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Diag1:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(2.16667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(981.001, 1567)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Diag1:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Diag1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.166667, 0.633333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-0.00012207, -566), Vector2(-886, -566)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Diag2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Diag2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.133333, 0.533333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(1942, -235), Vector2(3355, -235)]
 }
-tracks/5/type = "value"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Icon:position")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
 "times": PackedFloat32Array(0.1, 0.5),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
@@ -326,71 +427,71 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("SocietyName:position")
+tracks/1/path = NodePath("Diag1:size")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 0.8),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector2(-901, 40), Vector2(151, 40)]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Diag1:size")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
 "times": PackedFloat32Array(2.16667),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(981.001, 1567)]
 }
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Diag1:position")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Diag1:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
 "times": PackedFloat32Array(0.0333334, 0.633333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(-886, -566), Vector2(-0.00012207, -566)]
 }
-tracks/4/type = "value"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Diag2:position")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Diag2:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
 "times": PackedFloat32Array(0.0333333, 0.566667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [Vector2(3355, -235), Vector2(1942, -235)]
 }
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Icon:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.866667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(-215, 596), Vector2(195, 596)]
+}
 tracks/5/type = "value"
 tracks/5/imported = false
 tracks/5/enabled = true
-tracks/5/path = NodePath("Icon:position")
+tracks/5/path = NodePath("DiceMask:modulate")
 tracks/5/interp = 1
 tracks/5/loop_wrap = true
 tracks/5/keys = {
-"times": PackedFloat32Array(0.1, 0.733333),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0.0666667),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector2(2755, 596), Vector2(1691, 596)]
+"values": [Color(1, 1, 1, 0)]
 }
 tracks/6/type = "value"
 tracks/6/imported = false
 tracks/6/enabled = true
-tracks/6/path = NodePath("DiceMask:modulate")
+tracks/6/path = NodePath("Action:modulate")
 tracks/6/interp = 1
 tracks/6/loop_wrap = true
 tracks/6/keys = {
-"times": PackedFloat32Array(0.0666667),
+"times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Color(1, 1, 1, 0)]
@@ -398,14 +499,14 @@ tracks/6/keys = {
 tracks/7/type = "value"
 tracks/7/imported = false
 tracks/7/enabled = true
-tracks/7/path = NodePath("Action:modulate")
+tracks/7/path = NodePath("The:position")
 tracks/7/interp = 1
 tracks/7/loop_wrap = true
 tracks/7/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0.04, 1),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(1, 1, 1, 0)]
+"values": [Vector2(-791, -48), Vector2(158, -48)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nl8h3"]
@@ -430,6 +531,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nc66i")
 
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 0)
+
 [node name="Diag1" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -0.00012207
@@ -440,6 +550,7 @@ rotation = 0.523598
 color = Color(0.42, 0.5795, 0.75, 1)
 
 [node name="Diag2" type="ColorRect" parent="."]
+visible = false
 layout_mode = 0
 offset_left = 1942.0
 offset_top = -235.0
@@ -450,12 +561,11 @@ color = Color(0.42, 0.5795, 0.75, 1)
 
 [node name="Action" type="VBoxContainer" parent="."]
 layout_mode = 1
-offset_left = 266.0
-offset_top = 362.0
-offset_right = 1515.0
-offset_bottom = 907.0
+offset_left = 464.0
+offset_top = 198.0
+offset_right = 2060.0
+offset_bottom = 743.0
 theme_override_constants/separation = 18
-alignment = 1
 
 [node name="Statement" parent="Action" instance=ExtResource("8_y0sm1")]
 layout_mode = 2
@@ -474,8 +584,19 @@ offset_top = -621.313
 offset_right = -635.545
 offset_bottom = -358.313
 
-[node name="SocietyName" type="Label" parent="."]
+[node name="The" type="Label" parent="."]
 modulate = Color(0.698039, 0.180392, 0.00784314, 1)
+layout_mode = 0
+offset_left = 158.0
+offset_top = -48.0
+offset_right = 1016.0
+offset_bottom = 153.0
+text = "THE"
+label_settings = SubResource("LabelSettings_g0m5a")
+vertical_alignment = 1
+uppercase = true
+
+[node name="SocietyName" type="Label" parent="The"]
 layout_mode = 0
 offset_left = 151.0
 offset_top = 40.0
@@ -484,13 +605,12 @@ offset_bottom = 241.0
 scale = Vector2(1, 2)
 text = "SOCIETY"
 label_settings = SubResource("LabelSettings_obmmj")
-horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
 
 [node name="Icon" type="Sprite2D" parent="."]
 modulate = Color(0.768627, 0.690196, 0.270588, 1)
-position = Vector2(1691, 596)
+position = Vector2(195, 596)
 scale = Vector2(0.381789, 0.381789)
 texture = ExtResource("7_nc66i")
 

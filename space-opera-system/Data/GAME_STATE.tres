@@ -115,7 +115,7 @@ spresource = SubResource("Resource_85ky3")
 
 [sub_resource type="Resource" id="Resource_vohyy"]
 script = ExtResource("3_pyy0l")
-title = "shtrhstr"
+title = "dirty litter"
 relationship = ""
 vital = false
 exhausted = false
@@ -123,7 +123,7 @@ exhausted = false
 [sub_resource type="Resource" id="Resource_e83xs"]
 script = ExtResource("25_fq34q")
 text = "start shit"
-statement = "We use shtrhstr to start shit"
+statement = "We use dirty litter to start shit"
 spresource = SubResource("Resource_vohyy")
 
 [sub_resource type="Resource" id="Resource_3lpua"]
@@ -181,25 +181,25 @@ voted = true
 voteTime = 1749773667
 parent_society = "Feay0"
 
-[sub_resource type="Resource" id="Resource_6asgw"]
+[sub_resource type="Resource" id="Resource_co6ix"]
 script = ExtResource("3_tfqbo")
-scene = ExtResource("18_0tr16")
-zooms = Array[PackedScene]([])
+scene = ExtResource("19_pvjkl")
+zooms = Array[PackedScene]([ExtResource("2_6t4gm"), ExtResource("20_4df5w")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
-[sub_resource type="Resource" id="Resource_hyjdu"]
+[sub_resource type="Resource" id="Resource_gmhrj"]
 script = ExtResource("2_qolqt")
-id = "qveE2"
-type = "Galactic Phase"
-status = "playing"
+id = "CxJcg"
+type = "Individual Phase"
+status = "paused"
 sp_round = 1
-scene_data = SubResource("Resource_6asgw")
+scene_data = SubResource("Resource_co6ix")
 time = {
-"duration": 720.0,
-"elapsed": 97.14,
-"remaining": 622.0,
-"remainingFormatted": "10:22"
+"duration": 600.0,
+"elapsed": 78.154,
+"remaining": 521.0,
+"remainingFormatted": "08:41"
 }
 
 [sub_resource type="Resource" id="Resource_5flw6"]
@@ -261,29 +261,29 @@ scene_data = SubResource("Resource_1a61f")
 time = {
 "duration": 1080.0,
 "elapsed": 1086.85,
-"remaining": 0.0,
+"remaining": -7.0,
 "remainingFormatted": "00:00"
 }
 
-[sub_resource type="Resource" id="Resource_co6ix"]
+[sub_resource type="Resource" id="Resource_6asgw"]
 script = ExtResource("3_tfqbo")
-scene = ExtResource("19_pvjkl")
-zooms = Array[PackedScene]([ExtResource("2_6t4gm"), ExtResource("20_4df5w")])
+scene = ExtResource("18_0tr16")
+zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
-[sub_resource type="Resource" id="Resource_gmhrj"]
+[sub_resource type="Resource" id="Resource_hyjdu"]
 script = ExtResource("2_qolqt")
-id = "CxJcg"
-type = "Individual Phase"
-status = "idle"
+id = "qveE2"
+type = "Galactic Phase"
+status = "complete"
 sp_round = 1
-scene_data = SubResource("Resource_co6ix")
+scene_data = SubResource("Resource_6asgw")
 time = {
-"duration": 600.0,
-"elapsed": 0.0,
-"remaining": 600.0,
-"remainingFormatted": "10:00"
+"duration": 900.0,
+"elapsed": 805.155,
+"remaining": 95.0,
+"remainingFormatted": "01:35"
 }
 
 [sub_resource type="Resource" id="Resource_hte2g"]
@@ -1171,9 +1171,7 @@ voice = "people"
 [sub_resource type="Resource" id="Resource_tfqbo"]
 script = ExtResource("1_lohdr")
 title = "Quinn"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"YaD-S": SubResource("Resource_vohyy")
-})
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_p8617"]
@@ -1192,7 +1190,8 @@ voice = "people"
 script = ExtResource("1_lohdr")
 title = "Techno Druids"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"HOzO6": SubResource("Resource_85ky3")
+"HOzO6": SubResource("Resource_85ky3"),
+"YaD-S": SubResource("Resource_vohyy")
 })
 voice = "people"
 
@@ -1311,7 +1310,7 @@ actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_y40ly")])
 
 [resource]
 script = ExtResource("4_phj51")
-active_phase = SubResource("Resource_hyjdu")
+active_phase = SubResource("Resource_gmhrj")
 phases = Array[ExtResource("2_qolqt")]([SubResource("Resource_1ndvh"), SubResource("Resource_lmwvc"), SubResource("Resource_eqxcj"), SubResource("Resource_hyjdu"), SubResource("Resource_gmhrj"), SubResource("Resource_572tl"), SubResource("Resource_kt62q"), SubResource("Resource_s04wv"), SubResource("Resource_ggql6"), SubResource("Resource_a5evr"), SubResource("Resource_onare"), SubResource("Resource_dsa3b"), SubResource("Resource_shra4"), SubResource("Resource_bc0hh"), SubResource("Resource_ggefx"), SubResource("Resource_3hrcj"), SubResource("Resource_3lk5k"), SubResource("Resource_qlcyy"), SubResource("Resource_2ljst"), SubResource("Resource_q5gi0"), SubResource("Resource_m5ldu"), SubResource("Resource_t1oim"), SubResource("Resource_dv4tu"), SubResource("Resource_gg3ue"), SubResource("Resource_c387s"), SubResource("Resource_i714y"), SubResource("Resource_34h11"), SubResource("Resource_un5f2")])
 societies = Dictionary[String, ExtResource("5_idph4")]({
 "Feay0": SubResource("Resource_0m20m"),

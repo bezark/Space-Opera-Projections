@@ -12,17 +12,12 @@ shader_parameter/screen_width = 1920.0
 shader_parameter/screen_height = 1080.0
 
 [node name="SocietyUI" instance=ExtResource("1_u6qsd")]
+modulate = Color(1, 1, 1, 0.765787)
 
-[node name="Back" type="ColorRect" parent="." index="0"]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0885599, 0.0885599, 0.0885599, 0.517647)
-
-[node name="DiceMask" parent="." index="4"]
+[node name="DiceMask" parent="." index="3"]
 material = SubResource("ShaderMaterial_uciym")
 position = Vector2(1146, 563)
 scale = Vector2(1.10417, 1.10417)
+
+[node name="Icon" parent="." index="5"]
+position = Vector2(195, 596)
