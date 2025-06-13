@@ -28,31 +28,31 @@
   boot.extraModulePackages = with config.boot.kernelPackages; [ v4l2loopback ];  # :contentReference[oaicite:0]{index=0}
 
   # Pass parameters for one device, /dev/video1
-  # boot.extraModprobeConfig = ''
-  #   options v4l2loopback devices=1 max_buffers=2 video_nr=4 exclusive_caps=0 max_open=2 card_label="VirtualCam #0"
-  # '';
+  boot.extraModprobeConfig = ''
+    options v4l2loopback devices=1 max_buffers=2 video_nr=4 exclusive_caps=0 max_open=2 card_label="VirtualCam #0"
+  '';
 
 
-  # systemd.services.ffmpeg-v4l2 = {
-  #   description = "UDP→/dev/video4 (low-latency)";
-  #   wants       = [ "network-online.target" ];
-  #   after       = [ "network-online.target" ];
-  #   serviceConfig = {
-  #     ExecStart = ''
-  #       ${pkgs.ffmpeg}/bin/ffmpeg \
-  #         -fflags nobuffer -flags low_delay \
-  #         -i udp://@:8080?fifo_size=5000000 \
-  #         -c:v rawvideo \
-  #         -pix_fmt yuyv422 \
-  #         -f v4l2 /dev/video4
-  #     '';
-  #     Restart    = "always";
-  #     RestartSec = "5s";
-  #     StandardOutput = "journal";
-  #     StandardError  = "journal";
-  #   };
-  #   wantedBy   = [ "multi-user.target" ];
-  # };
+  systemd.services.ffmpeg-v4l2 = {
+    description = "UDP→/dev/video4 (low-latency)";
+    wants       = [ "network-online.target" ];
+    after       = [ "network-online.target" ];
+    serviceConfig = {
+      ExecStart = ''
+        ${pkgs.ffmpeg}/bin/ffmpeg \
+          -fflags nobuffer -flags low_delay \
+          -i udp://@:8080?fifo_size=5000000 \
+          -c:v rawvideo \
+          -pix_fmt yuyv422 \
+          -f v4l2 /dev/video4
+      '';
+      Restart    = "always";
+      RestartSec = "5s";
+      StandardOutput = "journal";
+      StandardError  = "journal";
+    };
+    wantedBy   = [ "multi-user.target" ];
+  };
 
 
 
