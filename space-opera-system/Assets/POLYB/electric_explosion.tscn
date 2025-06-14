@@ -44,6 +44,7 @@ initial_velocity_max = 1.0
 angular_velocity_max = 2.0
 gravity = Vector3(0, 2, 0)
 scale_min = 0.5
+scale_max = 91.23
 scale_curve = SubResource("CurveTexture_u30o4")
 color = Color(0.719, 2.878, 9.352, 1)
 color_ramp = SubResource("GradientTexture1D_ej5td")
@@ -124,6 +125,7 @@ initial_velocity_min = 2.0
 initial_velocity_max = 3.0
 gravity = Vector3(0, 0, 0)
 scale_min = 0.5
+scale_max = 76.19
 scale_curve = SubResource("CurveTexture_ada02")
 color_ramp = SubResource("GradientTexture1D_b14d6")
 alpha_curve = SubResource("CurveTexture_48gr2")
@@ -256,7 +258,7 @@ spread = 180.0
 initial_velocity_max = 0.01
 gravity = Vector3(0, 0, 0)
 scale_min = 0.05
-scale_max = 0.1
+scale_max = 52.73
 color = Color(0.17376, 0.544089, 1, 1)
 color_ramp = SubResource("GradientTexture1D_qdmee")
 alpha_curve = SubResource("CurveTexture_rikus")
@@ -313,6 +315,7 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_151k6")
 
 [node name="ElectricExplosion" type="Node3D"]
+transform = Transform3D(40, 0, 0, 0, 40, 0, 0, 0, 40, 0, 0, 0)
 script = ExtResource("1_mge3i")
 
 [node name="Fire" type="GPUParticles3D" parent="."]

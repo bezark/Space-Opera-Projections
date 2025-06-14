@@ -1,9 +1,10 @@
-[gd_scene load_steps=60 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=64 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="PackedScene" uid="uid://cw1pdlvuehwmt" path="res://Assets/1Toys/Zooms/city.tscn" id="7_dee4i"]
+[ext_resource type="PackedScene" uid="uid://b580ywvpd3yhx" path="res://Assets/1Toys/Zooms/crystal.tscn" id="7_vp0u0"]
 [ext_resource type="PackedScene" uid="uid://w861i1qcxaxq" path="res://Assets/1Toys/well.tscn" id="8_qwjcd"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Components/CelestialBodies/celestial_body.tscn" id="9_l1est"]
 [ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="9_qwjcd"]
@@ -13,6 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://u6wig7865ius" path="res://Assets/1Toys/Planets/Meadow.tscn" id="13_yfr1v"]
 [ext_resource type="PackedScene" uid="uid://8dwef6hk3vio" path="res://Assets/1Toys/Planets/moon.tscn" id="15_m4j4v"]
 [ext_resource type="PackedScene" uid="uid://c7nga0dl7lwsr" path="res://Assets/1Toys/DysonSphere.tscn" id="16_dee4i"]
+[ext_resource type="PackedScene" uid="uid://desb7ucu5aj3v" path="res://Assets/1Toys/Zooms/meadow.tscn" id="16_fxs8t"]
 [ext_resource type="PackedScene" uid="uid://5x10tqvu7gxf" path="res://Assets/1Toys/Zooms/Desert.tscn" id="16_ii0dt"]
 [ext_resource type="PackedScene" uid="uid://c0ex5nclh00h6" path="res://Assets/1Toys/Planets/Gemstone.tscn" id="16_q43nw"]
 [ext_resource type="Script" uid="uid://kjavq4i37ayq" path="res://addons/tile_path_3d/tile_path_3d.gd" id="17_mcu1l"]
@@ -24,10 +26,12 @@
 [ext_resource type="PackedScene" uid="uid://dejmxcbny0emy" path="res://Assets/1Toys/Planets/AsteroidBelt.tscn" id="20_mcu1l"]
 [ext_resource type="PackedScene" uid="uid://pt657as7h6v7" path="res://Assets/1Toys/Planets/sanctions.tscn" id="20_v0qhr"]
 [ext_resource type="PackedScene" uid="uid://cht1f4bhktdj0" path="res://Assets/1Toys/Planets/Gas.tscn" id="21_ggr6d"]
+[ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/1Toys/Zooms/gasss.tscn" id="22_pt8ev"]
 [ext_resource type="PackedScene" uid="uid://cgv5cuntgow0q" path="res://Assets/1Toys/Planets/Volcanic.tscn" id="22_v0qhr"]
 [ext_resource type="PackedScene" uid="uid://dtlmbwcqlbv82" path="res://Assets/1Toys/Planets/Ice.tscn" id="23_ii0dt"]
 [ext_resource type="PackedScene" uid="uid://dbxq7ep55wcw8" path="res://Assets/1Toys/Planets/ice_moon.tscn" id="24_pt8ev"]
 [ext_resource type="Shader" uid="uid://crwkd77t0ssfj" path="res://Assets/Shaders/nebula.gdshader" id="25_mcu1l"]
+[ext_resource type="PackedScene" uid="uid://b7qovvjsewkwn" path="res://Assets/1Toys/Zooms/ice.tscn" id="27_h4gil"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
 panorama = ExtResource("3_smirv")
@@ -59,7 +63,7 @@ adjustment_enabled = true
 
 [sub_resource type="Resource" id="Resource_smirv"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("7_vp0u0")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -265,7 +269,7 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="Resource" id="Resource_pt8ev"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("16_fxs8t")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -324,7 +328,7 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="Resource" id="Resource_qwjcd"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("22_pt8ev")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -377,7 +381,7 @@ clearcoat_roughness = 0.4
 
 [sub_resource type="Resource" id="Resource_vk8jg"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("27_h4gil")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 

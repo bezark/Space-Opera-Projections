@@ -17,6 +17,9 @@ background_mode = 2
 sky = SubResource("Sky_h75qb")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.423529, 0.152941, 0.678431, 1)
 
 [sub_resource type="Gradient" id="Gradient_ghh6f"]
 offsets = PackedFloat32Array(0.2, 1)

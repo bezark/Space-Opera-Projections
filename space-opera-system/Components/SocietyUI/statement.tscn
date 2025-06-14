@@ -6,15 +6,15 @@
 
 [sub_resource type="LabelSettings" id="LabelSettings_p6x64"]
 font = ExtResource("1_225cp")
-font_size = 64
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_s0s18"]
 font = ExtResource("2_u841r")
-font_size = 64
+font_size = 48
 
 [sub_resource type="LabelSettings" id="LabelSettings_4sgve"]
 font = ExtResource("1_225cp")
-font_size = 64
+font_size = 48
 
 [node name="Statement" type="HFlowContainer"]
 offset_right = 1195.0

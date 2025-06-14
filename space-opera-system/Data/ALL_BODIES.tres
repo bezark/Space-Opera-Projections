@@ -1,11 +1,24 @@
-[gd_resource type="Resource" script_class="AllCelestialBodies" load_steps=8 format=3 uid="uid://dys78k5634li2"]
+[gd_resource type="Resource" script_class="AllCelestialBodies" load_steps=15 format=3 uid="uid://dys78k5634li2"]
 
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_4ghr2"]
 [ext_resource type="Resource" uid="uid://d1j3idy1ataam" path="res://Assets/1Toys/spacestation.tres" id="2_gjgxi"]
+[ext_resource type="PackedScene" uid="uid://dvrf2tdnr1go1" path="res://Assets/1Toys/ships/ships.tscn" id="2_h547r"]
 [ext_resource type="Script" uid="uid://21eslsjjv735" path="res://Components/Classes/AllCelestialBodies.gd" id="2_hukp0"]
 [ext_resource type="Resource" uid="uid://1thessxw0snm" path="res://Data/PlayerPlanets/DESERT_home.tres" id="3_tfc5e"]
 [ext_resource type="Resource" uid="uid://44ufa8myo66y" path="res://Data/PlayerPlanets/GAS_home.tres" id="4_2kv53"]
 [ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="5_tfc5e"]
+[ext_resource type="Resource" uid="uid://da2sxkjh4qlsj" path="res://Data/PlayerPlanets/GEMSTONE_home.tres" id="7_gg3lv"]
+[ext_resource type="Resource" uid="uid://b3jctnro7exx0" path="res://Data/PlayerPlanets/ICE_home.tres" id="8_o3vx6"]
+[ext_resource type="Resource" uid="uid://dbgqbdkieb20f" path="res://Data/PlayerPlanets/EARTH_home.tres" id="9_4tpao"]
+[ext_resource type="PackedScene" uid="uid://dkq1twrcasgfp" path="res://Assets/1Toys/ships/realmships.tscn" id="10_gg3lv"]
+
+[sub_resource type="Resource" id="Resource_rw1ih"]
+resource_name = " ships"
+script = ExtResource("1_4ghr2")
+scene = ExtResource("2_h547r")
+zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="Resource" id="Resource_2kv53"]
 resource_name = "Resevoir"
@@ -15,7 +28,15 @@ zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
+[sub_resource type="Resource" id="Resource_o3vx6"]
+resource_name = "wood ships"
+script = ExtResource("1_4ghr2")
+scene = ExtResource("10_gg3lv")
+zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
 [resource]
 script = ExtResource("2_hukp0")
-all_bodies = Array[ExtResource("1_4ghr2")]([ExtResource("2_gjgxi"), ExtResource("3_tfc5e"), ExtResource("4_2kv53"), SubResource("Resource_2kv53")])
+all_bodies = Array[ExtResource("1_4ghr2")]([SubResource("Resource_rw1ih"), ExtResource("2_gjgxi"), ExtResource("3_tfc5e"), ExtResource("4_2kv53"), SubResource("Resource_2kv53"), ExtResource("7_gg3lv"), ExtResource("8_o3vx6"), ExtResource("9_4tpao"), SubResource("Resource_o3vx6")])
 metadata/_custom_type_script = "uid://21eslsjjv735"

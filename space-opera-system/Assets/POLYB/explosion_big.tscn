@@ -373,8 +373,8 @@ blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_2oxcc")
 
 [node name="ExplosionBig" type="Node3D"]
+transform = Transform3D(100, 0, 0, 0, 100, 0, 0, 0, 100, 0, 0, 0)
 script = ExtResource("1_ou48d")
-auto_animate = true
 
 [node name="Fire" type="GPUParticles3D" parent="."]
 sorting_offset = 1.0

@@ -4,6 +4,7 @@
 
 [sub_resource type="CameraTexture" id="CameraTexture_nl3vh"]
 camera_feed_id = 1
+camera_is_active = true
 
 [node name="CameraTest" type="HSplitContainer"]
 anchors_preset = 15

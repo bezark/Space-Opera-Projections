@@ -91,7 +91,7 @@ shader_parameter/strength = 1.0
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gix1a"]
 shader = ExtResource("14_rhye5")
-shader_parameter/radius = 5
+shader_parameter/radius = 4
 shader_parameter/offset = Vector3(0, 0, 0)
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ao5vc"]
@@ -554,7 +554,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 50)
 script = ExtResource("10_g514o")
 sensitivity = 0.1
 damping = 0.2
-zoom_sensitivity = 10.0
+zoom_sensitivity = 5.0
 metadata/_custom_type_script = "uid://ghnhrkb3yrje"
 
 [node name="Selectors" type="VBoxContainer" parent="SystemView/Kin/Crane/OrbitalCamera" groups=["permanent", "system_control"]]
@@ -751,9 +751,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("ViewportTexture_4sgve")
 
-[node name="SocietyUI" parent="Post" instance=ExtResource("16_rhye5")]
-
 [node name="SocietalPhaseQue" type="Control" parent="Post"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -788,7 +787,6 @@ scale = Vector2(1, 2)
 text = "THE SOCIETAL PHASE"
 label_settings = SubResource("LabelSettings_obmmj")
 horizontal_alignment = 1
-vertical_alignment = 1
 uppercase = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Post/SocietalPhaseQue"]
@@ -796,12 +794,24 @@ libraries = {
 &"": SubResource("AnimationLibrary_nl8h3")
 }
 
-[node name="Button" type="Button" parent="Post/SocietalPhaseQue" groups=["permanent", "ui_control"]]
-layout_mode = 0
-offset_right = 8.0
-offset_bottom = 8.0
+[node name="HBoxContainer" type="HBoxContainer" parent="Post/SocietalPhaseQue" groups=["permanent", "ui_control"]]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="Post/SocietalPhaseQue/HBoxContainer"]
+layout_mode = 2
 toggle_mode = true
 text = "Societal Cue"
+
+[node name="TextEdit" type="TextEdit" parent="Post/SocietalPhaseQue/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="SocietyUI" parent="Post" instance=ExtResource("16_rhye5")]
 
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
@@ -832,14 +842,13 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="STTLabel" type="Label" parent="Circle"]
-visible = false
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -77.0
-offset_top = 101.0
+offset_top = 99.0
 offset_right = 78.0
-offset_bottom = 180.0
+offset_bottom = 178.0
 grow_horizontal = 2
 text = "TEST"
 label_settings = SubResource("LabelSettings_rpep8")
@@ -906,7 +915,7 @@ grow_vertical = 2
 clip_children = 2
 texture = SubResource("ViewportTexture_gix1a")
 polygon = PackedVector2Array(48, 147, 1910, 228, 1895, 1186, 0, 1200)
-uv = PackedVector2Array(3.33786e-06, -1.90735e-06, 1920, 48, 1912, 1200, 0, 1200)
+uv = PackedVector2Array(3.33786e-06, -1.90735e-06, 1896, 112, 1920, 1200, 0, 1200)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
 
@@ -942,6 +951,7 @@ text = "Wow cool captions bro"
 label_settings = SubResource("LabelSettings_gix1a")
 
 [node name="TimeLabel" type="Label" parent="Pews"]
+modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
@@ -987,6 +997,7 @@ script = ExtResource("28_0e8f2")
 [connection signal="value_changed" from="Post/FireControls/HSlider3" to="Post/FireControls" method="_on_h_slider_3_value_changed"]
 [connection signal="color_changed" from="Post/FireControls/ColorPickerButton" to="Post/FireControls" method="_on_color_picker_button_color_changed"]
 [connection signal="color_changed" from="Post/FireControls/ColorPickerButton2" to="Post/FireControls" method="_on_color_picker_button_2_color_changed"]
-[connection signal="toggled" from="Post/SocietalPhaseQue/Button" to="Post/SocietalPhaseQue" method="_on_button_toggled"]
+[connection signal="toggled" from="Post/SocietalPhaseQue/HBoxContainer/Button" to="Post/SocietalPhaseQue" method="_on_button_toggled"]
+[connection signal="text_changed" from="Post/SocietalPhaseQue/HBoxContainer/TextEdit" to="Post/SocietalPhaseQue" method="_on_text_edit_text_changed"]
 [connection signal="toggled" from="Circle/TimeLabel/TimerButton" to="Circle/TimeLabel" method="_on_timer_button_toggled"]
 [connection signal="toggled" from="Circle/TimeLabel/TimerButton" to="Pews/TimeLabel" method="_on_timer_button_toggled"]

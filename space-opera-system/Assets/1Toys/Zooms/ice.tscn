@@ -1,0 +1,105 @@
+[gd_scene load_steps=11 format=3 uid="uid://b7qovvjsewkwn"]
+
+[ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_qae8q"]
+[ext_resource type="PackedScene" uid="uid://caaua0idj0ooo" path="res://Assets/1Toys/Zooms/skating.tscn" id="2_xj67k"]
+[ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="3_6m5ch"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qae8q"]
+sky_top_color = Color(0.130131, 0.232578, 0.471829, 1)
+sky_horizon_color = Color(0.365907, 0.425013, 0.519983, 1)
+ground_bottom_color = Color(0.0433584, 0.177339, 0.317967, 1)
+ground_horizon_color = Color(0.365907, 0.425013, 0.519983, 1)
+energy_multiplier = 1.05
+
+[sub_resource type="Sky" id="Sky_xj67k"]
+sky_material = SubResource("ProceduralSkyMaterial_qae8q")
+
+[sub_resource type="Environment" id="Environment_6m5ch"]
+background_mode = 2
+sky = SubResource("Sky_xj67k")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.04
+volumetric_fog_albedo = Color(0.72549, 0.890196, 0.94902, 1)
+volumetric_fog_emission = Color(0, 0.243137, 0.439216, 1)
+
+[sub_resource type="Gradient" id="Gradient_xj67k"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_6m5ch"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v7le2"]
+seamless = true
+color_ramp = SubResource("Gradient_xj67k")
+noise = SubResource("FastNoiseLite_6m5ch")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_67n1n"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.87,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"height_blending": true,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise3_scale": 0.225,
+&"noise_texture": SubResource("NoiseTexture2D_v7le2"),
+&"projection_angular_division": 2.0,
+&"projection_threshold": 0.8,
+&"world_space_normal_blend": true
+}
+
+[node name="Ice" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866025, -0.0522642, 0.497261, 0, 0.994522, 0.104528, -0.5, 0.0905243, -0.861281, 0, 0, 0)
+light_energy = 0.7
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6m5ch")
+
+[node name="Terrain3D" type="Terrain3D" parent="."]
+data_directory = "res://Assets/1Toys/Zooms/ice"
+material = SubResource("Terrain3DMaterial_67n1n")
+assets = ExtResource("1_qae8q")
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="Path3D" parent="." instance=ExtResource("2_xj67k")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -41.5829, -0.763362, 126.851)
+
+[node name="Path3D2" parent="." instance=ExtResource("2_xj67k")]
+transform = Transform3D(0.850673, 0, 0.525694, 0, 1, 0, -0.525694, 0, 0.850673, 229.033, -0.763362, 310.081)
+
+[node name="Path3D3" parent="." instance=ExtResource("2_xj67k")]
+transform = Transform3D(0.850673, 0, 0.525694, 0, 1, 0, -0.525694, 0, 0.850673, -312.199, -0.763362, -135.308)
+
+[node name="Path3D4" parent="." instance=ExtResource("2_xj67k")]
+transform = Transform3D(-0.53855, 0, 0.842593, 0, 1, 0, -0.842593, 0, -0.53855, 316.419, -0.763362, -62.0162)
+
+[node name="FreeFlyCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 90)
+current = true
+script = ExtResource("3_6m5ch")
+metadata/_custom_type_script = "uid://c0w752ro86qws"

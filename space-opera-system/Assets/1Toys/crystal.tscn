@@ -1,0 +1,54 @@
+[gd_scene load_steps=14 format=3 uid="uid://dj4teh6d7ba7l"]
+
+[ext_resource type="Shader" uid="uid://8tpwrkb3yeel" path="res://Assets/Shaders/crystal.gdshader" id="1_3r61g"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_vteu4"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_dfr4u"]
+seamless = true
+noise = SubResource("FastNoiseLite_vteu4")
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_btvjt"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_5erbh"]
+seamless = true
+noise = SubResource("FastNoiseLite_btvjt")
+
+[sub_resource type="Gradient" id="Gradient_xkpnf"]
+colors = PackedColorArray(0.207552, 0.650163, 0.847522, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_df2we"]
+gradient = SubResource("Gradient_xkpnf")
+
+[sub_resource type="Gradient" id="Gradient_1i6wx"]
+colors = PackedColorArray(0, 0, 1, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_qtifw"]
+gradient = SubResource("Gradient_1i6wx")
+fill_from = Vector2(0.555556, 0.487179)
+
+[sub_resource type="Gradient" id="Gradient_e24xi"]
+offsets = PackedFloat32Array(0, 0.993617)
+colors = PackedColorArray(0.274842, 0.75532, 0.895674, 1, 1, 0, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_c73oe"]
+gradient = SubResource("Gradient_e24xi")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_rv1jj"]
+render_priority = 0
+shader = ExtResource("1_3r61g")
+shader_parameter/colorGradient1 = SubResource("GradientTexture1D_df2we")
+shader_parameter/colorGradient2 = SubResource("GradientTexture2D_qtifw")
+shader_parameter/NoiseTexture_Alpha = SubResource("NoiseTexture2D_dfr4u")
+shader_parameter/NoiseTexture_Specular = SubResource("NoiseTexture2D_5erbh")
+shader_parameter/gradientSpecular = SubResource("GradientTexture1D_c73oe")
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_3r61g"]
+material = SubResource("ShaderMaterial_rv1jj")
+top_radius = 0.0
+bottom_radius = 3.0
+height = 10.0
+
+[node name="CSGCylinder3D" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+mesh = SubResource("CylinderMesh_3r61g")

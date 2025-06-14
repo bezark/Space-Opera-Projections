@@ -36,6 +36,7 @@ func _ready() -> void:
 			var new_body = scene_data.scene.instantiate()
 			add_child(new_body)
 			body = new_body
+		$Effects.reparent.call_deferred(body, false)
 
 	var parent = get_parent()
 

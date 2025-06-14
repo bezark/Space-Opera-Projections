@@ -1,0 +1,80 @@
+[gd_scene load_steps=3 format=3 uid="uid://dkq1twrcasgfp"]
+
+[ext_resource type="Texture2D" uid="uid://byoqwpxw3da7a" path="res://Assets/Textures/Wood_06-256x256.png" id="1_l0trv"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kt7j"]
+albedo_texture = ExtResource("1_l0trv")
+
+[node name="realmships" type="Node3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0, 0, 1, 0, 164.082, 0)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0, 0, 1, -164.466, 164.082, 0)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0, 0, 1, -48.4521, 239.536, 0)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0, 0, 1, 204.165, 208.7, -105.479)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0, 0, 1, 39.6988, 208.7, -105.479)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D6" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.965926, -0.258819, 0, 0, 0, 1, 155.712, 284.155, -105.479)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D7" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.926712, -0.248312, -0.28204, 0.27243, -0.0729973, 0.959403, 0, 212.996, 40.6077)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D8" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.926712, -0.248312, -0.28204, 0.27243, -0.0729973, 0.959403, -164.466, 212.996, 40.6077)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D9" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.926712, -0.248312, -0.28204, 0.27243, -0.0729973, 0.959403, -48.4521, 285.387, 61.889)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D10" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.926712, -0.248312, -0.28204, 0.27243, -0.0729973, 0.959403, 204.165, 285.552, -48.0052)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D11" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.926712, -0.248312, -0.28204, 0.27243, -0.0729973, 0.959403, 39.6988, 285.552, -48.0052)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")
+
+[node name="CSGCylinder3D12" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.258819, -0.965926, 0, 0.926712, -0.248312, -0.28204, 0.27243, -0.0729973, 0.959403, 155.712, 357.944, -26.724)
+radius = 10.0
+height = 91.0
+material = SubResource("StandardMaterial3D_5kt7j")

@@ -1,23 +1,164 @@
-[gd_scene load_steps=4 format=3 uid="uid://bfjbhi2njpdko"]
+[gd_scene load_steps=11 format=3 uid="uid://bwr0uvcy1vvq7"]
 
-[ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://Components/SocietyUI/society_ui.tscn" id="1_u6qsd"]
-[ext_resource type="Shader" uid="uid://qgid7w8wfup4" path="res://Assets/Shaders/spotlight2.gdshader" id="2_8d2xy"]
+[ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/SocietyUI/society_ui.gd" id="1_i68ty"]
+[ext_resource type="PackedScene" uid="uid://bnmxckyv0m5ir" path="res://Components/SocietyUI/statement.tscn" id="2_kwbq4"]
+[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="5_qh1hm"]
+[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="6_3dkd2"]
+[ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_ap5ex"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_uciym"]
-shader = ExtResource("2_8d2xy")
-shader_parameter/circle_size = 0.29
-shader_parameter/feather = 0.025
-shader_parameter/circle_position = Vector2(0.5, 0.5)
-shader_parameter/screen_width = 1920.0
-shader_parameter/screen_height = 1080.0
+[sub_resource type="LabelSettings" id="LabelSettings_g0m5a"]
+font = ExtResource("5_qh1hm")
+font_size = 64
 
-[node name="SocietyUI" instance=ExtResource("1_u6qsd")]
-modulate = Color(1, 1, 1, 0.765787)
+[sub_resource type="LabelSettings" id="LabelSettings_obmmj"]
+font = ExtResource("6_3dkd2")
+font_size = 128
 
-[node name="DiceMask" parent="." index="3"]
-material = SubResource("ShaderMaterial_uciym")
-position = Vector2(1146, 563)
-scale = Vector2(1.10417, 1.10417)
+[sub_resource type="Animation" id="Animation_kwbq4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(2560, 1600)]
+}
 
-[node name="Icon" parent="." index="5"]
+[sub_resource type="Animation" id="Animation_i68ty"]
+resource_name = "UIUp"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Action:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:size")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 2.28),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(2560, 1600), Vector2(2560, 1600)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_kwbq4"]
+_data = {
+&"RESET": SubResource("Animation_kwbq4"),
+&"UIUp": SubResource("Animation_i68ty")
+}
+
+[node name="SocietyUI" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 25.0
+offset_right = 25.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_i68ty")
+
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 0)
+
+[node name="Diag1" type="ColorRect" parent="."]
+layout_mode = 0
+offset_left = -0.00012207
+offset_top = -566.0
+offset_right = 981.001
+offset_bottom = 1001.0
+rotation = 0.523598
+color = Color(0.42, 0.5795, 0.75, 1)
+
+[node name="Diag2" type="ColorRect" parent="."]
+visible = false
+layout_mode = 0
+offset_left = 1942.0
+offset_top = -235.0
+offset_right = 2923.0
+offset_bottom = 1332.0
+rotation = 0.523598
+color = Color(0.42, 0.5795, 0.75, 1)
+
+[node name="Action" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 1
+offset_left = 464.0
+offset_top = 198.0
+offset_right = 2060.0
+offset_bottom = 743.0
+theme_override_constants/separation = 18
+
+[node name="Statement" parent="Action" instance=ExtResource("2_kwbq4")]
+layout_mode = 2
+
+[node name="The" type="Label" parent="."]
+modulate = Color(0.698039, 0.180392, 0.00784314, 1)
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 158.0
+offset_top = -48.0
+offset_right = 1016.0
+offset_bottom = 153.0
+text = "THE"
+label_settings = SubResource("LabelSettings_g0m5a")
+vertical_alignment = 1
+uppercase = true
+
+[node name="SocietyName" type="Label" parent="The"]
+self_modulate = Color(1, 1, 1, 0)
+layout_mode = 0
+offset_left = 151.0
+offset_top = 70.0
+offset_right = 1009.0
+offset_bottom = 271.0
+scale = Vector2(1, 2)
+text = "SOCIETY"
+label_settings = SubResource("LabelSettings_obmmj")
+vertical_alignment = 1
+uppercase = true
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.768627, 0.690196, 0.270588, 1)
 position = Vector2(195, 596)
+scale = Vector2(0.381789, 0.381789)
+texture = ExtResource("7_ap5ex")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_kwbq4")
+}

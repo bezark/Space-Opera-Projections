@@ -157,7 +157,7 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 			### ACTIONS ###
 
 			# prints(this_society.actions.size(), society.actions.size())
-			# print(society.actions)
+			print(society.actions)
 			this_society.actions.clear()
 
 

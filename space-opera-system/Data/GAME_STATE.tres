@@ -1,104 +1,112 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=180 format=3]
+[gd_resource type="Resource" script_class="SessionData" load_steps=210 format=3 uid="uid://b68ujf4n4h03r"]
 
-[ext_resource type="Script" path="res://Components/Classes/Community.gd" id="1_lohdr"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
-[ext_resource type="Script" path="res://Components/Classes/Archetype.gd" id="2_jgbq0"]
-[ext_resource type="Script" path="res://Components/Classes/Phase.gd" id="2_qolqt"]
-[ext_resource type="Script" path="res://Components/Classes/SPResource.gd" id="3_pyy0l"]
-[ext_resource type="Script" path="res://Components/Classes/SceneData.gd" id="3_tfqbo"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Mighty.tres" id="3_y04g4"]
-[ext_resource type="Script" path="res://Components/Classes/SessionData.gd" id="4_phj51"]
-[ext_resource type="Script" path="res://Components/Classes/Society.gd" id="5_idph4"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Faithful.tres" id="5_r4n1j"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Curious.tres" id="6_2ix7t"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Enterprise.tres" id="6_jgbq0"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Intrepid.tres" id="7_5kibd"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Aesthetic.tres" id="8_08yu5"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Grounded.tres" id="9_3w1tv"]
-[ext_resource type="Resource" path="res://Data/Archetypes/Scholars.tres" id="10_fsgl3"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/setup.tscn" id="15_6t4gm"]
-[ext_resource type="Script" path="res://Components/Classes/SocietyAction.gd" id="15_r4n1j"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/Universal Phase.tscn" id="16_tfqbo"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/societal.tscn" id="17_5fu5v"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/galactic_council.tscn" id="18_0tr16"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/individual.tscn" id="19_pvjkl"]
-[ext_resource type="PackedScene" path="res://Assets/1Toys/AetherResevoir.tscn" id="20_4df5w"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/Generational Phase.tscn" id="21_nok2u"]
-[ext_resource type="PackedScene" path="res://Phases/Templates/conclusion.tscn" id="22_wyoyg"]
-[ext_resource type="Script" path="res://Components/Classes/SocietyActionComponent.gd" id="25_fq34q"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/GAS_home.tres" id="27_4df5w"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/GEMSTONE_home.tres" id="28_nok2u"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/ICE_home.tres" id="29_wyoyg"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/DESERT_home.tres" id="30_0m20m"]
-[ext_resource type="Resource" path="res://Data/PlayerPlanets/EARTH_home.tres" id="31_sr1pp"]
+[ext_resource type="Script" uid="uid://bj0gi6wec2ufj" path="res://Components/Classes/Community.gd" id="1_lohdr"]
+[ext_resource type="PackedScene" uid="uid://cu2t0kq57aia" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
+[ext_resource type="Script" uid="uid://b5hs4kdp8yai7" path="res://Components/Classes/Archetype.gd" id="2_jgbq0"]
+[ext_resource type="Script" uid="uid://bitm0ri2u6kmu" path="res://Components/Classes/Phase.gd" id="2_qolqt"]
+[ext_resource type="Script" uid="uid://b7drd8dk57bpq" path="res://Components/Classes/SPResource.gd" id="3_pyy0l"]
+[ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="3_tfqbo"]
+[ext_resource type="Resource" uid="uid://boi6t3qx52xfi" path="res://Data/Archetypes/Mighty.tres" id="3_y04g4"]
+[ext_resource type="Script" uid="uid://c1ec647xm7j1e" path="res://Components/Classes/SessionData.gd" id="4_phj51"]
+[ext_resource type="Script" uid="uid://7b8o4kmn3vob" path="res://Components/Classes/Society.gd" id="5_idph4"]
+[ext_resource type="Resource" uid="uid://y8gwtw6sduhy" path="res://Data/Archetypes/Faithful.tres" id="5_r4n1j"]
+[ext_resource type="Resource" uid="uid://dsxfj6kk3ky01" path="res://Data/Archetypes/Curious.tres" id="6_2ix7t"]
+[ext_resource type="Resource" uid="uid://8ufafn1v8btf" path="res://Data/Archetypes/Enterprise.tres" id="6_jgbq0"]
+[ext_resource type="Resource" uid="uid://roeci46rncv3" path="res://Data/Archetypes/Intrepid.tres" id="7_5kibd"]
+[ext_resource type="Resource" uid="uid://rjkvde2cxadx" path="res://Data/Archetypes/Aesthetic.tres" id="8_08yu5"]
+[ext_resource type="Resource" uid="uid://cstw7o32k1fbm" path="res://Data/Archetypes/Grounded.tres" id="9_3w1tv"]
+[ext_resource type="Resource" uid="uid://cil2aln12ayt1" path="res://Data/Archetypes/Scholars.tres" id="10_fsgl3"]
+[ext_resource type="PackedScene" uid="uid://beyf67m3sf4hl" path="res://Phases/Templates/setup.tscn" id="15_6t4gm"]
+[ext_resource type="Script" uid="uid://ceuamb4jewiu7" path="res://Components/Classes/SocietyAction.gd" id="15_r4n1j"]
+[ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Templates/Universal Phase.tscn" id="16_tfqbo"]
+[ext_resource type="PackedScene" uid="uid://daygx8iem7bg6" path="res://Phases/Templates/societal.tscn" id="17_5fu5v"]
+[ext_resource type="PackedScene" uid="uid://caxx5yulod7st" path="res://Phases/Templates/galactic_council.tscn" id="18_0tr16"]
+[ext_resource type="PackedScene" uid="uid://dguxmb03s7c2x" path="res://Phases/Templates/individual.tscn" id="19_pvjkl"]
+[ext_resource type="PackedScene" uid="uid://b32k4lkhxj3cg" path="res://Assets/1Toys/AetherResevoir.tscn" id="20_4df5w"]
+[ext_resource type="PackedScene" uid="uid://csjt08a72pwbn" path="res://Phases/Templates/Generational Phase.tscn" id="21_nok2u"]
+[ext_resource type="PackedScene" uid="uid://wd1w3dgwxd4u" path="res://Phases/Templates/conclusion.tscn" id="22_wyoyg"]
+[ext_resource type="Script" uid="uid://dhpfpy8e64ra3" path="res://Components/Classes/SocietyActionComponent.gd" id="25_fq34q"]
+[ext_resource type="Resource" uid="uid://44ufa8myo66y" path="res://Data/PlayerPlanets/GAS_home.tres" id="27_4df5w"]
+[ext_resource type="Resource" uid="uid://da2sxkjh4qlsj" path="res://Data/PlayerPlanets/GEMSTONE_home.tres" id="28_nok2u"]
+[ext_resource type="Resource" uid="uid://b3jctnro7exx0" path="res://Data/PlayerPlanets/ICE_home.tres" id="29_wyoyg"]
+[ext_resource type="Resource" uid="uid://1thessxw0snm" path="res://Data/PlayerPlanets/DESERT_home.tres" id="30_0m20m"]
+[ext_resource type="Resource" uid="uid://dbgqbdkieb20f" path="res://Data/PlayerPlanets/EARTH_home.tres" id="31_sr1pp"]
 
-[sub_resource type="Resource" id="Resource_ppamq"]
+[sub_resource type="Resource" id="Resource_yl7wv"]
 script = ExtResource("3_pyy0l")
-title = "Spring Rolls"
+title = "Incredible Thighs"
 relationship = ""
 vital = false
 exhausted = false
 
-[sub_resource type="Resource" id="Resource_0n6oe"]
+[sub_resource type="Resource" id="Resource_lvf2a"]
 script = ExtResource("25_fq34q")
-text = "be so good"
-statement = "We use Spring Rolls to be so good"
-spresource = SubResource("Resource_ppamq")
+text = "crush all the watermelons"
+statement = "We use Incredible Thighs to crush all the watermelons"
+spresource = SubResource("Resource_yl7wv")
 
-[sub_resource type="Resource" id="Resource_ltqjr"]
-script = ExtResource("3_pyy0l")
-title = "Adele CDs"
-relationship = ""
-vital = false
-exhausted = false
-
-[sub_resource type="Resource" id="Resource_ufosq"]
-script = ExtResource("25_fq34q")
-text = "be so bad"
-statement = "We use Adele CDs to be so bad"
-spresource = SubResource("Resource_ltqjr")
-
-[sub_resource type="Resource" id="Resource_ic4q7"]
+[sub_resource type="Resource" id="Resource_mmbm6"]
 script = ExtResource("15_r4n1j")
-game_round = 1
-components = Array[ExtResource("25_fq34q")]([SubResource("Resource_0n6oe"), SubResource("Resource_ufosq")])
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_lvf2a")])
 voted = true
-voteTime = 1749412083
+voteTime = 1748977467
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_5mvme"]
+script = ExtResource("3_pyy0l")
+title = "Personal Shields "
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_63yjk"]
+script = ExtResource("25_fq34q")
+text = "Help support infrastructure of developing communities "
+statement = "We use Personal Shields  to Help support infrastructure of developing communities "
+spresource = SubResource("Resource_5mvme")
+
+[sub_resource type="Resource" id="Resource_jcdtp"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_63yjk")])
+voted = true
+voteTime = 1749683459
+parent_society = "yXHVO"
+
+[sub_resource type="Resource" id="Resource_ttdan"]
+script = ExtResource("3_pyy0l")
+title = "Heavy Ass Sandbags"
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_x7s76"]
+script = ExtResource("25_fq34q")
+text = "Splash on em"
+statement = "We use Heavy Ass Sandbags to Splash on em"
+spresource = SubResource("Resource_ttdan")
+
+[sub_resource type="Resource" id="Resource_53r54"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_x7s76")])
+voted = true
+voteTime = 1749687551
 parent_society = "V9xbw"
 
-[sub_resource type="Resource" id="Resource_7api5"]
+[sub_resource type="Resource" id="Resource_hvns4"]
 script = ExtResource("3_pyy0l")
-title = "Space Faring Hot Air Balloons"
+title = "arg"
 relationship = ""
 vital = false
-exhausted = true
+exhausted = false
 
-[sub_resource type="Resource" id="Resource_orsaj"]
+[sub_resource type="Resource" id="Resource_tjw4m"]
 script = ExtResource("25_fq34q")
-text = "throw a kick ass party"
-statement = "We use Space Faring Hot Air Balloons to throw a kick ass party"
-spresource = SubResource("Resource_7api5")
-
-[sub_resource type="Resource" id="Resource_ujmga"]
-script = ExtResource("3_pyy0l")
-title = "Slpstck Comedy Based Lesson Plans"
-relationship = ""
-vital = false
-exhausted = true
-
-[sub_resource type="Resource" id="Resource_57f83"]
-script = ExtResource("25_fq34q")
-text = "be ready for this performance"
-statement = "We use Slpstck Comedy Based Lesson Plans to be ready for this performance"
-spresource = SubResource("Resource_ujmga")
-
-[sub_resource type="Resource" id="Resource_7rba4"]
-script = ExtResource("15_r4n1j")
-game_round = 1
-components = Array[ExtResource("25_fq34q")]([SubResource("Resource_orsaj"), SubResource("Resource_57f83")])
-voted = true
-voteTime = 1749412656
-parent_society = "e-JcG"
+text = "Scare the uec reps"
+statement = "We use arg to Scare the uec reps"
+spresource = SubResource("Resource_hvns4")
 
 [sub_resource type="Resource" id="Resource_85ky3"]
 script = ExtResource("3_pyy0l")
@@ -107,99 +115,39 @@ relationship = ""
 vital = false
 exhausted = false
 
-[sub_resource type="Resource" id="Resource_axt16"]
+[sub_resource type="Resource" id="Resource_cqugq"]
 script = ExtResource("25_fq34q")
-text = "meoooow"
-statement = "We use feral cats to meoooow"
+text = "Nip at their ankles "
+statement = "We use feral cats to Nip at their ankles "
 spresource = SubResource("Resource_85ky3")
 
-[sub_resource type="Resource" id="Resource_vohyy"]
-script = ExtResource("3_pyy0l")
-title = "dirty litter"
-relationship = ""
-vital = false
-exhausted = false
-
-[sub_resource type="Resource" id="Resource_e83xs"]
-script = ExtResource("25_fq34q")
-text = "start shit"
-statement = "We use dirty litter to start shit"
-spresource = SubResource("Resource_vohyy")
-
-[sub_resource type="Resource" id="Resource_3lpua"]
+[sub_resource type="Resource" id="Resource_wpt22"]
 script = ExtResource("15_r4n1j")
-game_round = 1
-components = Array[ExtResource("25_fq34q")]([SubResource("Resource_axt16"), SubResource("Resource_e83xs")])
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_tjw4m"), SubResource("Resource_cqugq")])
 voted = true
-voteTime = 1749670056
+voteTime = 1749689084
 parent_society = "et0k8"
 
-[sub_resource type="Resource" id="Resource_6vxe2"]
-script = ExtResource("3_pyy0l")
-title = "Poisonous Chow"
-relationship = ""
-vital = false
-exhausted = false
-
-[sub_resource type="Resource" id="Resource_i6obw"]
-script = ExtResource("25_fq34q")
-text = "Assassinate the other representatives"
-statement = "We use Poisonous Chow to Assassinate the other representatives"
-spresource = SubResource("Resource_6vxe2")
-
-[sub_resource type="Resource" id="Resource_olr5u"]
-script = ExtResource("3_pyy0l")
-title = "Diamond Pickaxes"
-relationship = ""
-vital = false
-exhausted = false
-
-[sub_resource type="Resource" id="Resource_rks1h"]
-script = ExtResource("25_fq34q")
-text = "Finish the job"
-statement = "We use Diamond Pickaxes to Finish the job"
-spresource = SubResource("Resource_olr5u")
-
-[sub_resource type="Resource" id="Resource_g7ae5"]
-script = ExtResource("3_pyy0l")
-title = "Sonic Scissors"
-relationship = ""
-vital = false
-exhausted = false
-
-[sub_resource type="Resource" id="Resource_udkl4"]
-script = ExtResource("25_fq34q")
-text = "Leave calling card of Mohawk on dead"
-statement = "We use Sonic Scissors to Leave calling card of Mohawk on dead"
-spresource = SubResource("Resource_g7ae5")
-
-[sub_resource type="Resource" id="Resource_ht27l"]
-script = ExtResource("15_r4n1j")
-game_round = 1
-components = Array[ExtResource("25_fq34q")]([SubResource("Resource_i6obw"), SubResource("Resource_rks1h"), SubResource("Resource_udkl4")])
-voted = true
-voteTime = 1749773667
-parent_society = "Feay0"
-
-[sub_resource type="Resource" id="Resource_co6ix"]
+[sub_resource type="Resource" id="Resource_m5lsc"]
 script = ExtResource("3_tfqbo")
-scene = ExtResource("19_pvjkl")
-zooms = Array[PackedScene]([ExtResource("2_6t4gm"), ExtResource("20_4df5w")])
+scene = ExtResource("18_0tr16")
+zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
-[sub_resource type="Resource" id="Resource_gmhrj"]
+[sub_resource type="Resource" id="Resource_s04wv"]
 script = ExtResource("2_qolqt")
-id = "CxJcg"
-type = "Individual Phase"
+id = "ao-zv"
+type = "Galactic Phase"
 status = "paused"
-sp_round = 1
-scene_data = SubResource("Resource_co6ix")
+sp_round = 2
+scene_data = SubResource("Resource_m5lsc")
 time = {
-"duration": 600.0,
-"elapsed": 78.154,
-"remaining": 521.0,
-"remainingFormatted": "08:41"
+"duration": 720.0,
+"elapsed": 183.177,
+"remaining": 536.0,
+"remainingFormatted": "08:56"
 }
 
 [sub_resource type="Resource" id="Resource_5flw6"]
@@ -218,9 +166,9 @@ sp_round = 0
 scene_data = SubResource("Resource_5flw6")
 time = {
 "duration": 480.0,
-"elapsed": 482.72,
-"remaining": -3.0,
-"remainingFormatted": "00:00"
+"elapsed": 0.0,
+"remaining": 480.0,
+"remainingFormatted": "08:00"
 }
 
 [sub_resource type="Resource" id="Resource_gytiw"]
@@ -260,9 +208,9 @@ sp_round = 1
 scene_data = SubResource("Resource_1a61f")
 time = {
 "duration": 1080.0,
-"elapsed": 1086.85,
-"remaining": -7.0,
-"remainingFormatted": "00:00"
+"elapsed": 48.028,
+"remaining": 1031.0,
+"remainingFormatted": "17:11"
 }
 
 [sub_resource type="Resource" id="Resource_6asgw"]
@@ -281,9 +229,30 @@ sp_round = 1
 scene_data = SubResource("Resource_6asgw")
 time = {
 "duration": 900.0,
-"elapsed": 805.155,
-"remaining": 95.0,
-"remainingFormatted": "01:35"
+"elapsed": 0.0,
+"remaining": 900.0,
+"remainingFormatted": "15:00"
+}
+
+[sub_resource type="Resource" id="Resource_co6ix"]
+script = ExtResource("3_tfqbo")
+scene = ExtResource("19_pvjkl")
+zooms = Array[PackedScene]([ExtResource("2_6t4gm"), ExtResource("20_4df5w")])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
+[sub_resource type="Resource" id="Resource_gmhrj"]
+script = ExtResource("2_qolqt")
+id = "CxJcg"
+type = "Individual Phase"
+status = "complete"
+sp_round = 1
+scene_data = SubResource("Resource_co6ix")
+time = {
+"duration": 600.0,
+"elapsed": 599.505,
+"remaining": 0.0,
+"remainingFormatted": "00:00"
 }
 
 [sub_resource type="Resource" id="Resource_hte2g"]
@@ -297,7 +266,7 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 script = ExtResource("2_qolqt")
 id = "ml6Q3"
 type = "Universal Phase"
-status = "idle"
+status = "complete"
 sp_round = 2
 scene_data = SubResource("Resource_hte2g")
 time = {
@@ -318,35 +287,14 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 script = ExtResource("2_qolqt")
 id = "BJ7S8"
 type = "Societal Phase"
-status = "idle"
+status = "complete"
 sp_round = 2
 scene_data = SubResource("Resource_c830y")
 time = {
 &"duration": 660.0,
-&"elapsed": 0.0,
+&"elapsed": 128.067,
 &"remaining": 0,
 &"remainingFormatted": ""
-}
-
-[sub_resource type="Resource" id="Resource_m5lsc"]
-script = ExtResource("3_tfqbo")
-scene = ExtResource("18_0tr16")
-zooms = Array[PackedScene]([])
-transition_time = 2.0
-metadata/_custom_type_script = "uid://dr51iert544uu"
-
-[sub_resource type="Resource" id="Resource_s04wv"]
-script = ExtResource("2_qolqt")
-id = "ao-zv"
-type = "Galactic Phase"
-status = "idle"
-sp_round = 2
-scene_data = SubResource("Resource_m5lsc")
-time = {
-"duration": 720.0,
-"elapsed": 9.01,
-"remaining": 600.0,
-"remainingFormatted": "10:00"
 }
 
 [sub_resource type="Resource" id="Resource_ggql6"]
@@ -379,7 +327,7 @@ sp_round = 2
 scene_data = SubResource("Resource_fxxyp")
 time = {
 "duration": 300.0,
-"elapsed": 16.014,
+"elapsed": 0.0,
 "remaining": 51.0,
 "remainingFormatted": "00:51"
 }
@@ -657,6 +605,13 @@ relationship = ""
 vital = false
 exhausted = false
 
+[sub_resource type="Resource" id="Resource_7api5"]
+script = ExtResource("3_pyy0l")
+title = "Space Faring Hot Air Balloons"
+relationship = ""
+vital = false
+exhausted = true
+
 [sub_resource type="Resource" id="Resource_6640e"]
 script = ExtResource("3_pyy0l")
 title = "Screeching Arrows"
@@ -702,6 +657,20 @@ exhausted = false
 [sub_resource type="Resource" id="Resource_4df5w"]
 script = ExtResource("3_pyy0l")
 title = "lillypadz"
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_6vxe2"]
+script = ExtResource("3_pyy0l")
+title = "Poisonous Chow"
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_ltqjr"]
+script = ExtResource("3_pyy0l")
+title = "Adele CDs"
 relationship = ""
 vital = false
 exhausted = false
@@ -762,6 +731,13 @@ relationship = ""
 vital = false
 exhausted = false
 
+[sub_resource type="Resource" id="Resource_olr5u"]
+script = ExtResource("3_pyy0l")
+title = "Diamond Pickaxes"
+relationship = ""
+vital = false
+exhausted = false
+
 [sub_resource type="Resource" id="Resource_xrrvu"]
 script = ExtResource("3_pyy0l")
 title = "Sundial"
@@ -776,16 +752,9 @@ relationship = ""
 vital = false
 exhausted = false
 
-[sub_resource type="Resource" id="Resource_ttdan"]
+[sub_resource type="Resource" id="Resource_g7ae5"]
 script = ExtResource("3_pyy0l")
-title = "Heavy Ass Sandbags"
-relationship = ""
-vital = false
-exhausted = false
-
-[sub_resource type="Resource" id="Resource_hvns4"]
-script = ExtResource("3_pyy0l")
-title = "arg"
+title = "Sonic Scissors"
 relationship = ""
 vital = false
 exhausted = false
@@ -811,16 +780,16 @@ relationship = ""
 vital = false
 exhausted = false
 
-[sub_resource type="Resource" id="Resource_5mvme"]
+[sub_resource type="Resource" id="Resource_0c1b5"]
 script = ExtResource("3_pyy0l")
-title = "Personal Shields "
+title = "People Power"
 relationship = ""
 vital = false
 exhausted = false
 
-[sub_resource type="Resource" id="Resource_0c1b5"]
+[sub_resource type="Resource" id="Resource_vohyy"]
 script = ExtResource("3_pyy0l")
-title = "People Power"
+title = "dirty litter"
 relationship = ""
 vital = false
 exhausted = false
@@ -860,16 +829,16 @@ relationship = ""
 vital = false
 exhausted = false
 
+[sub_resource type="Resource" id="Resource_ujmga"]
+script = ExtResource("3_pyy0l")
+title = "Slpstck Comedy Based Lesson Plans"
+relationship = ""
+vital = false
+exhausted = true
+
 [sub_resource type="Resource" id="Resource_colxq"]
 script = ExtResource("3_pyy0l")
 title = "Massive Factories "
-relationship = ""
-vital = false
-exhausted = false
-
-[sub_resource type="Resource" id="Resource_yl7wv"]
-script = ExtResource("3_pyy0l")
-title = "Incredible Thighs"
 relationship = ""
 vital = false
 exhausted = false
@@ -891,6 +860,13 @@ exhausted = false
 [sub_resource type="Resource" id="Resource_6bs4r"]
 script = ExtResource("3_pyy0l")
 title = "urk87kru"
+relationship = ""
+vital = false
+exhausted = false
+
+[sub_resource type="Resource" id="Resource_ppamq"]
+script = ExtResource("3_pyy0l")
+title = "Spring Rolls"
 relationship = ""
 vital = false
 exhausted = false
@@ -944,16 +920,126 @@ relationship = ""
 vital = false
 exhausted = false
 
-[sub_resource type="Resource" id="Resource_7h8d4"]
+[sub_resource type="Resource" id="Resource_fu5as"]
 script = ExtResource("25_fq34q")
-text = "blllllleeer"
-statement = "We use blergh to blllllleeer"
+text = ""
+statement = "We use hey now to "
+spresource = SubResource("Resource_r4n1j")
+
+[sub_resource type="Resource" id="Resource_jsv6q"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_fu5as")])
+voted = false
+voteTime = 0
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_xgq1b"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use hey now to "
+spresource = SubResource("Resource_r4n1j")
+
+[sub_resource type="Resource" id="Resource_cu8e1"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use bytes to "
+spresource = SubResource("Resource_5fu5v")
+
+[sub_resource type="Resource" id="Resource_4bpff"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_xgq1b"), SubResource("Resource_cu8e1")])
+voted = false
+voteTime = 0
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_6201t"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use bytes to "
+spresource = SubResource("Resource_5fu5v")
+
+[sub_resource type="Resource" id="Resource_0n6oe"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_6201t")])
+voted = false
+voteTime = 0
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_0ug04"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use adfasd to "
+spresource = SubResource("Resource_f2e40")
+
+[sub_resource type="Resource" id="Resource_ufosq"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use bytes to "
+spresource = SubResource("Resource_5fu5v")
+
+[sub_resource type="Resource" id="Resource_ic4q7"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_0ug04"), SubResource("Resource_ufosq")])
+voted = false
+voteTime = 0
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_8ipuu"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([])
+voted = false
+voteTime = 0
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_v0d3e"]
+script = ExtResource("25_fq34q")
+text = "try again"
+statement = "We use blergh to try again"
 spresource = SubResource("Resource_kgwu7")
 
-[sub_resource type="Resource" id="Resource_nc3oh"]
+[sub_resource type="Resource" id="Resource_orsaj"]
 script = ExtResource("15_r4n1j")
-game_round = 1
-components = Array[ExtResource("25_fq34q")]([SubResource("Resource_7h8d4")])
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_v0d3e")])
+voted = false
+voteTime = 0
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_57f83"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use urk87kru to "
+spresource = SubResource("Resource_6bs4r")
+
+[sub_resource type="Resource" id="Resource_7rba4"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_57f83")])
+voted = false
+voteTime = 0
+parent_society = "Feay0"
+
+[sub_resource type="Resource" id="Resource_axt16"]
+script = ExtResource("25_fq34q")
+text = "aergar"
+statement = "We use gwgwrtgwrt to aergar"
+spresource = SubResource("Resource_bhwi7")
+
+[sub_resource type="Resource" id="Resource_e83xs"]
+script = ExtResource("25_fq34q")
+text = "sgrtgsret"
+statement = "We use undefined to sgrtgsret"
+spresource = SubResource("Resource_fsgl3")
+
+[sub_resource type="Resource" id="Resource_3lpua"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_axt16"), SubResource("Resource_e83xs")])
 voted = false
 voteTime = 0
 parent_society = "Feay0"
@@ -961,111 +1047,96 @@ parent_society = "Feay0"
 [sub_resource type="ColorPalette" id="ColorPalette_5fu5v"]
 colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.278431, 0.0784314, 0.196078, 1, 0.278431, 0.0784314, 0.196078, 1, 0.647059, 0.517647, 0.67451, 1)
 
-[sub_resource type="Resource" id="Resource_q3mqm"]
+[sub_resource type="Resource" id="Resource_ht27l"]
 script = ExtResource("1_lohdr")
-title = "gaga"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"kDphD": SubResource("Resource_yl7wv"),
-"psJiM": SubResource("Resource_6bs4r")
-})
+title = "__ Teachers"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
-[sub_resource type="Resource" id="Resource_lvf2a"]
+[sub_resource type="Resource" id="Resource_72fa1"]
 script = ExtResource("1_lohdr")
-title = "nana"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"zj1sr": SubResource("Resource_r4n1j")
-})
-voice = "leader"
-
-[sub_resource type="Resource" id="Resource_cqugq"]
-script = ExtResource("1_lohdr")
-title = "Puppy Harpists"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"BpfkN": SubResource("Resource_6640e"),
-"I8tk5": SubResource("Resource_6vxe2")
-})
-voice = "leader"
-
-[sub_resource type="Resource" id="Resource_fu5as"]
-script = ExtResource("1_lohdr")
-title = "Valorous Hairdressors"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"QOyVJ": SubResource("Resource_g7ae5")
-})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_63yjk"]
-script = ExtResource("1_lohdr")
-title = "popo"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"JvqsG": SubResource("Resource_08yu5")
-})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_mmbm6"]
-script = ExtResource("1_lohdr")
-title = "dada"
+title = "Cunning __"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_wpt22"]
+[sub_resource type="Resource" id="Resource_mohqo"]
 script = ExtResource("1_lohdr")
-title = "Crackling Retailers"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"PWcce": SubResource("Resource_bnt41")
-})
+title = "Arms __"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
-[sub_resource type="Resource" id="Resource_0ug04"]
+[sub_resource type="Resource" id="Resource_y40ly"]
 script = ExtResource("1_lohdr")
-title = "Sleepy Dreamers"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"Ju7wd": SubResource("Resource_prcdx"),
-"cmBmi": SubResource("Resource_wdjj2")
-})
+title = "__ Gardeners"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
-[sub_resource type="Resource" id="Resource_6201t"]
+[sub_resource type="Resource" id="Resource_udkl4"]
 script = ExtResource("1_lohdr")
-title = "Dying Miners"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"NudHW": SubResource("Resource_olr5u")
-})
+title = "Forceful __"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_2ix7t"]
+[sub_resource type="Resource" id="Resource_rks1h"]
 script = ExtResource("1_lohdr")
-title = "baba"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"wRedp": SubResource("Resource_f2e40")
-})
+title = "__ Historians"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_p8617"]
+script = ExtResource("1_lohdr")
+title = "Untested __"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_jojyy"]
+script = ExtResource("1_lohdr")
+title = "__ Monks"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_xsvsn"]
+script = ExtResource("1_lohdr")
+title = "__ Poets"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_i6obw"]
+script = ExtResource("1_lohdr")
+title = "Venerated __"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
 [sub_resource type="Resource" id="Resource_0m20m"]
 resource_name = "Mighty"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
-"FRomU": SubResource("Resource_q3mqm"),
-"G_9_r": SubResource("Resource_lvf2a"),
-"JJYA-": SubResource("Resource_cqugq"),
-"JN2kT": SubResource("Resource_fu5as"),
-"NVQbL": SubResource("Resource_63yjk"),
-"NzLOs": SubResource("Resource_mmbm6"),
-"Sfh-1": SubResource("Resource_wpt22"),
-"Y_0oZ": SubResource("Resource_0ug04"),
-"fYcQx": SubResource("Resource_6201t"),
-"ssnLF": SubResource("Resource_2ix7t")
+"Ju_Oj": SubResource("Resource_ht27l"),
+"Rcsl8": SubResource("Resource_72fa1"),
+"XvTNQ": SubResource("Resource_mohqo"),
+"bIa2P": SubResource("Resource_y40ly"),
+"c1Sti": SubResource("Resource_udkl4"),
+"cBV-v": SubResource("Resource_rks1h"),
+"fAFSa": SubResource("Resource_p8617"),
+"m7_IE": SubResource("Resource_jojyy"),
+"sasmI": SubResource("Resource_xsvsn"),
+"xUCao": SubResource("Resource_i6obw")
 })
 home = ExtResource("27_4df5w")
 colors = SubResource("ColorPalette_5fu5v")
 archetype = ExtResource("3_y04g4")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_nc3oh"), SubResource("Resource_ht27l")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_jsv6q"), SubResource("Resource_4bpff"), SubResource("Resource_0n6oe"), SubResource("Resource_ic4q7"), SubResource("Resource_8ipuu"), SubResource("Resource_orsaj"), SubResource("Resource_7rba4"), SubResource("Resource_3lpua"), SubResource("Resource_mmbm6")])
 
-[sub_resource type="Resource" id="Resource_e71la"]
+[sub_resource type="Resource" id="Resource_ju54a"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use Energized Batteries to "
+spresource = SubResource("Resource_l77ip")
+
+[sub_resource type="Resource" id="Resource_s832x"]
 script = ExtResource("15_r4n1j")
-game_round = 1
-components = Array[ExtResource("25_fq34q")]([])
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_ju54a")])
 voted = false
 voteTime = 0
 parent_society = "V9xbw"
@@ -1073,15 +1144,63 @@ parent_society = "V9xbw"
 [sub_resource type="ColorPalette" id="ColorPalette_4df5w"]
 colors = PackedColorArray(0.42, 0.5795, 0.75, 1, 0.647059, 0.694118, 0.745098, 1, 0.647059, 0.694118, 0.745098, 1, 0.647059, 0.517647, 0.67451, 1)
 
-[sub_resource type="Resource" id="Resource_x7s76"]
+[sub_resource type="Resource" id="Resource_ke378"]
 script = ExtResource("1_lohdr")
-title = "My Guys"
+title = "[] Actors"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_ywgv8"]
+script = ExtResource("1_lohdr")
+title = "Avant-Garde []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_fc7me"]
+script = ExtResource("1_lohdr")
+title = "[] Builders "
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
-[sub_resource type="Resource" id="Resource_tjw4m"]
+[sub_resource type="Resource" id="Resource_v62tt"]
 script = ExtResource("1_lohdr")
-title = ""
+title = "[] Toolmakers"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_0ek8s"]
+script = ExtResource("1_lohdr")
+title = "[] Spies"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_gxjm8"]
+script = ExtResource("1_lohdr")
+title = "[] []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_engny"]
+script = ExtResource("1_lohdr")
+title = "[] []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_iibh1"]
+script = ExtResource("1_lohdr")
+title = "[] []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_jvsal"]
+script = ExtResource("1_lohdr")
+title = "[] Funders"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_l2hpj"]
+script = ExtResource("1_lohdr")
+title = "Revolutionary []"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
@@ -1089,161 +1208,215 @@ voice = "people"
 resource_name = "Aesthetic"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
-"Bd8RN": SubResource("Resource_x7s76"),
-"kEXYj": SubResource("Resource_tjw4m")
+"DgkcU": SubResource("Resource_ke378"),
+"EnTME": SubResource("Resource_ywgv8"),
+"K7Px8": SubResource("Resource_fc7me"),
+"LFwRq": SubResource("Resource_v62tt"),
+"Q4s-K": SubResource("Resource_0ek8s"),
+"WG1xC": SubResource("Resource_gxjm8"),
+"d3FJV": SubResource("Resource_engny"),
+"ldleA": SubResource("Resource_iibh1"),
+"yT0gQ": SubResource("Resource_jvsal"),
+"zhfA1": SubResource("Resource_l2hpj")
 })
 home = ExtResource("28_nok2u")
 colors = SubResource("ColorPalette_4df5w")
 archetype = ExtResource("8_08yu5")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_ic4q7"), SubResource("Resource_e71la")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_s832x"), SubResource("Resource_53r54")])
+
+[sub_resource type="Resource" id="Resource_0v6q6"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([])
+voted = false
+voteTime = 0
+parent_society = "e-JcG"
 
 [sub_resource type="ColorPalette" id="ColorPalette_nok2u"]
 colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.42, 0.5795, 0.75, 1, 0.42, 0.5795, 0.75, 1, 0.478431, 0.647059, 0.564706, 1)
 
-[sub_resource type="Resource" id="Resource_8ipuu"]
+[sub_resource type="Resource" id="Resource_yqwec"]
 script = ExtResource("1_lohdr")
-title = "Test"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"EglIH": SubResource("Resource_t67ek"),
-"xi8zx": SubResource("Resource_wqdk8")
-})
+title = "Cloistered  X"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_v0d3e"]
+[sub_resource type="Resource" id="Resource_tqnxe"]
 script = ExtResource("1_lohdr")
-title = "Test2"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"vlqBU": SubResource("Resource_ldkkt")
-})
+title = "Belligerent X"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_7dqx6"]
+script = ExtResource("1_lohdr")
+title = "X Engineers"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_uqg5d"]
+script = ExtResource("1_lohdr")
+title = "Honorable X"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_b2hvh"]
+script = ExtResource("1_lohdr")
+title = "X Pilots"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "leader"
+
+[sub_resource type="Resource" id="Resource_bbup7"]
+script = ExtResource("1_lohdr")
+title = "X X"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_c3ety"]
+script = ExtResource("1_lohdr")
+title = "X Navigators "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_sr1pp"]
 resource_name = "Intrepid"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
-"Lx7BH": SubResource("Resource_8ipuu"),
-"zf6gm": SubResource("Resource_v0d3e")
+"HxH3y": SubResource("Resource_yqwec"),
+"Qc0VV": SubResource("Resource_tqnxe"),
+"VBX10": SubResource("Resource_7dqx6"),
+"baFQb": SubResource("Resource_uqg5d"),
+"iLKlW": SubResource("Resource_b2hvh"),
+"l5d1f": SubResource("Resource_bbup7"),
+"nmW7Z": SubResource("Resource_c3ety")
 })
 home = ExtResource("29_wyoyg")
 colors = SubResource("ColorPalette_nok2u")
 archetype = ExtResource("7_5kibd")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_7rba4")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_0v6q6")])
+
+[sub_resource type="Resource" id="Resource_hsd53"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([])
+voted = false
+voteTime = 0
+parent_society = "et0k8"
+
+[sub_resource type="Resource" id="Resource_6anrt"]
+script = ExtResource("25_fq34q")
+text = "be disagreeable"
+statement = "We use feral cats to be disagreeable"
+spresource = SubResource("Resource_85ky3")
+
+[sub_resource type="Resource" id="Resource_4fk50"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_6anrt")])
+voted = false
+voteTime = 0
+parent_society = "et0k8"
 
 [sub_resource type="ColorPalette" id="ColorPalette_wyoyg"]
 colors = PackedColorArray(0.792157, 0.772549, 0.721569, 1, 0.396078, 0.0313726, 0.027451, 1, 0.396078, 0.0313726, 0.027451, 1, 0.698039, 0.180392, 0.00784314, 1)
 
-[sub_resource type="Resource" id="Resource_0e374"]
+[sub_resource type="Resource" id="Resource_e71la"]
 script = ExtResource("1_lohdr")
-title = "Perverted Priests"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"FADd2": SubResource("Resource_4df5w")
-})
+title = "[] Students"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_6xvpc"]
+script = ExtResource("1_lohdr")
+title = "Pragmatic []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_dnher"]
+script = ExtResource("1_lohdr")
+title = "[] []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_bnxs5"]
+script = ExtResource("1_lohdr")
+title = "[] Builders"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_nc3oh"]
+script = ExtResource("1_lohdr")
+title = "Militant []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_7f5lb"]
+script = ExtResource("1_lohdr")
+title = "Techno []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_lw05v"]
+script = ExtResource("1_lohdr")
+title = "[] []"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
+voice = "people"
+
+[sub_resource type="Resource" id="Resource_7h8d4"]
+script = ExtResource("1_lohdr")
+title = "[} Prists"
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_53r54"]
+[sub_resource type="Resource" id="Resource_f65pl"]
 script = ExtResource("1_lohdr")
-title = "Big bois"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({})
-voice = ""
-
-[sub_resource type="Resource" id="Resource_4bpff"]
-script = ExtResource("1_lohdr")
-title = "Loving Caretakers"
+title = "[] Traders"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "people"
 
-[sub_resource type="Resource" id="Resource_6t4gm"]
+[sub_resource type="Resource" id="Resource_comw7"]
 script = ExtResource("1_lohdr")
-title = "Pencils Down"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"QvweM": SubResource("Resource_hvns4")
-})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_3w1tv"]
-script = ExtResource("1_lohdr")
-title = "Calendar Daddies"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"vi3Gq": SubResource("Resource_mt0pl")
-})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_tfqbo"]
-script = ExtResource("1_lohdr")
-title = "Quinn"
+title = "[] Healers"
 resources = Dictionary[String, ExtResource("3_pyy0l")]({})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_p8617"]
-script = ExtResource("1_lohdr")
-title = "9"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({})
-voice = "leader"
-
-[sub_resource type="Resource" id="Resource_cu8e1"]
-script = ExtResource("1_lohdr")
-title = "Traditionalist Healers"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_74bc5"]
-script = ExtResource("1_lohdr")
-title = "Techno Druids"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"HOzO6": SubResource("Resource_85ky3"),
-"YaD-S": SubResource("Resource_vohyy")
-})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_jsv6q"]
-script = ExtResource("1_lohdr")
-title = "New Old Skool "
-resources = Dictionary[String, ExtResource("3_pyy0l")]({})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_t6lex"]
-script = ExtResource("1_lohdr")
-title = "Militant Clerics"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"BqPmG": SubResource("Resource_nloml"),
-"arNw1": SubResource("Resource_fq34q")
-})
-voice = "people"
-
-[sub_resource type="Resource" id="Resource_0tr16"]
-script = ExtResource("1_lohdr")
-title = "Skeptical Clerics"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"AwCCh": SubResource("Resource_bhwi7")
-})
 voice = "people"
 
 [sub_resource type="Resource" id="Resource_pvjkl"]
 resource_name = "Faithful"
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
-"B95dD": SubResource("Resource_0e374"),
-"EyA7h": SubResource("Resource_53r54"),
-"KlJb3": SubResource("Resource_4bpff"),
-"LiQVN": SubResource("Resource_6t4gm"),
-"Qw0Xm": SubResource("Resource_3w1tv"),
-"R9tmF": SubResource("Resource_tfqbo"),
-"SoR4E": SubResource("Resource_p8617"),
-"SpvYw": SubResource("Resource_cu8e1"),
-"UDMgC": SubResource("Resource_74bc5"),
-"W1qXi": SubResource("Resource_jsv6q"),
-"cV-Kn": SubResource("Resource_t6lex"),
-"kATHn": SubResource("Resource_0tr16")
+"IytuF": SubResource("Resource_e71la"),
+"Li_DK": SubResource("Resource_6xvpc"),
+"OFtkj": SubResource("Resource_dnher"),
+"PVa3m": SubResource("Resource_bnxs5"),
+"Pwqoy": SubResource("Resource_nc3oh"),
+"XxrAo": SubResource("Resource_7f5lb"),
+"ZEeZW": SubResource("Resource_lw05v"),
+"bWsq5": SubResource("Resource_7h8d4"),
+"gk-WH": SubResource("Resource_f65pl"),
+"yC0li": SubResource("Resource_comw7")
 })
 home = ExtResource("30_0m20m")
 colors = SubResource("ColorPalette_wyoyg")
 archetype = ExtResource("5_r4n1j")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_3lpua")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_hsd53"), SubResource("Resource_4fk50"), SubResource("Resource_wpt22")])
 
-[sub_resource type="Resource" id="Resource_y40ly"]
+[sub_resource type="Resource" id="Resource_dtxqx"]
 script = ExtResource("15_r4n1j")
-game_round = 1
+game_round = 2
 components = Array[ExtResource("25_fq34q")]([])
+voted = false
+voteTime = 0
+parent_society = "yXHVO"
+
+[sub_resource type="Resource" id="Resource_tmold"]
+script = ExtResource("25_fq34q")
+text = ""
+statement = "We use Analytical Thinking to "
+spresource = SubResource("Resource_1rgfw")
+
+[sub_resource type="Resource" id="Resource_4sire"]
+script = ExtResource("15_r4n1j")
+game_round = 2
+components = Array[ExtResource("25_fq34q")]([SubResource("Resource_tmold")])
 voted = false
 voteTime = 0
 parent_society = "yXHVO"
@@ -1251,66 +1424,53 @@ parent_society = "yXHVO"
 [sub_resource type="ColorPalette" id="ColorPalette_0m20m"]
 colors = PackedColorArray(0.768627, 0.690196, 0.270588, 1, 0.388235, 0.34902, 0.0313726, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1)
 
-[sub_resource type="Resource" id="Resource_7f5lb"]
+[sub_resource type="Resource" id="Resource_jc2cm"]
 script = ExtResource("1_lohdr")
-title = "Adaptable Workers "
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"YUnCl": SubResource("Resource_0c1b5")
-})
+title = "Oracles "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_72fa1"]
+[sub_resource type="Resource" id="Resource_xivjt"]
 script = ExtResource("1_lohdr")
-title = "Kindhearted Executives "
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"WQCc4": SubResource("Resource_5mvme"),
-"k2NDZ": SubResource("Resource_colxq")
-})
+title = ". "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_xgq1b"]
+[sub_resource type="Resource" id="Resource_j77nc"]
 script = ExtResource("1_lohdr")
-title = "Loyalist Teachers"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"KB9VT": SubResource("Resource_ghqc1"),
-"LMFBh": SubResource("Resource_nok2u")
-})
+title = "Teachers "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_jcdtp"]
+[sub_resource type="Resource" id="Resource_qnqgk"]
 script = ExtResource("1_lohdr")
-title = "Protective Oracles "
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"bs1hB": SubResource("Resource_ob74m")
-})
+title = "Adaptable "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
-[sub_resource type="Resource" id="Resource_uqg5d"]
+[sub_resource type="Resource" id="Resource_0nq7a"]
 script = ExtResource("1_lohdr")
-title = "Anarchic Drivers"
-resources = Dictionary[String, ExtResource("3_pyy0l")]({
-"Bq4uh": SubResource("Resource_1rgfw"),
-"K_aIg": SubResource("Resource_nklb5")
-})
+title = "Executives "
+resources = Dictionary[String, ExtResource("3_pyy0l")]({})
 voice = "leader"
 
 [sub_resource type="Resource" id="Resource_wqx1b"]
 script = ExtResource("5_idph4")
 communities = Dictionary[String, ExtResource("1_lohdr")]({
-"OlD1Z": SubResource("Resource_7f5lb"),
-"fr_Re": SubResource("Resource_72fa1"),
-"jaCtF": SubResource("Resource_xgq1b"),
-"lCWsE": SubResource("Resource_jcdtp"),
-"menqQ": SubResource("Resource_uqg5d")
+"AJzGJ": SubResource("Resource_jc2cm"),
+"JdDRm": SubResource("Resource_xivjt"),
+"R29jS": SubResource("Resource_j77nc"),
+"gRrcN": SubResource("Resource_qnqgk"),
+"r1dal": SubResource("Resource_0nq7a")
 })
 home = ExtResource("31_sr1pp")
 colors = SubResource("ColorPalette_0m20m")
 archetype = ExtResource("6_jgbq0")
-actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_y40ly")])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_dtxqx"), SubResource("Resource_jcdtp"), SubResource("Resource_4sire")])
 
 [resource]
 script = ExtResource("4_phj51")
-active_phase = SubResource("Resource_gmhrj")
+active_phase = SubResource("Resource_s04wv")
 phases = Array[ExtResource("2_qolqt")]([SubResource("Resource_1ndvh"), SubResource("Resource_lmwvc"), SubResource("Resource_eqxcj"), SubResource("Resource_hyjdu"), SubResource("Resource_gmhrj"), SubResource("Resource_572tl"), SubResource("Resource_kt62q"), SubResource("Resource_s04wv"), SubResource("Resource_ggql6"), SubResource("Resource_a5evr"), SubResource("Resource_onare"), SubResource("Resource_dsa3b"), SubResource("Resource_shra4"), SubResource("Resource_bc0hh"), SubResource("Resource_ggefx"), SubResource("Resource_3hrcj"), SubResource("Resource_3lk5k"), SubResource("Resource_qlcyy"), SubResource("Resource_2ljst"), SubResource("Resource_q5gi0"), SubResource("Resource_m5ldu"), SubResource("Resource_t1oim"), SubResource("Resource_dv4tu"), SubResource("Resource_gg3ue"), SubResource("Resource_c387s"), SubResource("Resource_i714y"), SubResource("Resource_34h11"), SubResource("Resource_un5f2")])
 societies = Dictionary[String, ExtResource("5_idph4")]({
 "Feay0": SubResource("Resource_0m20m"),
@@ -1383,4 +1543,4 @@ archetypes = Dictionary[String, ExtResource("2_jgbq0")]({
 "the mighty": ExtResource("3_y04g4"),
 "the scholars": ExtResource("10_fsgl3")
 })
-actions_queued = Array[ExtResource("15_r4n1j")]([SubResource("Resource_ic4q7"), SubResource("Resource_7rba4"), SubResource("Resource_3lpua"), SubResource("Resource_ht27l")])
+actions_queued = Array[ExtResource("15_r4n1j")]([SubResource("Resource_mmbm6"), SubResource("Resource_jcdtp"), SubResource("Resource_53r54"), SubResource("Resource_wpt22")])

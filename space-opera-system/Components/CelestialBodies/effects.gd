@@ -1,0 +1,14 @@
+extends Node3D
+
+func _ready() -> void:
+	reparent.call_deferred($"..". body, false)
+
+
+
+func _on_zap_toggled(toggled_on: bool) -> void:
+	$ElectricExplosion.auto_animate = toggled_on
+
+
+func _on_boom_toggled(toggled_on: bool) -> void:
+	$ExplosionBig.auto_animate = toggled_on
+	$FireBig.emitting = toggled_on

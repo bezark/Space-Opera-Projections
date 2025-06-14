@@ -1,0 +1,140 @@
+[gd_scene load_steps=8 format=3 uid="uid://caaua0idj0ooo"]
+
+[ext_resource type="Script" uid="uid://dlubhinthjott" path="res://Assets/1Toys/Zooms/float.gd" id="1_sr05g"]
+[ext_resource type="Shader" uid="uid://bh2dsie2025ai" path="res://Assets/Shaders/metall.gdshader" id="2_wiuxr"]
+
+[sub_resource type="Curve3D" id="Curve3D_wiuxr"]
+closed = true
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, -10.0068, 5.28277, 23.5989, -4.17903, 3.05176e-05, 20.0797, 4.17903, -3.05176e-05, -20.0797, 19.9465, 10.4807, 3.1595, 6.79455, -1.52588e-05, 11.3664, -6.79455, 1.52588e-05, -11.3664, 26.252, 4.6248, -17.7484, 36.2038, 0, 9.87376, -36.2038, 0, -9.87376, -18.7907, 4.62479, -43.4086, 52.66, 0, -22.216, -52.66, 0, 22.216, -126.579, 4.62479, -1.44517, 11.5194, 0, -31.2669, -11.5194, 0, 31.2669, -203.101, 4.62479, 102.229, -63.3566, 0, -17.2791, 63.3566, 0, 17.2791, -168.543, 4.62479, 188.625, -66.6478, 0, -41.1407, 66.6478, 0, 41.1407, 7.53936, 4.62479, 197.676, -27.1529, 0, 33.7353, 27.1529, 0, -33.7353, 86.5294, 4.62479, 193.562, -43.6091, 0, 1.64561, 43.6091, 0, -1.64561, 126.024, 4.62479, 106.343, -33.7353, 0, -13.165, 33.7353, 0, 13.165, 195.964, 4.62479, 75.0765, 0.822815, 0, 47.7231, -0.822815, 0, -47.7231, 237.927, 4.62479, 61.9114, 0, 0, 0, 0, 0, 0, 200.9, 4.62479, -2.26798, 54.3057, 0, -44.4319, -54.3057, 0, 44.4319, 119.442, 4.62479, -9.67331, 51.0144, 0, -18.9247, -51.0144, 0, 18.9247, 59.3766, 4.62479, 46.278, 0, 0, 0, 0, 0, 0, 19.0587, 4.62479, 86.5958, 81.8777, -2.47955e-05, 61.5944, -81.8777, 2.47955e-05, -61.5944, -44.2979, 4.62479, 93.1783),
+"tilts": PackedFloat32Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+}
+point_count = 17
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wiuxr"]
+render_priority = 0
+shader = ExtResource("2_wiuxr")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/gradientBasis = Vector3(3, 3, 3)
+shader_parameter/gradientBasisDistort = Vector3(0, 0, 0)
+shader_parameter/gradientBasisSpeed = 0.0
+shader_parameter/refractionSplit = 2.0
+shader_parameter/refractionSplitPower = 1.0
+shader_parameter/refractionAffect = 0.8
+
+[sub_resource type="PrismMesh" id="PrismMesh_sr05g"]
+material = SubResource("ShaderMaterial_wiuxr")
+size = Vector3(1, 1, 10)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_qvr01"]
+render_priority = 0
+shader = ExtResource("2_wiuxr")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/gradientBasis = Vector3(3, 3, 3)
+shader_parameter/gradientBasisDistort = Vector3(0, 0, 0)
+shader_parameter/gradientBasisSpeed = 0.0
+shader_parameter/refractionSplit = 2.0
+shader_parameter/refractionSplitPower = 1.0
+shader_parameter/refractionAffect = 0.8
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_llfog"]
+render_priority = 0
+shader = ExtResource("2_wiuxr")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/gradientBasis = Vector3(3, 3, 3)
+shader_parameter/gradientBasisDistort = Vector3(0, 0, 0)
+shader_parameter/gradientBasisSpeed = 0.0
+shader_parameter/refractionSplit = 2.0
+shader_parameter/refractionSplitPower = 1.0
+shader_parameter/refractionAffect = 0.8
+
+[node name="Path3D" type="Path3D"]
+curve = SubResource("Curve3D_wiuxr")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(0.56365, -0.117205, -0.817656, 1.11759e-08, 0.989882, -0.141892, 0.826014, 0.0799773, 0.557947, -10.0068, 5.28277, 23.5989)
+script = ExtResource("1_sr05g")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]
+transform = Transform3D(-4, -6.55651e-07, 1.19209e-07, 5.96046e-07, -4, -1.04308e-07, 0, -7.45058e-08, 4, -14.816, -1.47658, 0.0936966)
+mesh = SubResource("PrismMesh_sr05g")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="PathFollow3D"]
+transform = Transform3D(-4, -6.55651e-07, 1.19209e-07, 5.96046e-07, -4, -1.04308e-07, 0, -7.45058e-08, 4, 13.164, -2.51592, -0.660223)
+mesh = SubResource("PrismMesh_sr05g")
+
+[node name="CSGBox3D" type="CSGBox3D" parent="PathFollow3D"]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 0, 1, 0)
+size = Vector3(9, 1, 11)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.31141, 3, -2.2761)
+size = Vector3(2, 5, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D8" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.15704, 2.15375, -0.58179)
+size = Vector3(0.854492, 3.3075, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.14695, 2.33795, -1.43079)
+size = Vector3(1.17725, 3.6759, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(0.700324, 0, 0.713825, 0, 1, 0, -0.713825, 0, 0.700324, -2.40596, 3.6124, 3.13839)
+size = Vector3(1.17725, 6.22479, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D5" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(0.920088, 0, -0.391711, 0, 1, 0, 0.391711, 0, 0.920088, 1.34643, 3.04155, 0.9882)
+size = Vector3(1.17725, 5.0831, 1.73048)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D7" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(0.920088, 0, -0.391711, 0, 1, 0, 0.391711, 0, 0.920088, 3.27217, 2.1672, 0.9882)
+size = Vector3(1.17725, 3.3344, 1.73048)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D6" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(0.990119, 0, -0.140227, 0, 1, 0, 0.140227, 0, 0.990119, 3.56818, 2.36477, 3.8985)
+size = Vector3(1.17725, 3.72954, 0.880013)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D9" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 3.44523, 3, -1.13065)
+size = Vector3(2, 5, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D10" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 1.75092, 2.15375, -2.97628)
+size = Vector3(0.854492, 3.3075, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D11" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 2.59992, 2.33795, 2.3277)
+size = Vector3(1.17725, 3.6759, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D12" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(0.713825, 0, -0.700324, 0, 1, 0, 0.700324, 0, 0.713825, -1.96925, 3.6124, -2.22521)
+size = Vector3(1.17725, 6.22479, 2)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D13" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(-0.391711, 0, -0.920088, 0, 1, 0, 0.920088, 0, -0.391711, 0.180934, 3.04155, 1.52719)
+size = Vector3(1.17725, 5.0831, 1.73048)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D14" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(-0.391711, 0, -0.920088, 0, 1, 0, 0.920088, 0, -0.391711, 0.180934, 2.1672, 3.45293)
+size = Vector3(1.17725, 3.3344, 1.73048)
+material = SubResource("ShaderMaterial_qvr01")
+
+[node name="CSGBox3D15" type="CSGBox3D" parent="PathFollow3D/CSGBox3D"]
+transform = Transform3D(-0.140227, 0, -0.990119, 0, 1, 0, 0.990119, 0, -0.140227, -2.72937, 2.36477, 3.74894)
+material_override = SubResource("ShaderMaterial_llfog")
+size = Vector3(1.17725, 3.72954, 0.880013)
+material = SubResource("ShaderMaterial_qvr01")
