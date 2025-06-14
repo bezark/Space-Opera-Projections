@@ -52,7 +52,7 @@ shader_parameter/refractionAffect = 0.8
 curve = SubResource("Curve3D_wiuxr")
 
 [node name="PathFollow3D" type="PathFollow3D" parent="."]
-transform = Transform3D(0.56365, -0.117205, -0.817656, 1.11759e-08, 0.989882, -0.141892, 0.826014, 0.0799773, 0.557947, -10.0068, 5.28277, 23.5989)
+transform = Transform3D(0.563651, -0.117204, -0.817655, 1.11759e-08, 0.989882, -0.141891, 0.826013, 0.0799772, 0.557948, -10.0068, 5.28277, 23.5989)
 script = ExtResource("1_sr05g")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="PathFollow3D"]

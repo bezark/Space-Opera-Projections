@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://b7qovvjsewkwn"]
+[gd_scene load_steps=12 format=3 uid="uid://b7qovvjsewkwn"]
 
 [ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_qae8q"]
 [ext_resource type="PackedScene" uid="uid://caaua0idj0ooo" path="res://Assets/1Toys/Zooms/skating.tscn" id="2_xj67k"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="3_6m5ch"]
+[ext_resource type="PackedScene" uid="uid://c0itdbchse1ts" path="res://Assets/1Toys/localWell.tscn" id="4_v7le2"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qae8q"]
 sky_top_color = Color(0.130131, 0.232578, 0.471829, 1)
@@ -83,6 +84,7 @@ environment = SubResource("Environment_6m5ch")
 data_directory = "res://Assets/1Toys/Zooms/ice"
 material = SubResource("Terrain3DMaterial_67n1n")
 assets = ExtResource("1_qae8q")
+free_editor_textures = false
 top_level = true
 metadata/_edit_lock_ = true
 
@@ -103,3 +105,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 90)
 current = true
 script = ExtResource("3_6m5ch")
 metadata/_custom_type_script = "uid://c0w752ro86qws"
+
+[node name="Well" parent="." instance=ExtResource("4_v7le2")]
+transform = Transform3D(1, 0, 0, 0, 0.934609, 0.355678, 0, -0.355678, 0.934609, -208, 118.632, 562)

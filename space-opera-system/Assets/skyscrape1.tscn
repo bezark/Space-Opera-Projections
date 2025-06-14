@@ -1,0 +1,41 @@
+[gd_scene load_steps=4 format=3 uid="uid://cvfsh658j0tnq"]
+
+[ext_resource type="Shader" uid="uid://bh2dsie2025ai" path="res://Assets/Shaders/metall.gdshader" id="1_6xsvf"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_a1is7"]
+render_priority = 0
+shader = ExtResource("1_6xsvf")
+shader_parameter/baseColor = Color(1, 1, 1, 1)
+shader_parameter/gradientBasis = Vector3(3, 3, 3)
+shader_parameter/gradientBasisDistort = Vector3(0, 0, 0)
+shader_parameter/gradientBasisSpeed = 0.0
+shader_parameter/refractionSplit = 2.0
+shader_parameter/refractionSplitPower = 1.0
+shader_parameter/refractionAffect = 0.8
+
+[sub_resource type="TorusMesh" id="TorusMesh_6xsvf"]
+material = SubResource("ShaderMaterial_a1is7")
+inner_radius = 15.482
+outer_radius = 20.854
+
+[node name="Skyscrape1" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.74228e-08, -1.77636e-14, -1, 4.37114e-08, 1, -1.42109e-14, 1, -4.37114e-08, 8.74228e-08, -0.25, 43.75, 0)
+mesh = SubResource("TorusMesh_6xsvf")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.74228e-08, -1.77636e-14, -1, 4.37114e-08, 1, -1.42109e-14, 1, -4.37114e-08, 8.74228e-08, -0.25, 31.75, 0)
+mesh = SubResource("TorusMesh_6xsvf")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.74228e-08, -1.77636e-14, -1, 4.37114e-08, 1, -1.42109e-14, 1, -4.37114e-08, 8.74228e-08, -0.250002, 19.75, 1.69407e-21)
+mesh = SubResource("TorusMesh_6xsvf")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
+transform = Transform3D(8.74228e-08, -1.77636e-14, -1, 4.37114e-08, 1, -1.42109e-14, 1, -4.37114e-08, 8.74228e-08, -0.250002, 8.75, 6.66348e-21)
+mesh = SubResource("TorusMesh_6xsvf")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")

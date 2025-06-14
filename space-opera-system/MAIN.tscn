@@ -812,6 +812,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SocietyUI" parent="Post" instance=ExtResource("16_rhye5")]
+visible = false
 
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1
@@ -974,6 +975,7 @@ script = ExtResource("28_0e8f2")
 [connection signal="circle_changed" from="Control" to="Circle/Black" method="fade"]
 [connection signal="controls_updated" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/BodySelection" method="_on_control_controls_updated"]
 [connection signal="datapad_sync_changed" from="Control" to="DatapadSync" method="_on_control_datapad_sync_changed"]
+[connection signal="gen_dc_up" from="Control" to="Post/SocietyUI" method="_on_control_gen_dc_up"]
 [connection signal="next_society_pressed" from="Control" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_control_next_society_pressed"]
 [connection signal="next_society_pressed" from="Control" to="Post/SocietyUI" method="_on_control_next_society_pressed"]
 [connection signal="pew_changed" from="Control" to="Pews/Black" method="fade"]

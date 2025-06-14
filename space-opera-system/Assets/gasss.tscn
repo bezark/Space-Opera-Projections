@@ -1,0 +1,134 @@
+[gd_scene load_steps=11 format=3 uid="uid://b606ll82uxf2o"]
+
+[ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_l5qwp"]
+[ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="2_eejvw"]
+[ext_resource type="PackedScene" uid="uid://cvfsh658j0tnq" path="res://Assets/skyscrape1.tscn" id="3_ai6h1"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ghh6f"]
+sky_top_color = Color(0.620102, 0.0824841, 0.916175, 1)
+sky_horizon_color = Color(0.515781, 0.335717, 0.634805, 1)
+ground_bottom_color = Color(0.225844, 0.0432024, 0.405865, 1)
+ground_horizon_color = Color(0.515781, 0.335717, 0.634805, 1)
+
+[sub_resource type="Sky" id="Sky_h75qb"]
+sky_material = SubResource("ProceduralSkyMaterial_ghh6f")
+
+[sub_resource type="Environment" id="Environment_6c1hr"]
+background_mode = 2
+sky = SubResource("Sky_h75qb")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.02
+volumetric_fog_albedo = Color(0.423529, 0.152941, 0.678431, 1)
+
+[sub_resource type="Gradient" id="Gradient_ghh6f"]
+offsets = PackedFloat32Array(0.2, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_h75qb"]
+noise_type = 2
+frequency = 0.03
+cellular_jitter = 3.0
+cellular_return_type = 0
+domain_warp_enabled = true
+domain_warp_type = 1
+domain_warp_amplitude = 50.0
+domain_warp_fractal_type = 2
+domain_warp_fractal_lacunarity = 1.5
+domain_warp_fractal_gain = 1.0
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_6c1hr"]
+seamless = true
+color_ramp = SubResource("Gradient_ghh6f")
+noise = SubResource("FastNoiseLite_h75qb")
+
+[sub_resource type="Terrain3DMaterial" id="Terrain3DMaterial_awe1r"]
+_shader_parameters = {
+&"bias_distance": 512.0,
+&"blend_sharpness": 0.87,
+&"depth_blur": 0.0,
+&"enable_macro_variation": true,
+&"enable_projection": true,
+&"height_blending": true,
+&"macro_variation1": Color(1, 1, 1, 1),
+&"macro_variation2": Color(1, 1, 1, 1),
+&"macro_variation_slope": 0.333,
+&"mipmap_bias": 1.0,
+&"noise1_angle": 0.0,
+&"noise1_offset": Vector2(0.5, 0.5),
+&"noise1_scale": 0.04,
+&"noise2_scale": 0.076,
+&"noise3_scale": 0.225,
+&"noise_texture": SubResource("NoiseTexture2D_6c1hr"),
+&"projection_angular_division": 2.0,
+&"projection_threshold": 0.8,
+&"world_space_normal_blend": true
+}
+
+[node name="Gasss" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_6c1hr")
+
+[node name="s" type="Terrain3D" parent="."]
+data_directory = "res://Assets/1Toys/Zooms/gas"
+material = SubResource("Terrain3DMaterial_awe1r")
+assets = ExtResource("1_l5qwp")
+free_editor_textures = false
+top_level = true
+metadata/_edit_lock_ = true
+
+[node name="FreeFlyCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 26, 90)
+current = true
+script = ExtResource("2_eejvw")
+metadata/_custom_type_script = "uid://c0w752ro86qws"
+
+[node name="Skyscrape1" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 155.516, -6.58657, -229.683)
+
+[node name="Skyscrape2" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -111.09, -6.58657, -120.194)
+
+[node name="Skyscrape3" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -80.826, -6.58657, -320.039)
+
+[node name="Skyscrape4" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.798, -6.58657, -150.318)
+
+[node name="Skyscrape5" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.397, -6.58657, -2.72353)
+
+[node name="Skyscrape6" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 199.003, 3.21611, -23.2004)
+
+[node name="Skyscrape7" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(0.79958, -0.60056, -2.62513e-08, 0, -4.37114e-08, 1, -0.60056, -0.79958, -3.49507e-08, 148.531, 3.21611, 108.867)
+
+[node name="Skyscrape8" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.25396, -0.967215, -4.22783e-08, 0, -4.37114e-08, 1, -0.967215, 0.25396, 1.1101e-08, 332.019, 3.21614, -240.074)
+
+[node name="Skyscrape9" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508, 231.857, -6.58657, -225.511)
+
+[node name="Skyscrape10" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508, 446.954, -6.58657, -33.6776)
+
+[node name="Skyscrape11" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508, 254.009, -6.58657, 26.5423)
+
+[node name="Skyscrape12" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508, 290.412, -6.58657, -286.565)
+
+[node name="Skyscrape13" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508, 460.057, -6.58657, -275.244)
+
+[node name="Skyscrape14" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.437508, -0.899214, -3.93059e-08, 0, -4.37114e-08, 1, -0.899214, 0.437508, 1.91241e-08, 398.503, 3.21611, -354.953)
+
+[node name="Skyscrape15" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.889855, -0.456244, -1.99431e-08, 0, -4.37114e-08, 1, -0.456244, 0.889855, 3.88968e-08, 433.211, 3.21611, -423.059)
+
+[node name="Skyscrape16" parent="." instance=ExtResource("3_ai6h1")]
+transform = Transform3D(-0.758624, 0.651529, 2.84792e-08, 0, -4.37114e-08, 1, 0.651529, 0.758624, 3.31605e-08, 145.291, 3.21614, -379.679)

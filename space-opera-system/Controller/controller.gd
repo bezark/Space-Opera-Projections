@@ -22,7 +22,9 @@ signal society_complete_pressed
 signal society_focused(action: SocietyAction)
 signal society_fake_focused
 
-signal shader_changed(name)
+signal gen_dc_up
+
+#signal shader_changed(name)
 
 @export var structure: SceneStructure
 
@@ -223,6 +225,7 @@ var action_on_deck: SocietyAction
 
 
 func _on_show_hide_toggled(toggled_on: bool) -> void:
+	index = 0
 	if toggled_on:
 		action_on_deck = State.actions_queued.front()
 		if action_on_deck:
@@ -237,8 +240,8 @@ func _on_show_hide_toggled(toggled_on: bool) -> void:
 
 
 func _on_prev_pressed() -> void:
-	var index = State.actions_queued.find(action_on_deck)
-	action_on_deck = State.actions_queued[wrapi(index - 1, 0, State.actions_queued.size())]
+	index -= 1
+	action_on_deck = State.actions_queued[index]
 	prev_society_pressed.emit(action_on_deck)
 
 	%GalacticPhaseControls.visible = true
@@ -247,10 +250,10 @@ func _on_prev_pressed() -> void:
 func _on_complete_pressed() -> void:
 	society_complete_pressed.emit()
 
-
+var index = 0
 func _on_next_pressed() -> void:
-	var index = State.actions_queued.find(action_on_deck)
-	action_on_deck = State.actions_queued[wrapi(index + 1, 0, State.actions_queued.size())]
+	index += 1
+	action_on_deck = State.actions_queued[index]
 	next_society_pressed.emit(action_on_deck)
 
 	%GalacticPhaseControls.visible = true
@@ -270,3 +273,8 @@ func _on_pews_value_changed(value: float) -> void:
 
 func _on_circle_value_changed(value: float) -> void:
 	circle_changed.emit(value)
+
+
+func _on_button_pressed() -> void:
+	gen_dc_up.emit()
+	pass # Replace with function body.

@@ -122,6 +122,7 @@ environment = SubResource("Environment_y1534")
 data_directory = "res://Assets/1Toys/Zooms/meadow"
 material = SubResource("Terrain3DMaterial_dhsqy")
 assets = ExtResource("1_wi5go")
+free_editor_textures = false
 top_level = true
 metadata/_edit_lock_ = true
 

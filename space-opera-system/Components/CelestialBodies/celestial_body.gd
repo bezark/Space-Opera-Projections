@@ -65,7 +65,7 @@ func _process(delta: float) -> void:
 
 
 func _on_distance_value_changed(value: float) -> void:
-	distance = value
+	distance += value
 
 
 func _on_speed_value_changed(value: float) -> void:

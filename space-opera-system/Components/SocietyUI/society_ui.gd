@@ -3,6 +3,8 @@ extends Control
 var action_on_deck: SocietyAction
 
 
+
+
 func _on_control_action_toggled(visible: bool) -> void:
 	if visible:
 		$AnimationPlayer.play("ActionUp")
@@ -66,3 +68,7 @@ func _on_control_society_focused(action: SocietyAction) -> void:
 
 func swap_society():
 	_on_control_society_focused(action_on_deck)
+
+
+func _on_control_gen_dc_up() -> void:
+	$AnimationPlayer.play("generations")

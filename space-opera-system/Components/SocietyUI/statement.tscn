@@ -17,26 +17,43 @@ font = ExtResource("1_225cp")
 font_size = 48
 
 [node name="Statement" type="HFlowContainer"]
-offset_right = 1195.0
-offset_bottom = 79.0
+custom_minimum_size = Vector2(1000, 0)
+offset_right = 1396.0
+offset_bottom = 124.0
+size_flags_horizontal = 0
+last_wrap_alignment = 1
 script = ExtResource("1_u841r")
 
 [node name="WeUse" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "We use "
 label_settings = SubResource("LabelSettings_p6x64")
 
 [node name="Resource" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = "RESOURCE"
 label_settings = SubResource("LabelSettings_s0s18")
 
 [node name="To" type="Label" parent="."]
+visible = false
 layout_mode = 2
 text = " to "
 label_settings = SubResource("LabelSettings_4sgve")
 
 [node name="Action" type="Label" parent="."]
+visible = false
+custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
-text = "to take action"
+size_flags_horizontal = 3
+text = "to tak e ac tion asdfa sdfasdffffffffasd fasdfasdfasdfa sdfasdfa sdfasdf	"
 label_settings = SubResource("LabelSettings_4sgve")
+autowrap_mode = 2
+
+[node name="whole" type="Label" parent="."]
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+size_flags_horizontal = 2
+label_settings = SubResource("LabelSettings_p6x64")
+autowrap_mode = 2

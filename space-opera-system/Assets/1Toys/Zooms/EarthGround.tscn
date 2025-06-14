@@ -1,9 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://btu8qfshbh68a"]
+[gd_scene load_steps=21 format=3 uid="uid://btu8qfshbh68a"]
 
 [ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_m03pc"]
 [ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="2_8kjei"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="3_5g3r3"]
 [ext_resource type="PackedScene" uid="uid://c666ft2w1n6op" path="res://Assets/1Toys/Zooms/weirdHouse.tscn" id="4_82xs6"]
+[ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="5_54gd2"]
+[ext_resource type="Script" uid="uid://cd5kn0qlmid55" path="res://Assets/1Toys/local_well.gd" id="6_cnrne"]
+[ext_resource type="Texture2D" uid="uid://dgqprr1nwtntw" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-54.png" id="7_we8o0"]
+[ext_resource type="PackedScene" uid="uid://dejbkt1bojau7" path="res://Assets/POLYB/electric_explosion.tscn" id="8_655vp"]
+[ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="9_gns3r"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_7om8l"]
 viewport_path = NodePath("SubViewport")
@@ -80,6 +85,14 @@ world_background = 0
 [sub_resource type="World3D" id="World3D_kjesf"]
 environment = ExtResource("2_8kjei")
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exmtv"]
+albedo_texture = ExtResource("5_54gd2")
+uv1_scale = Vector3(10, 10, 10)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_25crx"]
+albedo_texture = ExtResource("7_we8o0")
+uv1_scale = Vector3(10, 10, 10)
+
 [node name="EarthGround" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
@@ -133,3 +146,36 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6886, 10.0627, 16.8624)
 
 [node name="WeirdHouse8" parent="." instance=ExtResource("4_82xs6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.95242, 10.0627, 16.8624)
+
+[node name="Well" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.92412, -0.382103, 0, 0.382103, 0.92412, 62.4058, 133.57, -234.571)
+operation = 2
+radius = 148.341
+radial_segments = 100
+rings = 64
+material = SubResource("StandardMaterial3D_exmtv")
+script = ExtResource("6_cnrne")
+
+[node name="Well2" type="CSGSphere3D" parent="Well"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.4346, 0)
+operation = 2
+radius = 159.455
+radial_segments = 100
+rings = 64
+material = SubResource("StandardMaterial3D_25crx")
+
+[node name="ElectricExplosion" parent="Well" instance=ExtResource("8_655vp")]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="Well"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1638.89, 0)
+radius = 20.0
+height = 3535.78
+material = ExtResource("9_gns3r")
+
+[node name="Button" type="Button" parent="Well" groups=["permanent", "zoom_control"]]
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "BEAM"
+
+[connection signal="toggled" from="Well/Button" to="Well" method="_on_button_toggled"]

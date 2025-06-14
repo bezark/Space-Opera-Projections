@@ -1,0 +1,42 @@
+[gd_scene load_steps=6 format=3 uid="uid://c0itdbchse1ts"]
+
+[ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="1_54uwq"]
+[ext_resource type="Script" uid="uid://cd5kn0qlmid55" path="res://Assets/1Toys/local_well.gd" id="2_a4pa4"]
+[ext_resource type="PackedScene" uid="uid://dejbkt1bojau7" path="res://Assets/POLYB/electric_explosion.tscn" id="3_ovnw7"]
+[ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="4_j78bn"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_exmtv"]
+albedo_texture = ExtResource("1_54uwq")
+uv1_scale = Vector3(10, 10, 10)
+
+[node name="Well" type="CSGSphere3D"]
+operation = 2
+radius = 148.341
+radial_segments = 100
+rings = 64
+material = SubResource("StandardMaterial3D_exmtv")
+script = ExtResource("2_a4pa4")
+
+[node name="Well2" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 45.4346, 0)
+operation = 2
+radius = 159.455
+radial_segments = 100
+rings = 64
+material = SubResource("StandardMaterial3D_exmtv")
+
+[node name="ElectricExplosion" parent="." instance=ExtResource("3_ovnw7")]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1638.89, 0)
+radius = 20.0
+height = 3535.78
+material = ExtResource("4_j78bn")
+
+[node name="Button" type="Button" parent="." groups=["zoom_control"]]
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "BEAM"
+
+[connection signal="toggled" from="Button" to="." method="_on_button_toggled"]

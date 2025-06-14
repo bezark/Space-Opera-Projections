@@ -244,6 +244,7 @@ size_flags_horizontal = 3
 text = "Prev"
 
 [node name="Complete" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 text = "Complete"
@@ -262,6 +263,10 @@ text = "Action"
 layout_mode = 2
 toggle_mode = true
 text = "Dice Cam"
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls"]
+layout_mode = 2
+text = "Gen DC"
 
 [node name="Post" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
 unique_name_in_owner = true
@@ -313,5 +318,6 @@ autostart = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer/Next" to="." method="_on_next_pressed"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/ActionView" to="." method="_on_action_view_toggled"]
 [connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/DiceCam" to="." method="_on_dice_cam_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/Button" to="." method="_on_button_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Body/Main/Faders/Zoom/HSlider" to="." method="zoom_slider_value_changed"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

@@ -1,4 +1,4 @@
-[gd_scene load_steps=64 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=65 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
@@ -26,12 +26,13 @@
 [ext_resource type="PackedScene" uid="uid://dejmxcbny0emy" path="res://Assets/1Toys/Planets/AsteroidBelt.tscn" id="20_mcu1l"]
 [ext_resource type="PackedScene" uid="uid://pt657as7h6v7" path="res://Assets/1Toys/Planets/sanctions.tscn" id="20_v0qhr"]
 [ext_resource type="PackedScene" uid="uid://cht1f4bhktdj0" path="res://Assets/1Toys/Planets/Gas.tscn" id="21_ggr6d"]
-[ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/1Toys/Zooms/gasss.tscn" id="22_pt8ev"]
+[ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/gasss.tscn" id="22_pt8ev"]
 [ext_resource type="PackedScene" uid="uid://cgv5cuntgow0q" path="res://Assets/1Toys/Planets/Volcanic.tscn" id="22_v0qhr"]
 [ext_resource type="PackedScene" uid="uid://dtlmbwcqlbv82" path="res://Assets/1Toys/Planets/Ice.tscn" id="23_ii0dt"]
 [ext_resource type="PackedScene" uid="uid://dbxq7ep55wcw8" path="res://Assets/1Toys/Planets/ice_moon.tscn" id="24_pt8ev"]
 [ext_resource type="Shader" uid="uid://crwkd77t0ssfj" path="res://Assets/Shaders/nebula.gdshader" id="25_mcu1l"]
 [ext_resource type="PackedScene" uid="uid://b7qovvjsewkwn" path="res://Assets/1Toys/Zooms/ice.tscn" id="27_h4gil"]
+[ext_resource type="PackedScene" uid="uid://btkq2oei0qw31" path="res://Assets/1Toys/Zooms/Surface2.tscn" id="27_sed3l"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
 panorama = ExtResource("3_smirv")
@@ -346,7 +347,7 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="Resource" id="Resource_iomau"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("27_sed3l")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
