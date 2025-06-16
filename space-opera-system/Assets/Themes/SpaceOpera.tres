@@ -1,8 +1,10 @@
-[gd_resource type="Theme" load_steps=7 format=3 uid="uid://c8ysyp3qs4xu8"]
+[gd_resource type="Theme" load_steps=9 format=3 uid="uid://c8ysyp3qs4xu8"]
 
-[ext_resource type="FontFile" uid="uid://ded4vgoigb0kq" path="res://Assets/Themes/Montserrat/static/Montserrat-Bold.ttf" id="1_fbbh0"]
-[ext_resource type="FontFile" uid="uid://b57he8cdpom2c" path="res://Assets/Themes/Comfortaa-VariableFont_wght.ttf" id="1_spm0i"]
-[ext_resource type="Texture2D" uid="uid://bhv5ds6f4u3p8" path="res://addons/touchscreen_joystick/touchscreenjoystickicon.png" id="3_6giok"]
+[ext_resource type="FontFile" uid="uid://dq0wxtwmgpgl3" path="res://Assets/Themes/Montserrat/static/Montserrat-Bold.ttf" id="1_fbbh0"]
+[ext_resource type="FontFile" uid="uid://v2qngj06lutc" path="res://Assets/Themes/Comfortaa-VariableFont_wght.ttf" id="1_spm0i"]
+[ext_resource type="Texture2D" uid="uid://cjqoks6pur6le" path="res://addons/touchscreen_joystick/touchscreenjoystickicon.png" id="3_6giok"]
+[ext_resource type="FontFile" uid="uid://b32c7xrfevwg5" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="4_gbjsk"]
+[ext_resource type="FontFile" uid="uid://d22xqoned5nb4" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="5_slvm7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_p1oir"]
 bg_color = Color(0.7157, 0.45814, 0.948361, 1)
@@ -27,6 +29,10 @@ Label/font_sizes/font_size = 64
 Label/fonts/font = ExtResource("1_fbbh0")
 LineEdit/font_sizes/font_size = 32
 LineEdit/fonts/font = ExtResource("1_spm0i")
+RichTextLabel/font_sizes/bold_font_size = 48
+RichTextLabel/font_sizes/normal_font_size = 48
+RichTextLabel/fonts/bold_font = ExtResource("4_gbjsk")
+RichTextLabel/fonts/normal_font = ExtResource("5_slvm7")
 TextEdit/font_sizes/font_size = 18
 VScrollBar/styles/scroll = SubResource("StyleBoxFlat_fbbh0")
 VSlider/icons/grabber = ExtResource("3_6giok")

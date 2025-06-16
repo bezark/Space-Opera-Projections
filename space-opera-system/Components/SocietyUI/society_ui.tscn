@@ -1,12 +1,12 @@
 [gd_scene load_steps=21 format=3 uid="uid://b7x0paetbq6v7"]
 
 [ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/SocietyUI/society_ui.gd" id="1_nc66i"]
-[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
-[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="5_eiv5d"]
-[ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
+[ext_resource type="FontFile" uid="uid://bv3mdeles5fut" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
+[ext_resource type="FontFile" uid="uid://b32c7xrfevwg5" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="5_eiv5d"]
+[ext_resource type="Texture2D" uid="uid://7llimf0a14au" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
 [ext_resource type="PackedScene" uid="uid://bnmxckyv0m5ir" path="res://Components/SocietyUI/statement.tscn" id="8_y0sm1"]
-[ext_resource type="Texture2D" uid="uid://su81uegkbnft" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
+[ext_resource type="Texture2D" uid="uid://c3yf36bg0p5g5" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g0m5a"]
 font = ExtResource("5_eiv5d")
@@ -805,9 +805,9 @@ color = Color(0.0901961, 0.0901961, 0.0901961, 0)
 
 [node name="Diag1" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -886.0
+offset_left = -0.00012207
 offset_top = -566.0
-offset_right = 95.0011
+offset_right = 981.001
 offset_bottom = 1001.0
 rotation = 0.523598
 color = Color(0.42, 0.5795, 0.75, 1)
@@ -815,9 +815,9 @@ color = Color(0.42, 0.5795, 0.75, 1)
 [node name="Diag2" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 3355.0
+offset_left = 1942.0
 offset_top = -235.0
-offset_right = 4336.0
+offset_right = 2923.0
 offset_bottom = 1332.0
 rotation = 0.523598
 color = Color(0.42, 0.5795, 0.75, 1)
@@ -833,6 +833,7 @@ theme_override_constants/separation = 18
 
 [node name="Statement" parent="Action" instance=ExtResource("8_y0sm1")]
 layout_mode = 2
+script = null
 
 [node name="DiceMask" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)

@@ -1,59 +1,18 @@
-[gd_scene load_steps=7 format=3 uid="uid://bnmxckyv0m5ir"]
+[gd_scene load_steps=4 format=3 uid="uid://bnmxckyv0m5ir"]
 
-[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="1_225cp"]
+[ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_a2g27"]
 [ext_resource type="Script" uid="uid://h8ouplejnddo" path="res://Components/SocietyUI/statement.gd" id="1_u841r"]
-[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="2_u841r"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_p6x64"]
-font = ExtResource("1_225cp")
-font_size = 48
+[sub_resource type="RichTextEffect" id="RichTextEffect_qsg6j"]
 
-[sub_resource type="LabelSettings" id="LabelSettings_s0s18"]
-font = ExtResource("2_u841r")
-font_size = 48
-
-[sub_resource type="LabelSettings" id="LabelSettings_4sgve"]
-font = ExtResource("1_225cp")
-font_size = 48
-
-[node name="Statement" type="HFlowContainer"]
-custom_minimum_size = Vector2(1000, 0)
+[node name="Statement" type="RichTextLabel"]
+custom_minimum_size = Vector2(900, 0)
 offset_right = 1396.0
 offset_bottom = 124.0
-size_flags_horizontal = 0
-last_wrap_alignment = 1
-script = ExtResource("1_u841r")
-
-[node name="WeUse" type="Label" parent="."]
-visible = false
-layout_mode = 2
-text = "We use "
-label_settings = SubResource("LabelSettings_p6x64")
-
-[node name="Resource" type="Label" parent="."]
-visible = false
-layout_mode = 2
-text = "RESOURCE"
-label_settings = SubResource("LabelSettings_s0s18")
-
-[node name="To" type="Label" parent="."]
-visible = false
-layout_mode = 2
-text = " to "
-label_settings = SubResource("LabelSettings_4sgve")
-
-[node name="Action" type="Label" parent="."]
-visible = false
-custom_minimum_size = Vector2(800, 0)
-layout_mode = 2
 size_flags_horizontal = 3
-text = "to tak e ac tion asdfa sdfasdffffffffasd fasdfasdfasdfa sdfasdfa sdfasdf	"
-label_settings = SubResource("LabelSettings_4sgve")
-autowrap_mode = 2
-
-[node name="whole" type="Label" parent="."]
-custom_minimum_size = Vector2(900, 0)
-layout_mode = 2
-size_flags_horizontal = 2
-label_settings = SubResource("LabelSettings_p6x64")
-autowrap_mode = 2
+size_flags_vertical = 3
+theme = ExtResource("1_a2g27")
+bbcode_enabled = true
+text = "We use [b] resource [/b] to do a big bad thing it's so long i have so many ideas i want to make a blood battery but also a pet store and one time when i was in france i had this cool idea about how to solve world hunger. can i do that right now?"
+custom_effects = [SubResource("RichTextEffect_qsg6j")]
+script = ExtResource("1_u841r")

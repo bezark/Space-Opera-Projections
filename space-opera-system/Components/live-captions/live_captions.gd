@@ -1,7 +1,7 @@
 extends Node
 
 signal words_spoken(words: String)
-@onready var stt_label: Label = $STTLabel
+#@onready var stt_label: Label = $STTLabel
 
 var _process_io: FileAccess
 var _thread: Thread

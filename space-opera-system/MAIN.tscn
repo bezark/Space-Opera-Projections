@@ -27,10 +27,10 @@
 [ext_resource type="Shader" uid="uid://bq3tf0k03miar" path="res://Assets/Shaders/fire.gdshader" id="17_4sgve"]
 [ext_resource type="Shader" uid="uid://bxyime1jx4303" path="res://Assets/Shaders/distortion.gdshader" id="20_0e8f2"]
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
-[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
+[ext_resource type="FontFile" uid="uid://d22xqoned5nb4" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 [ext_resource type="Script" uid="uid://b5kytadtsro01" path="res://Phases/societal_phase_que.gd" id="24_1yskb"]
 [ext_resource type="Script" uid="uid://u7ix08t77ok4" path="res://Components/ProjectorTools/black.gd" id="24_4sgve"]
-[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
+[ext_resource type="FontFile" uid="uid://bv3mdeles5fut" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="28_0e8f2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
@@ -812,7 +812,6 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="SocietyUI" parent="Post" instance=ExtResource("16_rhye5")]
-visible = false
 
 [node name="Circle" type="Window" parent="."]
 auto_translate_mode = 1

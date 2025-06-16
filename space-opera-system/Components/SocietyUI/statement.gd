@@ -1,11 +1,9 @@
-extends HFlowContainer
+extends RichTextLabel
 
 var title: String
 var action: String
 
 
 func _ready() -> void:
-	$Resource.text = title
-	$Action.text = action
-	var statement = str("We use ",title," to ", action)
+	var statement = str("We use [b]",title,"[/b] to ", action)
 	$whole.text = statement
