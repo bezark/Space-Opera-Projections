@@ -44,36 +44,36 @@ void fragment() {
     // Получаем позицию в мировых координатах
     vec3 world_pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
     vec3 ray_dir = normalize(world_pos - CAMERA_POSITION_WORLD);
-    
+
     vec4 sum = vec4(0.0);
     // d:distance function, t:lengh of the ray
     float d=1.0, t=0.0;
     // local/tital density + weighting factor
     float ld=0.0, td=0.0, w=0.0;
     float min_dist=0.0, max_dist=100.0;
-    
+
     ALPHA = 0.0;
 
     t = min_dist * step(t, min_dist);
-    
+
     for (int i=0; i<30; i++){
         vec3 pos = world_pos + t * ray_dir;
         // break conditions
         if(td>0.9 || d<0.1*t || t>10.0 || sum.a > 0.99 || t>max_dist) break;
-        
+
         float d = myMap(pos);
-        d = max(d, 0.08); 
-        
+        d = max(d, 0.08);
+
         // STAR in CENTER
-        vec3 ldst = global_pos - pos; 
-        float lDist = max(length(ldst), 0.001); 
+        vec3 ldst = global_pos - pos;
+        float lDist = max(length(ldst), 0.001);
         sum.rgb += (albedo.rgb/(lDist*lDist) / 30.0); //STAR and BLOOM
-        
+
         td += 1.0/70.0;
-        d = max(d, 0.04); 
-        t += max(d * 0.1 * max(min(length(ldst), length(world_pos)), 1.0), 0.02); 
+        d = max(d, 0.04);
+        t += max(d * 0.1 * max(min(length(ldst), length(world_pos)), 1.0), 0.02);
     }
-    ALBEDO = sum.rgb; 
+    ALBEDO = sum.rgb;
     ALBEDO *= t;
-    ALPHA = ALBEDO.r; 
+    ALPHA = ALBEDO.r;
 }

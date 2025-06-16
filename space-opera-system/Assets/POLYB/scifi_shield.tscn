@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://cy0uk2foyrhgk"]
 
-[ext_resource type="Shader" path="res://PolyBlocks/EffectBlocks/source_files/shaders/scifi_shield.gdshader" id="1_7sqwv"]
+[ext_resource type="Shader" uid="uid://cxgrepgx0hgge" path="res://Assets/POLYB/scifi_shield.gdshader" id="1_7sqwv"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_x0tv5"]
 noise_type = 0
@@ -21,9 +21,9 @@ shader_parameter/hex_color = Color(0.01, 0.18, 0.7, 0.05)
 shader_parameter/rim_color = Color(0.5, 1, 1, 1)
 shader_parameter/rim_power = 5.0
 shader_parameter/rim_intensity = 1.0
-shader_parameter/noise_strength = 0.01
-shader_parameter/noise_speed = 1.0
 shader_parameter/noise_texture = SubResource("NoiseTexture2D_cy2ey")
+shader_parameter/noise_strength = 0.0
+shader_parameter/noise_speed = 1.0
 
 [sub_resource type="SphereMesh" id="SphereMesh_4q3dj"]
 material = SubResource("ShaderMaterial_o8m2j")
