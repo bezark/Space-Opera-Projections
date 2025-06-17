@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://pt657as7h6v7"]
 
-[ext_resource type="Texture2D" uid="uid://ccqneobfjxvkw" path="res://Assets/Textures/Terrain_05-256x256.png" id="1_mthnw"]
-[ext_resource type="Texture2D" uid="uid://du5ui2xveq3pe" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-15.png" id="2_3v54j"]
+[ext_resource type="Texture2D" uid="uid://b2obgtw2ayh4v" path="res://Assets/Textures/Terrain_05-256x256.png" id="1_mthnw"]
+[ext_resource type="Texture2D" uid="uid://dvii1wixn6b4y" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-15.png" id="2_3v54j"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kilpo"]
 albedo_texture = ExtResource("1_mthnw")
