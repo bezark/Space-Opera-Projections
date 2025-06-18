@@ -1,18 +1,23 @@
-[gd_scene load_steps=67 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=72 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
-[ext_resource type="Texture2D" uid="uid://db4ro7730cn7b" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
+[ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="PackedScene" uid="uid://18k4h4eqi70r" path="res://Assets/1Toys/Zooms/TheEye.tscn" id="4_mb5ce"]
+[ext_resource type="Script" uid="uid://b7jaqtt131rbb" path="res://Components/CelestialBodies/effects.gd" id="7_0nw5c"]
 [ext_resource type="PackedScene" uid="uid://cw1pdlvuehwmt" path="res://Assets/1Toys/Zooms/city.tscn" id="7_dee4i"]
 [ext_resource type="PackedScene" uid="uid://b580ywvpd3yhx" path="res://Assets/1Toys/Zooms/crystal.tscn" id="7_vp0u0"]
+[ext_resource type="PackedScene" uid="uid://dejbkt1bojau7" path="res://Assets/POLYB/electric_explosion.tscn" id="8_cmavm"]
 [ext_resource type="PackedScene" uid="uid://w861i1qcxaxq" path="res://Assets/1Toys/well.tscn" id="8_qwjcd"]
+[ext_resource type="PackedScene" uid="uid://ddl2u52th0ebh" path="res://Assets/POLYB/explosion_big.tscn" id="9_k64gf"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Components/CelestialBodies/celestial_body.tscn" id="9_l1est"]
-[ext_resource type="Texture2D" uid="uid://dmveursqr582v" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="9_qwjcd"]
+[ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="9_qwjcd"]
+[ext_resource type="PackedScene" uid="uid://c20c16eqqr7kn" path="res://Assets/POLYB/fire_big.tscn" id="10_4hkls"]
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="10_paiqf"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="11_q43nw"]
 [ext_resource type="PackedScene" uid="uid://dcy05echtm6bh" path="res://Assets/1Toys/tru_beau.tscn" id="12_fxs8t"]
 [ext_resource type="PackedScene" uid="uid://btu8qfshbh68a" path="res://Assets/1Toys/Zooms/EarthGround.tscn" id="13_ggr6d"]
+[ext_resource type="PackedScene" uid="uid://b0jlym63ylq4i" path="res://Assets/1Toys/Zooms/Truth and Beauty.tscn" id="13_kdxqm"]
 [ext_resource type="PackedScene" uid="uid://u6wig7865ius" path="res://Assets/1Toys/Planets/Meadow.tscn" id="13_yfr1v"]
 [ext_resource type="PackedScene" uid="uid://8dwef6hk3vio" path="res://Assets/1Toys/Planets/moon.tscn" id="15_m4j4v"]
 [ext_resource type="PackedScene" uid="uid://c7nga0dl7lwsr" path="res://Assets/1Toys/DysonSphere.tscn" id="16_dee4i"]
@@ -22,7 +27,7 @@
 [ext_resource type="Script" uid="uid://kjavq4i37ayq" path="res://addons/tile_path_3d/tile_path_3d.gd" id="17_mcu1l"]
 [ext_resource type="PackedScene" uid="uid://b67cago41ch8b" path="res://Assets/1Toys/Planets/City.tscn" id="17_xhn7u"]
 [ext_resource type="PackedScene" uid="uid://3cwl5kgytcru" path="res://Assets/1Toys/Planets/Earth.tscn" id="18_qwjcd"]
-[ext_resource type="Texture2D" uid="uid://ti43kod0beq5" path="res://Assets/1Toys/roids/Asteroid2a_Color_2K.png" id="18_vk8jg"]
+[ext_resource type="Texture2D" uid="uid://c5cm1gmydjhd8" path="res://Assets/1Toys/roids/Asteroid2a_Color_2K.png" id="18_vk8jg"]
 [ext_resource type="Shader" uid="uid://bb2tbt5n3fnj1" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_no_clouds.gdshader" id="18_yfr1v"]
 [ext_resource type="PackedScene" uid="uid://ckuf0ejlgxn5e" path="res://Assets/1Toys/Planets/Desert.tscn" id="19_vk8jg"]
 [ext_resource type="PackedScene" uid="uid://dejmxcbny0emy" path="res://Assets/1Toys/Planets/AsteroidBelt.tscn" id="20_mcu1l"]
@@ -65,8 +70,7 @@ adjustment_enabled = true
 
 [sub_resource type="Resource" id="Resource_kdxqm"]
 script = ExtResource("10_paiqf")
-scene = ExtResource("4_mb5ce")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("4_mb5ce")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -265,7 +269,7 @@ albedo_texture = ExtResource("9_qwjcd")
 
 [sub_resource type="Resource" id="Resource_sed3l"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("13_kdxqm")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -487,6 +491,11 @@ value = -0.1
 [node name="VBoxContainer" type="VBoxContainer" parent="DysonSphere/VBoxContainer/Controls"]
 layout_mode = 2
 
+[node name="Orbit" type="Button" parent="DysonSphere/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Orbit"
+
 [node name="Armed" type="Button" parent="DysonSphere/VBoxContainer/Controls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -504,11 +513,6 @@ layout_mode = 2
 size_flags_vertical = 3
 text = "DESTROY"
 
-[node name="Orbit" type="Button" parent="DysonSphere/VBoxContainer/Controls/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-text = "Orbit"
-
 [node name="Delete" type="Button" parent="DysonSphere/VBoxContainer/Controls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
@@ -518,6 +522,17 @@ text = "DELETE"
 unique_name_in_owner = true
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 target = NodePath("../../Tobagen")
+
+[node name="Effects" type="Node3D" parent="DysonSphere"]
+script = ExtResource("7_0nw5c")
+
+[node name="ElectricExplosion" parent="DysonSphere/Effects" instance=ExtResource("8_cmavm")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="ExplosionBig" parent="DysonSphere/Effects" instance=ExtResource("9_k64gf")]
+
+[node name="FireBig" parent="DysonSphere/Effects" instance=ExtResource("10_4hkls")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 4, 4)
 
 [node name="Luster" parent="." node_paths=PackedStringArray("body", "well", "sattelites") instance=ExtResource("9_l1est")]
 transform = Transform3D(0.960871, 0.276996, 0, -0.276996, 0.960871, 0, 0, 0, 1, -0.0646362, -1.79852, -0.143433)
@@ -701,10 +716,107 @@ metadata/_custom_type_script = "uid://kjavq4i37ayq"
 material_override = SubResource("StandardMaterial3D_ggr6d")
 multimesh = SubResource("MultiMesh_vk8jg")
 
-[node name="Crumbs" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
+[node name="Crumbs" type="Node3D" parent="." node_paths=PackedStringArray("body") groups=["point_of_interest"]]
+script = ExtResource("3_qmfsb")
 title = "crumbs"
 scene_data = SubResource("Resource_mb5ce")
 body = NodePath("Crumbs")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Crumbs" groups=["system_control"]]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Button" parent="Crumbs/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Planet"
+
+[node name="Controls" type="HBoxContainer" parent="Crumbs/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Sliders" type="GridContainer" parent="Crumbs/VBoxContainer/Controls"]
+layout_mode = 2
+columns = 2
+
+[node name="DistanceLabel" type="Label" parent="Crumbs/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Distance"
+
+[node name="Distance" type="HSlider" parent="Crumbs/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -20.0
+max_value = 20.0
+step = 0.1
+
+[node name="SpeedLabel" type="Label" parent="Crumbs/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="HSlider" parent="Crumbs/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="SpinLabel" type="Label" parent="Crumbs/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Spin"
+
+[node name="Spin" type="HSlider" parent="Crumbs/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Crumbs/VBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="Orbit" type="Button" parent="Crumbs/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 42
+text = "Orbit"
+
+[node name="Build" type="Button" parent="Crumbs/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+text = "Build"
+
+[node name="Target" type="Button" parent="Crumbs/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Dyson Target"
+
+[node name="Zap" type="Button" parent="Crumbs/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Zap"
+
+[node name="Boom" type="Button" parent="Crumbs/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Boom"
+
+[node name="Delete" type="Button" parent="Crumbs/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "DELETE"
+
+[node name="Effects" type="Node3D" parent="Crumbs"]
+script = ExtResource("7_0nw5c")
+
+[node name="ElectricExplosion" parent="Crumbs/Effects" instance=ExtResource("8_cmavm")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="ExplosionBig" parent="Crumbs/Effects" instance=ExtResource("9_k64gf")]
+
+[node name="FireBig" parent="Crumbs/Effects" instance=ExtResource("10_4hkls")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 4, 4)
 
 [node name="Crumbs" parent="Crumbs" instance=ExtResource("24_sed3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1248.76, 0, 0)
@@ -814,8 +926,18 @@ transform = Transform3D(0.9964, 0, -0.0847735, 0, 1, 0, 0.0847735, 0, 0.9964, 0,
 [connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Power" to="DysonSphere/DysonSphere" method="_on_power_value_changed"]
 [connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Speed" to="DysonSphere" method="_on_speed_value_changed"]
 [connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Spin" to="DysonSphere" method="_on_spin_value_changed"]
+[connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Orbit" to="DysonSphere" method="_on_orbit_pressed"]
 [connection signal="toggled" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Armed" to="DysonSphere/DysonSphere" method="_on_armed_toggled"]
 [connection signal="toggled" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Power" to="DysonSphere/DysonSphere" method="_on_power_toggled"]
 [connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Destroy" to="DysonSphere/DysonSphere" method="_on_destroy_pressed"]
-[connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Orbit" to="DysonSphere" method="_on_orbit_pressed"]
 [connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Delete" to="DysonSphere" method="_on_delete_pressed"]
+[connection signal="toggled" from="Crumbs/VBoxContainer/Title" to="Crumbs" method="_on_title_toggled"]
+[connection signal="value_changed" from="Crumbs/VBoxContainer/Controls/Sliders/Distance" to="Crumbs" method="_on_distance_value_changed"]
+[connection signal="value_changed" from="Crumbs/VBoxContainer/Controls/Sliders/Speed" to="Crumbs" method="_on_speed_value_changed"]
+[connection signal="value_changed" from="Crumbs/VBoxContainer/Controls/Sliders/Spin" to="Crumbs" method="_on_spin_value_changed"]
+[connection signal="pressed" from="Crumbs/VBoxContainer/Controls/VBoxContainer/Orbit" to="Crumbs" method="_on_orbit_pressed"]
+[connection signal="button_down" from="Crumbs/VBoxContainer/Controls/VBoxContainer/Build" to="Crumbs/Crumbs" method="_on_build_button_down"]
+[connection signal="pressed" from="Crumbs/VBoxContainer/Controls/VBoxContainer/Target" to="Crumbs" method="_on_target_pressed"]
+[connection signal="toggled" from="Crumbs/VBoxContainer/Controls/VBoxContainer/Zap" to="Crumbs/Effects" method="_on_zap_toggled"]
+[connection signal="toggled" from="Crumbs/VBoxContainer/Controls/VBoxContainer/Boom" to="Crumbs/Effects" method="_on_boom_toggled"]
+[connection signal="pressed" from="Crumbs/VBoxContainer/Controls/VBoxContainer/Delete" to="Crumbs" method="_on_delete_pressed"]

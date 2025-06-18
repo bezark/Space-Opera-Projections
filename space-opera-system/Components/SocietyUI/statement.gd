@@ -6,4 +6,4 @@ var action: String
 
 func _ready() -> void:
 	var statement = str("We use [b]",title,"[/b] to ", action)
-	$whole.text = statement
+	text = statement

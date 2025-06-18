@@ -55,7 +55,8 @@ func _on_control_society_focused(action: SocietyAction) -> void:
 	$The.modulate = active_soc.colors.colors[3]
 
 	for old_component in $Action.get_children():
-		old_component.queue_free()
+		if not old_component.is_in_group("permanent"):
+			old_component.queue_free()
 
 	for component: SocietyActionComponent in action.components:
 		var new_statement = STATEMENT.instantiate()

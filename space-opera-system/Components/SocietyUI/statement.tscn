@@ -6,13 +6,15 @@
 [sub_resource type="RichTextEffect" id="RichTextEffect_qsg6j"]
 
 [node name="Statement" type="RichTextLabel"]
-custom_minimum_size = Vector2(900, 0)
+custom_minimum_size = Vector2(1200, 0)
 offset_right = 1396.0
-offset_bottom = 124.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
+offset_bottom = 325.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
 theme = ExtResource("1_a2g27")
 bbcode_enabled = true
 text = "We use [b] resource [/b] to do a big bad thing it's so long i have so many ideas i want to make a blood battery but also a pet store and one time when i was in france i had this cool idea about how to solve world hunger. can i do that right now?"
+fit_content = true
+scroll_active = false
 custom_effects = [SubResource("RichTextEffect_qsg6j")]
 script = ExtResource("1_u841r")

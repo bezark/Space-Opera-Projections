@@ -1,9 +1,9 @@
-[gd_scene load_steps=15 format=3 uid="uid://18k4h4eqi70r"]
+[gd_scene load_steps=16 format=3 uid="uid://18k4h4eqi70r"]
 
-[ext_resource type="Texture2D" uid="uid://b8fj2touwcy45" path="res://Assets/Textures/Grating_22-256x256.png" id="2_be6qv"]
-[ext_resource type="Script" uid="uid://bcshhps4gpxlp" path="res://Assets/1Toys/blackhole.gd" id="3_qvvyl"]
+[ext_resource type="Script" uid="uid://d38ufe0bew4xu" path="res://Assets/1Toys/Zooms/eyering.gd" id="2_a5g06"]
+[ext_resource type="Texture2D" uid="uid://dh1uvawf13djl" path="res://Assets/Textures/Grating_22-256x256.png" id="2_be6qv"]
+[ext_resource type="Script" uid="uid://c7im8feifhnt" path="res://Assets/1Toys/Zooms/tyeeye.gd" id="2_yqvpr"]
 [ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="4_8th8a"]
-[ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="5_sp2fg"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_an3j1"]
 
@@ -22,6 +22,14 @@ volumetric_fog_enabled = true
 volumetric_fog_albedo = Color(0, 0, 0, 1)
 volumetric_fog_emission = Color(0.14902, 0, 0.113725, 1)
 volumetric_fog_emission_energy = 0.1
+adjustment_enabled = true
+adjustment_contrast = 1.3
+adjustment_saturation = 2.53
+
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_yqvpr"]
+exposure_multiplier = 5.689
+dof_blur_far_distance = 4024.46
+dof_blur_near_distance = 135.53
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qvvyl"]
 albedo_color = Color(0.43134, 0.43134, 0.43134, 1)
@@ -29,7 +37,7 @@ albedo_texture = ExtResource("2_be6qv")
 metallic_specular = 0.0
 metallic_texture = ExtResource("2_be6qv")
 emission_enabled = true
-emission = Color(0.654223, 0.764902, 0.365319, 1)
+emission = Color(0.265946, 0.412192, 0.125724, 1)
 emission_energy_multiplier = 0.71
 rim_enabled = true
 rim_tint = 0.0
@@ -46,34 +54,7 @@ uv1_scale = Vector3(0.005, 0.005, 0.005)
 uv1_triplanar = true
 uv2_triplanar = true
 distance_fade_mode = 2
-distance_fade_min_distance = 1297.74
-distance_fade_max_distance = 172.22
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8th8a"]
-albedo_color = Color(0.43134, 0.43134, 0.43134, 1)
-albedo_texture = ExtResource("2_be6qv")
-metallic_specular = 0.0
-metallic_texture = ExtResource("2_be6qv")
-emission_enabled = true
-emission = Color(0.654223, 0.764902, 0.365319, 1)
-emission_energy_multiplier = 0.71
-rim_enabled = true
-rim_tint = 0.0
-rim_texture = ExtResource("2_be6qv")
-clearcoat_enabled = true
-clearcoat_roughness = 0.0
-heightmap_deep_parallax = true
-heightmap_min_layers = 8
-heightmap_max_layers = 32
-heightmap_texture = ExtResource("2_be6qv")
-backlight = Color(0, 0.568627, 0, 1)
-backlight_texture = ExtResource("2_be6qv")
-uv1_scale = Vector3(0.005, 0.005, 0.005)
-uv1_triplanar = true
-uv2_triplanar = true
-distance_fade_mode = 2
-distance_fade_min_distance = 1297.74
-distance_fade_max_distance = 172.22
+distance_fade_max_distance = 1588.12
 
 [sub_resource type="Shader" id="Shader_j4skb"]
 code = "shader_type spatial;
@@ -154,10 +135,36 @@ height = 500.0
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5g06"]
 emission_enabled = true
 emission = Color(0.654223, 0.764902, 0.365319, 1)
-emission_energy_multiplier = 11.83
+emission_energy_multiplier = 16.0
 distance_fade_mode = 2
 distance_fade_min_distance = 466.38
 distance_fade_max_distance = 1611.9
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8th8a"]
+albedo_color = Color(0.43134, 0.43134, 0.43134, 1)
+albedo_texture = ExtResource("2_be6qv")
+metallic_specular = 0.0
+metallic_texture = ExtResource("2_be6qv")
+emission_enabled = true
+emission = Color(0.654223, 0.764902, 0.365319, 1)
+emission_energy_multiplier = 0.71
+rim_enabled = true
+rim_tint = 0.0
+rim_texture = ExtResource("2_be6qv")
+clearcoat_enabled = true
+clearcoat_roughness = 0.0
+heightmap_deep_parallax = true
+heightmap_min_layers = 8
+heightmap_max_layers = 32
+heightmap_texture = ExtResource("2_be6qv")
+backlight = Color(0, 0.568627, 0, 1)
+backlight_texture = ExtResource("2_be6qv")
+uv1_scale = Vector3(0.005, 0.005, 0.005)
+uv1_triplanar = true
+uv2_triplanar = true
+distance_fade_mode = 2
+distance_fade_min_distance = 1297.74
+distance_fade_max_distance = 172.22
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sp2fg"]
 albedo_color = Color(0.43134, 0.43134, 0.43134, 1)
@@ -189,6 +196,7 @@ distance_fade_max_distance = 172.22
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_be6qv")
+camera_attributes = SubResource("CameraAttributesPractical_yqvpr")
 
 [node name="Ring2" type="CSGTorus3D" parent="."]
 transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, 1, -1.00136e-05, 1.79106e-06, 2.5034e-06, 5, -3.14593e-06, 0, 0, 0)
@@ -198,29 +206,14 @@ sides = 64
 ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_qvvyl")
-
-[node name="Ring3" type="CSGTorus3D" parent="."]
-transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, -2.6077e-06, -5, 3.14593e-06, 1, -9.89437e-06, 1.79106e-06, 0, 0, 0)
-inner_radius = 675.0
-outer_radius = 700.0
-sides = 64
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_8th8a")
-
-[node name="Ring5" type="CSGTorus3D" parent="."]
-transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, -0.292274, -4.78167, 2.48509e-06, 0.956335, -1.46137, 2.63232e-06, 0, 0, 0)
-inner_radius = 675.0
-outer_radius = 700.0
-sides = 64
-ring_sides = 3
-smooth_faces = false
-material = SubResource("StandardMaterial3D_8th8a")
+script = ExtResource("2_a5g06")
+spin_velocity = 0.2
 
 [node name="Blackhole" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999986, 0.00532323, 0, -0.00532323, 0.999986, 0, 0, 0)
 mesh = SubResource("SphereMesh_smirv")
-script = ExtResource("3_qvvyl")
+script = ExtResource("2_yqvpr")
+look_sensitivity = 1.0
 
 [node name="Disk" type="CSGTorus3D" parent="Blackhole"]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
@@ -240,7 +233,7 @@ shadow_transmittance_bias = 16.0
 shadow_blur = 3.777
 omni_range = 3000.0
 
-[node name="HoleControls" type="FlowContainer" parent="Blackhole" groups=["system_control"]]
+[node name="HoleControls" type="FlowContainer" parent="Blackhole" groups=["zoom_control"]]
 offset_right = 40.0
 offset_bottom = 40.0
 script = ExtResource("4_8th8a")
@@ -268,20 +261,43 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.739975, 0.417669, 0.0813718, 1)
 
-[node name="FreeFlyCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.00468577, -0.919252, -0.393641, -0.0109417, -0.393669, 0.919187, -0.999929, 2.32027e-09, -0.0119028, 0, 664.473, 0)
-fov = 110.0
-script = ExtResource("5_sp2fg")
-metadata/_custom_type_script = "uid://c0w752ro86qws"
+[node name="Ring3" type="CSGTorus3D" parent="Blackhole"]
+transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, -0.00532584, -4.99993, 3.13635e-06, 0.999986, -0.026626, 1.80778e-06, 0, 0, 0)
+inner_radius = 675.0
+outer_radius = 700.0
+sides = 64
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_8th8a")
+script = ExtResource("2_a5g06")
+spin_velocity = 0.4
 
-[node name="Ring4" type="CSGTorus3D" parent="."]
-transform = Transform3D(-0.707104, 2.12133, -1.79264e-06, 0.707109, 2.12131, -1.79264e-06, -9.17295e-12, -7.60554e-06, -1, 0, 0, 0)
+[node name="Ring5" type="CSGTorus3D" parent="Blackhole"]
+transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, -0.297361, -4.77382, 2.47104e-06, 0.954765, -1.4868, 2.64551e-06, 0, 0, 0)
+inner_radius = 675.0
+outer_radius = 700.0
+sides = 64
+ring_sides = 3
+smooth_faces = false
+material = SubResource("StandardMaterial3D_8th8a")
+script = ExtResource("2_a5g06")
+spin_velocity = 0.8
+
+[node name="Ring4" type="CSGTorus3D" parent="Blackhole"]
+transform = Transform3D(-0.707104, 2.12133, -1.79264e-06, 0.707099, 2.12128, 0.00532144, 0.0037641, 0.0112846, -0.999986, 0, 0, 0)
 inner_radius = 407.952
 outer_radius = 455.634
 sides = 64
 ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_sp2fg")
+script = ExtResource("2_a5g06")
+
+[node name="FreeFlyCamera" type="Camera3D" parent="."]
+transform = Transform3D(0.00468577, -0.919252, -0.393641, -0.0109417, -0.393669, 0.919187, -0.999929, 2.32027e-09, -0.0119028, 0, 664.473, 0)
+current = true
+fov = 110.0
+far = 2366.3
 
 [connection signal="toggled" from="Blackhole/HoleControls/Button" to="Blackhole/HoleControls" method="_on_button_toggled"]
 [connection signal="value_changed" from="Blackhole/HoleControls/Controls/Scale" to="Blackhole" method="_on_scale_value_changed"]
