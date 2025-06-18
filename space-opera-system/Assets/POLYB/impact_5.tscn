@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://cqaq6i2s7kwfa"]
 
-[ext_resource type="Texture2D" uid="uid://60nciysoontj" path="res://PolyBlocks/EffectBlocks/source_files/textures/sparkle.png" id="1_5ss08"]
-[ext_resource type="Script" path="res://PolyBlocks/EffectBlocks/source_files/scripts/impact_single.gd" id="3_24ofy"]
+[ext_resource type="Texture2D" uid="uid://x0cowgcv0wts" path="res://Assets/POLYB/sparkle.png" id="1_5ss08"]
+[ext_resource type="Script" uid="uid://c4vk5vd0i6108" path="res://Assets/POLYB/impact_single.gd" id="3_24ofy"]
 
 [sub_resource type="Curve" id="Curve_dldii"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.235075, 4.98572), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 

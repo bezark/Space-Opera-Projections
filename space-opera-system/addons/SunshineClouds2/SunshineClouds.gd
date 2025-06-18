@@ -12,6 +12,9 @@ class_name SunshineCloudsGD
 @export_range(0, 10) var lighting_density : float = 0.55
 @export_range(0, 1) var fog_effect_ground : float = 1.0
 
+@export_subgroup("Reflections")
+@export var reflections_globalshaderparam : String = ""
+
 @export_subgroup("Colors")
 @export_range(0, 1) var clouds_anisotropy : float = 0.3
 @export var cloud_ambient_color : Color = Color(0.352, 0.624, 0.784, 1.0)
@@ -87,6 +90,12 @@ class_name SunshineCloudsGD
 @export_subgroup("Lights")
 @export var directional_lights_data : Array[Vector4] = []
 @export var point_lights_data : Array[Vector4] = []
+@export var point_effector_data : Array[Vector4] = []
+
+var positionQueries : Array[Vector3] = []
+var positionQueryCallables : Array[Callable] = []
+var positionQuerying : bool = false
+var positionResetting : bool = false
 
 var lights_updated = false
 
@@ -108,6 +117,7 @@ var linear_sampler_no_repeat : RID = RID()
 
 var general_data_buffer : RID = RID()
 var light_data_buffer : RID = RID()
+var point_sample_data_buffer : RID = RID()
 var accumulation_textures : Array[RID] = []
 var resized_depth : RID = RID()
 var push_constants : PackedByteArray
@@ -119,10 +129,8 @@ var buffers : RenderSceneBuffersRD
 
 
 var uniform_sets : Array[RID] = []
-var general_data_floats : PackedFloat32Array = []
 var general_data : PackedByteArray
 
-var light_data_floats : PackedFloat32Array = []
 var light_data : PackedByteArray
 
 var accumulation_is_a : bool = false
@@ -139,6 +147,13 @@ func refresh_compute():
 func update_mask(newMask : RID):
 	maskDrawnRid = newMask
 	last_size = Vector2i.ZERO
+
+func add_sample(callable : Callable, position : Vector3):
+	#if (positionQueries.size() == 32):
+		#print("Max cloud position sample queue reached (32), query failed.")
+		#return
+	positionQueries.append(position)
+	positionQueryCallables.append(callable)
 
 func _init():
 	effect_callback_type = CompositorEffect.EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT
@@ -184,6 +199,10 @@ func clear_compute():
 		if light_data_buffer.is_valid():
 			rd.free_rid(light_data_buffer)
 		light_data_buffer = RID()
+		
+		if point_sample_data_buffer.is_valid():
+			rd.free_rid(point_sample_data_buffer)
+		point_sample_data_buffer = RID()
 		
 		if resized_depth.is_valid():
 			rd.free_rid(resized_depth)
@@ -355,6 +374,9 @@ func _render_callback(effect_callback_type, render_data):
 					accumulation_textures.append(rd.texture_create(base_colorformat, RDTextureView.new(), [blankImageData]))
 					accumulation_textures.append(rd.texture_create(base_colorformat, RDTextureView.new(), [blankImageData]))
 					
+					#reflections
+					accumulation_textures.append(rd.texture_create(base_colorformat, RDTextureView.new(), [blankImageData]))
+					
 					
 					var depthformat : RDTextureFormat = rd.texture_get_format(depth_image)
 					depthformat.width = new_size.x
@@ -384,37 +406,37 @@ func _render_callback(effect_callback_type, render_data):
 					var output_data_uniform = RDUniform.new()
 					output_data_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
 					output_data_uniform.binding = 0
-					output_data_uniform.add_id(accumulation_textures[view * 3])
+					output_data_uniform.add_id(accumulation_textures[view * 7])
 					uniforms_array.append(output_data_uniform)
 					
 					var output_color_uniform = RDUniform.new()
 					output_color_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
 					output_color_uniform.binding = 1
-					output_color_uniform.add_id(accumulation_textures[view * 3 + 1])
+					output_color_uniform.add_id(accumulation_textures[view * 7 + 1])
 					uniforms_array.append(output_color_uniform)
 					
 					var accum1A_uniform = RDUniform.new()
 					accum1A_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
 					accum1A_uniform.binding = 2
-					accum1A_uniform.add_id(accumulation_textures[view * 3 + 2])
+					accum1A_uniform.add_id(accumulation_textures[view * 7 + 2])
 					uniforms_array.append(accum1A_uniform)
 					
 					var accum1B_uniform = RDUniform.new()
 					accum1B_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
 					accum1B_uniform.binding = 3
-					accum1B_uniform.add_id(accumulation_textures[view * 3 + 3])
+					accum1B_uniform.add_id(accumulation_textures[view * 7 + 3])
 					uniforms_array.append(accum1B_uniform)
 					
 					var accum2A_uniform = RDUniform.new()
 					accum2A_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
 					accum2A_uniform.binding = 4
-					accum2A_uniform.add_id(accumulation_textures[view * 3 + 4])
+					accum2A_uniform.add_id(accumulation_textures[view * 7 + 4])
 					uniforms_array.append(accum2A_uniform)
 					
 					var accum2B_uniform = RDUniform.new()
 					accum2B_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
 					accum2B_uniform.binding = 5
-					accum2B_uniform.add_id(accumulation_textures[view * 3 + 5])
+					accum2B_uniform.add_id(accumulation_textures[view * 7 + 5])
 					uniforms_array.append(accum2B_uniform)
 					
 					var depth_uniform = RDUniform.new()
@@ -473,19 +495,28 @@ func _render_callback(effect_callback_type, render_data):
 					height_gradient_uniform.add_id(RenderingServer.texture_get_rd_texture(height_gradient.get_rid()))
 					uniforms_array.append(height_gradient_uniform)
 					
-					general_data_buffer = rd.uniform_buffer_create(448)
+					general_data_buffer = rd.uniform_buffer_create(464)
 					var camera_uniform = RDUniform.new()
 					camera_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
 					camera_uniform.binding = 14
 					camera_uniform.add_id(general_data_buffer)
 					uniforms_array.append(camera_uniform)
 					
-					light_data_buffer = rd.uniform_buffer_create(384)
+					light_data_buffer = rd.uniform_buffer_create(4352)
 					var light_data_uniform = RDUniform.new()
 					light_data_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
 					light_data_uniform.binding = 15
 					light_data_uniform.add_id(light_data_buffer)
 					uniforms_array.append(light_data_uniform)
+					
+					var sampleData : PackedByteArray = []
+					sampleData.resize(512)
+					point_sample_data_buffer = rd.storage_buffer_create(512, sampleData)
+					var point_sample_data_uniform = RDUniform.new()
+					point_sample_data_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_STORAGE_BUFFER
+					point_sample_data_uniform.binding = 16
+					point_sample_data_uniform.add_id(point_sample_data_buffer)
+					uniforms_array.append(point_sample_data_uniform)
 					
 					uniform_sets.append(rd.uniform_set_create(uniforms_array, shader, 0))
 					
@@ -495,38 +526,49 @@ func _render_callback(effect_callback_type, render_data):
 					prepass_color_data_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_SAMPLER_WITH_TEXTURE
 					prepass_color_data_uniform.binding = 0
 					prepass_color_data_uniform.add_id(linear_sampler_no_repeat)
-					prepass_color_data_uniform.add_id(accumulation_textures[view * 3])
+					prepass_color_data_uniform.add_id(accumulation_textures[view * 7])
 					postpass_uniforms_array.append(prepass_color_data_uniform)
 					
 					var prepass_color_uniform = RDUniform.new()
 					prepass_color_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_SAMPLER_WITH_TEXTURE
 					prepass_color_uniform.binding = 1
 					prepass_color_uniform.add_id(linear_sampler_no_repeat)
-					prepass_color_uniform.add_id(accumulation_textures[view * 3 + 1])
+					prepass_color_uniform.add_id(accumulation_textures[view * 7 + 1])
 					postpass_uniforms_array.append(prepass_color_uniform)
+					
+					var postpass_reflections_uniform = RDUniform.new()
+					postpass_reflections_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
+					postpass_reflections_uniform.binding = 2
+					postpass_reflections_uniform.add_id(accumulation_textures[view * 7 + 6])
+					postpass_uniforms_array.append(postpass_reflections_uniform)
+					
+					if (reflections_globalshaderparam != ""):
+						var newTexture = Texture2DRD.new()
+						newTexture.texture_rd_rid = accumulation_textures[view * 7 + 6]
+						RenderingServer.global_shader_parameter_set(reflections_globalshaderparam, newTexture)
 					
 					var postpass_color_uniform = RDUniform.new()
 					postpass_color_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
-					postpass_color_uniform.binding = 2
+					postpass_color_uniform.binding = 3
 					postpass_color_uniform.add_id(color_image)
 					postpass_uniforms_array.append(postpass_color_uniform)
 					
 					var postpass_depth_uniform = RDUniform.new()
 					postpass_depth_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_SAMPLER_WITH_TEXTURE
-					postpass_depth_uniform.binding = 3
+					postpass_depth_uniform.binding = 4
 					postpass_depth_uniform.add_id(nearest_sampler)
 					postpass_depth_uniform.add_id(depth_image)
 					postpass_uniforms_array.append(postpass_depth_uniform)
 					
 					var postpass_camera_uniform = RDUniform.new()
 					postpass_camera_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
-					postpass_camera_uniform.binding = 4
+					postpass_camera_uniform.binding = 5
 					postpass_camera_uniform.add_id(general_data_buffer)
 					postpass_uniforms_array.append(postpass_camera_uniform)
 					
 					var postpass_light_data_uniform = RDUniform.new()
 					postpass_light_data_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
-					postpass_light_data_uniform.binding = 5
+					postpass_light_data_uniform.binding = 6
 					postpass_light_data_uniform.add_id(light_data_buffer)
 					postpass_uniforms_array.append(postpass_light_data_uniform)
 					
@@ -561,9 +603,13 @@ func _render_callback(effect_callback_type, render_data):
 			var viewProj : Projection = rendersceneData.get_cam_projection();
 			
 			last_size = size
+			
 			update_matrices(cameraTR, viewProj)
 			if lights_updated or directional_lights_data.size() == 0:
 				update_lights()
+			
+			if (!positionQuerying && !positionResetting && positionQueries.size() > 0):
+				encode_sample_points()
 			
 			var prepass_x_groups = ((size.x - 1) / 32) + 1
 			var prepass_y_groups = ((size.y - 1) / 32) + 1
@@ -591,12 +637,51 @@ func _render_callback(effect_callback_type, render_data):
 				rd.compute_list_set_push_constant(postpass_list, postpass_push_constants, postpass_push_constants.size())
 				rd.compute_list_dispatch(postpass_list, prepass_x_groups, prepass_y_groups, 1)
 				rd.compute_list_end()
+			
+			if (!positionResetting && positionQuerying):
+				positionResetting = true
+				rd.buffer_get_data_async(point_sample_data_buffer, retrieve_position_queries.bind())
+			#call_deferred("update_callbacktype", cameraTR.origin.y)
+			#if (cameraTR.origin.y > cloud_floor):
+				#if (self.effect_callback_type != CompositorEffect.EFFECT_CALLBACK_TYPE_POST_TRANSPARENT):
+					#self.effect_callback_type = CompositorEffect.EFFECT_CALLBACK_TYPE_POST_TRANSPARENT
+			#else:
+				#if (self.effect_callback_type != CompositorEffect.EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT):
+					#self.effect_callback_type = CompositorEffect.EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT
+
+func retrieve_position_queries(data : PackedByteArray):
+	
+	var idx = 0
+	while idx < 512 && positionQueryCallables.size() > 0:
+		var position : Vector3 = Vector3.ZERO
+		position.x = data.decode_float(idx)
+		idx += 4
+		position.y = data.decode_float(idx)
+		idx += 4
+		position.z = data.decode_float(idx)
+		idx += 4
+		var density = data.decode_float(idx)
+		idx += 4
+		
+		positionQueryCallables[0].call(position, density)
+		positionQueryCallables.remove_at(0)
+		
+	
+	positionQuerying = false
+	positionResetting = false
+
+
+func update_callbacktype(lastY : float):
+	if (lastY > cloud_floor):
+		if (self.effect_callback_type != CompositorEffect.EFFECT_CALLBACK_TYPE_POST_TRANSPARENT):
+			self.effect_callback_type = CompositorEffect.EFFECT_CALLBACK_TYPE_POST_TRANSPARENT
+	else:
+		if (self.effect_callback_type != CompositorEffect.EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT):
+			self.effect_callback_type = CompositorEffect.EFFECT_CALLBACK_TYPE_PRE_TRANSPARENT
 
 func update_matrices(camera_tr, view_proj):
-	if general_data_floats.size() != 112: #32 + 32 (matricies) + 44 for generic data.
-		general_data_floats.resize(112)
-	if general_data.size() != 448: #32+32+44 * 4 bytes for each float = 432.
-		general_data.resize(448)
+	if general_data.size() != 464: #32+32+44 * 4 bytes for each float = 432.
+		general_data.resize(464)
 	
 	var idx = 0
 	filter_index += 1
@@ -749,7 +834,7 @@ func update_matrices(camera_tr, view_proj):
 
 	general_data.encode_float(idx, clouds_sharpness); idx += 4
 	general_data.encode_float(idx, float(directional_lights_data.size()) / 2.0); idx += 4
-	general_data.encode_float(idx, float(point_lights_data.size()) / 2.0); idx += 4
+	general_data.encode_float(idx, 0.0); idx += 4
 	general_data.encode_float(idx, clouds_anisotropy); idx += 4
 
 	general_data.encode_float(idx, cloud_floor); idx += 4
@@ -765,6 +850,11 @@ func update_matrices(camera_tr, view_proj):
 	general_data.encode_float(idx, wind_direction.x); idx += 4
 	general_data.encode_float(idx, wind_direction.z); idx += 4
 	general_data.encode_float(idx, fog_effect_ground); idx += 4
+	general_data.encode_float(idx, positionQueries.size()); idx += 4
+	
+	general_data.encode_float(idx, float(point_lights_data.size()) / 2.0); idx += 4
+	general_data.encode_float(idx, float(point_effector_data.size()) / 2.0); idx += 4
+	general_data.encode_float(idx, 0.0); idx += 4
 	general_data.encode_float(idx, 0.0); idx += 4
 	
 	# Copy to byte buffer
@@ -774,18 +864,15 @@ func update_matrices(camera_tr, view_proj):
 func update_lights():
 	lights_updated = false
 	
-	if light_data_floats.size() != 96: #32 for directional, plus 64 for points.
-		light_data_floats.resize(96)
-	if light_data.size() != 384: #32 + 64 * 4 bytes for each float = 384.
-		light_data.resize(384)
+	if light_data.size() != 4352: #32 + 1024 + 32 * 4 bytes for each float = 4352.
+		light_data.resize(4352)
 	
 	if (directional_lights_data.size() == 0): #defaults to having a default light.
 		directional_lights_data.append(Vector4(0.5, 1.0, 0.5, 16.0))
 		directional_lights_data.append(Vector4(1.0, 1.0, 1.0, 1.0))
 	
 	var idx = 0
-	var directional_light_count = min(directional_lights_data.size(), 8)
-	for i in range(directional_light_count):
+	for i in range(min(directional_lights_data.size(), 8)):
 		light_data.encode_float(idx, directional_lights_data[i].x)
 		idx += 4
 		light_data.encode_float(idx, directional_lights_data[i].y)
@@ -796,9 +883,8 @@ func update_lights():
 		idx += 4
 	
 	
-	idx = 32 * 4
-	var point_light_count = min(point_lights_data.size(), 16)
-	for i in range(point_light_count):
+	idx = 128
+	for i in range(min(point_lights_data.size(), 256)):
 		light_data.encode_float(idx, point_lights_data[i].x)
 		idx += 4
 		light_data.encode_float(idx, point_lights_data[i].y)
@@ -808,4 +894,36 @@ func update_lights():
 		light_data.encode_float(idx, point_lights_data[i].w)
 		idx += 4
 	
+	idx = 4224
+	for i in range(min(point_effector_data.size(), 8)):
+		light_data.encode_float(idx, point_effector_data[i].x)
+		idx += 4
+		light_data.encode_float(idx, point_effector_data[i].y)
+		idx += 4
+		light_data.encode_float(idx, point_effector_data[i].z)
+		idx += 4
+		light_data.encode_float(idx, point_effector_data[i].w)
+		idx += 4
+	
 	rd.buffer_update(light_data_buffer, 0, light_data.size(), light_data)
+
+func encode_sample_points():
+	positionQuerying = true
+	var sample_points_data_floats : PackedByteArray = []
+	sample_points_data_floats.resize(512)
+	
+	var idx = 0
+	while idx < 512 && positionQueries.size() > 0:
+		
+		sample_points_data_floats.encode_float(idx, positionQueries[0].x)
+		idx += 4
+		sample_points_data_floats.encode_float(idx, positionQueries[0].y)
+		idx += 4
+		sample_points_data_floats.encode_float(idx, positionQueries[0].z)
+		idx += 4
+		sample_points_data_floats.encode_float(idx, 0.0)
+		idx += 4
+		positionQueries.remove_at(0)
+	
+	
+	rd.buffer_update(point_sample_data_buffer, 0, sample_points_data_floats.size(), sample_points_data_floats)

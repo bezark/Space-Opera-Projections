@@ -7,10 +7,11 @@ layout(local_size_x = 32, local_size_y = 32, local_size_z = 1) in;
 
 layout(binding = 0) uniform sampler2D input_data_image;
 layout(binding = 1) uniform sampler2D input_color_image;
-layout(rgba16f, binding = 2) uniform image2D color_image;
-layout(binding = 3) uniform sampler2D depth_image;
+layout(rgba16f, binding = 2) uniform image2D reflections_sample;
+layout(rgba16f, binding = 3) uniform image2D color_image;
+layout(binding = 4) uniform sampler2D depth_image;
 
-layout(binding = 4) uniform uniformBuffer {
+layout(binding = 5) uniform uniformBuffer {
 	mat4 view;
 	mat4 prevview;
 	mat4 proj;
@@ -39,7 +40,7 @@ layout(binding = 4) uniform uniformBuffer {
 
 	float cloud_sharpness;
 	float directionalLightsCount;
-	float pointLightsCount;
+	float reserveda;
 	float anisotropy;
 
 	float cloud_floor;
@@ -54,7 +55,11 @@ layout(binding = 4) uniform uniformBuffer {
 
 	vec2 WindDirection;
 	float fogEffectGround;
-	float reserved;
+	float samplePointsCount;
+
+	float pointLightsCount;
+	float pointEffectorCount;
+	vec2 reservedb;
 } genericData;
 
 
@@ -68,9 +73,19 @@ struct PointLight {
 	vec4 color; //a = intensity
 };
 
-layout(binding = 5) uniform lightsBuffer {
+struct PointEffector {
+	vec3 position; //w = radius
+	float radius;
+
+	float power;
+	float attenuation;
+	vec2 reserved;
+};
+
+layout(binding = 6) uniform LightsBuffer {
 	DirectionalLight directionalLights[4];
-	PointLight pointLights[8];
+	PointLight pointLights[128];
+	PointEffector pointEffectors[4];
 };
 
 // Our push constant
@@ -346,6 +361,8 @@ void main() {
 		currentAccumilation = texture(input_color_image, accumUV);
 		currentColorData = texture(input_data_image, accumUV);
 	}
+	
+
 	float minstep = genericData.min_step_distance;
 	float maxstep = genericData.max_step_distance;
 	
@@ -407,4 +424,5 @@ void main() {
 
 	
     imageStore(color_image, uv, color);
+	imageStore(reflections_sample, ivec2(accumUV * vec2(lowres_size)), vec4(color.rgb, traveledDistance));
 }

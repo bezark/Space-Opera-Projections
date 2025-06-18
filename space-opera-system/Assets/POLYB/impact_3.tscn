@@ -1,6 +1,6 @@
 [gd_scene load_steps=12 format=3 uid="uid://bt54qs0k6qjdm"]
 
-[ext_resource type="Script" path="res://PolyBlocks/EffectBlocks/source_files/scripts/impact_single.gd" id="1_ic772"]
+[ext_resource type="Script" uid="uid://c4vk5vd0i6108" path="res://Assets/POLYB/impact_single.gd" id="1_ic772"]
 
 [sub_resource type="Gradient" id="Gradient_oyxsh"]
 

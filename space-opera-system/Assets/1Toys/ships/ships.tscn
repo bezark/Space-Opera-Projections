@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dvrf2tdnr1go1"]
+[gd_scene load_steps=4 format=3 uid="uid://dvrf2tdnr1go1"]
 
 [ext_resource type="PackedScene" uid="uid://hxr5i1k6fk7w" path="res://Assets/shipScenes/corvette_02.tscn" id="1_q7o7x"]
 [ext_resource type="PackedScene" uid="uid://cn4mb82u56moa" path="res://Assets/shipScenes/carrier_01.tscn" id="2_uduwq"]
+[ext_resource type="PackedScene" uid="uid://dl1n86vlgnb34" path="res://Assets/POLYB/laser.tscn" id="3_uduwq"]
 
 [node name="Ships" type="Node3D"]
 
@@ -24,6 +25,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00644, 2.97541, 0.0117874)
 
 [node name="Carrier01" parent="." instance=ExtResource("2_uduwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -12)
+
+[node name="Laser" parent="Carrier01" instance=ExtResource("3_uduwq")]
 
 [node name="Carrier02" parent="." instance=ExtResource("2_uduwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -19)

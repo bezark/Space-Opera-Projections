@@ -1,9 +1,9 @@
 [gd_scene load_steps=20 format=3 uid="uid://duaipbproqly5"]
 
-[ext_resource type="Shader" path="res://PolyBlocks/EffectBlocks/source_files/shaders/stylized_assets.gdshader" id="1_rjpy8"]
-[ext_resource type="Shader" path="res://PolyBlocks/EffectBlocks/source_files/shaders/hologram.gdshader" id="2_cujgo"]
-[ext_resource type="PackedScene" uid="uid://1b06vhur3mw3" path="res://PolyBlocks/EffectBlocks/assets/energy/plasma_beam.tscn" id="3_ivfbq"]
-[ext_resource type="PackedScene" uid="uid://c8358n4rj4dg1" path="res://PolyBlocks/EffectBlocks/assets/energy/electric_waves.tscn" id="4_paqg3"]
+[ext_resource type="Shader" uid="uid://b4ybdoqoaivw0" path="res://Assets/POLYB/stylized_assets.gdshader" id="1_rjpy8"]
+[ext_resource type="Shader" uid="uid://bog41duhrv5hs" path="res://Assets/POLYB/hologram.gdshader" id="2_cujgo"]
+[ext_resource type="PackedScene" uid="uid://1b06vhur3mw3" path="res://Assets/POLYB/plasma_beam.tscn" id="3_ivfbq"]
+[ext_resource type="PackedScene" uid="uid://c8358n4rj4dg1" path="res://Assets/POLYB/electric_waves.tscn" id="4_paqg3"]
 
 [sub_resource type="Gradient" id="Gradient_enxou"]
 offsets = PackedFloat32Array(0)

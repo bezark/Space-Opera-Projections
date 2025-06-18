@@ -1,6 +1,6 @@
 [gd_scene load_steps=5 format=3 uid="uid://big5ok45fifb6"]
 
-[ext_resource type="Texture2D" uid="uid://cgddppqhl5gtv" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-96.png" id="1_6g6hu"]
+[ext_resource type="Texture2D" uid="uid://dkofaxtsp2647" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-96.png" id="1_6g6hu"]
 [ext_resource type="Script" uid="uid://dlubhinthjott" path="res://Assets/1Toys/Zooms/float.gd" id="1_x1ia8"]
 
 [sub_resource type="Curve3D" id="Curve3D_1jd6i"]
@@ -22,8 +22,11 @@ transform = Transform3D(-0.00157789, -0.10337, 0.994638, 0, 0.994639, 0.10337, -
 script = ExtResource("1_x1ia8")
 
 [node name="Baloon" type="CSGSphere3D" parent="PathFollow3D"]
+transform = Transform3D(3, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_x1ia8")
 radius = 16.6001
+radial_segments = 24
+rings = 24
 
 [node name="CSGTorus3D" type="CSGTorus3D" parent="PathFollow3D/Baloon"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -24, 0)

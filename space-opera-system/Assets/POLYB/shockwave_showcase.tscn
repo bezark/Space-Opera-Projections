@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://bl4mhysys2y34"]
 
-[ext_resource type="Material" uid="uid://cgmjb14xh3alj" path="res://PolyBlocks/EffectBlocks/source_files/materials/shockwave.material" id="1_ojmr8"]
-[ext_resource type="Texture2D" uid="uid://10fvhd41hy3r" path="res://PolyBlocks/EffectBlocks/source_files/textures/checkerboard.png" id="2_ygjei"]
+[ext_resource type="Material" uid="uid://cgmjb14xh3alj" path="res://Assets/POLYB/shockwave.material" id="1_ojmr8"]
+[ext_resource type="Texture2D" uid="uid://76yuhhs1ujs" path="res://Assets/POLYB/checkerboard.png" id="2_ygjei"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p4ng1"]
 albedo_texture = ExtResource("2_ygjei")

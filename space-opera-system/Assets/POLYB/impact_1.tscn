@@ -1,11 +1,11 @@
 [gd_scene load_steps=20 format=3 uid="uid://dy55uu2dsjqa5"]
 
-[ext_resource type="Texture2D" uid="uid://60nciysoontj" path="res://PolyBlocks/EffectBlocks/source_files/textures/sparkle.png" id="1_3pe8b"]
-[ext_resource type="Script" path="res://PolyBlocks/EffectBlocks/source_files/scripts/impacts.gd" id="1_fhr5b"]
-[ext_resource type="Texture2D" uid="uid://d1e7hll0hnmad" path="res://PolyBlocks/EffectBlocks/source_files/textures/circle_1.png" id="2_1e2hp"]
+[ext_resource type="Texture2D" uid="uid://x0cowgcv0wts" path="res://Assets/POLYB/sparkle.png" id="1_3pe8b"]
+[ext_resource type="Script" uid="uid://dl14kqicuuhyt" path="res://Assets/POLYB/impacts.gd" id="1_fhr5b"]
+[ext_resource type="Texture2D" uid="uid://bunhn1fsxgs05" path="res://Assets/POLYB/circle_1.png" id="2_1e2hp"]
 
 [sub_resource type="Curve" id="Curve_dldii"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.235075, 4.98572), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 3
 
@@ -66,7 +66,7 @@ material = SubResource("StandardMaterial3D_60jfo")
 size = Vector2(0.5, 0.5)
 
 [sub_resource type="Curve" id="Curve_3x440"]
-max_value = 5.0
+_limits = [0.0, 5.0, 0.0, 1.0]
 _data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.0876866, 4.98572), 0.0, 0.0, 0, 0, Vector2(0.682836, 5), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 4
 
