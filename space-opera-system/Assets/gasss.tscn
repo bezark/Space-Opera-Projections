@@ -19,8 +19,8 @@ sky = SubResource("Sky_h75qb")
 tonemap_mode = 2
 glow_enabled = true
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.02
-volumetric_fog_albedo = Color(0.423529, 0.152941, 0.678431, 1)
+volumetric_fog_density = 0.06
+volumetric_fog_albedo = Color(0.604161, 0.0890329, 0.250277, 1)
 
 [sub_resource type="Gradient" id="Gradient_ghh6f"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -68,6 +68,12 @@ _shader_parameters = {
 
 [node name="Gasss" type="Node3D"]
 
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.976471, 0.843137, 0.792157, 1)
+light_energy = 0.2
+shadow_enabled = true
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_6c1hr")
 
@@ -100,15 +106,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 184.798, -6.58657, -150.318)
 [node name="Skyscrape5" parent="." instance=ExtResource("3_ai6h1")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 100.397, -6.58657, -2.72353)
 
-[node name="Skyscrape6" parent="." instance=ExtResource("3_ai6h1")]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 199.003, 3.21611, -23.2004)
-
-[node name="Skyscrape7" parent="." instance=ExtResource("3_ai6h1")]
-transform = Transform3D(0.79958, -0.60056, -2.62513e-08, 0, -4.37114e-08, 1, -0.60056, -0.79958, -3.49507e-08, 148.531, 3.21611, 108.867)
-
-[node name="Skyscrape8" parent="." instance=ExtResource("3_ai6h1")]
-transform = Transform3D(-0.25396, -0.967215, -4.22783e-08, 0, -4.37114e-08, 1, -0.967215, 0.25396, 1.1101e-08, 332.019, 3.21614, -240.074)
-
 [node name="Skyscrape9" parent="." instance=ExtResource("3_ai6h1")]
 transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508, 231.857, -6.58657, -225.511)
 
@@ -123,12 +120,3 @@ transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508
 
 [node name="Skyscrape13" parent="." instance=ExtResource("3_ai6h1")]
 transform = Transform3D(-0.437508, 0, 0.899214, 0, 1, 0, -0.899214, 0, -0.437508, 460.057, -6.58657, -275.244)
-
-[node name="Skyscrape14" parent="." instance=ExtResource("3_ai6h1")]
-transform = Transform3D(-0.437508, -0.899214, -3.93059e-08, 0, -4.37114e-08, 1, -0.899214, 0.437508, 1.91241e-08, 398.503, 3.21611, -354.953)
-
-[node name="Skyscrape15" parent="." instance=ExtResource("3_ai6h1")]
-transform = Transform3D(-0.889855, -0.456244, -1.99431e-08, 0, -4.37114e-08, 1, -0.456244, 0.889855, 3.88968e-08, 433.211, 3.21611, -423.059)
-
-[node name="Skyscrape16" parent="." instance=ExtResource("3_ai6h1")]
-transform = Transform3D(-0.758624, 0.651529, 2.84792e-08, 0, -4.37114e-08, 1, 0.651529, 0.758624, 3.31605e-08, 145.291, 3.21614, -379.679)

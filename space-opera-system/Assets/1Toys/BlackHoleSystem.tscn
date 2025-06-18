@@ -1,8 +1,9 @@
-[gd_scene load_steps=65 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=67 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
 [ext_resource type="Texture2D" uid="uid://db4ro7730cn7b" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
+[ext_resource type="PackedScene" uid="uid://18k4h4eqi70r" path="res://Assets/1Toys/Zooms/TheEye.tscn" id="4_mb5ce"]
 [ext_resource type="PackedScene" uid="uid://cw1pdlvuehwmt" path="res://Assets/1Toys/Zooms/city.tscn" id="7_dee4i"]
 [ext_resource type="PackedScene" uid="uid://b580ywvpd3yhx" path="res://Assets/1Toys/Zooms/crystal.tscn" id="7_vp0u0"]
 [ext_resource type="PackedScene" uid="uid://w861i1qcxaxq" path="res://Assets/1Toys/well.tscn" id="8_qwjcd"]
@@ -61,6 +62,13 @@ volumetric_fog_anisotropy = -0.9
 volumetric_fog_length = 22.58
 volumetric_fog_ambient_inject = 16.0
 adjustment_enabled = true
+
+[sub_resource type="Resource" id="Resource_kdxqm"]
+script = ExtResource("10_paiqf")
+scene = ExtResource("4_mb5ce")
+zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="Resource" id="Resource_smirv"]
 script = ExtResource("10_paiqf")
@@ -406,6 +414,7 @@ environment = SubResource("Environment_4jktx")
 
 [node name="DysonSphere" type="Node3D" parent="." node_paths=PackedStringArray("body") groups=["point_of_interest"]]
 script = ExtResource("3_qmfsb")
+scene_data = SubResource("Resource_kdxqm")
 body = NodePath("DysonSphere")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="DysonSphere" groups=["system_control"]]
