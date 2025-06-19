@@ -16,3 +16,12 @@ func _process(delta):
 	pitch = clamp(pitch, -PI / 2, PI / 2)
 
 	rotation = Vector3(pitch, yaw, 0.0)
+
+
+func _on_button_pressed() -> void:
+	pass # Replace with function body.
+	$"../FreeFlyCamera/Effects"
+
+
+func _on_button_toggled(toggled_on: bool) -> void:
+	$"../FreeFlyCamera/Effects".visible = toggled_on

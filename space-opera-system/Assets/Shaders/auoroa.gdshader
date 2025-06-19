@@ -49,7 +49,7 @@ float random_wave(vec2 uv) {
 float ray_march(vec3 ray_origin, vec3 ray_direction, float start, float time) {
 	float density = 0.0;
 	float dist = start + STEP;
-	
+
 	while (true) {
 		vec3 point = ray_origin + ray_direction * (dist);
 		// Check if the point is outside of the mesh (-1 to 1 in all directions)
@@ -63,7 +63,7 @@ float ray_march(vec3 ray_origin, vec3 ray_direction, float start, float time) {
 		density += point_density;
 		dist += STEP;
 	}
-	
+
 	return density;
 }
 
@@ -79,7 +79,7 @@ void fragment() {
 	float density = ray_march(
 		ray_origin, ray_direction, length(camera_position - vertex_position), TIME
 	);
-	
+
 	ALBEDO = color.rgb * density;
 	EMISSION = color.rgb * density * emission_strength;
 	ALPHA = density;

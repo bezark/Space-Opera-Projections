@@ -58,6 +58,18 @@ tracks/2/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
 }
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Back:color")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1.84),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(0.0901961, 0.0901961, 0.0901961, 0.772549), Color(0.0901961, 0.0901961, 0.0901961, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_c6jvj"]
 length = 2.0
@@ -80,10 +92,10 @@ tracks/1/path = NodePath("Back:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
+"times": PackedFloat32Array(0, 1.66),
+"transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Color(0.0901961, 0.0901961, 0.0901961, 0)]
+"values": [Color(0.0901961, 0.0901961, 0.0901961, 0), Color(0.0901961, 0.0901961, 0.0901961, 0.772549)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -822,15 +834,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_nc66i")
 
-[node name="Back" type="ColorRect" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-color = Color(0.0901961, 0.0901961, 0.0901961, 0)
-
 [node name="Diag1" type="ColorRect" parent="."]
 layout_mode = 0
 offset_left = -886.0
@@ -850,12 +853,27 @@ offset_bottom = 1332.0
 rotation = 0.523598
 color = Color(0.42, 0.5795, 0.75, 1)
 
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(0.768627, 0.690196, 0.270588, 1)
+position = Vector2(195, 596)
+scale = Vector2(0.381789, 0.381789)
+texture = ExtResource("7_nc66i")
+
+[node name="Back" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0901961, 0.0901961, 0.0901961, 0)
+
 [node name="Action" type="VBoxContainer" parent="."]
 visible = false
 layout_mode = 1
-offset_left = 464.0
+offset_left = 200.0
 offset_top = 198.0
-offset_right = 1888.0
+offset_right = 1624.0
 offset_bottom = 1600.0
 theme_override_constants/separation = 18
 
@@ -881,8 +899,8 @@ script = null
 [node name="DiceMask" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 clip_children = 2
-position = Vector2(1200, 491)
-scale = Vector2(0.715125, 0.715125)
+position = Vector2(1550, 450)
+scale = Vector2(0.6, 0.6)
 texture = ExtResource("9_y0sm1")
 
 [node name="DiceCamTexture" parent="DiceMask" instance=ExtResource("8_nc66i")]
@@ -915,12 +933,6 @@ text = "SOCIETY"
 label_settings = SubResource("LabelSettings_obmmj")
 vertical_alignment = 1
 uppercase = true
-
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(0.768627, 0.690196, 0.270588, 1)
-position = Vector2(195, 596)
-scale = Vector2(0.381789, 0.381789)
-texture = ExtResource("7_nc66i")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

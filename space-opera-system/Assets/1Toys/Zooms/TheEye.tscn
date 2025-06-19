@@ -1,9 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://18k4h4eqi70r"]
+[gd_scene load_steps=17 format=3 uid="uid://18k4h4eqi70r"]
 
 [ext_resource type="Script" uid="uid://d38ufe0bew4xu" path="res://Assets/1Toys/Zooms/eyering.gd" id="2_a5g06"]
 [ext_resource type="Texture2D" uid="uid://dh1uvawf13djl" path="res://Assets/Textures/Grating_22-256x256.png" id="2_be6qv"]
 [ext_resource type="Script" uid="uid://c7im8feifhnt" path="res://Assets/1Toys/Zooms/tyeeye.gd" id="2_yqvpr"]
 [ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="4_8th8a"]
+[ext_resource type="PackedScene" uid="uid://bqhd6yuojmms5" path="res://Assets/POLYB/fire_magic.tscn" id="5_an3j1"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_an3j1"]
 
@@ -294,10 +295,33 @@ material = SubResource("StandardMaterial3D_sp2fg")
 script = ExtResource("2_a5g06")
 
 [node name="FreeFlyCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.00468577, -0.919252, -0.393641, -0.0109417, -0.393669, 0.919187, -0.999929, 2.32027e-09, -0.0119028, 0, 664.473, 0)
+transform = Transform3D(-0.0904238, 9.02921, 7.5963, 0.107473, 7.59684, -9.02857, -11.7991, 8.79219e-08, -0.140453, 1.14276, -643.745, 1.19209e-07)
 current = true
 fov = 110.0
 far = 2366.3
 
+[node name="Effects" type="Node3D" parent="FreeFlyCamera"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0447214, 1.37567, -3.75687)
+visible = false
+
+[node name="FireMagic" parent="FreeFlyCamera/Effects" instance=ExtResource("5_an3j1")]
+transform = Transform3D(1, -1.35042e-08, 2.79397e-09, 1.67643e-08, 1, -7.75976e-11, 1.86265e-09, -2.49438e-10, 1, 1.22815, -1.65662, 3.0657)
+
+[node name="FireMagic2" parent="FreeFlyCamera/Effects" instance=ExtResource("5_an3j1")]
+transform = Transform3D(0.905221, -0.424942, 3.72529e-09, 0.424942, 0.90522, -7.75976e-11, -3.72529e-09, -4.93601e-08, 1, -4.5202, -2.34961, 1.45731)
+
+[node name="FireMagic3" parent="FreeFlyCamera/Effects" instance=ExtResource("5_an3j1")]
+transform = Transform3D(1, -1.1313e-08, 6.51926e-09, 1.76956e-08, 1, -7.75977e-11, 5.58794e-09, -5.98335e-08, 1, 1.56941, -6.50177, -0.0139465)
+
+[node name="FireMagic4" parent="FreeFlyCamera/Effects" instance=ExtResource("5_an3j1")]
+transform = Transform3D(0.905221, -0.424942, 7.45058e-09, 0.424942, 0.90522, -7.75977e-11, 2.79397e-09, -4.93601e-08, 1, -3.92255, -7.19489, -1.6192)
+
+[node name="Button" type="Button" parent="." groups=["zoom_control"]]
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "Burning"
+
 [connection signal="toggled" from="Blackhole/HoleControls/Button" to="Blackhole/HoleControls" method="_on_button_toggled"]
 [connection signal="value_changed" from="Blackhole/HoleControls/Controls/Scale" to="Blackhole" method="_on_scale_value_changed"]
+[connection signal="toggled" from="Button" to="Blackhole" method="_on_button_toggled"]

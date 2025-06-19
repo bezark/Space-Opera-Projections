@@ -1,4 +1,4 @@
-[gd_scene load_steps=72 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=73 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
@@ -39,6 +39,7 @@
 [ext_resource type="PackedScene" uid="uid://diqdy8obme17f" path="res://Assets/1Toys/Planets/crumbs.tscn" id="24_sed3l"]
 [ext_resource type="PackedScene" uid="uid://b7qovvjsewkwn" path="res://Assets/1Toys/Zooms/ice.tscn" id="27_h4gil"]
 [ext_resource type="PackedScene" uid="uid://btkq2oei0qw31" path="res://Assets/1Toys/Zooms/Surface2.tscn" id="27_sed3l"]
+[ext_resource type="PackedScene" uid="uid://dijfvnnagnbsw" path="res://Assets/1Toys/Zooms/crumbszoom.tscn" id="30_cmavm"]
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
 panorama = ExtResource("3_smirv")
@@ -340,7 +341,7 @@ buffer = PackedFloat32Array(-0.204056, -0.212713, 0.655058, 254.718, -0.930091, 
 
 [sub_resource type="Resource" id="Resource_mb5ce"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([])
+zooms = Array[PackedScene]([ExtResource("30_cmavm")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 

@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://ce8pbybeuagny"]
+
+[node name="BigGun" type="Node3D"]
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
+transform = Transform3D(-0.707107, -0.707107, 0, 0.707107, -0.707107, 0, 0, 0, 1, 11, 13, 0)
+visible = false
+radius = 10.0
+height = 50.0
+sides = 10
+smooth_faces = false
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 8.52513, 10.5251, 12)
+radius = 6.0
+height = 43.0
+sides = 6
+smooth_faces = false
+
+[node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 8.87868, 10.8787, -12)
+radius = 6.0
+height = 44.0
+sides = 6
+smooth_faces = false
+
+[node name="CSGCylinder3D4" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 14.5938, 9.58918, 0)
+radius = 6.0
+height = 65.8086
+sides = 6
+smooth_faces = false
+
+[node name="CSGCylinder3D5" type="CSGCylinder3D" parent="."]
+transform = Transform3D(0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, 0, 1, 9.89839, 21.8938, 0)
+radius = 6.0
+height = 102.452
+sides = 6
+smooth_faces = false

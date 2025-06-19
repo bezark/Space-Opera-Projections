@@ -1,9 +1,11 @@
-[gd_scene load_steps=12 format=3 uid="uid://b580ywvpd3yhx"]
+[gd_scene load_steps=14 format=3 uid="uid://b580ywvpd3yhx"]
 
 [ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_58caq"]
 [ext_resource type="PackedScene" uid="uid://dj4teh6d7ba7l" path="res://Assets/1Toys/crystal.tscn" id="2_aicao"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="3_dvrme"]
+[ext_resource type="ArrayMesh" uid="uid://dtp4wwbas1kgj" path="res://Assets/1Toys/crystalTree.tres" id="4_exmtv"]
 [ext_resource type="PackedScene" uid="uid://c0itdbchse1ts" path="res://Assets/1Toys/localWell.tscn" id="4_mwnly"]
+[ext_resource type="PackedScene" uid="uid://daobvw078qsyh" path="res://Assets/zoom-meshes/crystal_tree.tscn" id="6_rv1jj"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dvrme"]
 sky_top_color = Color(0.522782, 0.363897, 0.670134, 1)
@@ -87,10 +89,19 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.31691, 16.4081, -9.53674e-07)
 
 [node name="FreeFlyCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.710824, 0, -0.70337, 0, 1, 0, 0.70337, 0, 0.710824, 0, 29.0568, 0)
+transform = Transform3D(0.710824, 0, -0.70337, 0, 1, 0, 0.70337, 0, 0.710824, 0, 29.0568, 372.284)
 current = true
 script = ExtResource("3_dvrme")
 metadata/_custom_type_script = "uid://c0w752ro86qws"
 
+[node name="tree_4" type="Node3D" parent="."]
+
+[node name="Tree4" type="MeshInstance3D" parent="tree_4"]
+mesh = ExtResource("4_exmtv")
+skeleton = NodePath("")
+
 [node name="Well2" parent="." instance=ExtResource("4_mwnly")]
 transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 120.38, 96.0831, -37.1112)
+
+[node name="CrystalTree" parent="." instance=ExtResource("6_rv1jj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27849, 8.3962, 354.937)

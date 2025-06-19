@@ -6,7 +6,7 @@
 [sub_resource type="RichTextEffect" id="RichTextEffect_qsg6j"]
 
 [node name="Statement" type="RichTextLabel"]
-custom_minimum_size = Vector2(1200, 0)
+custom_minimum_size = Vector2(1050, 0)
 offset_right = 1396.0
 offset_bottom = 325.0
 size_flags_horizontal = 0

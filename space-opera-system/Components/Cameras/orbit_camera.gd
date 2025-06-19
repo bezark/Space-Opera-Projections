@@ -18,7 +18,8 @@ func _ready():
 	points_of_interest = get_tree().get_nodes_in_group("point_of_interest")
 	crane = get_parent_node_3d()
 	focus = points_of_interest.pick_random()
-	State.celestial_body_focused.connect(new_focus)
+	if not State.celestial_body_focused.is_connected(new_focus):
+		State.celestial_body_focused.connect(new_focus)
 	# (Optionally call start() here if you want to pick a random POI on start)
 	# start()
 	# %BodySelection.pois = points_of_interest

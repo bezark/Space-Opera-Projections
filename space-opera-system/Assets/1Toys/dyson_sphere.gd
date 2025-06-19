@@ -36,6 +36,7 @@ func _on_armed_toggled(toggled_on: bool) -> void:
 
 
 func _on_destroy_pressed() -> void:
+	$Beam.visible=false
 	var blu = BLUE_SPLOSION.instantiate()
 	blu.finished.connect(destroyed)
 	add_child(blu)

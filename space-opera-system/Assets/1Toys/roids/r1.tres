@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=3 format=4 uid="uid://c6scn8wnpk7if"]
 
-[ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="1_l86lg"]
+[ext_resource type="Material" uid="uid://drwwetwd77ovg" path="res://Assets/1Toys/eyebeam.tres" id="1_l86lg"]
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_thq48"]
 _surfaces = [{
