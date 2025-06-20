@@ -1,10 +1,12 @@
-[gd_scene load_steps=17 format=3 uid="uid://18k4h4eqi70r"]
+[gd_scene load_steps=22 format=3 uid="uid://18k4h4eqi70r"]
 
 [ext_resource type="Script" uid="uid://d38ufe0bew4xu" path="res://Assets/1Toys/Zooms/eyering.gd" id="2_a5g06"]
 [ext_resource type="Texture2D" uid="uid://dh1uvawf13djl" path="res://Assets/Textures/Grating_22-256x256.png" id="2_be6qv"]
 [ext_resource type="Script" uid="uid://c7im8feifhnt" path="res://Assets/1Toys/Zooms/tyeeye.gd" id="2_yqvpr"]
 [ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="4_8th8a"]
 [ext_resource type="PackedScene" uid="uid://bqhd6yuojmms5" path="res://Assets/POLYB/fire_magic.tscn" id="5_an3j1"]
+[ext_resource type="Script" uid="uid://cuo5q8dl447x6" path="res://Assets/1Toys/Zooms/upload.gd" id="5_be6qv"]
+[ext_resource type="FontFile" uid="uid://ded4vgoigb0kq" path="res://Assets/Themes/Montserrat/static/Montserrat-Bold.ttf" id="6_qvvyl"]
 
 [sub_resource type="PhysicalSkyMaterial" id="PhysicalSkyMaterial_an3j1"]
 
@@ -193,6 +195,28 @@ distance_fade_mode = 2
 distance_fade_min_distance = 1297.74
 distance_fade_max_distance = 172.22
 
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_8th8a"]
+gravity = Vector3(0, 2, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x272r"]
+albedo_color = Color(0.313726, 0.376471, 0.145098, 0)
+metallic = 1.0
+metallic_specular = 0.0
+roughness = 0.0
+emission_enabled = true
+emission = Color(0.654902, 1, 0.298039, 1)
+emission_energy_multiplier = 0.14
+clearcoat_roughness = 0.06
+backlight = Color(0.583648, 1.8049e-06, 3.36915e-07, 1)
+
+[sub_resource type="TextMesh" id="TextMesh_hlsex"]
+material = SubResource("StandardMaterial3D_x272r")
+text = "0
+
+1"
+font = ExtResource("6_qvvyl")
+font_size = 64
+
 [node name="TheEye" type="Node3D"]
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
@@ -208,13 +232,13 @@ ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_qvvyl")
 script = ExtResource("2_a5g06")
-spin_velocity = 0.2
+spin_velocity = 0.01
 
 [node name="Blackhole" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.999986, 0.00532323, 0, -0.00532323, 0.999986, 0, 0, 0)
 mesh = SubResource("SphereMesh_smirv")
 script = ExtResource("2_yqvpr")
-look_sensitivity = 1.0
+look_sensitivity = 0.2
 
 [node name="Disk" type="CSGTorus3D" parent="Blackhole"]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
@@ -271,7 +295,7 @@ ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_8th8a")
 script = ExtResource("2_a5g06")
-spin_velocity = 0.4
+spin_velocity = 0.2
 
 [node name="Ring5" type="CSGTorus3D" parent="Blackhole"]
 transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, -0.297361, -4.77382, 2.47104e-06, 0.954765, -1.4868, 2.64551e-06, 0, 0, 0)
@@ -282,7 +306,7 @@ ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_8th8a")
 script = ExtResource("2_a5g06")
-spin_velocity = 0.8
+spin_velocity = 0.4
 
 [node name="Ring4" type="CSGTorus3D" parent="Blackhole"]
 transform = Transform3D(-0.707104, 2.12133, -1.79264e-06, 0.707099, 2.12128, 0.00532144, 0.0037641, 0.0112846, -0.999986, 0, 0, 0)
@@ -293,12 +317,89 @@ ring_sides = 3
 smooth_faces = false
 material = SubResource("StandardMaterial3D_sp2fg")
 script = ExtResource("2_a5g06")
+spin_velocity = 0.5
 
 [node name="FreeFlyCamera" type="Camera3D" parent="."]
 transform = Transform3D(-0.0904238, 9.02921, 7.5963, 0.107473, 7.59684, -9.02857, -11.7991, 8.79219e-08, -0.140453, 1.14276, -643.745, 1.19209e-07)
 current = true
 fov = 110.0
 far = 2366.3
+
+[node name="Upload" type="Node3D" parent="FreeFlyCamera"]
+transform = Transform3D(1, 4.95916e-10, 0, -4.65826e-10, 1, 2.77134e-11, 0, 2.98249e-08, 1, 0, 0, 0)
+script = ExtResource("5_be6qv")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 3.7382e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.98856e-08, 1, -2.16605, -3.26379, -0.789948)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
+
+[node name="GPUParticles3D2" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 4.58902e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.98958e-08, 1, 0.818397, -3.98572, 0.103516)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
+
+[node name="GPUParticles3D3" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 5.43984e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.99059e-08, 1, -3.17616, -9.07544, -2.48245)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
+
+[node name="GPUParticles3D4" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 7.14148e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.99261e-08, 1, 1.86274, -12.5341, -7.16266)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
+
+[node name="GPUParticles3D5" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 5.43984e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.99059e-08, 1, -4.47821, -9.49603, -6.06143)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
+
+[node name="GPUParticles3D6" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 6.29066e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.9916e-08, 1, 2.2027, -10.218, -5.12399)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
+
+[node name="GPUParticles3D7" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 7.14148e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.99261e-08, 1, -5.54926, -15.3077, -7.75464)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
+
+[node name="GPUParticles3D8" type="GPUParticles3D" parent="FreeFlyCamera/Upload"]
+transform = Transform3D(1, 7.9923e-09, 0, -1.39718e-09, 1, 3.32561e-11, 0, 2.99363e-08, 1, 1.92515, -18.7664, -12.4059)
+emitting = false
+lifetime = 10.0
+process_material = SubResource("ParticleProcessMaterial_8th8a")
+draw_passes = 2
+draw_pass_1 = SubResource("TextMesh_hlsex")
+draw_pass_2 = null
 
 [node name="Effects" type="Node3D" parent="FreeFlyCamera"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0447214, 1.37567, -3.75687)
@@ -322,6 +423,13 @@ offset_bottom = 8.0
 toggle_mode = true
 text = "Burning"
 
+[node name="Upload" type="Button" parent="." groups=["zoom_control"]]
+offset_right = 8.0
+offset_bottom = 8.0
+toggle_mode = true
+text = "Upload"
+
 [connection signal="toggled" from="Blackhole/HoleControls/Button" to="Blackhole/HoleControls" method="_on_button_toggled"]
 [connection signal="value_changed" from="Blackhole/HoleControls/Controls/Scale" to="Blackhole" method="_on_scale_value_changed"]
 [connection signal="toggled" from="Button" to="Blackhole" method="_on_button_toggled"]
+[connection signal="toggled" from="Upload" to="FreeFlyCamera/Upload" method="_on_upload_toggled"]

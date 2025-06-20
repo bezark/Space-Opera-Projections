@@ -1,7 +1,7 @@
 extends Blackhole
 
-@export var speed: float = 6.0
-@export var look_sensitivity: float = 0.4
+@export var speed: float = 3.0
+@export var look_sensitivity: float = 0.1
 @export var planetary: bool = true
 var active :bool
 var yaw: float = 0.0  # rotation around Y

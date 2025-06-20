@@ -1,10 +1,12 @@
-[gd_scene load_steps=6 format=3 uid="uid://bxr57mvk3crpc"]
+[gd_scene load_steps=8 format=3 uid="uid://bxr57mvk3crpc"]
 
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="1_to1mt"]
 [ext_resource type="PackedScene" uid="uid://dejbkt1bojau7" path="res://Assets/POLYB/electric_explosion.tscn" id="2_2b7e8"]
 [ext_resource type="Script" uid="uid://b7jaqtt131rbb" path="res://Components/CelestialBodies/effects.gd" id="2_yetx8"]
 [ext_resource type="PackedScene" uid="uid://ddl2u52th0ebh" path="res://Assets/POLYB/explosion_big.tscn" id="4_1c8qo"]
 [ext_resource type="PackedScene" uid="uid://c20c16eqqr7kn" path="res://Assets/POLYB/fire_big.tscn" id="5_7dk6q"]
+[ext_resource type="PackedScene" uid="uid://dl1n86vlgnb34" path="res://Assets/POLYB/laser.tscn" id="7_owi7s"]
+[ext_resource type="PackedScene" uid="uid://ctibbel8uhnrc" path="res://Assets/POLYB/fireballs.tscn" id="8_11vud"]
 
 [node name="CelestialBody" type="Node3D" groups=["point_of_interest"]]
 script = ExtResource("1_to1mt")
@@ -30,12 +32,18 @@ columns = 2
 layout_mode = 2
 text = "Distance"
 
-[node name="Distance" type="HSlider" parent="VBoxContainer/Controls/Sliders"]
-custom_minimum_size = Vector2(200, 100)
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Controls/Sliders"]
 layout_mode = 2
-min_value = -20.0
-max_value = 20.0
-step = 0.1
+
+[node name="Less" type="Button" parent="VBoxContainer/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="Right" type="Button" parent="VBoxContainer/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
 
 [node name="SpeedLabel" type="Label" parent="VBoxContainer/Controls/Sliders"]
 layout_mode = 2
@@ -87,6 +95,16 @@ layout_mode = 2
 toggle_mode = true
 text = "Zap"
 
+[node name="Shoot" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Shoot"
+
+[node name="Laser" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Laser"
+
 [node name="Boom" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
 layout_mode = 2
 toggle_mode = true
@@ -108,13 +126,29 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
 [node name="FireBig" parent="Effects" instance=ExtResource("5_7dk6q")]
 transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 4, 4)
 
+[node name="Weapons" type="Node3D" parent="Effects"]
+
+[node name="Laser" parent="Effects/Weapons" instance=ExtResource("7_owi7s")]
+visible = false
+
+[node name="Fireballs" parent="Effects/Weapons" instance=ExtResource("8_11vud")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+visible = false
+
 [connection signal="toggled" from="VBoxContainer/Title" to="." method="_on_title_toggled"]
-[connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Distance" to="." method="_on_distance_value_changed"]
+[connection signal="button_down" from="VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="." method="_on_less_button_down"]
+[connection signal="button_up" from="VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="." method="_on_less_button_up"]
+[connection signal="button_down" from="VBoxContainer/Controls/Sliders/HBoxContainer/Right" to="." method="_on_right_button_down"]
+[connection signal="button_up" from="VBoxContainer/Controls/Sliders/HBoxContainer/Right" to="." method="_on_right_button_up"]
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Speed" to="." method="_on_speed_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Spin" to="." method="_on_spin_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Orbit" to="." method="_on_orbit_pressed"]
 [connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Well" to="." method="_on_well_toggled"]
 [connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Target" to="." method="_on_target_pressed"]
 [connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Zap" to="Effects" method="_on_zap_toggled"]
+[connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Shoot" to="." method="_on_shoot_toggled"]
+[connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Shoot" to="Effects" method="_on_shoot_toggled"]
+[connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Laser" to="." method="_on_shoot_toggled"]
+[connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Laser" to="Effects" method="_on_laser_toggled"]
 [connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Boom" to="Effects" method="_on_boom_toggled"]
 [connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Delete" to="." method="_on_delete_pressed"]

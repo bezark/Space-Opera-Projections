@@ -27,10 +27,10 @@
 [ext_resource type="Shader" uid="uid://bq3tf0k03miar" path="res://Assets/Shaders/fire.gdshader" id="17_4sgve"]
 [ext_resource type="Shader" uid="uid://bxyime1jx4303" path="res://Assets/Shaders/distortion.gdshader" id="20_0e8f2"]
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
-[ext_resource type="FontFile" uid="uid://d22xqoned5nb4" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
+[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 [ext_resource type="Script" uid="uid://b5kytadtsro01" path="res://Phases/societal_phase_que.gd" id="24_1yskb"]
 [ext_resource type="Script" uid="uid://u7ix08t77ok4" path="res://Components/ProjectorTools/black.gd" id="24_4sgve"]
-[ext_resource type="FontFile" uid="uid://bv3mdeles5fut" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
+[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="28_0e8f2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
@@ -85,14 +85,14 @@ shader_parameter/strength = 0.115
 shader_parameter/speed = 0.17
 shader_parameter/disp = Vector2(2.275, 1.35)
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_ao5vc"]
-shader = ExtResource("13_jn4fx")
-shader_parameter/strength = 1.0
-
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_gix1a"]
 shader = ExtResource("14_rhye5")
 shader_parameter/radius = 4
 shader_parameter/offset = Vector3(0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ao5vc"]
+shader = ExtResource("13_jn4fx")
+shader_parameter/strength = 1.0
 
 [sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_ao5vc"]
 
@@ -467,13 +467,13 @@ shader_parameter/fg_color = Color(1, 1, 1, 1)
 shader_parameter/invert = true
 shader_parameter/intensity = 0.464
 
-[sub_resource type="LabelSettings" id="LabelSettings_rpep8"]
-font = ExtResource("23_ao5vc")
-font_size = 64
-
 [sub_resource type="LabelSettings" id="LabelSettings_1yskb"]
 font = ExtResource("27_2jiyu")
 font_size = 190
+
+[sub_resource type="LabelSettings" id="LabelSettings_rpep8"]
+font = ExtResource("23_ao5vc")
+font_size = 64
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_s0s18"]
 
@@ -689,26 +689,8 @@ scale = Vector2(9.48, 5.22)
 copy_mode = 2
 
 [node name="Distortion" type="ColorRect" parent="Post"]
+visible = false
 material = SubResource("ShaderMaterial_1yskb")
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-mouse_filter = 2
-
-[node name="BackBufferCopy4" type="BackBufferCopy" parent="Post"]
-visible = false
-material = SubResource("ShaderMaterial_uocqw")
-position = Vector2(954, 532)
-scale = Vector2(9.48, 5.22)
-copy_mode = 2
-
-[node name="Abberation" type="ColorRect" parent="Post"]
-visible = false
-material = SubResource("ShaderMaterial_ao5vc")
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -732,6 +714,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -0.000549316
 offset_right = -0.000549316
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+
+[node name="BackBufferCopy4" type="BackBufferCopy" parent="Post"]
+material = SubResource("ShaderMaterial_uocqw")
+position = Vector2(954, 532)
+scale = Vector2(9.48, 5.22)
+copy_mode = 2
+
+[node name="Abberation" type="ColorRect" parent="Post"]
+visible = false
+material = SubResource("ShaderMaterial_ao5vc")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 3
@@ -841,19 +841,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="STTLabel" type="Label" parent="Circle"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -77.0
-offset_top = 99.0
-offset_right = 78.0
-offset_bottom = 178.0
-grow_horizontal = 2
-text = "TEST"
-label_settings = SubResource("LabelSettings_rpep8")
-script = ExtResource("23_4sgve")
-
 [node name="TimeLabel" type="Label" parent="Circle"]
 modulate = Color(1, 1, 1, 0)
 anchors_preset = 5
@@ -896,12 +883,24 @@ size_flags_horizontal = 6
 size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
+[node name="STTLabel" type="Label" parent="Circle"]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -460.0
+offset_top = 99.0
+offset_right = -305.0
+offset_bottom = 178.0
+grow_horizontal = 2
+text = "TEST"
+label_settings = SubResource("LabelSettings_rpep8")
+script = ExtResource("23_4sgve")
+
 [node name="Pews" type="Window" parent="."]
 msaa_2d = 2
 title = "Pews"
 position = Vector2i(0, 36)
 size = Vector2i(1920, 1200)
-visible = false
 
 [node name="Dither" type="ColorRect" parent="Pews"]
 visible = false
@@ -915,7 +914,7 @@ grow_vertical = 2
 [node name="Back" type="Polygon2D" parent="Pews"]
 clip_children = 2
 texture = SubResource("ViewportTexture_gix1a")
-polygon = PackedVector2Array(48, 147, 1910, 228, 1895, 1186, 0, 1200)
+polygon = PackedVector2Array(48, 147, 1920, 224, 1866, 1012, 8.00001, 1128)
 uv = PackedVector2Array(3.33786e-06, -1.90735e-06, 1896, 112, 1920, 1200, 0, 1200)
 script = ExtResource("13_h2cot")
 metadata/_custom_type_script = "uid://muokti5xk4km"
@@ -934,7 +933,7 @@ offset_left = 394.0
 offset_top = 47.0
 offset_right = 549.0
 offset_bottom = 126.0
-rotation = 0.0223881
+rotation = 0.0366519
 text = "TEST"
 label_settings = SubResource("LabelSettings_rpep8")
 script = ExtResource("23_4sgve")

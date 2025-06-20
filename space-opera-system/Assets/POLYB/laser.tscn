@@ -16,8 +16,8 @@ colors = PackedColorArray(0.831373, 0, 1, 1, 1, 1, 1, 1)
 gradient = SubResource("Gradient_f5qux")
 
 [sub_resource type="Curve" id="Curve_ksi4t"]
-_limits = [0.0, 5.0, 0.0, 1.0]
-_data = [Vector2(0, 5), 0.0, 0.0, 0, 0, Vector2(0.222015, 1.00176), 0.0, 0.0, 0, 0, Vector2(0.369403, 4.24319), 0.0, 0.0, 0, 0, Vector2(0.477612, 2.27263), 0.0, 0.0, 0, 0, Vector2(0.518657, 5), 0.0, 0.0, 0, 0, Vector2(0.70709, 1.01604), 0.0, 0.0, 0, 0, Vector2(0.753731, 3.65773), 0.0, 0.0, 0, 0, Vector2(0.826493, 2.47254), 0.0, 0.0, 0, 0, Vector2(0.891791, 4.70013), 0.0, 0.0, 0, 0, Vector2(1, 1.17311), 0.0, 0.0, 0, 0]
+_limits = [0.0, 1.45723, 0.0, 1.0]
+_data = [Vector2(0, 0.542857), 0.0, 0.0, 0, 0, Vector2(0.198606, 0), 0.0, 0.0, 0, 0, Vector2(0.351916, 1.33214), 5.99625, 5.99625, 0, 0, Vector2(0.498258, 0.728571), 0.0, 0.0, 0, 0, Vector2(0.571429, 0.664898), 0.0, 0.0, 0, 0, Vector2(0.70709, 1.01604), 0.0, 0.0, 0, 0, Vector2(0.770035, 1.00104), 0.0, 0.0, 0, 0, Vector2(0.8223, 0.953021), 0.0, 0.0, 0, 0, Vector2(0.888502, 1.45723), 0.0, 0.0, 0, 0, Vector2(1, 1.17311), 0.0, 0.0, 0, 0]
 point_count = 10
 
 [sub_resource type="CurveTexture" id="CurveTexture_t17r5"]
@@ -42,11 +42,12 @@ curve_y = SubResource("Curve_p85a0")
 curve_z = SubResource("Curve_f2gag")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_rvaty"]
+emission_shape_scale = Vector3(0.1, 0.1, 0.1)
 direction = Vector3(0, -1, 0)
 spread = 0.0
 gravity = Vector3(0, 0, 0)
-scale_min = 0.01
-scale_max = 0.05
+scale_min = 0.1
+scale_max = 0.2
 scale_curve = SubResource("CurveXYZTexture_2e8gm")
 color = Color(1, 0.0980392, 0, 1)
 color_ramp = SubResource("GradientTexture1D_6ndvr")
@@ -59,6 +60,8 @@ vertex_color_use_as_albedo = true
 albedo_color = Color(15, 0, 0, 1)
 emission_enabled = true
 emission = Color(0.74902, 0, 0, 1)
+emission_energy_multiplier = 0.1
+emission_operator = 1
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_bfu4l"]
 _surfaces = [{
@@ -256,8 +259,7 @@ shadow_mesh = SubResource("ArrayMesh_53upp")
 
 [node name="Laser" type="GPUParticles3D"]
 transform = Transform3D(1, 0, 0, 0, -5.96046e-08, 1, 0, -1, -5.96046e-08, 0, 0, 0)
-amount = 1
-lifetime = 2.0
+lifetime = 0.1
 fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_rvaty")
 draw_pass_1 = SubResource("ArrayMesh_aj6y8")

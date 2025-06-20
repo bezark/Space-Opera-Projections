@@ -2,11 +2,11 @@
 
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_sbbos"]
 [ext_resource type="PackedScene" uid="uid://bebs5n8py7uom" path="res://Assets/1Toys/Station/station.tscn" id="1_y3qls"]
-[ext_resource type="PackedScene" uid="uid://mbcy1e7l2o72" path="res://Phases/Templates/Universal Phase.tscn" id="3_qp0of"]
+[ext_resource type="PackedScene" uid="uid://decu1q686givc" path="res://Assets/1Toys/Zooms/station zoom.tscn" id="3_62l3r"]
 
 [resource]
 script = ExtResource("1_sbbos")
 scene = ExtResource("1_y3qls")
-zooms = Array[PackedScene]([ExtResource("3_qp0of")])
+zooms = Array[PackedScene]([ExtResource("3_62l3r")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"

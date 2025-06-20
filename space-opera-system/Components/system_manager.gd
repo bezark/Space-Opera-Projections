@@ -12,10 +12,12 @@ func _on_control_body_added(scene_data: SceneData) -> void:
 	var new_celestial_body = CELESTIAL_BODY.instantiate()
 	new_celestial_body.scene_data = scene_data
 	new_celestial_body.global_transform = active_cam.global_transform
+	#new_celestial_body.body = scene_data.s
 	$Kin.add_child(new_celestial_body)
 	if active_cam is OrbitalCamera:
 		#print(active_cam.focus.sattelites)
 		active_cam.focus.sattelites.append(new_celestial_body)
+		new_celestial_body.orbiting = active_cam.focus
 		var remote_transform = RemoteTransform3D.new()
 		remote_transform.update_rotation = false
 		remote_transform.remote_path = new_celestial_body.get_path()

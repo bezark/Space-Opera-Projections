@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://c7nga0dl7lwsr"]
+[gd_scene load_steps=12 format=3 uid="uid://c7nga0dl7lwsr"]
 
 [ext_resource type="Script" uid="uid://bnombtxodds0l" path="res://Assets/1Toys/dyson_sphere.gd" id="1_3okud"]
 [ext_resource type="Texture2D" uid="uid://dh1uvawf13djl" path="res://Assets/Textures/Grating_22-256x256.png" id="1_t3q2u"]
@@ -309,6 +309,30 @@ tracks/0/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rings:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Rings:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
 
 [sub_resource type="Animation" id="Animation_ex6fs"]
 resource_name = "START"
@@ -446,12 +470,41 @@ tracks/10/keys = {
 "values": [Vector3(-3.78552e-08, 1.5708, 2.61799)]
 }
 
+[sub_resource type="Animation" id="Animation_guydy"]
+resource_name = "splode"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Rings:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1.43117, 3.43655, 3.44703)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Rings:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 3.4),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_n70ua"]
 _data = {
 &"Arm": SubResource("Animation_lt2cx"),
 &"Disarm": SubResource("Animation_3okud"),
 &"RESET": SubResource("Animation_n70ua"),
-&"START": SubResource("Animation_ex6fs")
+&"START": SubResource("Animation_ex6fs"),
+&"splode": SubResource("Animation_guydy")
 }
 
 [node name="DysonSphere" type="Node3D"]
@@ -469,7 +522,7 @@ material = ExtResource("2_3okud")
 [node name="Rings" type="Node3D" parent="."]
 
 [node name="Ring1" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(3.11607e-06, 9.21394e-06, 1, 0.500003, -4.33012, 3.78493e-08, 0.866023, 2.50002, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(-1.80999e-06, -2.49999, 0.866027, 0.999999, -1.81e-05, -7.1079e-16, 3.13501e-06, 4.33014, 0.499998, 0, 0, 0)
 inner_radius = 732.79
 outer_radius = 775.0
 sides = 64
@@ -480,7 +533,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = 0.05
 
 [node name="Ring2" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-1.79106e-06, 1.57297e-05, 1, 0.866027, 2.49999, -2.18592e-08, -0.499998, 4.33013, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(-3.49714e-06, 4.67529e-06, 1, 0.258819, 4.82963, 1.92836e-09, -0.965926, 1.29409, -3.61999e-06, 0, 0, 0)
 inner_radius = 634.444
 outer_radius = 691.068
 sides = 64
@@ -491,7 +544,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = -0.1
 
 [node name="Ring3" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-3.49714e-06, 2.80518e-06, 1, 0.258819, 2.89778, 1.92752e-09, -0.965926, 0.776457, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(-1.79106e-06, 9.43781e-06, 1, 0.866027, 1.49999, -2.18557e-08, -0.499998, 2.59808, -3.61999e-06, 0, 0, 0)
 inner_radius = 543.549
 outer_radius = 595.702
 sides = 64
@@ -502,7 +555,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = 0.3
 
 [node name="Ring4" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(3.61999e-06, 3, -2.53518e-06, 1, -1.086e-05, 4.35572e-15, -9.17298e-12, -7.60554e-06, -1, 0, 0, 0)
+transform = Transform3D(3.11607e-06, 5.52837e-06, 1, 0.500003, -2.59807, 3.78552e-08, 0.866023, 1.50001, -3.61999e-06, 0, 0, 0)
 inner_radius = 407.952
 outer_radius = 455.634
 sides = 64
@@ -513,7 +566,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = -0.5
 
 [node name="Ring5" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-1.80999e-06, -1.49999, 0.866027, 1, -1.086e-05, 4.85988e-12, 3.13501e-06, 2.59808, 0.499997, 0, 0, 0)
+transform = Transform3D(3.61999e-06, 3, -2.53518e-06, 1, -1.086e-05, 4.40147e-15, -9.17293e-12, -7.60554e-06, -1, 0, 0, 0)
 inner_radius = 325.086
 outer_radius = 355.753
 sides = 64

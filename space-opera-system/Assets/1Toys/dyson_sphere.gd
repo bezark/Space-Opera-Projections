@@ -67,3 +67,7 @@ func adjust_beam():
 func _on_power_value_changed(value: float) -> void:
 	$Beam.radius = value
 	# $Beam.material
+
+
+func _on_shrink_button_down() -> void:
+	$AnimationPlayer.play('splode')

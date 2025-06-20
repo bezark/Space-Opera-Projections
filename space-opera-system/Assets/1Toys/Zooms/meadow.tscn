@@ -1,8 +1,9 @@
-[gd_scene load_steps=15 format=4 uid="uid://desb7ucu5aj3v"]
+[gd_scene load_steps=16 format=4 uid="uid://desb7ucu5aj3v"]
 
 [ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_wi5go"]
 [ext_resource type="Texture2D" uid="uid://lnpqoyx7jxq5" path="res://Assets/Textures/pack1/Stone_06-256x256.png" id="2_0gaqh"]
 [ext_resource type="PackedScene" uid="uid://dkq1twrcasgfp" path="res://Assets/1Toys/ships/realmships.tscn" id="3_btow2"]
+[ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="4_0gaqh"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_b5a88"]
 sky_top_color = Color(0.590049, 0.408659, 0.0855365, 1)
@@ -142,9 +143,16 @@ skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_q81t6")
 
 [node name="building_castle_blue3" type="MeshInstance3D" parent="building_castle_blue"]
-transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -1.70359, 0, -8.6414)
+transform = Transform3D(100, 0, 0, 0, -1.19209e-05, 100, 0, -100, -1.19209e-05, -5.43227, 0, -8.6414)
 mesh = SubResource("ArrayMesh_jpxri")
 skeleton = NodePath("")
 surface_material_override/0 = SubResource("StandardMaterial3D_q81t6")
 
 [node name="realmships" parent="." instance=ExtResource("3_btow2")]
+transform = Transform3D(0.34479, -0.119394, 0.931056, 0.327218, 0.944949, 0, -0.8798, 0.304658, 0.364877, -375, 119, -182.843)
+
+[node name="FreeFlyCamera" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6583, 58.8903, 436)
+current = true
+script = ExtResource("4_0gaqh")
+metadata/_custom_type_script = "uid://c0w752ro86qws"

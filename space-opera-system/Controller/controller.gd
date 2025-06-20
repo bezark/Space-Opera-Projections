@@ -207,7 +207,7 @@ func open_scene_message(scene_data: SceneData, zoomed: bool):
 
 func zoom_slider_value_changed(value: float) -> void:
 	view_fade_adjusted.emit(value)
-	if value > 0.5:
+	if value > 0.15:
 		State.zoomed_in.emit(true)
 	else:
 		State.zoomed_in.emit(false)

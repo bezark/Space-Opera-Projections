@@ -1,0 +1,60 @@
+[gd_scene load_steps=12 format=3 uid="uid://decu1q686givc"]
+
+[ext_resource type="Environment" uid="uid://bostl82bwcvqp" path="res://Assets/1Toys/space.tres" id="1_1cfct"]
+[ext_resource type="Texture2D" uid="uid://b5grb63uv6i1m" path="res://Assets/Textures/pack1/Metal_17-256x256.png" id="2_rvkda"]
+[ext_resource type="ArrayMesh" uid="uid://drh6noiqe5avk" path="res://Assets/1Toys/Station/station03_base.obj" id="3_4tym5"]
+[ext_resource type="ArrayMesh" uid="uid://bh3g8mqvryvao" path="res://Assets/1Toys/Station/station03_dock.obj" id="4_cw54b"]
+[ext_resource type="ArrayMesh" uid="uid://cvd7g875uixfp" path="res://Assets/1Toys/Station/station01.obj" id="5_5054c"]
+[ext_resource type="Texture2D" uid="uid://c0jhc2f627iwc" path="res://Assets/Textures/pack1/Metal_05-256x256.png" id="6_lllmj"]
+[ext_resource type="PackedScene" uid="uid://c1o06jaht4yfs" path="res://Assets/1Toys/other_ships.tscn" id="7_jhxse"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_isikd"]
+albedo_texture = ExtResource("2_rvkda")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2pb3a"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_816kv"]
+albedo_texture = ExtResource("2_rvkda")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqo4c"]
+albedo_texture = ExtResource("6_lllmj")
+
+[node name="Node3D" type="Node3D"]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
+light_color = Color(0.419608, 0.686275, 1, 1)
+shadow_enabled = true
+directional_shadow_max_distance = 1.0
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("1_1cfct")
+
+[node name="Station" type="Node3D" parent="."]
+transform = Transform3D(0.1, 0, 0, 0, 0.1, 0, 0, 0, 0.1, 0, 0, 0)
+
+[node name="Station03Base" type="MeshInstance3D" parent="Station"]
+material_override = SubResource("StandardMaterial3D_isikd")
+mesh = ExtResource("3_4tym5")
+surface_material_override/0 = SubResource("StandardMaterial3D_2pb3a")
+
+[node name="Station03Dock" type="MeshInstance3D" parent="Station"]
+material_override = SubResource("StandardMaterial3D_816kv")
+mesh = ExtResource("4_cw54b")
+
+[node name="Station01" type="MeshInstance3D" parent="Station"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4, 0)
+mesh = ExtResource("5_5054c")
+surface_material_override/0 = SubResource("StandardMaterial3D_gqo4c")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.205225, 1)
+light_color = Color(0.633224, 0.995781, 0.751501, 1)
+shadow_blur = 1.92
+
+[node name="OtherShips" parent="." instance=ExtResource("7_jhxse")]
+transform = Transform3D(0.0361592, 0, -0.0932336, 0, 0.1, 0, 0.0932336, 0, 0.0361592, 10.896, -2.35505, -4.85275)
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(0.431802, 0, -0.901968, 0, 1, 0, 0.901968, 0, 0.431802, 0.149877, 0.193576, -0.109887)
+current = true

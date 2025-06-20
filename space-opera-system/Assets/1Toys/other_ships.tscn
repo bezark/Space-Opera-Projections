@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://c1o06jaht4yfs"]
+
+[ext_resource type="PackedScene" uid="uid://cuj1gt102f6en" path="res://Assets/1Toys/moreships/Destroyer_01.fbx" id="1_mu3dl"]
+[ext_resource type="PackedScene" uid="uid://wrj41qgtwgni" path="res://Assets/1Toys/moreships/Destroyer_02.fbx" id="2_mo1hv"]
+[ext_resource type="PackedScene" uid="uid://brpjxc6yxohve" path="res://Assets/1Toys/moreships/Destroyer_03.fbx" id="3_ysa62"]
+[ext_resource type="PackedScene" uid="uid://bdeoyj5i0f8mu" path="res://Assets/1Toys/moreships/Light cruiser_01.fbx" id="4_p3dht"]
+
+[node name="OtherShips" type="Node3D"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+
+[node name="Destroyer_01" parent="." instance=ExtResource("1_mu3dl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.37298, -35, 41.0176)
+
+[node name="Destroyer_02" parent="." instance=ExtResource("2_mo1hv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7, -17)
+
+[node name="Destroyer_03" parent="." instance=ExtResource("3_ysa62")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 113, 35, 80)
+
+[node name="Light cruiser_01" parent="." instance=ExtResource("4_p3dht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, 75, 4)
+
+[node name="Light cruiser_02" parent="." instance=ExtResource("4_p3dht")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 82, -21, -101)
