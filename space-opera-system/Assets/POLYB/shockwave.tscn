@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=3 uid="uid://bypo155gcm3lj"]
 
-[ext_resource type="Material" uid="uid://cgmjb14xh3alj" path="res://PolyBlocks/EffectBlocks/source_files/materials/shockwave.material" id="2_spu2y"]
+[ext_resource type="Material" uid="uid://cgmjb14xh3alj" path="res://Assets/POLYB/shockwave.material" id="2_spu2y"]
 
 [sub_resource type="Curve" id="Curve_wcuhi"]
 _data = [Vector2(0, 0), 0.0, 0.226867, 0, 0, Vector2(1, 1), 1.39194, 0.0, 0, 0]

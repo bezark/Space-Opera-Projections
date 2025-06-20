@@ -14,5 +14,3 @@ visible = false
 layout_mode = 2
 toggle_mode = true
 text = "Well"
-
-[connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Well" to="." method="_on_well_toggled"]

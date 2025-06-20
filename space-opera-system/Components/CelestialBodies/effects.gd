@@ -2,6 +2,7 @@ extends Node3D
 
 func _ready() -> void:
 	reparent.call_deferred($"..". body, false)
+	position = Vector3.ZERO
 
 
 

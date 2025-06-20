@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dvrf2tdnr1go1"]
+[gd_scene load_steps=5 format=3 uid="uid://dvrf2tdnr1go1"]
 
 [ext_resource type="PackedScene" uid="uid://hxr5i1k6fk7w" path="res://Assets/shipScenes/corvette_02.tscn" id="1_q7o7x"]
+[ext_resource type="Texture2D" uid="uid://bdr8746iaq8vg" path="res://Assets/ep2-logos/Episode 2 Logos/Episode 2 Logos/Burning Ember - Logo Only.svg" id="2_o48mk"]
 [ext_resource type="PackedScene" uid="uid://cn4mb82u56moa" path="res://Assets/shipScenes/carrier_01.tscn" id="2_uduwq"]
 [ext_resource type="PackedScene" uid="uid://dl1n86vlgnb34" path="res://Assets/POLYB/laser.tscn" id="3_uduwq"]
 
-[node name="Ships" type="Node3D"]
+[node name="EmberShips" type="Node3D"]
 
 [node name="Corvette02" parent="." instance=ExtResource("1_q7o7x")]
 
@@ -20,6 +21,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6, 9.23602, -10)
 [node name="Corvette06" parent="." instance=ExtResource("1_q7o7x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06239, 7.91349, -4.87128)
 
+[node name="Decal" type="Decal" parent="Corvette06"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_o48mk")
+
 [node name="Corvette07" parent="." instance=ExtResource("1_q7o7x")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00644, 2.97541, 0.0117874)
 
@@ -27,6 +32,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.00644, 2.97541, 0.0117874)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -12)
 
 [node name="Laser" parent="Carrier01" instance=ExtResource("3_uduwq")]
+
+[node name="Decal" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02146, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_o48mk")
+
+[node name="Decal2" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63858, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_o48mk")
 
 [node name="Carrier02" parent="." instance=ExtResource("2_uduwq")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12, 4, -19)
