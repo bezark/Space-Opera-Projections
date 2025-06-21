@@ -168,6 +168,7 @@ material = SubResource("StandardMaterial3D_25crx")
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="Well"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1638.89, 0)
+visible = false
 radius = 20.0
 height = 3535.78
 material = ExtResource("9_gns3r")

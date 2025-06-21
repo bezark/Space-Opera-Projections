@@ -884,14 +884,11 @@ size_flags_vertical = 3
 color = Color(0, 0, 0, 1)
 
 [node name="STTLabel" type="Label" parent="Circle"]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -460.0
-offset_top = 99.0
-offset_right = -305.0
-offset_bottom = 178.0
-grow_horizontal = 2
+offset_left = 335.0
+offset_top = 128.0
+offset_right = 1041.0
+offset_bottom = 207.0
+size_flags_horizontal = 10
 text = "TEST"
 label_settings = SubResource("LabelSettings_rpep8")
 script = ExtResource("23_4sgve")

@@ -19,7 +19,7 @@ albedo_texture = ExtResource("2_rvkda")
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gqo4c"]
 albedo_texture = ExtResource("6_lllmj")
 
-[node name="Node3D" type="Node3D"]
+[node name="Lair" type="Node3D"]
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
@@ -52,9 +52,14 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.205225, 1)
 light_color = Color(0.633224, 0.995781, 0.751501, 1)
 shadow_blur = 1.92
 
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.89363, -1.81592, -3.87702)
+light_color = Color(0.92549, 0.972549, 0.917647, 1)
+shadow_blur = 1.92
+
 [node name="OtherShips" parent="." instance=ExtResource("7_jhxse")]
-transform = Transform3D(0.0361592, 0, -0.0932336, 0, 0.1, 0, 0.0932336, 0, 0.0361592, 10.896, -2.35505, -4.85275)
+transform = Transform3D(0.0361592, 0, -0.0932336, 0, 0.1, 0, 0.0932336, 0, 0.0361592, 10.896, 2.36506, -4.85275)
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(0.431802, 0, -0.901968, 0, 1, 0, 0.901968, 0, 0.431802, 0.149877, 0.193576, -0.109887)
+transform = Transform3D(0.431802, 0, -0.901968, 0, 1, 0, 0.901968, 0, 0.431802, 0.207282, 0.16514, -0.139138)
 current = true

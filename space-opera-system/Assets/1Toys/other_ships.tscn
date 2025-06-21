@@ -6,7 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bdeoyj5i0f8mu" path="res://Assets/1Toys/moreships/Light cruiser_01.fbx" id="4_p3dht"]
 
 [node name="OtherShips" type="Node3D"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
 
 [node name="Destroyer_01" parent="." instance=ExtResource("1_mu3dl")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.37298, -35, 41.0176)
