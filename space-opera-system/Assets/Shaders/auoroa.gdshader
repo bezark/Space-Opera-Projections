@@ -3,9 +3,9 @@ render_mode unshaded, depth_draw_never;
 uniform sampler2D screen_tex  : hint_screen_texture;
 uniform sampler2D depth_tex   : hint_depth_texture;
 uniform float    scale;
-uniform float lens_radius; 
+uniform float lens_radius;
 
-// --- NEW: all the holes in one material! up to 4 of them. 
+// --- NEW: all the holes in one material! up to 4 of them.
 uniform vec3     black_hole_positions[4];
 uniform vec3 black_hole_colors[4]:source_color;
 uniform int      black_hole_count;

@@ -2,7 +2,7 @@
 
 [ext_resource type="ArrayMesh" uid="uid://br005r8upqypy" path="res://Assets/1Toys/roids/r2.tres" id="1_c2v7p"]
 [ext_resource type="Shader" uid="uid://cxgrepgx0hgge" path="res://Assets/POLYB/scifi_shield.gdshader" id="2_pupkj"]
-[ext_resource type="PackedScene" uid="uid://b8krpfjethnx2" path="res://Assets/castleMoonbase/gltf/ScifiStation1.glb" id="3_pd3jm"]
+[ext_resource type="PackedScene" uid="uid://clnf0gu2vfe2g" path="res://Assets/castleMoonbase/gltf/ScifiStation1.glb" id="3_pd3jm"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bfsfw"]
 render_priority = 0
@@ -24,6 +24,7 @@ material = SubResource("ShaderMaterial_bfsfw")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(200, 0, 0, 0, 51.7638, -193.185, 0, 193.185, 51.7638, 0, 0, 0)
+ignore_occlusion_culling = true
 mesh = ExtResource("1_c2v7p")
 
 [node name="ScifiShield" type="MeshInstance3D" parent="MeshInstance3D"]

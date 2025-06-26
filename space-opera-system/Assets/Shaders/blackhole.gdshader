@@ -1,15 +1,18 @@
 shader_type spatial;
-render_mode unshaded, depth_draw_opaque;
-uniform sampler2D screen_tex  : hint_screen_texture;
-uniform sampler2D depth_tex   : hint_depth_texture;
-uniform float    scale;
-uniform float lens_radius;       // e.g. 0.25
+render_mode unshaded, depth_draw_opaque, blend_mix, cull_disabled;
 
-// --- NEW: all the holes in one material! up to 4 of them.
+uniform sampler2D screen_tex  : hint_screen_texture, filter_linear_mipmap;
+uniform sampler2D depth_tex   : hint_depth_texture, filter_linear_mipmap;
+uniform float    scale = 1.0;
+
+// --- all the holes in one material! up to 4 of them.
 uniform vec3     black_hole_positions[4];
-uniform vec3 black_hole_colors[4]:source_color;
+uniform vec3     black_hole_colors[4]:source_color;
 uniform float    black_hole_sizes[4];
 uniform int      black_hole_count;
+
+// NEW: Toggle for skybox mode (when camera is inside the sphere)
+uniform bool     skybox_mode = false;
 
 bool hit_sphere(vec3 ro, vec3 rd, vec3 so, float r, out float t_out) {
     vec3 oc = ro - so;
@@ -52,42 +55,74 @@ float smooth_falloff(float x, float edge_start, float edge_end) {
     return smoothstep(edge_end, edge_start, x);
 }
 
-// Safe UV sampling with smooth edge handling
-vec3 sample_screen_safe(sampler2D tex, vec2 uv) {
+// Safe UV sampling with transparency for out-of-bounds
+vec4 sample_screen_safe(sampler2D tex, vec2 uv) {
+    // If UV is out of bounds, return transparent
+    if (uv.x < 0.0 || uv.x > 1.0 || uv.y < 0.0 || uv.y > 1.0) {
+        return vec4(0.0, 0.0, 0.0, 0.0);
+    }
+    
     // Calculate distance from UV boundaries
     vec2 edge_dist = min(uv, 1.0 - uv);
     float min_edge_dist = min(edge_dist.x, edge_dist.y);
     
-    // Fade to black near edges instead of hard clamping
+    // Fade to transparent near edges
     float edge_fade = smooth_falloff(min_edge_dist, 0.1, 0.02);
     
-    // Clamp UV but allow some bleeding for smoother transitions
-    vec2 safe_uv = clamp(uv, 0.001, 0.999);
-    vec3 color = texture(tex, safe_uv).rgb;
+    // Sample the texture
+    vec3 color = texture(tex, uv).rgb;
     
-    return color * edge_fade;
+    return vec4(color, edge_fade);
 }
 
 void fragment() {
-    // 1) rebuild world‐pos & ray
-    float depth = texture(depth_tex, SCREEN_UV).x;
-    vec3 frag_p = get_world_position_from_uv(
-        SCREEN_UV, depth,
-        INV_PROJECTION_MATRIX,
-        INV_VIEW_MATRIX
-    );
-    vec3 ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
+    // Get the depth of the scene behind this fragment
+    float scene_depth = texture(depth_tex, SCREEN_UV).x;
+    
+    // For skybox mode, we need different depth handling
+    if (!skybox_mode) {
+        // Original depth check for external sphere
+        vec3 scene_ndc = vec3(SCREEN_UV * 2.0 - 1.0, scene_depth);
+        vec4 scene_view = INV_PROJECTION_MATRIX * vec4(scene_ndc, 1.0);
+        float scene_linear_depth = -scene_view.z / scene_view.w;
+        float fragment_linear_depth = -VERTEX.z;
+        
+        if (scene_linear_depth < fragment_linear_depth - 0.01) {
+            discard;
+        }
+    }
+    
+    // Calculate ray direction based on mode
+    vec3 ray_origin;
+    vec3 ray_dir;
+    
+    if (skybox_mode) {
+        // For skybox mode, ray goes from camera through the pixel
+        ray_origin = CAMERA_POSITION_WORLD;
+        // Use the world position of the fragment on the skybox sphere
+        vec3 world_pos = (INV_VIEW_MATRIX * vec4(VERTEX, 1.0)).xyz;
+        ray_dir = normalize(world_pos - CAMERA_POSITION_WORLD);
+    } else {
+        // Original calculation for external sphere
+        vec3 frag_p = get_world_position_from_uv(
+            SCREEN_UV, scene_depth,
+            INV_PROJECTION_MATRIX,
+            INV_VIEW_MATRIX
+        );
+        ray_origin = CAMERA_POSITION_WORLD;
+        ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
+    }
 
-    // 2) find nearest horizon intersection
+    // find nearest horizon intersection
     float nearest_t = 1e20;
     int   hit_idx   = -1;
     for (int i = 0; i < black_hole_count; ++i) {
         float t;
         if (hit_sphere(
-                CAMERA_POSITION_WORLD,
+                ray_origin,
                 ray_dir,
                 black_hole_positions[i],
-                black_hole_sizes[i] * scale * 0.3,
+                black_hole_sizes[i] * 0.3,
                 t
             ) && t < nearest_t) {
             nearest_t = t;
@@ -95,19 +130,53 @@ void fragment() {
         }
     }
 
-    // 3) choose color: inside = solid hole, outside = warped background
-    vec3 out_col;
+    // choose color: inside = solid hole, outside = warped background
+    vec4 out_col;
     if (hit_idx >= 0) {
         // inside the hole → flat color with proper depth
-        out_col = black_hole_colors[hit_idx];
+        out_col = vec4(black_hole_colors[hit_idx], 1.0);
         
-        // Set depth to the actual intersection point on the black hole surface
-        vec3 intersection_point = CAMERA_POSITION_WORLD + ray_dir * nearest_t;
-        vec4 intersection_view = VIEW_MATRIX * vec4(intersection_point, 1.0);
-        vec4 intersection_clip = PROJECTION_MATRIX * intersection_view;
-        float intersection_depth = intersection_clip.z / intersection_clip.w;
-        // Convert to depth buffer format
-        DEPTH = intersection_depth * 0.5 + 0.5;
+        // Calculate the actual intersection point
+        vec3 hit_point = ray_origin + ray_dir * nearest_t;
+        
+        // Transform hit point to view space
+        vec4 hit_view = VIEW_MATRIX * vec4(hit_point, 1.0);
+        
+        // Transform to clip space
+        vec4 hit_clip = PROJECTION_MATRIX * hit_view;
+        
+        // Calculate normalized device coordinates depth
+        float ndc_depth = hit_clip.z / hit_clip.w;
+        
+        // Write the depth value
+        DEPTH = ndc_depth * 0.5 + 0.5;
+        
+        if (!skybox_mode) {
+            // Check if there's something in the scene closer than the black hole
+            vec3 hole_center = black_hole_positions[hit_idx];
+            float hole_radius = black_hole_sizes[hit_idx] * 0.3;
+            
+            // Get world position of what's behind at this screen position
+            vec3 behind_world = get_world_position_from_uv(
+                SCREEN_UV, scene_depth,
+                INV_PROJECTION_MATRIX,
+                INV_VIEW_MATRIX
+            );
+            
+            // Check if the object behind is actually inside the black hole sphere
+            float dist_to_center = length(behind_world - hole_center);
+            
+            // Convert scene depth to linear depth
+            vec3 scene_ndc = vec3(SCREEN_UV * 2.0 - 1.0, scene_depth);
+            vec4 scene_view = INV_PROJECTION_MATRIX * vec4(scene_ndc, 1.0);
+            float scene_linear_depth = -scene_view.z / scene_view.w;
+            
+            // If there's an object closer than the black hole surface, discard
+            if (scene_linear_depth < -hit_view.z && dist_to_center > hole_radius) {
+                discard;
+            }
+        }
+        
     } else {
         // outside: do your lensing with improved smoothing
         vec2 total_disp = vec2(0.0);
@@ -131,7 +200,7 @@ void fragment() {
             
             // Improved falloff calculation
             float world_dist = length(black_hole_positions[i] - CAMERA_POSITION_WORLD);
-            float angular_size = (black_hole_sizes[i] * scale) / world_dist;
+            float angular_size = black_hole_sizes[i] / world_dist;
             
             // Use both fresnel and distance-based falloff
             float f = 1.0 - fresnel_term(0.8, NORMAL, VIEW);
@@ -158,14 +227,22 @@ void fragment() {
         // Calculate final UV with smooth displacement
         vec2 final_uv = SCREEN_UV + smooth_disp;
         
-        // Hybrid approach: blend between original and distorted view
-        vec3 distorted_color = sample_screen_safe(screen_tex, final_uv);
-        vec3 original_color = texture(screen_tex, SCREEN_UV).rgb;
+        // Use safe sampling that returns transparency for out-of-bounds
+        out_col = sample_screen_safe(screen_tex, final_uv);
         
-        // Blend based on how extreme the displacement is
-        float blend_factor = smoothstep(0.3, 0.6, length(smooth_disp));
-        out_col = mix(original_color, distorted_color, blend_factor);
+        // If we got a transparent result, discard the fragment
+        if (out_col.a < 0.01) {
+            discard;
+        }
+        
+        // For lensing effect in skybox mode, we write a far depth
+        if (skybox_mode) {
+            DEPTH = 0.999999;
+        } else {
+            DEPTH = scene_depth;
+        }
     }
 
-    ALBEDO = out_col;
+    ALBEDO = out_col.rgb;
+    ALPHA = out_col.a;
 }
