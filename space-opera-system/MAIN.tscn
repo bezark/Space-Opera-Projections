@@ -27,10 +27,10 @@
 [ext_resource type="Shader" uid="uid://bq3tf0k03miar" path="res://Assets/Shaders/fire.gdshader" id="17_4sgve"]
 [ext_resource type="Shader" uid="uid://bxyime1jx4303" path="res://Assets/Shaders/distortion.gdshader" id="20_0e8f2"]
 [ext_resource type="Script" uid="uid://8mckapgpr5je" path="res://Components/live-captions/stt_label.gd" id="23_4sgve"]
-[ext_resource type="FontFile" uid="uid://cpycsp8geots3" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
+[ext_resource type="FontFile" uid="uid://d22xqoned5nb4" path="res://Assets/Themes/Montserrat/static/Montserrat-Regular.ttf" id="23_ao5vc"]
 [ext_resource type="Script" uid="uid://b5kytadtsro01" path="res://Phases/societal_phase_que.gd" id="24_1yskb"]
 [ext_resource type="Script" uid="uid://u7ix08t77ok4" path="res://Components/ProjectorTools/black.gd" id="24_4sgve"]
-[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
+[ext_resource type="FontFile" uid="uid://bv3mdeles5fut" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="27_2jiyu"]
 [ext_resource type="Script" uid="uid://bid2eudkrel8k" path="res://xArchive/OctoberPlaytest/timer_billboard.gd" id="28_0e8f2"]
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6y3qq"]
@@ -56,18 +56,7 @@ viewport_path = NodePath("ZoomView")
 frequency = 0.0043
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hhat6"]
-resource_local_to_scene = false
-resource_name = ""
-width = 512
-height = 512
-invert = false
-in_3d_space = false
-generate_mipmaps = true
 seamless = true
-seamless_blend_skirt = 0.1
-as_normal_map = false
-bump_strength = 8.0
-normalize = true
 noise = SubResource("FastNoiseLite_v375m")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6x64"]
@@ -543,6 +532,7 @@ script = ExtResource("10_a8dnc")
 cameras = [NodePath("../Kin/Crane/OrbitalCamera"), NodePath("../Kin/FreeflyCamera"), NodePath("../Kin/BirdsEye")]
 
 [node name="Kin" parent="SystemView" instance=ExtResource("5_iyt76")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8842, -89.6286, 27.3441)
 
 [node name="FreeflyCamera" type="Camera3D" parent="SystemView/Kin" node_paths=PackedStringArray("orbital")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -625.159, 0, 0)
