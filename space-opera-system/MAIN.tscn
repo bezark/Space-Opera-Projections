@@ -56,7 +56,18 @@ viewport_path = NodePath("ZoomView")
 frequency = 0.0043
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_hhat6"]
+resource_local_to_scene = false
+resource_name = ""
+width = 512
+height = 512
+invert = false
+in_3d_space = false
+generate_mipmaps = true
 seamless = true
+seamless_blend_skirt = 0.1
+as_normal_map = false
+bump_strength = 8.0
+normalize = true
 noise = SubResource("FastNoiseLite_v375m")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_p6x64"]
@@ -627,6 +638,7 @@ toggle_mode = true
 text = "Fire"
 
 [node name="FireControls" type="HFlowContainer" parent="Post" groups=["permanent", "ui_control"]]
+visible = false
 offset_left = -0.000549316
 offset_top = 52.0
 offset_right = 1032.0
@@ -780,9 +792,9 @@ color = Color(0, 0, 0, 1)
 [node name="SocietyName" type="Label" parent="Post/SocietalPhaseQue"]
 layout_mode = 0
 offset_left = 151.0
-offset_top = 40.0
+offset_top = 100.0
 offset_right = 1248.0
-offset_bottom = 241.0
+offset_bottom = 301.0
 scale = Vector2(1, 2)
 text = "THE SOCIETAL PHASE"
 label_settings = SubResource("LabelSettings_obmmj")
@@ -885,9 +897,9 @@ color = Color(0, 0, 0, 1)
 
 [node name="STTLabel" type="Label" parent="Circle"]
 offset_left = 335.0
-offset_top = 128.0
+offset_top = 40.0
 offset_right = 1041.0
-offset_bottom = 207.0
+offset_bottom = 119.0
 size_flags_horizontal = 10
 text = "TEST"
 label_settings = SubResource("LabelSettings_rpep8")

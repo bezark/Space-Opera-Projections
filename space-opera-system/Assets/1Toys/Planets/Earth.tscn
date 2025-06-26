@@ -15,10 +15,18 @@ domain_warp_type = 2
 domain_warp_fractal_type = 2
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oyq1c"]
+resource_local_to_scene = false
+resource_name = ""
 width = 1024
 height = 1024
+invert = false
 in_3d_space = true
+generate_mipmaps = true
 seamless = true
+seamless_blend_skirt = 0.1
+as_normal_map = false
+bump_strength = 8.0
+normalize = true
 color_ramp = SubResource("Gradient_lsvgl")
 noise = SubResource("FastNoiseLite_chmqo")
 

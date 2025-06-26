@@ -1,6 +1,8 @@
-[gd_scene load_steps=73 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=80 format=3 uid="uid://4wik5qowm8jb"]
 
-[ext_resource type="PackedScene" uid="uid://bgluraosox2oe" path="res://Assets/1Toys/blackhole_disk.tscn" id="1_paiqf"]
+[ext_resource type="Script" uid="uid://dmbp2jse31d6g" path="res://Assets/1Toys/holes.gd" id="2_4hkls"]
+[ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="2_regpr"]
+[ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Assets/Shaders/blackhole.gdshader" id="3_4hkls"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="PackedScene" uid="uid://18k4h4eqi70r" path="res://Assets/1Toys/Zooms/TheEye.tscn" id="4_mb5ce"]
@@ -41,6 +43,34 @@
 [ext_resource type="PackedScene" uid="uid://btkq2oei0qw31" path="res://Assets/1Toys/Zooms/Surface2.tscn" id="27_sed3l"]
 [ext_resource type="PackedScene" uid="uid://dijfvnnagnbsw" path="res://Assets/1Toys/Zooms/crumbszoom.tscn" id="30_cmavm"]
 
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_regpr"]
+render_priority = 0
+shader = ExtResource("3_4hkls")
+shader_parameter/scale = 100.0
+shader_parameter/lens_radius = 1.0
+shader_parameter/black_hole_positions = PackedVector3Array(0, 0, 0, 0, 0, 1000)
+shader_parameter/black_hole_colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 1)
+shader_parameter/black_hole_count = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_regpr"]
+material = SubResource("ShaderMaterial_regpr")
+flip_faces = true
+radius = 1000.0
+height = 2000.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dn3a4"]
+albedo_color = Color(0, 0, 0, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_b0c3i"]
+material = SubResource("StandardMaterial3D_dn3a4")
+radius = 10.0
+height = 20.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dee4i"]
+emission_enabled = true
+emission = Color(0.940695, 0.635263, 0.338721, 1)
+emission_energy_multiplier = 16.0
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
 panorama = ExtResource("3_smirv")
 energy_multiplier = 5.0
@@ -60,12 +90,12 @@ glow_intensity = 0.78
 glow_bloom = 0.16
 glow_blend_mode = 1
 volumetric_fog_enabled = true
-volumetric_fog_density = 0.0096
+volumetric_fog_density = 0.0
 volumetric_fog_albedo = Color(0.130139, 0.066811, 0.276378, 1)
 volumetric_fog_emission = Color(0.181646, 0.0745004, 0.247674, 1)
 volumetric_fog_gi_inject = 2.68
-volumetric_fog_anisotropy = -0.9
-volumetric_fog_length = 22.58
+volumetric_fog_length = 1000.0
+volumetric_fog_detail_spread = 1.30583
 volumetric_fog_ambient_inject = 16.0
 adjustment_enabled = true
 
@@ -387,10 +417,18 @@ domain_warp_fractal_lacunarity = 7.1
 domain_warp_fractal_gain = 1.1
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_oyq1c"]
+resource_local_to_scene = false
+resource_name = ""
 width = 1024
 height = 1024
+invert = false
 in_3d_space = true
+generate_mipmaps = true
 seamless = true
+seamless_blend_skirt = 0.1
+as_normal_map = false
+bump_strength = 8.0
+normalize = true
 color_ramp = SubResource("Gradient_lsvgl")
 noise = SubResource("FastNoiseLite_chmqo")
 
@@ -412,12 +450,92 @@ metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [node name="Kin" type="Node3D"]
 
-[node name="Blackhole" parent="." instance=ExtResource("1_paiqf")]
+[node name="HOLES" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+extra_cull_margin = 1000.0
+mesh = SubResource("SphereMesh_regpr")
+script = ExtResource("2_4hkls")
+
+[node name="HoleControls" type="FlowContainer" parent="HOLES" groups=["system_control"]]
+offset_right = 84.0
+offset_bottom = 40.0
+script = ExtResource("2_regpr")
+
+[node name="Button" type="Button" parent="HOLES/HoleControls"]
+layout_mode = 2
+toggle_mode = true
+text = "Blackhole"
+
+[node name="Controls" type="FlowContainer" parent="HOLES/HoleControls"]
+visible = false
+layout_mode = 2
+
+[node name="Scale" type="VSlider" parent="HOLES/HoleControls/Controls"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 500.0
+step = 0.1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HOLES/HoleControls/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.739975, 0.417669, 0.0813718, 1)
+
+[node name="WhiteHole" parent="HOLES" node_paths=PackedStringArray("body", "well", "sattelites") instance=ExtResource("9_l1est")]
+transform = Transform3D(0.960871, 0.276996, 0, -0.276996, 0.960871, 0, 0, 0, 1, -0.0646362, -1.79852, -0.143433)
+body = NodePath("White")
+well = NodePath("")
+sattelites = [NodePath("../../TruBeau")]
+speed = 0.008
+spin = 0.01
+
+[node name="OmniLight3D" type="OmniLight3D" parent="HOLES/WhiteHole"]
+transform = Transform3D(0.960871, -0.276996, 0, 0.276996, 0.960871, 0, 0, 0, 1, -0.436076, 1.74605, 0.143433)
+light_energy = 1000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.393
+shadow_bias = 5.278
+shadow_normal_bias = 0.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 3.777
+omni_range = 3000.0
+
+[node name="White" type="Node3D" parent="HOLES/WhiteHole"]
+transform = Transform3D(0.960871, -0.276996, 0, 0.276996, 0.960871, 0, 0, 0, 1, -0.436076, 1.74605, -585.965)
+
+[node name="BlackHole" parent="HOLES" node_paths=PackedStringArray("body", "well", "sattelites") instance=ExtResource("9_l1est")]
+transform = Transform3D(0.960871, 0.276996, 0, -0.276996, 0.960871, 0, 0, 0, 1, -0.0646362, -1.79852, -0.143433)
+body = NodePath("Black")
+well = NodePath("")
+sattelites = [NodePath("../../TruBeau")]
+speed = 0.008
+spin = 0.01
+
+[node name="Black" type="Node3D" parent="HOLES/BlackHole"]
+transform = Transform3D(0.960871, -0.276996, 0, 0.276996, 0.960871, 0, 0, 0, 1, -0.436076, 1.74605, 394.506)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="HOLES/BlackHole/Black"]
+visible = false
+mesh = SubResource("SphereMesh_b0c3i")
+skeleton = NodePath("")
+
+[node name="Disk" type="CSGTorus3D" parent="HOLES/BlackHole/Black"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 0.784
+outer_radius = 33.688
+sides = 64
+ring_sides = 64
+material = SubResource("StandardMaterial3D_dee4i")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
 
 [node name="DysonSphere" type="Node3D" parent="." node_paths=PackedStringArray("body") groups=["point_of_interest"]]
+process_mode = 4
+visible = false
 script = ExtResource("3_qmfsb")
 scene_data = SubResource("Resource_kdxqm")
 body = NodePath("DysonSphere")
@@ -561,7 +679,6 @@ material = SubResource("StandardMaterial3D_vk8jg")
 [node name="PlanetAthmosphere" parent="Luster/Gemstone" instance=ExtResource("11_q43nw")]
 planet_radius = 7.0
 atmosphere_height = 3.0
-sun_path = NodePath("../../../Blackhole")
 force_fullscreen = true
 shader_params/u_density = 0.56
 shader_params/u_scattering_strength = 0.1
@@ -594,7 +711,6 @@ material = SubResource("StandardMaterial3D_vk8jg")
 [node name="PlanetAthmosphere" parent="Division/City" instance=ExtResource("11_q43nw")]
 planet_radius = 12.0
 atmosphere_height = 1.07
-sun_path = NodePath("../../../Blackhole")
 shader_params/u_density = 2.2
 shader_params/u_atmosphere_modulate = Color(0.65098, 0.584314, 0.552941, 1)
 shader_params/u_atmosphere_ambient_color = Color(0.06, 0.06, 0.25, 1)
@@ -612,7 +728,6 @@ radius = 8.5
 [node name="PlanetAthmosphere" parent="Arbor/Earth" instance=ExtResource("11_q43nw")]
 planet_radius = 8.5
 atmosphere_height = 0.695
-sun_path = NodePath("../../../Blackhole")
 force_fullscreen = true
 shader_params/u_density = 1.27
 shader_params/u_atmosphere_modulate = Color(0.278431, 0.67451, 1, 1)
@@ -636,7 +751,6 @@ radius = 9.0
 [node name="PlanetAthmosphere" parent="Meadow/Meadow" instance=ExtResource("11_q43nw")]
 planet_radius = 9.0
 atmosphere_height = 1.07
-sun_path = NodePath("../../../Blackhole")
 shader_params/u_density = 0.455
 shader_params/u_atmosphere_modulate = Color(0.65098, 0.584314, 0.552941, 1)
 shader_params/u_atmosphere_ambient_color = Color(0.0438152, 0.102163, 0.138035, 1)
@@ -659,7 +773,6 @@ radius = 8.0
 [node name="PlanetAthmosphere" parent="Gust/Desert" instance=ExtResource("11_q43nw")]
 planet_radius = 8.0
 atmosphere_height = 0.6
-sun_path = NodePath("../../../Blackhole")
 shader_params/u_density = 0.875
 shader_params/u_atmosphere_modulate = Color(0.817771, 0.701214, 0.70934, 1)
 shader_params/u_atmosphere_ambient_color = Color(0.334563, 0.242808, 0.140899, 1)
@@ -840,7 +953,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1516.14, 0, 0)
 [node name="PlanetAthmosphere" parent="Bolt/Gas" instance=ExtResource("11_q43nw")]
 planet_radius = 16.0
 atmosphere_height = 2.0
-sun_path = NodePath("../../../Blackhole")
 shader_params/u_density = 0.765
 shader_params/u_atmosphere_modulate = Color(0.603451, 0.317772, 1, 1)
 shader_params/u_atmosphere_ambient_color = Color(0.550361, 0.129106, 0.736782, 1)
@@ -883,7 +995,6 @@ visible = false
 [node name="PlanetAthmosphere" parent="Incense/Volcanic" instance=ExtResource("11_q43nw")]
 planet_radius = 7.0
 atmosphere_height = 2.405
-sun_path = NodePath("../../../Blackhole")
 custom_shader = ExtResource("18_yfr1v")
 shader_params/u_density = 0.16
 shader_params/u_day_color0 = Color(0.2993, 0.36203, 0.41, 1)
@@ -906,7 +1017,6 @@ radius = 10.0
 [node name="PlanetAthmosphere" parent="Tobagen/Ice" instance=ExtResource("11_q43nw")]
 planet_radius = 10.0
 atmosphere_height = 2.0
-sun_path = NodePath("../../../Blackhole")
 custom_shader = ExtResource("18_yfr1v")
 shader_params/u_density = 0.06
 shader_params/u_day_color0 = Color(0.5, 0.8, 1, 1)
@@ -927,6 +1037,7 @@ body = NodePath("Moon")
 [node name="Moon" parent="IntrepidMoon" instance=ExtResource("24_pt8ev")]
 transform = Transform3D(0.9964, 0, -0.0847735, 0, 1, 0, 0.0847735, 0, 0.9964, 0, 0, -70.7587)
 
+[connection signal="toggled" from="HOLES/HoleControls/Button" to="HOLES/HoleControls" method="_on_button_toggled"]
 [connection signal="toggled" from="DysonSphere/VBoxContainer/Title" to="DysonSphere" method="_on_title_toggled"]
 [connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Distance" to="DysonSphere" method="_on_distance_value_changed"]
 [connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Power" to="DysonSphere/DysonSphere" method="_on_power_value_changed"]

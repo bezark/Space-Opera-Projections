@@ -1,0 +1,80 @@
+[gd_scene load_steps=7 format=3 uid="uid://0c2uwafd3f3"]
+
+[ext_resource type="Script" uid="uid://bcshhps4gpxlp" path="res://Assets/1Toys/blackhole.gd" id="1_1x0eb"]
+[ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Assets/Shaders/blackhole.gdshader" id="1_e2u4y"]
+[ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="2_e2u4y"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d1v7t"]
+render_priority = 0
+shader = ExtResource("1_e2u4y")
+shader_parameter/scale = 500.0
+shader_parameter/lens_radius = 0.0
+shader_parameter/black_hole_positions = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
+shader_parameter/black_hole_colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+shader_parameter/black_hole_count = 0
+
+[sub_resource type="SphereMesh" id="SphereMesh_smirv"]
+material = SubResource("ShaderMaterial_d1v7t")
+flip_faces = true
+radius = 250.0
+height = 500.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dee4i"]
+emission_enabled = true
+emission = Color(0.940695, 0.635263, 0.338721, 1)
+emission_energy_multiplier = 16.0
+
+[node name="Blackhole" type="MeshInstance3D"]
+transform = Transform3D(1, 0, 0, 0, 0.999986, 0.00532323, 0, -0.00532323, 0.999986, 0, 0, 0)
+mesh = SubResource("SphereMesh_smirv")
+script = ExtResource("1_1x0eb")
+
+[node name="Disk" type="CSGTorus3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+visible = false
+inner_radius = 250.0
+outer_radius = 300.0
+sides = 64
+ring_sides = 64
+material = SubResource("StandardMaterial3D_dee4i")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_energy = 1000.0
+light_indirect_energy = 16.0
+light_volumetric_fog_energy = 10.393
+shadow_bias = 5.278
+shadow_normal_bias = 0.0
+shadow_transmittance_bias = 16.0
+shadow_blur = 3.777
+omni_range = 3000.0
+
+[node name="HoleControls" type="FlowContainer" parent="." groups=["system_control"]]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("2_e2u4y")
+
+[node name="Button" type="Button" parent="HoleControls"]
+layout_mode = 2
+toggle_mode = true
+text = "Blackhole"
+
+[node name="Controls" type="FlowContainer" parent="HoleControls"]
+visible = false
+layout_mode = 2
+
+[node name="Scale" type="VSlider" parent="HoleControls/Controls"]
+custom_minimum_size = Vector2(0, 400)
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+max_value = 500.0
+step = 0.1
+
+[node name="ColorPickerButton" type="ColorPickerButton" parent="HoleControls/Controls"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+color = Color(0.739975, 0.417669, 0.0813718, 1)
+
+[connection signal="toggled" from="HoleControls/Button" to="HoleControls" method="_on_button_toggled"]
+[connection signal="value_changed" from="HoleControls/Controls/Scale" to="." method="_on_scale_value_changed"]

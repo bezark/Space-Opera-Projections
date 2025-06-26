@@ -7,9 +7,17 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1)
 frequency = 0.0039
 
 [resource]
+resource_local_to_scene = false
+resource_name = ""
 width = 1024
 height = 1024
+invert = false
+in_3d_space = false
+generate_mipmaps = true
 seamless = true
 seamless_blend_skirt = 0.3
+as_normal_map = false
+bump_strength = 8.0
+normalize = true
 color_ramp = SubResource("Gradient_uclom")
 noise = SubResource("FastNoiseLite_w4rkf")

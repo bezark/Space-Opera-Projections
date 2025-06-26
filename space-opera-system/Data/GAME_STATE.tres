@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="SessionData" load_steps=341 format=3]
+[gd_resource type="Resource" script_class="SessionData" load_steps=343 format=3]
 
 [ext_resource type="Script" path="res://Components/Classes/Community.gd" id="1_lohdr"]
 [ext_resource type="PackedScene" path="res://Phases/Templates/Break.tscn" id="2_6t4gm"]
@@ -29,6 +29,7 @@
 [ext_resource type="Resource" path="res://Assets/1Toys/Zooms/PlayerPlanets/GEMSTONE_home.tres" id="28_4df5w"]
 [ext_resource type="Resource" path="res://Assets/1Toys/Zooms/PlayerPlanets/ICE_home.tres" id="29_nok2u"]
 [ext_resource type="Resource" path="res://Assets/1Toys/Zooms/PlayerPlanets/DESERT_home.tres" id="30_4df5w"]
+[ext_resource type="Script" path="res://Components/Classes/SocietyActionComponent.gd" id="30_nok2u"]
 [ext_resource type="Resource" path="res://Assets/1Toys/Zooms/PlayerPlanets/EARTH_home.tres" id="31_nok2u"]
 
 [sub_resource type="Resource" id="Resource_fwjce"]
@@ -474,7 +475,7 @@ sp_round = 6
 scene_data = SubResource("Resource_i15f4")
 time = {
 "duration": 600.0,
-"elapsed": 1032.23,
+"elapsed": 6944.94,
 "remaining": 535.0,
 "remainingFormatted": "08:55"
 }
@@ -2429,6 +2430,14 @@ colors = SubResource("ColorPalette_wyoyg")
 archetype = ExtResource("3_y04g4")
 actions = Array[ExtResource("15_r4n1j")]([])
 
+[sub_resource type="Resource" id="Resource_tyyb3"]
+script = ExtResource("15_r4n1j")
+game_round = 6
+components = Array[ExtResource("30_nok2u")]([])
+voted = false
+voteTime = 0
+parent_society = "yXHVO"
+
 [sub_resource type="ColorPalette" id="ColorPalette_0m20m"]
 colors = PackedColorArray(0.768627, 0.690196, 0.270588, 1, 0.388235, 0.34902, 0.0313726, 1, 0.388235, 0.34902, 0.0313726, 1, 0.768627, 0.690196, 0.270588, 1)
 
@@ -2500,7 +2509,7 @@ communities = Dictionary[String, ExtResource("1_lohdr")]({
 home = ExtResource("31_nok2u")
 colors = SubResource("ColorPalette_0m20m")
 archetype = ExtResource("9_3w1tv")
-actions = Array[ExtResource("15_r4n1j")]([])
+actions = Array[ExtResource("15_r4n1j")]([SubResource("Resource_tyyb3")])
 
 [resource]
 script = ExtResource("4_phj51")

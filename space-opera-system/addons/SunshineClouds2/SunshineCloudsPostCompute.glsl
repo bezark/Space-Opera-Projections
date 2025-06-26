@@ -85,8 +85,9 @@ struct PointEffector {
 layout(binding = 6) uniform LightsBuffer {
 	DirectionalLight directionalLights[4];
 	PointLight pointLights[128];
-	PointEffector pointEffectors[4];
+	PointEffector pointEffectors[64];
 };
+
 
 // Our push constant
 layout(push_constant, std430) uniform Params {
@@ -168,6 +169,30 @@ vec4 texture2D_bicubic(sampler2D tex, vec2 uv, vec2 res)
                         g1x * texture(tex, p3));
 }
 
+vec4 radialBlurColor(vec4 startColor, sampler2D colorImage, sampler2D depthImage, vec2 uv, vec2 size, float startingDepth, float Directions, float blurVertical, float blurHorizontal, float Quality){
+    float Pi = 6.28318530718;
+    float count = 1.0;
+	float theoreticalMaxCount =  Directions * Quality;
+	//float stepLerp = 1.0 / theoreticalMaxCount;
+    vec4 Color = startColor;
+	float CurrentDepth = startingDepth;
+	vec2 newUV = uv;
+    for( float d=0.0; d<Pi; d+=Pi/Directions)
+    {
+		for(float i=1.0/Quality; i<=1.0; i+=1.0/Quality)
+        {
+			newUV = uv + vec2(cos(d) * blurHorizontal * i, sin(d) * blurVertical * i);
+			float newDepth = texture(depthImage, newUV).g;
+			if (CurrentDepth - newDepth > genericData.max_step_distance){
+				Color += texture2D_bicubic(colorImage, newUV, size);
+				count += 1.0;
+			}
+        }
+    }
+    Color /= count;
+    return Color;
+}
+
 vec4 radialBlurData(vec4 startColor, float linear_depth, sampler2D image, vec2 uv, float Directions, float blurVertical, float blurHorizontal, float Quality){
     float Pi = 6.28318530718;
     float count = 1.0;
@@ -206,23 +231,23 @@ vec4 radialBlurData(vec4 startColor, float linear_depth, sampler2D image, vec2 u
     return Color;
 }
 
-vec4 radialBlurColor(vec4 startColor, sampler2D image, vec2 uv, vec2 size, float Directions, float blurVertical, float blurHorizontal, float Quality){
-    float Pi = 6.28318530718;
-    float count = 1.0;
-	float theoreticalMaxCount =  Directions * Quality;
-	//float stepLerp = 1.0 / theoreticalMaxCount;
-    vec4 Color = startColor;
-    for( float d=0.0; d<Pi; d+=Pi/Directions)
-    {
-		for(float i=1.0/Quality; i<=1.0; i+=1.0/Quality)
-        {
-			Color += texture2D_bicubic(image, uv + vec2(cos(d) * blurHorizontal * i, sin(d) * blurVertical * i), size);
-			count += 1.0;
-        }
-    }
-    Color /= count;
-    return Color;
-}
+// vec4 radialBlurColor(vec4 startColor, sampler2D image, vec2 uv, vec2 size, float Directions, float blurVertical, float blurHorizontal, float Quality){
+//     float Pi = 6.28318530718;
+//     float count = 1.0;
+// 	float theoreticalMaxCount =  Directions * Quality;
+// 	//float stepLerp = 1.0 / theoreticalMaxCount;
+//     vec4 Color = startColor;
+//     for( float d=0.0; d<Pi; d+=Pi/Directions)
+//     {
+// 		for(float i=1.0/Quality; i<=1.0; i+=1.0/Quality)
+//         {
+// 			Color += texture2D_bicubic(image, uv + vec2(cos(d) * blurHorizontal * i, sin(d) * blurVertical * i), size);
+// 			count += 1.0;
+//         }
+//     }
+//     Color /= count;
+//     return Color;
+// }
 
 
 void sampleAtmospherics(
@@ -346,8 +371,8 @@ void main() {
 	vec3 rayOrigin = genericData.view[3].xyz; //center of camera for the ray origin, not worried about the screen width playing in, as it's for clouds.
 
 
-	ivec2 tempuv = uv + ivec2(resolutionScale);
-	vec2 accumUV = vec2(float(tempuv.x) / float(size.x), float(tempuv.y) / float(size.y));
+	vec2 tempuv = vec2(uv) + vec2(resolutionScale) * 2.0;
+	vec2 accumUV = vec2(tempuv.x / float(size.x), tempuv.y / float(size.y));
 	accumUV = clamp(accumUV, vec2(0.0), vec2(1.0));
 	
 	vec2 lowres_sizefloat = vec2(lowres_size);
@@ -375,8 +400,9 @@ void main() {
 		float blurHorizontal = blurPower / float(size.x);
 		float blurVertical = blurPower / float(size.y);
 		float blurQuality = genericData.blurQuality;
-		currentAccumilation = radialBlurColor(currentAccumilation, input_color_image, accumUV, lowres_sizefloat, blurQuality * 4.0, blurVertical, blurHorizontal, blurQuality);
-		currentColorData = radialBlurData(currentColorData, linear_depth, input_data_image, accumUV, blurQuality * 4.0, blurVertical, blurHorizontal, blurQuality);
+		//currentColorData = radialBlurData(currentColorData, linear_depth, input_data_image, accumUV, blurQuality * 4.0, blurVertical, blurHorizontal, blurQuality);
+		currentAccumilation = radialBlurColor(currentAccumilation, input_color_image, input_data_image, accumUV, lowres_sizefloat, linear_depth, blurQuality * 4.0, blurVertical, blurHorizontal, blurQuality);
+		
 	}
 
 
@@ -385,7 +411,7 @@ void main() {
 	float firstTraveledDistance = currentColorData.b;
 
 	
-	if (traveledDistance > linear_depth){
+	if ( traveledDistance > linear_depth){
 		if (firstTraveledDistance < linear_depth){
 
 			float lerp = clamp(remap(linear_depth, firstTraveledDistance, traveledDistance, 0.0, 1.0), 0.0, 1.0);
@@ -414,7 +440,7 @@ void main() {
 			float lightPower = light.color.a * sunUpWeight;
 			if (lightPower > 0.0){
 				vec4 atmosphericData = sampleAllAtmospherics(rayOrigin, raydirection, linear_depth, traveledDistance, 0.0, linear_depth / 10.0, 10.0, atmosphericDensity, sundir, light.color.rgb * lightPower, ambientfogdistancecolor);
-				color.rgb = mix(color.rgb, atmosphericData.rgb, (atmosphericData.a * lightPower) * groundLinearFade); //causes jitter in the sky
+				color.rgb = mix(color.rgb, atmosphericData.rgb, atmosphericData.a * groundLinearFade); //causes jitter in the sky
 			}
 		}
 	}
@@ -424,5 +450,10 @@ void main() {
 
 	
     imageStore(color_image, uv, color);
-	imageStore(reflections_sample, ivec2(accumUV * vec2(lowres_size)), vec4(color.rgb, traveledDistance));
+	if (resolutionScale != 1){
+		imageStore(reflections_sample, ivec2(accumUV * vec2(lowres_size)), vec4(color.rgb, traveledDistance));
+	}
+	else{
+		imageStore(reflections_sample, uv, vec4(color.rgb, traveledDistance));
+	}
 }

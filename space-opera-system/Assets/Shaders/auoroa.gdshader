@@ -1,86 +1,105 @@
 shader_type spatial;
+render_mode unshaded, depth_draw_never;
+uniform sampler2D screen_tex  : hint_screen_texture;
+uniform sampler2D depth_tex   : hint_depth_texture;
+uniform float    scale;
+uniform float lens_radius; 
 
-uniform float speed = 0.01;
-uniform vec4 color : source_color;
-uniform float emission_strength = 5.0;
-uniform sampler2D noise;
-uniform float offset = 0.0;
-uniform float smoothness = 0.15;
-uniform float distort = 1.0;
-uniform float scale = 0.02;
+// --- NEW: all the holes in one material! up to 4 of them. 
+uniform vec3     black_hole_positions[4];
+uniform vec3 black_hole_colors[4]:source_color;
+uniform int      black_hole_count;
 
-group_uniforms Raymarching;
-uniform float STEP = 0.01;
-uniform float BASE_DENSITY = 2.0;
-
-varying vec3 camera_position;
-varying vec3 vertex_position;
-
-
-float amplify(float value) {
-	float magic_number = 0.166504;
-	float output = 0.0;
-	value = clamp(value, 0.0, 1.0);
-	value = pow(value, 2);
-	output += pow(magic_number, 4) * value;
-	value = pow(value, 2);
-	output += magic_number * value;
-	value = pow(value, 2);
-	output += value;
-	return output;
+// updated hit_sphere that also spits back the nearest positive t
+bool hit_sphere(vec3 ro, vec3 rd, vec3 so, float r, out float t_out) {
+    vec3 oc = ro - so;
+    float a = dot(rd, rd);
+    float b = 2.0 * dot(rd, oc);
+    float c = dot(oc, oc) - r*r;
+    float disc = b*b - 4.0*a*c;
+    if (disc < 0.0) return false;
+    float sq = sqrt(disc);
+    float t0 = (-b - sq) / (2.0 * a);
+    float t1 = (-b + sq) / (2.0 * a);
+    // pick the closest positive intersection
+    t_out = (t0 > 0.0) ? t0 : ((t1 > 0.0) ? t1 : -1.0);
+    return t_out > 0.0;
 }
 
-float interpolate_noise(vec2 uv1, vec2 uv2) {
-	return smoothstep(
-		-smoothness, smoothness, texture(noise, uv1).r - texture(noise, uv2).r
-	);
+
+vec3 get_world_position_from_uv(vec2 uv, float depth,
+                                mat4 inv_proj, mat4 inv_view) {
+    vec4 ndc = vec4(uv * 2.0 - 1.0, depth, 1.0);
+    vec4 view_p = inv_proj * ndc;
+    view_p.xyz /= view_p.w;
+    vec4 world_p = inv_view * vec4(view_p.xyz, 1.0);
+    return world_p.xyz;
 }
 
-float random_wave(vec2 uv) {
-	vec2 uv_distort = texture(noise, uv).rr * distort * 0.5;
-	vec2 uv1 = uv * scale + vec2(TIME * speed, TIME * speed - offset) + uv_distort;
-	vec2 uv2 = uv * scale + vec2(TIME * speed + 0.5, TIME * speed + offset) + uv_distort;
-	float interpolated_noise = interpolate_noise(uv1, uv2);
-	float intensity = 0.2 + clamp((0.5 - abs(interpolated_noise - 0.5)) * 1.5, 0.0, 1.0);
-	float wave = amplify(intensity);
-	return wave;
+vec2 get_uv_from_world_position(vec3 wp, mat4 proj, mat4 view) {
+    vec4 pos_v  = view * vec4(wp, 1.0);
+    vec4 pos_cs = proj  * pos_v;
+    vec2 ndc    = pos_cs.xy / pos_cs.w;
+    return ndc * 0.5 + 0.5;
 }
 
-float ray_march(vec3 ray_origin, vec3 ray_direction, float start, float time) {
-	float density = 0.0;
-	float dist = start + STEP;
-
-	while (true) {
-		vec3 point = ray_origin + ray_direction * (dist);
-		// Check if the point is outside of the mesh (-1 to 1 in all directions)
-		if (clamp(point, vec3(-1, -1, -1), vec3(1, 1, 1)) != point) {
-			break;
-		}
-		vec2 uv = vec2((point.x + 1.0) * 0.5, (point.z + 1.0) * 0.5);
-		float wave_value = random_wave(uv);
-		float height_factor = (1.0 - point.y) * 0.5;
-		float point_density = BASE_DENSITY * STEP * height_factor * wave_value;
-		density += point_density;
-		dist += STEP;
-	}
-
-	return density;
+float fresnel_term(float power, vec3 N, vec3 V) {
+    return pow(1.0 - clamp(dot(normalize(N), normalize(V)), 0.0, 1.0),
+               power);
 }
-
-void vertex() {
-	vertex_position = VERTEX;
-	// Use object space
-	camera_position = (inverse(MODELVIEW_MATRIX) * vec4(0, 0, 0, 1)).xyz;
-}
-
 void fragment() {
-	vec3 ray_origin = camera_position;
-	vec3 ray_direction =  normalize(vertex_position - ray_origin);
-	float density = ray_march(
-		ray_origin, ray_direction, length(camera_position - vertex_position), TIME
-	);
+    // 1) rebuild world‐position & ray
+float depth = texture(depth_tex, SCREEN_UV).x;
+vec3 frag_p = get_world_position_from_uv(
+                  SCREEN_UV, depth,
+                  INV_PROJECTION_MATRIX,
+                  INV_VIEW_MATRIX
+              );
+vec3 ray_dir = normalize(frag_p - CAMERA_POSITION_WORLD);
 
-	ALBEDO = color.rgb * density;
-	EMISSION = color.rgb * density * emission_strength;
-	ALPHA = density;
+// 2) find the *first* horizon intersection, if any
+float nearest_t = 1e20;
+int   hit_idx   = -1;
+for (int i = 0; i < black_hole_count; ++i) {
+    float t;
+    if (hit_sphere(
+            CAMERA_POSITION_WORLD,
+            ray_dir,
+            black_hole_positions[i],
+            scale * 0.3,
+            t
+        ) && t < nearest_t) {
+        nearest_t = t;
+        hit_idx   = i;
+    }
+}
+
+if (hit_idx >= 0) {
+    // 3a) inside the nearest hole → paint its color
+    ALBEDO = black_hole_colors[hit_idx];
+}
+else {
+    // 3b) outside all horizons → do the combined lensing
+    vec2 total_disp = vec2(0.0);
+    float fov = atan(-1.0 / PROJECTION_MATRIX[1][1] * 2.0);
+
+    for (int i = 0; i < black_hole_count; ++i) {
+        vec2 bh_uv = get_uv_from_world_position(
+                         black_hole_positions[i],
+                         PROJECTION_MATRIX,
+                         VIEW_MATRIX
+                     );
+        vec2 dir2d = normalize(bh_uv - SCREEN_UV) * 0.5;
+        float f    = 1.0 - fresnel_term(0.5, NORMAL, VIEW);
+        float dist = distance(
+                         CAMERA_POSITION_WORLD,
+                         black_hole_positions[i]
+                     );
+        float s    = (2.0 * dist * tan(fov * 0.5)) / scale;
+        total_disp += dir2d * (f / s);
+    }
+
+    vec2 uv = SCREEN_UV + total_disp;
+    ALBEDO  = texture(screen_tex, uv).rgb;
+}
 }

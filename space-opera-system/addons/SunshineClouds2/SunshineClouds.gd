@@ -12,11 +12,9 @@ class_name SunshineCloudsGD
 @export_range(0, 10) var lighting_density : float = 0.55
 @export_range(0, 1) var fog_effect_ground : float = 1.0
 
-@export_subgroup("Reflections")
-@export var reflections_globalshaderparam : String = ""
-
 @export_subgroup("Colors")
 @export_range(0, 1) var clouds_anisotropy : float = 0.3
+@export_range(0, 1) var clouds_powder : float = 0.5
 @export var cloud_ambient_color : Color = Color(0.352, 0.624, 0.784, 1.0)
 @export var cloud_ambient_tint : Color = Color(0.352, 0.624, 0.784, 1.0)
 @export var atmosphere_color : Color = Color(0.801, 0.893, 0.962, 1.0)
@@ -29,9 +27,11 @@ class_name SunshineCloudsGD
 @export_range(100, 100000) var medium_noise_scale : float = 6000.0
 @export_range(100, 10000) var small_noise_scale : float = 2500.0
 @export_range(0, 2) var clouds_sharpness : float = 1.0
-@export_range(0, 3) var clouds_detail_strength : float = 0.9
+@export_range(0, 3) var clouds_detail_power : float = 0.9
 @export_range(0, 50000) var curl_noise_strength : float = 5000.0
 @export_range(0, 2) var lighting_sharpness : float = 0.05
+@export_range(0, 1) var wind_swept_range : float = 0.5
+@export_range(0, 5000) var wind_swept_strength : float = 500.0
 
 @export var cloud_floor : float = 1500.0
 @export var cloud_ceiling : float = 25000.0
@@ -62,6 +62,9 @@ class_name SunshineCloudsGD
 @export_range(0, 1000) var dither_speed : float = 100.8254
 @export_range(0, 20) var blur_power : float = 2.0
 @export_range(0, 6) var blur_quality : float = 1.0
+
+@export_subgroup("Reflections")
+@export var reflections_globalshaderparam : String = ""
 
 @export_subgroup("Performance")
 @export var min_step_distance : float = 100.0
@@ -124,6 +127,8 @@ var push_constants : PackedByteArray
 var prepass_push_constants : PackedByteArray
 var postpass_push_constants : PackedByteArray
 var last_size : Vector2i = Vector2i(0, 0)
+var color_images : Array[RID] = []
+var msaa_color_images : Array[RID] = []
 
 var buffers : RenderSceneBuffersRD
 
@@ -213,6 +218,12 @@ func clear_compute():
 				if item.is_valid():
 					rd.free_rid(item)
 			accumulation_textures.clear()
+		
+		if msaa_color_images.size() > 0:
+			for item in msaa_color_images:
+				if item.is_valid():
+					rd.free_rid(item)
+			msaa_color_images.clear()
 
 func initialize_compute():
 	first_run = true
@@ -314,6 +325,10 @@ func _render_callback(effect_callback_type, render_data):
 	elif pipeline.is_valid() and height_gradient and extra_large_noise_patterns and large_scale_noise and medium_scale_noise and small_scale_noise and dither_noise and curl_noise:
 		buffers = render_data.get_render_scene_buffers() as RenderSceneBuffersRD
 		if buffers:
+			var msaa = buffers.get_msaa_3d() != 0
+			if msaa:
+				return
+			
 			var size = buffers.get_internal_size()
 			if size.x == 0 and size.y == 0:
 				return
@@ -331,8 +346,7 @@ func _render_callback(effect_callback_type, render_data):
 			
 			var new_size = size / resscale
 			var view_count = buffers.get_view_count()
-			
-			if size != last_size or uniform_sets == null or uniform_sets.size() != view_count * 3:
+			if size != last_size or uniform_sets == null or uniform_sets.size() != view_count * 3 or color_images.size() == 0 or color_images[0] != buffers.get_color_layer(0):
 				initialize_compute()
 				
 				accumulation_textures.clear()
@@ -354,15 +368,26 @@ func _render_callback(effect_callback_type, render_data):
 				postpass_data_ms.put_float(0.0)
 				
 				postpass_push_constants = postpass_data_ms.data_array
+				color_images.clear()
+				msaa_color_images.clear()
+				
 				#print("postpass_push_constants",postpass_push_constants.size())
 				for view in range(view_count):
-					var color_image : RID = buffers.get_color_layer(view)
-					var depth_image : RID = buffers.get_depth_layer(view)
+					color_images.append(buffers.get_color_layer(view, msaa))
+					
+					var depth_image : RID = buffers.get_depth_layer(view, msaa)
 					
 					var blankImageData : PackedByteArray = []
 					blankImageData.resize(new_size.x * new_size.y * 4 * 4)
 					
-					var base_colorformat : RDTextureFormat = rd.texture_get_format(color_image)
+					var base_colorformat : RDTextureFormat = rd.texture_get_format(color_images[view])
+					
+					
+					if (msaa):
+						base_colorformat.usage_bits = RenderingDevice.TEXTURE_USAGE_STORAGE_BIT | RenderingDevice.TEXTURE_USAGE_SAMPLING_BIT | RenderingDevice.TEXTURE_USAGE_CAN_COPY_TO_BIT | RenderingDevice.TEXTURE_USAGE_CAN_COPY_FROM_BIT
+						
+						msaa_color_images.append(rd.texture_create(base_colorformat, RDTextureView.new(), []))
+					
 					base_colorformat.format = RenderingDevice.DATA_FORMAT_R32G32B32A32_SFLOAT
 					base_colorformat.width = new_size.x
 					base_colorformat.height = new_size.y
@@ -502,7 +527,7 @@ func _render_callback(effect_callback_type, render_data):
 					camera_uniform.add_id(general_data_buffer)
 					uniforms_array.append(camera_uniform)
 					
-					light_data_buffer = rd.uniform_buffer_create(4352)
+					light_data_buffer = rd.uniform_buffer_create(6272)
 					var light_data_uniform = RDUniform.new()
 					light_data_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_UNIFORM_BUFFER
 					light_data_uniform.binding = 15
@@ -550,7 +575,7 @@ func _render_callback(effect_callback_type, render_data):
 					var postpass_color_uniform = RDUniform.new()
 					postpass_color_uniform.uniform_type = RenderingDevice.UNIFORM_TYPE_IMAGE
 					postpass_color_uniform.binding = 3
-					postpass_color_uniform.add_id(color_image)
+					postpass_color_uniform.add_id(msaa_color_images[view] if msaa else color_images[view])
 					postpass_uniforms_array.append(postpass_color_uniform)
 					
 					var postpass_depth_uniform = RDUniform.new()
@@ -586,7 +611,7 @@ func _render_callback(effect_callback_type, render_data):
 			ms.put_float(current_time)
 			ms.put_float(clouds_coverage)
 			ms.put_float(clouds_density)
-			ms.put_float(clouds_detail_strength)
+			ms.put_float(clouds_detail_power)
 			
 			ms.put_float(lighting_density)
 			ms.put_float(accumulation_decay)
@@ -617,6 +642,9 @@ func _render_callback(effect_callback_type, render_data):
 			var y_groups = ((size.y - 1) / 32 / resscale) + 1
 			
 			for view in view_count:
+				if (msaa):
+					rd.texture_copy(color_images[view], msaa_color_images[view], Vector3.ZERO, Vector3.ZERO, Vector3(size.x, size.y, 0.0),0,0,0,0)
+				
 				var prepass_list = rd.compute_list_begin()
 				rd.compute_list_bind_compute_pipeline(prepass_list, prepass_pipeline)
 				rd.compute_list_bind_uniform_set(prepass_list, uniform_sets[view * 3], 0)
@@ -637,6 +665,10 @@ func _render_callback(effect_callback_type, render_data):
 				rd.compute_list_set_push_constant(postpass_list, postpass_push_constants, postpass_push_constants.size())
 				rd.compute_list_dispatch(postpass_list, prepass_x_groups, prepass_y_groups, 1)
 				rd.compute_list_end()
+				
+				if (msaa):
+					rd.texture_copy(msaa_color_images[view], color_images[view], Vector3.ZERO, Vector3.ZERO, Vector3(size.x, size.y, 0.0),0,0,0,0)
+				
 			
 			if (!positionResetting && positionQuerying):
 				positionResetting = true
@@ -834,7 +866,7 @@ func update_matrices(camera_tr, view_proj):
 
 	general_data.encode_float(idx, clouds_sharpness); idx += 4
 	general_data.encode_float(idx, float(directional_lights_data.size()) / 2.0); idx += 4
-	general_data.encode_float(idx, 0.0); idx += 4
+	general_data.encode_float(idx, clouds_powder); idx += 4
 	general_data.encode_float(idx, clouds_anisotropy); idx += 4
 
 	general_data.encode_float(idx, cloud_floor); idx += 4
@@ -854,8 +886,8 @@ func update_matrices(camera_tr, view_proj):
 	
 	general_data.encode_float(idx, float(point_lights_data.size()) / 2.0); idx += 4
 	general_data.encode_float(idx, float(point_effector_data.size()) / 2.0); idx += 4
-	general_data.encode_float(idx, 0.0); idx += 4
-	general_data.encode_float(idx, 0.0); idx += 4
+	general_data.encode_float(idx, wind_swept_range); idx += 4
+	general_data.encode_float(idx, wind_swept_strength); idx += 4
 	
 	# Copy to byte buffer
 	rd.buffer_update(general_data_buffer, 0, general_data.size(), general_data)
@@ -864,8 +896,8 @@ func update_matrices(camera_tr, view_proj):
 func update_lights():
 	lights_updated = false
 	
-	if light_data.size() != 4352: #32 + 1024 + 32 * 4 bytes for each float = 4352.
-		light_data.resize(4352)
+	if light_data.size() != 6272: #32 + 1024 + 512 * 4 bytes for each float = 6272.
+		light_data.resize(6272)
 	
 	if (directional_lights_data.size() == 0): #defaults to having a default light.
 		directional_lights_data.append(Vector4(0.5, 1.0, 0.5, 16.0))
@@ -895,7 +927,7 @@ func update_lights():
 		idx += 4
 	
 	idx = 4224
-	for i in range(min(point_effector_data.size(), 8)):
+	for i in range(min(point_effector_data.size(), 128)):
 		light_data.encode_float(idx, point_effector_data[i].x)
 		idx += 4
 		light_data.encode_float(idx, point_effector_data[i].y)
