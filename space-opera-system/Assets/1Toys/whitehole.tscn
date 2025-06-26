@@ -8,10 +8,11 @@
 render_priority = 0
 shader = ExtResource("1_e2u4y")
 shader_parameter/scale = 500.0
-shader_parameter/lens_radius = 0.0
 shader_parameter/black_hole_positions = PackedVector3Array(0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0)
 shader_parameter/black_hole_colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0, 1)
+shader_parameter/black_hole_sizes = PackedFloat32Array(0, 0, 0, 0)
 shader_parameter/black_hole_count = 0
+shader_parameter/skybox_mode = false
 
 [sub_resource type="SphereMesh" id="SphereMesh_smirv"]
 material = SubResource("ShaderMaterial_d1v7t")

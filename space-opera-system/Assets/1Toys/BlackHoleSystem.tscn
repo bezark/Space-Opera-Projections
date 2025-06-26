@@ -1,10 +1,11 @@
-[gd_scene load_steps=82 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=87 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="Script" uid="uid://dmbp2jse31d6g" path="res://Assets/1Toys/holes.gd" id="2_4hkls"]
 [ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="2_regpr"]
 [ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Assets/Shaders/blackhole.gdshader" id="3_4hkls"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
+[ext_resource type="FontFile" uid="uid://ded4vgoigb0kq" path="res://Assets/Themes/Montserrat/static/Montserrat-Bold.ttf" id="4_b0c3i"]
 [ext_resource type="PackedScene" uid="uid://18k4h4eqi70r" path="res://Assets/1Toys/Zooms/TheEye.tscn" id="4_mb5ce"]
 [ext_resource type="PackedScene" uid="uid://hfn3lqg1fa0j" path="res://Assets/1Toys/star.tscn" id="5_regpr"]
 [ext_resource type="Script" uid="uid://b7jaqtt131rbb" path="res://Components/CelestialBodies/effects.gd" id="7_0nw5c"]
@@ -49,11 +50,11 @@
 render_priority = 0
 shader = ExtResource("3_4hkls")
 shader_parameter/scale = 100.0
-shader_parameter/black_hole_positions = PackedVector3Array(0, 0, 0, 500, 0, 0)
-shader_parameter/black_hole_colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
-shader_parameter/black_hole_sizes = PackedFloat32Array(500, 200)
+shader_parameter/black_hole_positions = PackedVector3Array(200, 0, 0, -200, 0, 0)
+shader_parameter/black_hole_colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+shader_parameter/black_hole_sizes = PackedFloat32Array(100, 100)
 shader_parameter/black_hole_count = 2
-shader_parameter/skybox_mode = true
+shader_parameter/skybox_mode = false
 
 [sub_resource type="SphereMesh" id="SphereMesh_dn3a4"]
 material = SubResource("ShaderMaterial_regpr")
@@ -61,9 +62,30 @@ flip_faces = true
 radius = 2000.0
 height = 4000.0
 
+[sub_resource type="LabelSettings" id="LabelSettings_i2je4"]
+font = ExtResource("4_b0c3i")
+font_size = 24
+
+[sub_resource type="Resource" id="Resource_regpr"]
+script = ExtResource("10_paiqf")
+zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0c3i"]
+emission_enabled = true
+emission = Color(0.875749, 0.559829, 0.234283, 1)
+emission_energy_multiplier = 5.0
+
+[sub_resource type="Resource" id="Resource_b0c3i"]
+script = ExtResource("10_paiqf")
+zooms = Array[PackedScene]([])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dee4i"]
 emission_enabled = true
-emission = Color(0.940695, 0.635263, 0.338721, 1)
+emission = Color(0.456485, 0.242677, 0.110009, 1)
 emission_energy_multiplier = 16.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
@@ -471,10 +493,10 @@ toggle_mode = true
 text = "Blackhole"
 
 [node name="Controls" type="FlowContainer" parent="HOLES/HoleControls"]
-visible = false
 layout_mode = 2
 
 [node name="Scale" type="VSlider" parent="HOLES/HoleControls/Controls"]
+visible = false
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -483,38 +505,214 @@ max_value = 500.0
 step = 0.1
 
 [node name="ColorPickerButton" type="ColorPickerButton" parent="HOLES/HoleControls/Controls"]
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 color = Color(0.739975, 0.417669, 0.0813718, 1)
 
-[node name="WhiteHole" parent="HOLES" node_paths=PackedStringArray("body", "sattelites") instance=ExtResource("9_l1est")]
-transform = Transform3D(0.960871, 0.276996, 0, -0.276996, 0.960871, 0, 0, 0, 1, -0.0646362, -1.79852, -0.143433)
-body = NodePath("")
-sattelites = [NodePath("../../TruBeau")]
+[node name="Sliders" type="GridContainer" parent="HOLES/HoleControls/Controls"]
+layout_mode = 2
+columns = 2
+
+[node name="DistanceLabel" type="Label" parent="HOLES/HoleControls/Controls/Sliders"]
+layout_mode = 2
+text = "Distance"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HOLES/HoleControls/Controls/Sliders"]
+layout_mode = 2
+
+[node name="Less" type="Button" parent="HOLES/HoleControls/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="More" type="Button" parent="HOLES/HoleControls/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="SpeedLabel" type="Label" parent="HOLES/HoleControls/Controls/Sliders"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="HSlider" parent="HOLES/HoleControls/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -1.0
+max_value = 1.0
+step = 0.001
+value = -0.1
+
+[node name="WScaleLabel" type="Label" parent="HOLES/HoleControls/Controls/Sliders"]
+layout_mode = 2
+text = "WScale"
+label_settings = SubResource("LabelSettings_i2je4")
+
+[node name="WScale" type="HSlider" parent="HOLES/HoleControls/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+max_value = 700.0
+step = 0.001
+allow_greater = true
+
+[node name="BScaleLabel" type="Label" parent="HOLES/HoleControls/Controls/Sliders"]
+layout_mode = 2
+text = "BScale"
+label_settings = SubResource("LabelSettings_i2je4")
+
+[node name="BScale" type="HSlider" parent="HOLES/HoleControls/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+max_value = 700.0
+step = 0.001
+allow_greater = true
+
+[node name="WhiteHole" type="Node3D" parent="HOLES" node_paths=PackedStringArray("body", "sattelites") groups=["point_of_interest"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+script = ExtResource("3_qmfsb")
+scene_data = SubResource("Resource_regpr")
+body = NodePath("White")
+sattelites = [NodePath("../../Luster"), NodePath("../../Arbor"), NodePath("../../Gust"), NodePath("../../Crumbs"), NodePath("../../Incense")]
 speed = 0.008
 spin = 0.01
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HOLES/WhiteHole" groups=["system_control"]]
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Title" type="Button" parent="HOLES/WhiteHole/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Planet"
+
+[node name="Controls" type="HBoxContainer" parent="HOLES/WhiteHole/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Sliders" type="GridContainer" parent="HOLES/WhiteHole/VBoxContainer/Controls"]
+layout_mode = 2
+columns = 2
+
+[node name="DistanceLabel" type="Label" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders"]
+visible = false
+layout_mode = 2
+text = "Distance"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders"]
+visible = false
+layout_mode = 2
+
+[node name="Less" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="Right" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="SpeedLabel" type="Label" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders"]
+visible = false
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="HSlider" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders"]
+visible = false
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="SpinLabel" type="Label" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Spin"
+
+[node name="Spin" type="HSlider" parent="HOLES/WhiteHole/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HOLES/WhiteHole/VBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="Orbit" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 42
+text = "Orbit"
+
+[node name="Zap" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Zap"
+
+[node name="Shoot" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Shoot"
+
+[node name="Laser" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Laser"
+
+[node name="Boom" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Boom"
+
+[node name="Delete" type="Button" parent="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "DELETE"
+
+[node name="Effects" type="Node3D" parent="HOLES/WhiteHole"]
+script = ExtResource("7_0nw5c")
+
+[node name="ElectricExplosion" parent="HOLES/WhiteHole/Effects" instance=ExtResource("8_cmavm")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="ExplosionBig" parent="HOLES/WhiteHole/Effects" instance=ExtResource("9_k64gf")]
+
+[node name="FireBig" parent="HOLES/WhiteHole/Effects" instance=ExtResource("10_4hkls")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 4, 4)
 
 [node name="White" type="Node3D" parent="HOLES/WhiteHole"]
 
 [node name="Star" parent="HOLES/WhiteHole/White" instance=ExtResource("5_regpr")]
-transform = Transform3D(1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0, 0, 1, 488.187, 140.732, 0)
+transform = Transform3D(1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0, 0, 1, 0, 0, 0)
 radius = 13.67
 
+[node name="Disk" type="CSGTorus3D" parent="HOLES/WhiteHole/White"]
+transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
+inner_radius = 50.0
+outer_radius = 75.0
+sides = 64
+ring_sides = 64
+material = SubResource("StandardMaterial3D_b0c3i")
+
 [node name="BlackHole" parent="HOLES" node_paths=PackedStringArray("body", "sattelites") instance=ExtResource("9_l1est")]
-transform = Transform3D(0.960871, 0.276996, 0, -0.276996, 0.960871, 0, 0, 0, 1, -0.0646362, -1.79852, -0.143433)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+scene_data = SubResource("Resource_b0c3i")
 body = NodePath("Black")
-sattelites = [NodePath("../../TruBeau")]
+sattelites = [NodePath("../../Division"), NodePath("../../Meadow"), NodePath("../../Bolt"), NodePath("../../Tobagen")]
 speed = 0.008
 spin = 0.01
 
 [node name="Black" type="Node3D" parent="HOLES/BlackHole"]
-transform = Transform3D(0.960871, -0.276996, 0, 0.276996, 0.960871, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Disk" type="CSGTorus3D" parent="HOLES/BlackHole/Black"]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-inner_radius = 0.784
-outer_radius = 33.688
+inner_radius = 50.0
+outer_radius = 75.0
 sides = 64
 ring_sides = 64
 material = SubResource("StandardMaterial3D_dee4i")
@@ -1029,6 +1227,28 @@ body = NodePath("Moon")
 transform = Transform3D(0.9964, 0, -0.0847735, 0, 1, 0, 0.0847735, 0, 0.9964, 0, 0, -70.7587)
 
 [connection signal="toggled" from="HOLES/HoleControls/Button" to="HOLES/HoleControls" method="_on_button_toggled"]
+[connection signal="button_down" from="HOLES/HoleControls/Controls/Sliders/HBoxContainer/Less" to="HOLES" method="_on_less_button_down"]
+[connection signal="button_up" from="HOLES/HoleControls/Controls/Sliders/HBoxContainer/Less" to="HOLES" method="_on_less_button_up"]
+[connection signal="button_down" from="HOLES/HoleControls/Controls/Sliders/HBoxContainer/More" to="HOLES" method="_on_more_button_down"]
+[connection signal="button_up" from="HOLES/HoleControls/Controls/Sliders/HBoxContainer/More" to="HOLES" method="_on_more_button_up"]
+[connection signal="value_changed" from="HOLES/HoleControls/Controls/Sliders/Speed" to="HOLES" method="_on_speed_value_changed"]
+[connection signal="value_changed" from="HOLES/HoleControls/Controls/Sliders/WScale" to="HOLES" method="_on_w_scale_value_changed"]
+[connection signal="value_changed" from="HOLES/HoleControls/Controls/Sliders/BScale" to="HOLES" method="_on_b_scale_value_changed"]
+[connection signal="toggled" from="HOLES/WhiteHole/VBoxContainer/Title" to="HOLES/WhiteHole" method="_on_title_toggled"]
+[connection signal="button_down" from="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="HOLES/WhiteHole" method="_on_less_button_down"]
+[connection signal="button_up" from="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="HOLES/WhiteHole" method="_on_less_button_up"]
+[connection signal="button_down" from="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/HBoxContainer/Right" to="HOLES/WhiteHole" method="_on_right_button_down"]
+[connection signal="button_up" from="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/HBoxContainer/Right" to="HOLES/WhiteHole" method="_on_right_button_up"]
+[connection signal="value_changed" from="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/Speed" to="HOLES/WhiteHole" method="_on_speed_value_changed"]
+[connection signal="value_changed" from="HOLES/WhiteHole/VBoxContainer/Controls/Sliders/Spin" to="HOLES/WhiteHole" method="_on_spin_value_changed"]
+[connection signal="pressed" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Orbit" to="HOLES/WhiteHole" method="_on_orbit_pressed"]
+[connection signal="toggled" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Zap" to="HOLES/WhiteHole/Effects" method="_on_zap_toggled"]
+[connection signal="toggled" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Shoot" to="HOLES/WhiteHole" method="_on_shoot_toggled"]
+[connection signal="toggled" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Shoot" to="HOLES/WhiteHole/Effects" method="_on_shoot_toggled"]
+[connection signal="toggled" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Laser" to="HOLES/WhiteHole" method="_on_shoot_toggled"]
+[connection signal="toggled" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Laser" to="HOLES/WhiteHole/Effects" method="_on_laser_toggled"]
+[connection signal="toggled" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Boom" to="HOLES/WhiteHole/Effects" method="_on_boom_toggled"]
+[connection signal="pressed" from="HOLES/WhiteHole/VBoxContainer/Controls/VBoxContainer/Delete" to="HOLES/WhiteHole" method="_on_delete_pressed"]
 [connection signal="toggled" from="DysonSphere/VBoxContainer/Title" to="DysonSphere" method="_on_title_toggled"]
 [connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Distance" to="DysonSphere" method="_on_distance_value_changed"]
 [connection signal="value_changed" from="DysonSphere/VBoxContainer/Controls/Sliders/Power" to="DysonSphere/DysonSphere" method="_on_power_value_changed"]
