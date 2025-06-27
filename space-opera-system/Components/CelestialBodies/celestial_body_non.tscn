@@ -7,9 +7,6 @@
 [node name="DistanceLabel" parent="VBoxContainer/Controls/Sliders" index="0"]
 visible = false
 
-[node name="Distance" parent="VBoxContainer/Controls/Sliders" index="1"]
-visible = false
-
 [node name="Well2" type="Button" parent="VBoxContainer/Controls/VBoxContainer" index="1"]
 layout_mode = 2
 toggle_mode = true

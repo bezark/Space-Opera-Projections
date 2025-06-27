@@ -7,7 +7,7 @@
 [ext_resource type="Texture2D" uid="uid://bhq1j7cfmxg55" path="res://Assets/1Toys/UEC.png" id="6_j527a"]
 [ext_resource type="Texture2D" uid="uid://bomkn2acdfxyl" path="res://Assets/1Toys/ships/carrier01_diffuse.png" id="7_pwq83"]
 [ext_resource type="Texture2D" uid="uid://3yrbet2y1jxw" path="res://Assets/1Toys/ships/carrier01_normal.png" id="8_koroh"]
-[ext_resource type="PackedScene" uid="uid://dvrf2tdnr1go1" path="res://Assets/1Toys/ships/ships.tscn" id="9_koroh"]
+[ext_resource type="PackedScene" uid="uid://dvrf2tdnr1go1" path="res://Assets/1Toys/ships/gemships.tscn" id="9_koroh"]
 [ext_resource type="PackedScene" uid="uid://cn4mb82u56moa" path="res://Assets/shipScenes/carrier_01.tscn" id="10_snq1i"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_o34si"]

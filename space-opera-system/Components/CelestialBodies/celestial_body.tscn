@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://bxr57mvk3crpc"]
+[gd_scene load_steps=9 format=3 uid="uid://bxr57mvk3crpc"]
 
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="1_to1mt"]
 [ext_resource type="PackedScene" uid="uid://dejbkt1bojau7" path="res://Assets/POLYB/electric_explosion.tscn" id="2_2b7e8"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://c20c16eqqr7kn" path="res://Assets/POLYB/fire_big.tscn" id="5_7dk6q"]
 [ext_resource type="PackedScene" uid="uid://dl1n86vlgnb34" path="res://Assets/POLYB/laser.tscn" id="7_owi7s"]
 [ext_resource type="PackedScene" uid="uid://ctibbel8uhnrc" path="res://Assets/POLYB/fireballs.tscn" id="8_11vud"]
+[ext_resource type="PackedScene" uid="uid://dxeg3b22rotv7" path="res://Assets/1Toys/roid_strike.tscn" id="8_80ccn"]
 
 [node name="CelestialBody" type="Node3D" groups=["point_of_interest"]]
 script = ExtResource("1_to1mt")
@@ -88,7 +89,7 @@ text = "Well"
 [node name="Target" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-text = "Dyson Target"
+text = "Roid"
 
 [node name="Zap" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
 layout_mode = 2
@@ -135,6 +136,8 @@ visible = false
 transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
 visible = false
 
+[node name="RoidStrike" parent="Effects" instance=ExtResource("8_80ccn")]
+
 [connection signal="toggled" from="VBoxContainer/Title" to="." method="_on_title_toggled"]
 [connection signal="button_down" from="VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="." method="_on_less_button_down"]
 [connection signal="button_up" from="VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="." method="_on_less_button_up"]
@@ -144,7 +147,7 @@ visible = false
 [connection signal="value_changed" from="VBoxContainer/Controls/Sliders/Spin" to="." method="_on_spin_value_changed"]
 [connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Orbit" to="." method="_on_orbit_pressed"]
 [connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Well" to="." method="_on_well_toggled"]
-[connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Target" to="." method="_on_target_pressed"]
+[connection signal="pressed" from="VBoxContainer/Controls/VBoxContainer/Target" to="Effects/RoidStrike" method="strike"]
 [connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Zap" to="Effects" method="_on_zap_toggled"]
 [connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Shoot" to="." method="_on_shoot_toggled"]
 [connection signal="toggled" from="VBoxContainer/Controls/VBoxContainer/Shoot" to="Effects" method="_on_shoot_toggled"]

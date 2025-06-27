@@ -1,0 +1,60 @@
+[gd_scene load_steps=7 format=3 uid="uid://dxeg3b22rotv7"]
+
+[ext_resource type="Script" uid="uid://c4dvnbfuea7ml" path="res://Assets/1Toys/roid_strike.gd" id="1_bpsfp"]
+[ext_resource type="ArrayMesh" uid="uid://br005r8upqypy" path="res://Assets/1Toys/roids/r2.tres" id="3_jb2dc"]
+[ext_resource type="ArrayMesh" uid="uid://c6scn8wnpk7if" path="res://Assets/1Toys/roids/r1.tres" id="4_l2ryp"]
+[ext_resource type="Script" uid="uid://con4bpmgvh7k6" path="res://Assets/1Toys/blue_splosion.gd" id="5_0vfde"]
+
+[sub_resource type="Curve3D" id="Curve3D_mpxu8"]
+_data = {
+"points": PackedVector3Array(0, 0, 0, 0, 0, 0, 0.380192, 0.539148, -0.00606967, 39.0072, -57.3798, 0.645975, -39.0072, 57.3798, -0.645975, -84.236, -18.7877, 0.211509, 0, 0, 0, 0, 0, 0, -61.1739, 92.7988, -1.04472),
+"tilts": PackedFloat32Array(0, 0, 0)
+}
+point_count = 3
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ej15h"]
+emission_shape_scale = Vector3(5, 5, 5)
+emission_shape = 1
+emission_sphere_radius = 1.0
+angle_min = -720.0
+angle_max = 711.0
+spread = 180.0
+initial_velocity_max = 193.2
+angular_velocity_min = -190.63
+angular_velocity_max = 118.5
+orbit_velocity_min = -0.423
+orbit_velocity_max = 0.301
+gravity = Vector3(0, 0, 0)
+damping_max = 7.692
+scale_min = 86.78
+scale_max = 152.73
+
+[node name="RoidStrike" type="Path3D"]
+transform = Transform3D(1, 0, 0, 0, 0.0112572, 0.999937, 0, -0.999937, 0.0112572, 0, 0, 0)
+curve = SubResource("Curve3D_mpxu8")
+script = ExtResource("1_bpsfp")
+
+[node name="PathFollow3D" type="PathFollow3D" parent="."]
+transform = Transform3D(-0.00257126, -0.222669, 0.974888, 1.49011e-08, 0.974892, 0.22267, -0.999995, 0.000572559, -0.00250671, 0.380192, 0.539148, -0.00606967)
+loop = false
+
+[node name="Roid" type="MeshInstance3D" parent="PathFollow3D"]
+transform = Transform3D(5.08348, 386.339, 103.519, -299.392, 72.3236, -255.213, -265.214, -74.2387, 290.086, 0, 0, 0)
+visible = false
+ignore_occlusion_culling = true
+mesh = ExtResource("3_jb2dc")
+skeleton = NodePath("../..")
+
+[node name="BlueSplosion" type="GPUParticles3D" parent="PathFollow3D/Roid"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+emitting = false
+amount = 500
+lifetime = 4.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_ej15h")
+draw_passes = 2
+draw_pass_2 = ExtResource("4_l2ryp")
+script = ExtResource("5_0vfde")
+
+[connection signal="finished" from="PathFollow3D/Roid/BlueSplosion" to="." method="_on_blue_splosion_finished"]

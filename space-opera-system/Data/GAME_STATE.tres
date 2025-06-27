@@ -475,7 +475,7 @@ sp_round = 6
 scene_data = SubResource("Resource_i15f4")
 time = {
 "duration": 600.0,
-"elapsed": 824.547,
+"elapsed": 20081.8,
 "remaining": 535.0,
 "remainingFormatted": "08:55"
 }

@@ -1,0 +1,276 @@
+[gd_scene load_steps=22 format=3 uid="uid://dvrf2tdnr1go1"]
+
+[ext_resource type="PackedScene" uid="uid://hxr5i1k6fk7w" path="res://Assets/shipScenes/corvette_02.tscn" id="1_vewos"]
+[ext_resource type="Texture2D" uid="uid://bmuv5xjo5uawt" path="res://Assets/ep2-logos/Episode 2 Logos/Episode 2 Logos/Burning Ember - Logo Only.svg" id="2_r8non"]
+[ext_resource type="PackedScene" uid="uid://cn4mb82u56moa" path="res://Assets/shipScenes/carrier_01.tscn" id="3_kudcv"]
+[ext_resource type="Texture2D" uid="uid://bomkn2acdfxyl" path="res://Assets/1Toys/ships/carrier01_diffuse.png" id="4_r8non"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iv4pw"]
+load_path = "res://.godot/imported/corvette01_diffuse.png-55af9bcbe964f9fa44f0a85295596acb.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_au4dt"]
+load_path = "res://.godot/imported/corvette01_emission.png-f2d51a79cf2f442f173462f826ef288f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_k0nkk"]
+load_path = "res://.godot/imported/corvette01_normal.png-09bb753d4c20c16f3cb8584d664d8459.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qxmg7"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+albedo_color = Color(0.643427, 0.1968, 0.82, 0.705882)
+albedo_texture = SubResource("CompressedTexture2D_iv4pw")
+metallic = 1.0
+metallic_specular = 0.02
+roughness = 0.2
+emission_enabled = true
+emission = Color(0, 0.054902, 0.603922, 1)
+emission_energy_multiplier = 1.99
+emission_texture = SubResource("CompressedTexture2D_au4dt")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_k0nkk")
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ylgbk"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+albedo_color = Color(0.643427, 0.1968, 0.82, 0.705882)
+albedo_texture = SubResource("CompressedTexture2D_iv4pw")
+metallic = 1.0
+metallic_specular = 0.02
+roughness = 0.2
+emission_enabled = true
+emission = Color(0, 0.054902, 0.603922, 1)
+emission_energy_multiplier = 1.99
+emission_texture = SubResource("CompressedTexture2D_au4dt")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_k0nkk")
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.45
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7hqx"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+albedo_color = Color(0.643427, 0.1968, 0.82, 0.705882)
+albedo_texture = SubResource("CompressedTexture2D_iv4pw")
+metallic = 1.0
+metallic_specular = 0.02
+roughness = 0.2
+emission_enabled = true
+emission = Color(0, 0.054902, 0.603922, 1)
+emission_energy_multiplier = 1.99
+emission_texture = SubResource("CompressedTexture2D_au4dt")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_k0nkk")
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.45
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_ydsq8"]
+load_path = "res://.godot/imported/corvette01_emission.png-f2d51a79cf2f442f173462f826ef288f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_0c5d2"]
+load_path = "res://.godot/imported/corvette01_normal.png-09bb753d4c20c16f3cb8584d664d8459.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0u3bd"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+albedo_color = Color(0.643427, 0.1968, 0.82, 0.705882)
+albedo_texture = ExtResource("4_r8non")
+metallic = 1.0
+metallic_specular = 0.02
+roughness = 0.2
+emission_enabled = true
+emission = Color(0.0946506, 0.0169529, 0.124237, 1)
+emission_energy_multiplier = 1.99
+emission_texture = SubResource("CompressedTexture2D_ydsq8")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_0c5d2")
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.45
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_iwnbh"]
+load_path = "res://.godot/imported/carrier01_diffuse.png-b5f03ab7d04c67f38bfaf46eb10bd879.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_m8rlp"]
+load_path = "res://.godot/imported/corvette01_emission.png-f2d51a79cf2f442f173462f826ef288f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_rbhcr"]
+load_path = "res://.godot/imported/corvette01_normal.png-09bb753d4c20c16f3cb8584d664d8459.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jwjkf"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+albedo_color = Color(0.643427, 0.1968, 0.82, 0.705882)
+albedo_texture = SubResource("CompressedTexture2D_iwnbh")
+metallic = 1.0
+metallic_specular = 0.02
+roughness = 0.2
+emission_enabled = true
+emission = Color(0.00809999, 0.03429, 0.27, 1)
+emission_energy_multiplier = 1.99
+emission_texture = SubResource("CompressedTexture2D_m8rlp")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_rbhcr")
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.45
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_qv5mf"]
+load_path = "res://.godot/imported/carrier01_diffuse.png-b5f03ab7d04c67f38bfaf46eb10bd879.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_bg08c"]
+load_path = "res://.godot/imported/corvette01_emission.png-f2d51a79cf2f442f173462f826ef288f.s3tc.ctex"
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_wdcvt"]
+load_path = "res://.godot/imported/corvette01_normal.png-09bb753d4c20c16f3cb8584d664d8459.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a5dh2"]
+transparency = 1
+blend_mode = 4
+cull_mode = 2
+albedo_color = Color(0.643427, 0.1968, 0.82, 0.705882)
+albedo_texture = SubResource("CompressedTexture2D_qv5mf")
+metallic = 1.0
+metallic_specular = 0.02
+roughness = 0.2
+emission_enabled = true
+emission = Color(8.0619e-07, 0.204901, 0.275553, 1)
+emission_energy_multiplier = 1.99
+emission_texture = SubResource("CompressedTexture2D_bg08c")
+normal_enabled = true
+normal_texture = SubResource("CompressedTexture2D_wdcvt")
+rim_tint = 0.0
+clearcoat_enabled = true
+clearcoat_roughness = 0.45
+
+[node name="GemShips" type="Node3D"]
+
+[node name="Corvette06" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06239, 7.91349, 9.10017)
+surface_material_override/0 = SubResource("StandardMaterial3D_qxmg7")
+
+[node name="Decal" type="Decal" parent="Corvette06"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette07" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93761, 7.91349, 9.10017)
+surface_material_override/0 = SubResource("StandardMaterial3D_ylgbk")
+
+[node name="Decal" type="Decal" parent="Corvette07"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette08" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0624, 4.91349, 1.10015)
+surface_material_override/0 = SubResource("StandardMaterial3D_ylgbk")
+
+[node name="Decal" type="Decal" parent="Corvette08"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette09" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9376, 4.91349, 1.10015)
+surface_material_override/0 = SubResource("StandardMaterial3D_ylgbk")
+
+[node name="Decal" type="Decal" parent="Corvette09"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette10" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.06239, 10.9135, -13.8998)
+surface_material_override/0 = SubResource("StandardMaterial3D_o7hqx")
+
+[node name="Decal" type="Decal" parent="Corvette10"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette11" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93761, 10.9135, -17.8998)
+surface_material_override/0 = SubResource("StandardMaterial3D_o7hqx")
+
+[node name="Decal" type="Decal" parent="Corvette11"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette12" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0624, 16.9135, -2.89985)
+surface_material_override/0 = SubResource("StandardMaterial3D_o7hqx")
+
+[node name="Decal" type="Decal" parent="Corvette12"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette13" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93761, 14.9135, 1.10015)
+surface_material_override/0 = SubResource("StandardMaterial3D_o7hqx")
+
+[node name="Decal" type="Decal" parent="Corvette13"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Carrier01" parent="." instance=ExtResource("3_kudcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, 1.97145)
+surface_material_override/0 = SubResource("StandardMaterial3D_0u3bd")
+
+[node name="Decal" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02146, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal2" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63858, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal3" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0074141, -3.24393, -0.814412)
+size = Vector3(10, 6.59851, 10)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Carrier02" parent="." instance=ExtResource("3_kudcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -17.0285)
+surface_material_override/0 = SubResource("StandardMaterial3D_jwjkf")
+
+[node name="Decal" type="Decal" parent="Carrier02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02146, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal2" type="Decal" parent="Carrier02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63858, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal3" type="Decal" parent="Carrier02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00741386, -3.30555, -0.814411)
+size = Vector3(10, 5.55579, 10)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Carrier03" parent="." instance=ExtResource("3_kudcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -17.0285)
+surface_material_override/0 = SubResource("StandardMaterial3D_a5dh2")
+
+[node name="Decal" type="Decal" parent="Carrier03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02146, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal2" type="Decal" parent="Carrier03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63858, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal3" type="Decal" parent="Carrier03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0074141, -1.54319, -0.814412)
+size = Vector3(10, 10, 10)
+texture_albedo = ExtResource("2_r8non")

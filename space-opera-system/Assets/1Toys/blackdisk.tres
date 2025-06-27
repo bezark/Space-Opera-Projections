@@ -1,0 +1,17 @@
+[gd_resource type="ShaderMaterial" load_steps=2 format=3 uid="uid://3yatwvxkucpk"]
+
+[ext_resource type="Shader" uid="uid://d2l5n6yxefbv4" path="res://Assets/Shaders/dissolve.gdshader" id="1_t52c1"]
+
+[resource]
+render_priority = 1
+shader = ExtResource("1_t52c1")
+shader_parameter/baseColor = Color(0.801875, 0.546516, 0.513458, 1)
+shader_parameter/dissolveSlider = 0.861
+shader_parameter/dissolveNoiseScale = -0.36
+shader_parameter/edgeNoiseScale = -0.18
+shader_parameter/edgesThickness = 0.255
+shader_parameter/edgeColor = Color(0.892605, 0.556778, 0.410562, 1)
+shader_parameter/edgeEmissionSlider = 8.57
+shader_parameter/enable_dissolve_animation = true
+shader_parameter/animation_speed = 3.5
+shader_parameter/animation_intensity = 0.2

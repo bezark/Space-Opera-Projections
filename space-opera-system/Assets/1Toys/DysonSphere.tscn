@@ -522,7 +522,8 @@ material = ExtResource("2_3okud")
 [node name="Rings" type="Node3D" parent="."]
 
 [node name="Ring1" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-1.80999e-06, -2.49999, 0.866027, 0.999999, -1.81e-05, -7.1079e-16, 3.13501e-06, 4.33014, 0.499998, 0, 0, 0)
+transform = Transform3D(-1.80999e-06, -2.49999, 0.866027, 0.999999, -1.81e-05, 3.19756e-12, 3.135e-06, 4.33014, 0.499998, 0, 0, 0)
+visible = false
 inner_radius = 732.79
 outer_radius = 775.0
 sides = 64
@@ -533,7 +534,8 @@ script = ExtResource("3_lt2cx")
 spin_velocity = 0.05
 
 [node name="Ring2" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-3.49714e-06, 4.67529e-06, 1, 0.258819, 4.82963, 1.92836e-09, -0.965926, 1.29409, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(-3.49714e-06, 4.67531e-06, 1, 0.258819, 4.82963, 1.92597e-09, -0.965926, 1.29409, -3.61999e-06, 0, 0, 0)
+visible = false
 inner_radius = 634.444
 outer_radius = 691.068
 sides = 64
@@ -544,7 +546,8 @@ script = ExtResource("3_lt2cx")
 spin_velocity = -0.1
 
 [node name="Ring3" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(-1.79106e-06, 9.43781e-06, 1, 0.866027, 1.49999, -2.18557e-08, -0.499998, 2.59808, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(-1.79106e-06, 9.4378e-06, 1, 0.866027, 1.49999, -2.18565e-08, -0.499998, 2.59808, -3.61999e-06, 0, 0, 0)
+visible = false
 inner_radius = 543.549
 outer_radius = 595.702
 sides = 64
@@ -555,7 +558,8 @@ script = ExtResource("3_lt2cx")
 spin_velocity = 0.3
 
 [node name="Ring4" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(3.11607e-06, 5.52837e-06, 1, 0.500003, -2.59807, 3.78552e-08, 0.866023, 1.50001, -3.61999e-06, 0, 0, 0)
+transform = Transform3D(3.11607e-06, 5.52837e-06, 1, 0.500003, -2.59807, 3.7853e-08, 0.866023, 1.50001, -3.61999e-06, 0, 0, 0)
+visible = false
 inner_radius = 407.952
 outer_radius = 455.634
 sides = 64
@@ -566,7 +570,7 @@ script = ExtResource("3_lt2cx")
 spin_velocity = -0.5
 
 [node name="Ring5" type="CSGTorus3D" parent="Rings"]
-transform = Transform3D(3.61999e-06, 3, -2.53518e-06, 1, -1.086e-05, 4.40147e-15, -9.17293e-12, -7.60554e-06, -1, 0, 0, 0)
+transform = Transform3D(3.61999e-06, 3, -2.53518e-06, 1, -1.086e-05, 4.39544e-15, -9.17294e-12, -7.60554e-06, -1, 0, 0, 0)
 inner_radius = 325.086
 outer_radius = 355.753
 sides = 64

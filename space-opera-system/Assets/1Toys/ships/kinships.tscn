@@ -1,0 +1,69 @@
+[gd_scene load_steps=11 format=3 uid="uid://cyy6ddbjfi0ea"]
+
+[ext_resource type="ArrayMesh" uid="uid://b6eb3if0iffoh" path="res://Assets/1Toys/ships/frigate01.obj" id="1_3hefd"]
+[ext_resource type="Texture2D" uid="uid://cfs75h0teiam2" path="res://Assets/1Toys/ships/frigate01_diffuse.png" id="2_ylpmq"]
+[ext_resource type="Texture2D" uid="uid://bmqsjh3uxms6s" path="res://Assets/1Toys/ships/frigate01_emission.png" id="3_e1e21"]
+[ext_resource type="Texture2D" uid="uid://d16rlb7gbw7dc" path="res://Assets/1Toys/ships/frigate01_metalness.png" id="4_821rw"]
+[ext_resource type="Texture2D" uid="uid://bcgmy64j2c3m7" path="res://Assets/1Toys/ships/frigate01_normal.png" id="5_i6jc1"]
+[ext_resource type="Texture2D" uid="uid://cwqsbug5txs5t" path="res://Assets/1Toys/ships/destroyer01_diffuse.png" id="6_ykxxq"]
+[ext_resource type="Texture2D" uid="uid://vx1ntx7qsy53" path="res://Assets/1Toys/ships/destroyer01_normal.png" id="7_n3qld"]
+[ext_resource type="ArrayMesh" uid="uid://b1lb75yqy6qwm" path="res://Assets/1Toys/ships/destroyer01.obj" id="8_mwjp8"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqncq"]
+albedo_texture = ExtResource("2_ylpmq")
+metallic = 1.0
+metallic_texture = ExtResource("4_821rw")
+emission_enabled = true
+emission = Color(0.154441, 0.37292, 0.30116, 1)
+emission_energy_multiplier = 14.14
+emission_operator = 1
+emission_texture = ExtResource("3_e1e21")
+normal_enabled = true
+normal_texture = ExtResource("5_i6jc1")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3ah43"]
+albedo_texture = ExtResource("6_ykxxq")
+normal_enabled = true
+normal_texture = ExtResource("7_n3qld")
+
+[node name="Kinships" type="Node3D"]
+
+[node name="Frigate01" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0, 0, 0)
+mesh = ExtResource("1_3hefd")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqncq")
+
+[node name="Frigate02" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, -7.33823, 6.38553, -4.64456)
+mesh = ExtResource("1_3hefd")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqncq")
+
+[node name="Frigate03" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 9.00269, 4.91594, -8.6118)
+mesh = ExtResource("1_3hefd")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqncq")
+
+[node name="Frigate04" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 4.75347, 11.4653, -28.6394)
+mesh = ExtResource("1_3hefd")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqncq")
+
+[node name="Frigate05" type="MeshInstance3D" parent="."]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 0.28975, -3.17801, -34.8917)
+mesh = ExtResource("1_3hefd")
+surface_material_override/0 = SubResource("StandardMaterial3D_iqncq")
+
+[node name="Destroyer01" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, -4.24672, -13)
+material_override = SubResource("StandardMaterial3D_3ah43")
+mesh = ExtResource("8_mwjp8")
+
+[node name="Destroyer02" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.9034, 0.649383, -13)
+material_override = SubResource("StandardMaterial3D_3ah43")
+mesh = ExtResource("8_mwjp8")
+
+[node name="Destroyer03" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.34481, -5.84114, -13)
+material_override = SubResource("StandardMaterial3D_3ah43")
+mesh = ExtResource("8_mwjp8")

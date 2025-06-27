@@ -1,4 +1,4 @@
-[gd_scene load_steps=87 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=90 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="Script" uid="uid://dmbp2jse31d6g" path="res://Assets/1Toys/holes.gd" id="2_4hkls"]
 [ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="2_regpr"]
@@ -7,7 +7,6 @@
 [ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
 [ext_resource type="FontFile" uid="uid://ded4vgoigb0kq" path="res://Assets/Themes/Montserrat/static/Montserrat-Bold.ttf" id="4_b0c3i"]
 [ext_resource type="PackedScene" uid="uid://18k4h4eqi70r" path="res://Assets/1Toys/Zooms/TheEye.tscn" id="4_mb5ce"]
-[ext_resource type="PackedScene" uid="uid://hfn3lqg1fa0j" path="res://Assets/1Toys/star.tscn" id="5_regpr"]
 [ext_resource type="Script" uid="uid://b7jaqtt131rbb" path="res://Components/CelestialBodies/effects.gd" id="7_0nw5c"]
 [ext_resource type="PackedScene" uid="uid://cw1pdlvuehwmt" path="res://Assets/1Toys/Zooms/city.tscn" id="7_dee4i"]
 [ext_resource type="PackedScene" uid="uid://b580ywvpd3yhx" path="res://Assets/1Toys/Zooms/crystal.tscn" id="7_vp0u0"]
@@ -23,6 +22,7 @@
 [ext_resource type="PackedScene" uid="uid://btu8qfshbh68a" path="res://Assets/1Toys/Zooms/EarthGround.tscn" id="13_ggr6d"]
 [ext_resource type="PackedScene" uid="uid://b0jlym63ylq4i" path="res://Assets/1Toys/Zooms/Truth and Beauty.tscn" id="13_kdxqm"]
 [ext_resource type="PackedScene" uid="uid://u6wig7865ius" path="res://Assets/1Toys/Planets/Meadow.tscn" id="13_yfr1v"]
+[ext_resource type="Script" uid="uid://jd3ynrjnj6uq" path="res://Assets/1Toys/disk.gd" id="14_7lxfs"]
 [ext_resource type="PackedScene" uid="uid://8dwef6hk3vio" path="res://Assets/1Toys/Planets/moon.tscn" id="15_m4j4v"]
 [ext_resource type="PackedScene" uid="uid://c7nga0dl7lwsr" path="res://Assets/1Toys/DysonSphere.tscn" id="16_dee4i"]
 [ext_resource type="Texture2D" uid="uid://b53llk0jye67c" path="res://Assets/Textures/Gem_11-256x256.png" id="16_dn3a4"]
@@ -40,6 +40,7 @@
 [ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/gasss.tscn" id="22_pt8ev"]
 [ext_resource type="PackedScene" uid="uid://cgv5cuntgow0q" path="res://Assets/1Toys/Planets/Volcanic.tscn" id="22_v0qhr"]
 [ext_resource type="PackedScene" uid="uid://dtlmbwcqlbv82" path="res://Assets/1Toys/Planets/Ice.tscn" id="23_ii0dt"]
+[ext_resource type="PackedScene" uid="uid://dvrf2tdnr1go1" path="res://Assets/1Toys/ships/gemships.tscn" id="24_cgmk1"]
 [ext_resource type="PackedScene" uid="uid://dbxq7ep55wcw8" path="res://Assets/1Toys/Planets/ice_moon.tscn" id="24_pt8ev"]
 [ext_resource type="PackedScene" uid="uid://diqdy8obme17f" path="res://Assets/1Toys/Planets/crumbs.tscn" id="24_sed3l"]
 [ext_resource type="PackedScene" uid="uid://b7qovvjsewkwn" path="res://Assets/1Toys/Zooms/ice.tscn" id="27_h4gil"]
@@ -50,9 +51,9 @@
 render_priority = 0
 shader = ExtResource("3_4hkls")
 shader_parameter/scale = 100.0
-shader_parameter/black_hole_positions = PackedVector3Array(200, 0, 0, -200, 0, 0)
+shader_parameter/black_hole_positions = PackedVector3Array(0, 0, 0, 0, 0, 0)
 shader_parameter/black_hole_colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
-shader_parameter/black_hole_sizes = PackedFloat32Array(100, 100)
+shader_parameter/black_hole_sizes = PackedFloat32Array(0, 0)
 shader_parameter/black_hole_count = 2
 shader_parameter/skybox_mode = false
 
@@ -72,10 +73,10 @@ zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b0c3i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_7lxfs"]
 emission_enabled = true
-emission = Color(0.875749, 0.559829, 0.234283, 1)
-emission_energy_multiplier = 5.0
+emission = Color(0.685654, 0.934461, 0.870327, 1)
+emission_energy_multiplier = 3.0
 
 [sub_resource type="Resource" id="Resource_b0c3i"]
 script = ExtResource("10_paiqf")
@@ -83,9 +84,14 @@ zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dee4i"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cgmk1"]
 emission_enabled = true
-emission = Color(0.456485, 0.242677, 0.110009, 1)
+emission = Color(0.93, 0.55242, 0.5394, 1)
+emission_energy_multiplier = 3.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sfmsk"]
+albedo_color = Color(0, 0, 0, 1)
+emission_enabled = true
 emission_energy_multiplier = 16.0
 
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_dps3l"]
@@ -99,8 +105,8 @@ sky_material = SubResource("PanoramaSkyMaterial_dps3l")
 background_mode = 2
 sky = SubResource("Sky_8b321")
 ambient_light_source = 3
-ambient_light_color = Color(0.821789, 0.821789, 0.821789, 1)
-ambient_light_energy = 12.51
+ambient_light_color = Color(1, 1, 1, 1)
+tonemap_exposure = 1.8
 sdfgi_energy = 10.0
 glow_enabled = true
 glow_intensity = 0.78
@@ -129,7 +135,6 @@ transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_regpr"]
-depth_draw_mode = 2
 albedo_color = Color(0.54902, 1, 1, 1)
 albedo_texture = ExtResource("16_dn3a4")
 metallic_specular = 0.77
@@ -326,9 +331,9 @@ shader_parameter/animation_intensity = 0.44
 next_pass = SubResource("ShaderMaterial_iomau")
 albedo_texture = ExtResource("9_qwjcd")
 
-[sub_resource type="Resource" id="Resource_sed3l"]
+[sub_resource type="Resource" id="Resource_cgmk1"]
 script = ExtResource("10_paiqf")
-zooms = Array[PackedScene]([ExtResource("13_kdxqm")])
+zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -408,6 +413,12 @@ buffer = PackedFloat32Array(-0.204056, -0.212713, 0.655058, 254.718, -0.930091, 
 [sub_resource type="Resource" id="Resource_mb5ce"]
 script = ExtResource("10_paiqf")
 zooms = Array[PackedScene]([ExtResource("30_cmavm")])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
+[sub_resource type="Resource" id="Resource_sed3l"]
+script = ExtResource("10_paiqf")
+zooms = Array[PackedScene]([ExtResource("13_kdxqm")])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
@@ -539,8 +550,8 @@ text = "Speed"
 [node name="Speed" type="HSlider" parent="HOLES/HoleControls/Controls/Sliders"]
 custom_minimum_size = Vector2(200, 100)
 layout_mode = 2
-min_value = -1.0
-max_value = 1.0
+min_value = -0.5
+max_value = 0.5
 step = 0.001
 value = -0.1
 
@@ -575,9 +586,9 @@ scene_data = SubResource("Resource_regpr")
 body = NodePath("White")
 sattelites = [NodePath("../../Luster"), NodePath("../../Arbor"), NodePath("../../Gust"), NodePath("../../Crumbs"), NodePath("../../Incense")]
 speed = 0.008
-spin = 0.01
 
 [node name="VBoxContainer" type="VBoxContainer" parent="HOLES/WhiteHole" groups=["system_control"]]
+visible = false
 offset_right = 40.0
 offset_bottom = 40.0
 
@@ -587,7 +598,6 @@ toggle_mode = true
 text = "Planet"
 
 [node name="Controls" type="HBoxContainer" parent="HOLES/WhiteHole/VBoxContainer"]
-visible = false
 layout_mode = 2
 
 [node name="Sliders" type="GridContainer" parent="HOLES/WhiteHole/VBoxContainer/Controls"]
@@ -686,17 +696,22 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 4, 4)
 
 [node name="White" type="Node3D" parent="HOLES/WhiteHole"]
 
-[node name="Star" parent="HOLES/WhiteHole/White" instance=ExtResource("5_regpr")]
-transform = Transform3D(1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0, 0, 1, 0, 0, 0)
-radius = 13.67
-
 [node name="Disk" type="CSGTorus3D" parent="HOLES/WhiteHole/White"]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)
-inner_radius = 50.0
-outer_radius = 75.0
+inner_radius = 0.001
+outer_radius = 0.001
 sides = 64
 ring_sides = 64
-material = SubResource("StandardMaterial3D_b0c3i")
+material = SubResource("StandardMaterial3D_7lxfs")
+script = ExtResource("14_7lxfs")
+speed = -0.002
+
+[node name="OmniLight3D" type="OmniLight3D" parent="HOLES/WhiteHole/White"]
+transform = Transform3D(1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 600.0
+omni_range = 4000.0
 
 [node name="BlackHole" parent="HOLES" node_paths=PackedStringArray("body", "sattelites") instance=ExtResource("9_l1est")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -704,7 +719,6 @@ scene_data = SubResource("Resource_b0c3i")
 body = NodePath("Black")
 sattelites = [NodePath("../../Division"), NodePath("../../Meadow"), NodePath("../../Bolt"), NodePath("../../Tobagen")]
 speed = 0.008
-spin = 0.01
 
 [node name="Black" type="Node3D" parent="HOLES/BlackHole"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
@@ -715,14 +729,27 @@ inner_radius = 50.0
 outer_radius = 75.0
 sides = 64
 ring_sides = 64
-material = SubResource("StandardMaterial3D_dee4i")
+material = SubResource("StandardMaterial3D_cgmk1")
+script = ExtResource("14_7lxfs")
+speed = 0.002
+
+[node name="OmniLight3D" type="OmniLight3D" parent="HOLES/BlackHole/Black"]
+light_energy = 16.0
+light_indirect_energy = 16.0
+light_size = 600.0
+omni_range = 600.0
+
+[node name="Star" type="CSGSphere3D" parent="HOLES/BlackHole/Black"]
+transform = Transform3D(1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0, 0, 1, 0, 0, 0)
+radius = 13.67
+radial_segments = 64
+rings = 64
+material = SubResource("StandardMaterial3D_sfmsk")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_4jktx")
 
 [node name="DysonSphere" type="Node3D" parent="." node_paths=PackedStringArray("body") groups=["point_of_interest"]]
-process_mode = 4
-visible = false
 script = ExtResource("3_qmfsb")
 scene_data = SubResource("Resource_kdxqm")
 body = NodePath("DysonSphere")
@@ -850,7 +877,7 @@ transform = Transform3D(0.960871, 0.276996, 0, -0.276996, 0.960871, 0, 0, 0, 1, 
 scene_data = SubResource("Resource_smirv")
 body = NodePath("Gemstone")
 well = NodePath("Gemstone/Well")
-sattelites = [NodePath("../TruBeau")]
+sattelites = [NodePath("../GemstoneFleet")]
 speed = 0.008
 spin = 0.01
 
@@ -874,13 +901,14 @@ shader_params/u_atmosphere_modulate = Color(0.270588, 0.890196, 1, 1)
 shader_params/u_atmosphere_ambient_color = Color(0.25851, 0.000789152, 0.467935, 1)
 shader_params/u_sphere_depth_factor = 1.135
 
-[node name="TruBeau" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -644.387, 184.205, -0.143433)
-title = "TruBeauU"
-scene_data = SubResource("Resource_sed3l")
-body = NodePath("TruBeau")
+[node name="GemstoneFleet" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -628.614, 174.839, 0)
+title = "Gemships"
+scene_data = SubResource("Resource_cgmk1")
+body = NodePath("GemShips")
 
-[node name="TruBeau" parent="TruBeau" instance=ExtResource("12_fxs8t")]
+[node name="GemShips" parent="GemstoneFleet" instance=ExtResource("24_cgmk1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.30457, 15.1211, 0.413155)
 
 [node name="Division" parent="." node_paths=PackedStringArray("body", "well") instance=ExtResource("9_l1est")]
 transform = Transform3D(0.997835, 0.0657689, 0, -0.0657689, 0.997835, 0, 0, 0, 1, 0, 0, 0)
@@ -1024,11 +1052,12 @@ metadata/_custom_type_script = "uid://kjavq4i37ayq"
 material_override = SubResource("StandardMaterial3D_ggr6d")
 multimesh = SubResource("MultiMesh_b0c3i")
 
-[node name="Crumbs" type="Node3D" parent="." node_paths=PackedStringArray("body") groups=["point_of_interest"]]
+[node name="Crumbs" type="Node3D" parent="." node_paths=PackedStringArray("body", "sattelites") groups=["point_of_interest"]]
 script = ExtResource("3_qmfsb")
 title = "crumbs"
 scene_data = SubResource("Resource_mb5ce")
 body = NodePath("Crumbs")
+sattelites = [NodePath("../TruBeau")]
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Crumbs" groups=["system_control"]]
 offset_right = 40.0
@@ -1128,6 +1157,14 @@ transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 4, 4)
 
 [node name="Crumbs" parent="Crumbs" instance=ExtResource("24_sed3l")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1248.76, 0, 0)
+
+[node name="TruBeau" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1244.08, 184.205, -24.3835)
+title = "TruBeauU"
+scene_data = SubResource("Resource_sed3l")
+body = NodePath("TruBeau")
+
+[node name="TruBeau" parent="TruBeau" instance=ExtResource("12_fxs8t")]
 
 [node name="Bolt" parent="." node_paths=PackedStringArray("body", "well", "sattelites") instance=ExtResource("9_l1est")]
 transform = Transform3D(0.996195, 0.0871557, 0, -0.0871557, 0.996195, 0, 0, 0, 1, 0, 0, 0)

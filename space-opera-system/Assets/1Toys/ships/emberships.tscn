@@ -1,0 +1,118 @@
+[gd_scene load_steps=4 format=3 uid="uid://5gq34rvf8hvy"]
+
+[ext_resource type="PackedScene" uid="uid://hxr5i1k6fk7w" path="res://Assets/shipScenes/corvette_02.tscn" id="1_vewos"]
+[ext_resource type="Texture2D" uid="uid://bmuv5xjo5uawt" path="res://Assets/ep2-logos/Episode 2 Logos/Episode 2 Logos/Burning Ember - Logo Only.svg" id="2_r8non"]
+[ext_resource type="PackedScene" uid="uid://cn4mb82u56moa" path="res://Assets/shipScenes/carrier_01.tscn" id="3_kudcv"]
+
+[node name="EmberShips" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 16.7118)
+
+[node name="Corvette06" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.06239, 7.91349, -4.87128)
+
+[node name="Decal" type="Decal" parent="Corvette06"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette07" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93761, 7.91349, -4.87128)
+
+[node name="Decal" type="Decal" parent="Corvette07"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette08" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15.0624, 4.91349, -12.8713)
+
+[node name="Decal" type="Decal" parent="Corvette08"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette09" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 13.9376, 4.91349, -12.8713)
+
+[node name="Decal" type="Decal" parent="Corvette09"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette10" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.06239, 10.9135, -27.8713)
+
+[node name="Decal" type="Decal" parent="Corvette10"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette11" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93761, 10.9135, -31.8713)
+
+[node name="Decal" type="Decal" parent="Corvette11"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette12" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.0624, 16.9135, -16.8713)
+
+[node name="Decal" type="Decal" parent="Corvette12"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Corvette13" parent="." instance=ExtResource("1_vewos")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.93761, 14.9135, -12.8713)
+
+[node name="Decal" type="Decal" parent="Corvette13"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Carrier01" parent="." instance=ExtResource("3_kudcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 10, -12)
+
+[node name="Decal" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02146, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal2" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63858, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal3" type="Decal" parent="Carrier01"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0074141, -3.24393, -0.814412)
+size = Vector3(10, 6.59851, 10)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Carrier02" parent="." instance=ExtResource("3_kudcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8, 2, -31)
+
+[node name="Decal" type="Decal" parent="Carrier02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02146, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal2" type="Decal" parent="Carrier02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63858, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal3" type="Decal" parent="Carrier02"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00741386, -3.30555, -0.814411)
+size = Vector3(10, 5.55579, 10)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Carrier03" parent="." instance=ExtResource("3_kudcv")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10, 2, -31)
+
+[node name="Decal" type="Decal" parent="Carrier03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.02146, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal2" type="Decal" parent="Carrier03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.63858, 1.76497, -2.79173)
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("2_r8non")
+
+[node name="Decal3" type="Decal" parent="Carrier03"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0074141, -1.54319, -0.814412)
+size = Vector3(10, 10, 10)
+texture_albedo = ExtResource("2_r8non")
