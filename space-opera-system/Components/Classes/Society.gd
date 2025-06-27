@@ -9,3 +9,4 @@ var id: String
 @export var colors: ColorPalette
 @export var archetype: Archetype
 @export var actions: Array[SocietyAction]
+@export var turn = {"risk": 0, "advantage": 0, "disadvantage": 0}

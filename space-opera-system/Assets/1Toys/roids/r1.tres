@@ -1,7 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://c6scn8wnpk7if"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_if4nc"]
-load_path = "res://.godot/imported/Asteroid2c_NormalDX_2K.png-f91a8024438929226ba18e7434c62d2b.s3tc.ctex"
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l86lg"]
 albedo_color = Color(0.449646, 0.249631, 0.140088, 1)

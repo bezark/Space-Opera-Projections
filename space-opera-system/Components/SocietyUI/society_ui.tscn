@@ -1,12 +1,12 @@
-[gd_scene load_steps=22 format=3 uid="uid://b7x0paetbq6v7"]
+[gd_scene load_steps=30 format=3 uid="uid://b7x0paetbq6v7"]
 
 [ext_resource type="Script" uid="uid://bj3u26k6lvgis" path="res://Components/SocietyUI/society_ui.gd" id="1_nc66i"]
-[ext_resource type="FontFile" uid="uid://l76140n2lc0i" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
-[ext_resource type="FontFile" uid="uid://dryhp4uy5j6u0" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="5_eiv5d"]
-[ext_resource type="Texture2D" uid="uid://b6mvfym2to5oy" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
+[ext_resource type="FontFile" uid="uid://bv3mdeles5fut" path="res://Assets/Themes/Calvera/Calvera/Calvera.otf" id="4_n4h2n"]
+[ext_resource type="FontFile" uid="uid://b32c7xrfevwg5" path="res://Assets/Themes/Montserrat/static/Montserrat-Black.ttf" id="5_eiv5d"]
+[ext_resource type="Texture2D" uid="uid://7llimf0a14au" path="res://Assets/ICONS/curious_detail.svg" id="7_nc66i"]
 [ext_resource type="PackedScene" uid="uid://c80a2jim0swk7" path="res://Components/DiceCam/dice_cam_rect.tscn" id="8_nc66i"]
 [ext_resource type="PackedScene" uid="uid://bnmxckyv0m5ir" path="res://Components/SocietyUI/statement.tscn" id="8_y0sm1"]
-[ext_resource type="Texture2D" uid="uid://su81uegkbnft" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
+[ext_resource type="Texture2D" uid="uid://c3yf36bg0p5g5" path="res://Assets/ICONS/DiceMask.png" id="9_y0sm1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_g0m5a"]
 font = ExtResource("5_eiv5d")
@@ -15,6 +15,14 @@ font_size = 64
 [sub_resource type="StyleBoxLine" id="StyleBoxLine_eiv5d"]
 color = Color(1, 1, 1, 1)
 thickness = 4
+
+[sub_resource type="LabelSettings" id="LabelSettings_eiv5d"]
+font = ExtResource("5_eiv5d")
+font_size = 128
+
+[sub_resource type="LabelSettings" id="LabelSettings_gyt04"]
+font = ExtResource("4_n4h2n")
+font_size = 128
 
 [sub_resource type="LabelSettings" id="LabelSettings_obmmj"]
 font = ExtResource("4_n4h2n")
@@ -497,6 +505,42 @@ tracks/15/keys = {
 "update": 1,
 "values": [true]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Risk:modulate")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Modifiers:modulate")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("Project:modulate")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_q6muc"]
 resource_name = "UIDown"
@@ -809,15 +853,117 @@ tracks/7/keys = {
 "values": [false]
 }
 
+[sub_resource type="Animation" id="Animation_ra0x7"]
+resource_name = "RiskUp"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Risk:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.78),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_1oedu"]
+resource_name = "RiskDown"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Risk:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 2.86667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_k2c8n"]
+resource_name = "AdvUp"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Modifiers:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 2.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_d705r"]
+resource_name = "AdvDown"
+length = 3.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Modifiers:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 2.76667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_hk5ij"]
+resource_name = "ProjectUp"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Project:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1.88),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_yb8ww"]
+resource_name = "ProjectDown"
+length = 2.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Project:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.133333, 1.8),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_nl8h3"]
 _data = {
 &"ActionDown": SubResource("Animation_2os0k"),
 &"ActionUp": SubResource("Animation_c6jvj"),
+&"AdvDown": SubResource("Animation_d705r"),
+&"AdvUp": SubResource("Animation_k2c8n"),
 &"DiceCamDown": SubResource("Animation_sl87g"),
 &"DiceCamUp": SubResource("Animation_y0sm1"),
 &"NextSociety": SubResource("Animation_nc66i"),
 &"PrevSociety": SubResource("Animation_gyt04"),
+&"ProjectDown": SubResource("Animation_yb8ww"),
+&"ProjectUp": SubResource("Animation_hk5ij"),
 &"RESET": SubResource("Animation_g0m5a"),
+&"RiskDown": SubResource("Animation_1oedu"),
+&"RiskUp": SubResource("Animation_ra0x7"),
 &"UIDown": SubResource("Animation_q6muc"),
 &"UIUp": SubResource("Animation_y1ya3"),
 &"generations": SubResource("Animation_eiv5d")
@@ -836,9 +982,9 @@ script = ExtResource("1_nc66i")
 
 [node name="Diag1" type="ColorRect" parent="."]
 layout_mode = 0
-offset_left = -886.0
+offset_left = -0.00012207
 offset_top = -566.0
-offset_right = 95.0011
+offset_right = 981.001
 offset_bottom = 1001.0
 rotation = 0.523598
 color = Color(0.42, 0.5795, 0.75, 1)
@@ -846,9 +992,9 @@ color = Color(0.42, 0.5795, 0.75, 1)
 [node name="Diag2" type="ColorRect" parent="."]
 visible = false
 layout_mode = 0
-offset_left = 3355.0
+offset_left = 1942.0
 offset_top = -235.0
-offset_right = 4336.0
+offset_right = 2923.0
 offset_bottom = 1332.0
 rotation = 0.523598
 color = Color(0.42, 0.5795, 0.75, 1)
@@ -896,6 +1042,98 @@ script = null
 layout_mode = 2
 script = null
 
+[node name="Risk" type="Control" parent="."]
+layout_mode = 2
+anchors_preset = 0
+offset_left = 1323.0
+offset_top = 391.0
+offset_right = 1863.0
+offset_bottom = 391.0
+
+[node name="Label" type="Label" parent="Risk"]
+layout_mode = 2
+offset_right = 705.0
+offset_bottom = 201.0
+text = "Risk Level"
+label_settings = SubResource("LabelSettings_eiv5d")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Digit" type="Label" parent="Risk"]
+layout_mode = 2
+offset_top = 129.0
+offset_right = 705.0
+offset_bottom = 530.0
+scale = Vector2(1, 2)
+text = "2"
+label_settings = SubResource("LabelSettings_gyt04")
+horizontal_alignment = 1
+
+[node name="Project" type="Control" parent="."]
+modulate = Color(1, 1, 1, 0)
+layout_mode = 2
+anchors_preset = 0
+offset_left = 1323.0
+offset_top = 391.0
+offset_right = 1863.0
+offset_bottom = 391.0
+
+[node name="Label" type="Label" parent="Project"]
+layout_mode = 2
+offset_right = 705.0
+offset_bottom = 201.0
+text = "Project"
+label_settings = SubResource("LabelSettings_eiv5d")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Digit" type="Label" parent="Project"]
+layout_mode = 2
+offset_top = 129.0
+offset_right = 705.0
+offset_bottom = 530.0
+scale = Vector2(1, 2)
+text = "0"
+label_settings = SubResource("LabelSettings_gyt04")
+horizontal_alignment = 1
+
+[node name="Modifiers" type="VBoxContainer" parent="."]
+modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(741, 0)
+layout_mode = 0
+offset_left = 1323.0
+offset_top = 196.0
+offset_right = 2064.0
+offset_bottom = 358.0
+
+[node name="Advantage" type="HBoxContainer" parent="Modifiers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modifiers/Advantage" groups=["permanent"]]
+layout_mode = 2
+text = "ADVANTAGE"
+label_settings = SubResource("LabelSettings_g0m5a")
+
+[node name="Digit" type="Label" parent="Modifiers/Advantage" groups=["permanent"]]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0	"
+label_settings = SubResource("LabelSettings_g0m5a")
+
+[node name="Disadvantage" type="HBoxContainer" parent="Modifiers"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Modifiers/Disadvantage" groups=["permanent"]]
+layout_mode = 2
+text = "DISADVANTAGE"
+label_settings = SubResource("LabelSettings_g0m5a")
+
+[node name="Digit" type="Label" parent="Modifiers/Disadvantage" groups=["permanent"]]
+layout_mode = 2
+size_flags_horizontal = 10
+text = "0"
+label_settings = SubResource("LabelSettings_g0m5a")
+
 [node name="DiceMask" type="Sprite2D" parent="."]
 modulate = Color(1, 1, 1, 0)
 clip_children = 2
@@ -913,9 +1151,9 @@ offset_bottom = -0.705811
 [node name="The" type="Label" parent="."]
 modulate = Color(0.698039, 0.180392, 0.00784314, 1)
 layout_mode = 0
-offset_left = -791.0
+offset_left = 269.0
 offset_top = 51.0
-offset_right = 67.0
+offset_right = 1127.0
 offset_bottom = 252.0
 text = "THE"
 label_settings = SubResource("LabelSettings_g0m5a")

@@ -11,6 +11,11 @@ class_name GameState
 @export var archetypes: Dictionary[String,Archetype]
 @export var actions_queued: Array[SocietyAction]
 
+@export var project_resources = 0:
+	set(val):
+		project_resources  = val
+		project_resources_changed.emit(project_resources)
+signal project_resources_changed(amount:int)
 signal celestial_body_deleted
 signal celestial_body_focused(body: CelestialBody)
 signal zoomed_in(val:bool)
@@ -39,7 +44,7 @@ func load_state():
 	resources = current_session.resources
 	archetypes = current_session.archetypes
 	actions_queued = current_session.actions_queued
-
+	project_resources = current_session.projecct_resources
 
 func _ready() -> void:
 	load_state()

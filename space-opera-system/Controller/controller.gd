@@ -13,15 +13,20 @@ signal controls_updated
 
 signal body_added(scene_data: SceneData)
 
+
 signal ui_toggeled(visible: bool)
+signal refresh_ui
 signal action_toggled(visible: bool)
 signal cam_toggled(visible: bool)
+signal risk_toggled(visible: bool)
+signal mods_toggled(visible: bool)
 signal next_society_pressed(action: SocietyAction)
 signal prev_society_pressed(action: SocietyAction)
 signal society_complete_pressed
 signal society_focused(action: SocietyAction)
 signal society_fake_focused
 
+signal project_toggled(visible: bool) 
 signal gen_dc_up
 
 #signal shader_changed(name)
@@ -278,3 +283,20 @@ func _on_circle_value_changed(value: float) -> void:
 func _on_button_pressed() -> void:
 	gen_dc_up.emit()
 	pass # Replace with function body.
+
+
+func _on_risk_toggled(toggled_on: bool) -> void:
+	risk_toggled.emit(toggled_on)
+
+
+func _on_mods_toggled(toggled_on: bool) -> void:
+	mods_toggled.emit(toggled_on)
+
+
+func _on_refresh_pressed() -> void:
+	refresh_ui.emit()
+
+
+
+func _on_amount_toggled(toggled_on: bool) -> void:
+	project_toggled.emit(toggled_on)

@@ -4,8 +4,8 @@
 [ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="2_regpr"]
 [ext_resource type="Shader" uid="uid://kabwoptl085b" path="res://Assets/Shaders/blackhole.gdshader" id="3_4hkls"]
 [ext_resource type="Script" uid="uid://ddjfw7xn63ybw" path="res://Components/CelestialBodies/celestial_body.gd" id="3_qmfsb"]
-[ext_resource type="Texture2D" uid="uid://crqhmjgfbu7y" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
-[ext_resource type="FontFile" uid="uid://ded4vgoigb0kq" path="res://Assets/Themes/Montserrat/static/Montserrat-Bold.ttf" id="4_b0c3i"]
+[ext_resource type="Texture2D" uid="uid://db4ro7730cn7b" path="res://Assets/Skyboxes/HDR_silver_and_gold_nebulae.hdr" id="3_smirv"]
+[ext_resource type="FontFile" uid="uid://dq0wxtwmgpgl3" path="res://Assets/Themes/Montserrat/static/Montserrat-Bold.ttf" id="4_b0c3i"]
 [ext_resource type="PackedScene" uid="uid://18k4h4eqi70r" path="res://Assets/1Toys/Zooms/TheEye.tscn" id="4_mb5ce"]
 [ext_resource type="Script" uid="uid://b7jaqtt131rbb" path="res://Components/CelestialBodies/effects.gd" id="7_0nw5c"]
 [ext_resource type="PackedScene" uid="uid://cw1pdlvuehwmt" path="res://Assets/1Toys/Zooms/city.tscn" id="7_dee4i"]
@@ -14,7 +14,7 @@
 [ext_resource type="PackedScene" uid="uid://w861i1qcxaxq" path="res://Assets/1Toys/well.tscn" id="8_qwjcd"]
 [ext_resource type="PackedScene" uid="uid://ddl2u52th0ebh" path="res://Assets/POLYB/explosion_big.tscn" id="9_k64gf"]
 [ext_resource type="PackedScene" uid="uid://bxr57mvk3crpc" path="res://Components/CelestialBodies/celestial_body.tscn" id="9_l1est"]
-[ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="9_qwjcd"]
+[ext_resource type="Texture2D" uid="uid://dmveursqr582v" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="9_qwjcd"]
 [ext_resource type="PackedScene" uid="uid://c20c16eqqr7kn" path="res://Assets/POLYB/fire_big.tscn" id="10_4hkls"]
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="10_paiqf"]
 [ext_resource type="PackedScene" uid="uid://c36velgas3n3k" path="res://addons/zylann.atmosphere/planet_atmosphere.tscn" id="11_q43nw"]
@@ -25,14 +25,14 @@
 [ext_resource type="Script" uid="uid://jd3ynrjnj6uq" path="res://Assets/1Toys/disk.gd" id="14_7lxfs"]
 [ext_resource type="PackedScene" uid="uid://8dwef6hk3vio" path="res://Assets/1Toys/Planets/moon.tscn" id="15_m4j4v"]
 [ext_resource type="PackedScene" uid="uid://c7nga0dl7lwsr" path="res://Assets/1Toys/DysonSphere.tscn" id="16_dee4i"]
-[ext_resource type="Texture2D" uid="uid://b53llk0jye67c" path="res://Assets/Textures/Gem_11-256x256.png" id="16_dn3a4"]
+[ext_resource type="Texture2D" uid="uid://cdc4upqdrar0r" path="res://Assets/Textures/Gem_11-256x256.png" id="16_dn3a4"]
 [ext_resource type="PackedScene" uid="uid://desb7ucu5aj3v" path="res://Assets/1Toys/Zooms/meadow.tscn" id="16_fxs8t"]
 [ext_resource type="PackedScene" uid="uid://5x10tqvu7gxf" path="res://Assets/1Toys/Zooms/Desert.tscn" id="16_ii0dt"]
 [ext_resource type="PackedScene" uid="uid://c0ex5nclh00h6" path="res://Assets/1Toys/Planets/Gemstone.tscn" id="16_q43nw"]
 [ext_resource type="Script" uid="uid://kjavq4i37ayq" path="res://addons/tile_path_3d/tile_path_3d.gd" id="17_mcu1l"]
 [ext_resource type="PackedScene" uid="uid://b67cago41ch8b" path="res://Assets/1Toys/Planets/City.tscn" id="17_xhn7u"]
 [ext_resource type="PackedScene" uid="uid://3cwl5kgytcru" path="res://Assets/1Toys/Planets/Earth.tscn" id="18_qwjcd"]
-[ext_resource type="Texture2D" uid="uid://c5cm1gmydjhd8" path="res://Assets/1Toys/roids/Asteroid2a_Color_2K.png" id="18_vk8jg"]
+[ext_resource type="Texture2D" uid="uid://ti43kod0beq5" path="res://Assets/1Toys/roids/Asteroid2a_Color_2K.png" id="18_vk8jg"]
 [ext_resource type="Shader" uid="uid://bb2tbt5n3fnj1" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_no_clouds.gdshader" id="18_yfr1v"]
 [ext_resource type="PackedScene" uid="uid://ckuf0ejlgxn5e" path="res://Assets/1Toys/Planets/Desert.tscn" id="19_vk8jg"]
 [ext_resource type="PackedScene" uid="uid://dejmxcbny0emy" path="res://Assets/1Toys/Planets/AsteroidBelt.tscn" id="20_mcu1l"]
@@ -580,7 +580,6 @@ step = 0.001
 allow_greater = true
 
 [node name="WhiteHole" type="Node3D" parent="HOLES" node_paths=PackedStringArray("body", "sattelites") groups=["point_of_interest"]]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 script = ExtResource("3_qmfsb")
 scene_data = SubResource("Resource_regpr")
 body = NodePath("White")
@@ -714,14 +713,12 @@ light_size = 600.0
 omni_range = 4000.0
 
 [node name="BlackHole" parent="HOLES" node_paths=PackedStringArray("body", "sattelites") instance=ExtResource("9_l1est")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 scene_data = SubResource("Resource_b0c3i")
 body = NodePath("Black")
 sattelites = [NodePath("../../Division"), NodePath("../../Meadow"), NodePath("../../Bolt"), NodePath("../../Tobagen")]
 speed = 0.008
 
 [node name="Black" type="Node3D" parent="HOLES/BlackHole"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Disk" type="CSGTorus3D" parent="HOLES/BlackHole/Black"]
 transform = Transform3D(1, 0, 0, 0, 0.1, 0, 0, 0, 1, 0, 0, 0)

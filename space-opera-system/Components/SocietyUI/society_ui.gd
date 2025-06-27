@@ -2,7 +2,8 @@ extends Control
 
 var action_on_deck: SocietyAction
 
-
+func _ready() -> void:
+	State.project_resources_changed.connect(update_project)
 
 
 func _on_control_action_toggled(visible: bool) -> void:
@@ -45,7 +46,7 @@ const STATEMENT = preload("res://Components/SocietyUI/statement.tscn")
 
 
 func _on_control_society_focused(action: SocietyAction) -> void:
-	var active_soc = State.societies[action.parent_society]
+	var active_soc:Society = State.societies[action.parent_society]
 	$The/SocietyName.text = active_soc.archetype.title
 	$Icon.texture = active_soc.archetype.star_sign
 
@@ -65,11 +66,48 @@ func _on_control_society_focused(action: SocietyAction) -> void:
 		$Action.add_child(new_statement)
 
 		# print(component.statement)
-
-
+	if active_soc.turn.advantage != 0:
+		$Modifiers/Advantage.show()
+	else:
+		$Modifiers/Advantage.hide()
+	if active_soc.turn.disadvantage != 0:
+		$Modifiers/Disadvantage.show()
+	else:
+		$Modifiers/Disadvantage.hide()
+	$Modifiers/Advantage/Digit.text = str(active_soc.turn.advantage)
+	$Modifiers/Disadvantage/Digit.text = str(active_soc.turn.disadvantage)
+	$Risk/Digit.text = str(active_soc.turn.risk)
 func swap_society():
 	_on_control_society_focused(action_on_deck)
 
 
 func _on_control_gen_dc_up() -> void:
 	$AnimationPlayer.play("generations")
+
+
+func _on_control_mods_toggled(visible: bool) -> void:
+	if visible:
+		$AnimationPlayer.play("AdvUp")
+	else:
+		$AnimationPlayer.play("AdvDown")
+
+
+func _on_control_risk_toggled(visible: bool) -> void:
+	if visible:
+		$AnimationPlayer.play("RiskUp")
+	else:
+		$AnimationPlayer.play("RiskDown")
+
+
+func _on_control_refresh_ui() -> void:
+	_on_control_society_focused(action_on_deck)
+
+
+func _on_control_project_toggled(visible: bool) -> void:
+	if visible:
+		$AnimationPlayer.play("ProjectUp")
+	else:
+		$AnimationPlayer.play("ProjectDown")
+		
+func update_project(amount):
+	$Project/Digit.text = str(amount)

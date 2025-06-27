@@ -97,6 +97,9 @@ func _on_fetch_game_data_game_fetched(game) -> void:
 			var this_society = State.societies[society.id]
 			# this_society.title = society.name
 			this_society.archetype = State.archetypes[society.archetype]
+			this_society.turn.risk = society.turn.risk
+			this_society.turn.advantage = society.turn.advantage
+			this_society.turn.disadvantage = society.turn.disadvantage
 
 			# print(this_society.title)
 

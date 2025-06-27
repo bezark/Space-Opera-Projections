@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d3nh81q7dsdr4"]
+[gd_scene load_steps=11 format=3 uid="uid://d3nh81q7dsdr4"]
 
 [ext_resource type="Theme" uid="uid://c8ysyp3qs4xu8" path="res://Assets/Themes/SpaceOpera.tres" id="1_55pmi"]
 [ext_resource type="Script" uid="uid://byxtn4120rsnl" path="res://Controller/controller.gd" id="1_u2oln"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://6swu50awv3xi" path="res://Controller/celestial_body_add.gd" id="7_7vp4u"]
 [ext_resource type="Resource" uid="uid://dys78k5634li2" path="res://Data/ALL_BODIES.tres" id="8_y3tcv"]
 [ext_resource type="Script" uid="uid://dk0qqxl8cglk1" path="res://Controller/post.gd" id="9_3ch2h"]
+[ext_resource type="Script" uid="uid://bjo4qr0166xix" path="res://Controller/project.gd" id="10_btpsi"]
 
 [node name="Control" type="Control"]
 auto_translate_mode = 1
@@ -236,6 +237,10 @@ text = "POST"
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
 layout_mode = 2
 
+[node name="GenDC" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent", "ui_control"]]
+layout_mode = 2
+text = "Gen DC"
+
 [node name="ShowHide" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent", "ui_control"]]
 layout_mode = 2
 size_flags_horizontal = 3
@@ -243,19 +248,20 @@ theme_override_font_sizes/font_size = 64
 toggle_mode = true
 text = "UI"
 
-[node name="GenDC" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent", "ui_control"]]
+[node name="Refresh" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent", "ui_control"]]
 layout_mode = 2
-text = "Gen DC"
+theme_override_font_sizes/font_size = 66
+text = "↩️"
 
 [node name="GalacticPhaseControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
 unique_name_in_owner = true
-visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_55pmi")
-theme_override_constants/separation = 24
+theme_override_constants/separation = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
 
 [node name="Prev" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer"]
@@ -274,15 +280,61 @@ layout_mode = 2
 size_flags_horizontal = 3
 text = "Next"
 
-[node name="ActionView" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls"]
+custom_minimum_size = Vector2(0, 64)
 layout_mode = 2
+
+[node name="ActionView" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
 toggle_mode = true
 text = "Action"
 
-[node name="DiceCam" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls"]
+[node name="DiceCam" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer2"]
 layout_mode = 2
+size_flags_horizontal = 3
 toggle_mode = true
 text = "Dice Cam"
+
+[node name="Mods" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls"]
+custom_minimum_size = Vector2(0, 64)
+layout_mode = 2
+
+[node name="Risk" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/Mods"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "RISK"
+icon_alignment = 2
+expand_icon = true
+
+[node name="Mods" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/Mods"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "MODS"
+icon_alignment = 2
+expand_icon = true
+
+[node name="Project" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
+layout_mode = 2
+script = ExtResource("10_btpsi")
+
+[node name="Sub" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="Amount" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project"]
+layout_mode = 2
+size_flags_horizontal = 3
+toggle_mode = true
+text = "0"
+
+[node name="Add" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
 
 [node name="Faders" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main"]
 layout_mode = 2
@@ -316,12 +368,18 @@ autostart = true
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/System/CelestialBodyAdd/Add" to="." method="_on_add_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/MakeUnique" to="." method="_on_make_unique_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/Open" to="." method="_on_open_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer/ShowHide" to="." method="_on_show_hide_toggled"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer/GenDC" to="." method="_on_button_pressed"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer/ShowHide" to="." method="_on_show_hide_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer/Refresh" to="." method="_on_refresh_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer/Prev" to="." method="_on_prev_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer/Complete" to="." method="_on_complete_pressed"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer/Next" to="." method="_on_next_pressed"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/ActionView" to="." method="_on_action_view_toggled"]
-[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/DiceCam" to="." method="_on_dice_cam_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer2/ActionView" to="." method="_on_action_view_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/HBoxContainer2/DiceCam" to="." method="_on_dice_cam_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/Mods/Risk" to="." method="_on_risk_toggled"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/GalacticPhaseControls/Mods/Mods" to="." method="_on_mods_toggled"]
+[connection signal="button_down" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project/Sub" to="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project" method="_on_sub_button_down"]
+[connection signal="toggled" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project/Amount" to="." method="_on_amount_toggled"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project/Add" to="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/Project" method="_on_add_pressed"]
 [connection signal="value_changed" from="MarginContainer/VBoxContainer/Body/Main/Faders/Zoom/HSlider" to="." method="zoom_slider_value_changed"]
 [connection signal="timeout" from="Autosave" to="." method="_on_autosave_timeout"]

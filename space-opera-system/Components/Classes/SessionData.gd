@@ -12,3 +12,4 @@ class_name SessionData
 @export var resources: Dictionary[String, SPResource]
 @export var archetypes: Dictionary[String,Archetype]
 @export var actions_queued: Array[SocietyAction]
+@export var projecct_resources = 0

@@ -1,6 +1,5 @@
 extends Path3D
 
-@onready var roid: MeshInstance3D = $Roid
 @export var speed = 0.005
 var moving = false
 func strike():
