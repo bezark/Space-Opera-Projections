@@ -170,12 +170,12 @@ void fragment() {
 render_priority = 1
 shader = SubResource("Shader_7lxfs")
 shader_parameter/baseColor = Color(1, 1, 1, 1)
-shader_parameter/dissolveSlider = 0.755
-shader_parameter/dissolveNoiseScale = 0.24
+shader_parameter/dissolveSlider = 0.875
+shader_parameter/dissolveNoiseScale = 0.145
 shader_parameter/edgeNoiseScale = -2.2352e-07
-shader_parameter/edgesThickness = 0.103
+shader_parameter/edgesThickness = 0.258
 shader_parameter/edgeColor = Color(0.50612, 0.691966, 0.718739, 1)
 shader_parameter/edgeEmissionSlider = 8.6
 shader_parameter/enable_dissolve_animation = true
 shader_parameter/animation_speed = 1.0
-shader_parameter/animation_intensity = 0.2
+shader_parameter/animation_intensity = 0.83

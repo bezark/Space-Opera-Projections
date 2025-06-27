@@ -1,4 +1,4 @@
-[gd_resource type="Resource" script_class="AllCelestialBodies" load_steps=19 format=3 uid="uid://dys78k5634li2"]
+[gd_resource type="Resource" script_class="AllCelestialBodies" load_steps=21 format=3 uid="uid://dys78k5634li2"]
 
 [ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="1_4ghr2"]
 [ext_resource type="PackedScene" uid="uid://cyy6ddbjfi0ea" path="res://Assets/1Toys/ships/kinships.tscn" id="2_4tpao"]
@@ -13,6 +13,7 @@
 [ext_resource type="Resource" uid="uid://b3jctnro7exx0" path="res://Assets/1Toys/Zooms/PlayerPlanets/ICE_home.tres" id="8_o3vx6"]
 [ext_resource type="Resource" uid="uid://dbgqbdkieb20f" path="res://Assets/1Toys/Zooms/PlayerPlanets/EARTH_home.tres" id="9_4tpao"]
 [ext_resource type="PackedScene" uid="uid://dkq1twrcasgfp" path="res://Assets/1Toys/ships/realmships.tscn" id="10_gg3lv"]
+[ext_resource type="PackedScene" uid="uid://53httdgjbd11" path="res://Assets/1Toys/Planets/FuckedAsteroidBelt.tscn" id="13_rw1ih"]
 
 [sub_resource type="Resource" id="Resource_geqbh"]
 resource_name = "kinships"
@@ -54,7 +55,15 @@ zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
+[sub_resource type="Resource" id="Resource_tmr7x"]
+resource_name = "FuckedRoids"
+script = ExtResource("1_4ghr2")
+scene = ExtResource("13_rw1ih")
+zooms = Array[PackedScene]([null])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"
+
 [resource]
 script = ExtResource("2_hukp0")
-all_bodies = Array[ExtResource("1_4ghr2")]([SubResource("Resource_geqbh"), SubResource("Resource_rw1ih"), ExtResource("2_gjgxi"), SubResource("Resource_4tpao"), ExtResource("3_tfc5e"), ExtResource("4_2kv53"), SubResource("Resource_2kv53"), ExtResource("7_gg3lv"), ExtResource("8_o3vx6"), ExtResource("9_4tpao"), SubResource("Resource_o3vx6")])
+all_bodies = Array[ExtResource("1_4ghr2")]([SubResource("Resource_geqbh"), SubResource("Resource_rw1ih"), ExtResource("2_gjgxi"), SubResource("Resource_4tpao"), ExtResource("3_tfc5e"), ExtResource("4_2kv53"), SubResource("Resource_2kv53"), ExtResource("7_gg3lv"), ExtResource("8_o3vx6"), ExtResource("9_4tpao"), SubResource("Resource_o3vx6"), SubResource("Resource_tmr7x")])
 metadata/_custom_type_script = "uid://21eslsjjv735"

@@ -1,4 +1,4 @@
-extends CSGTorus3D
+extends MeshInstance3D
 
 @export var speed = 5.
 

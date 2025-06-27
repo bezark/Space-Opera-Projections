@@ -8,8 +8,8 @@ extends MeshInstance3D
 
 @onready var holes: ShaderMaterial = get_active_material(0)
 
-var wrate = 0
-var brate = 0
+var wrate = 0.
+var brate = 0.
 
 
 func _physics_process(delta: float) -> void:
@@ -21,19 +21,19 @@ func _physics_process(delta: float) -> void:
 		var sizes := holes.get_shader_parameter("black_hole_sizes") as PackedFloat32Array
 		sizes[0] += wrate
 		holes.set_shader_parameter("black_hole_sizes", sizes)
-		$WhiteHole/White/Disk.inner_radius += wrate
-		$WhiteHole/White/Disk.outer_radius += wrate
-		$WhiteHole/White/Star.radius += wrate
-		if $WhiteHole/White/Star.radius <= 1:
-			$WhiteHole/White/Star.hide()
-		else:
-			$WhiteHole/White/Star.show()
+		$WhiteHole/White/Disk.mesh.outer_radius += wrate
+		#$WhiteHole/White/Disk.mesh.outer_radius = $WhiteHole/White/Disk.mesh.inner_radius*1.5
+		#$WhiteHole/White/Star.radius += wrate
+		#if $WhiteHole/White/Star.radius <= 1:
+			#$WhiteHole/White/Star.hide()
+		#else:
+			#$WhiteHole/White/Star.show()
 	if brate:
 		var sizes := holes.get_shader_parameter("black_hole_sizes") as PackedFloat32Array
 		sizes[1] += brate
 
-		$BlackHole/Black/Disk.inner_radius += brate
-		$BlackHole/Black/Disk.outer_radius += brate
+		$BlackHole/Black/Disk.mesh.outer_radius += brate
+		#$BlackHole/Black/Disk.mesh.outer_radius = $BlackHole/Black/Disk.mesh.inner_radius*1.5
 
 		holes.set_shader_parameter("black_hole_sizes", sizes)
 
@@ -106,10 +106,27 @@ func _on_b_less_button_down() -> void:
 func _on_b_less_button_up() -> void:
 	brate = 0
 
-
+var split = false
 func _on_b_right_button_down() -> void:
+	if not split:
+		$WhiteHole/White/Disk.mesh.outer_radius = 20
+		$BlackHole/Black/Star.hide()
+		split=true
 	brate = scalar
 
 
 func _on_b_right_button_up() -> void:
 	brate = 0
+
+
+func _on_star_toggled(toggled_on: bool) -> void:
+	$FinalStar.visible = toggled_on
+
+
+func _on_quasar_toggled(toggled_on: bool) -> void:
+	$BlackHole/Black/Disk/Quasar.visible = toggled_on
+
+@onready var world_environment: WorldEnvironment = $"../WorldEnvironment"
+
+func _on_heat_value_changed(value: float) -> void:
+	world_environment.environment.adjustment_brightness = value

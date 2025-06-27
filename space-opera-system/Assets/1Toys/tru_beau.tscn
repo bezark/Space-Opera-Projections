@@ -1,8 +1,27 @@
-[gd_scene load_steps=6 format=3 uid="uid://dcy05echtm6bh"]
+[gd_scene load_steps=13 format=3 uid="uid://dcy05echtm6bh"]
 
 [ext_resource type="ArrayMesh" uid="uid://br005r8upqypy" path="res://Assets/1Toys/roids/r2.tres" id="1_c2v7p"]
+[ext_resource type="Script" uid="uid://bmkg5ktfuxr4c" path="res://Assets/1Toys/tru_beau.gd" id="1_jpa6d"]
+[ext_resource type="ArrayMesh" uid="uid://b6eb3if0iffoh" path="res://Assets/1Toys/ships/frigate01.obj" id="1_pd3jm"]
+[ext_resource type="Texture2D" uid="uid://cfs75h0teiam2" path="res://Assets/1Toys/ships/frigate01_diffuse.png" id="2_jpa6d"]
 [ext_resource type="Shader" uid="uid://cxgrepgx0hgge" path="res://Assets/POLYB/scifi_shield.gdshader" id="2_pupkj"]
+[ext_resource type="Texture2D" uid="uid://bmqsjh3uxms6s" path="res://Assets/1Toys/ships/frigate01_emission.png" id="3_1vq3f"]
 [ext_resource type="PackedScene" uid="uid://clnf0gu2vfe2g" path="res://Assets/castleMoonbase/gltf/ScifiStation1.glb" id="3_pd3jm"]
+[ext_resource type="Texture2D" uid="uid://d16rlb7gbw7dc" path="res://Assets/1Toys/ships/frigate01_metalness.png" id="4_c5yyl"]
+[ext_resource type="Texture2D" uid="uid://bcgmy64j2c3m7" path="res://Assets/1Toys/ships/frigate01_normal.png" id="5_bn3id"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1ulaj"]
+cull_mode = 1
+albedo_texture = ExtResource("2_jpa6d")
+metallic = 1.0
+metallic_texture = ExtResource("4_c5yyl")
+emission_enabled = true
+emission = Color(0.154441, 0.37292, 0.30116, 1)
+emission_energy_multiplier = 14.14
+emission_operator = 1
+emission_texture = ExtResource("3_1vq3f")
+normal_enabled = true
+normal_texture = ExtResource("5_bn3id")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_bfsfw"]
 render_priority = 0
@@ -21,6 +40,14 @@ shader_parameter/noise_speed = 1.0
 material = SubResource("ShaderMaterial_bfsfw")
 
 [node name="TruBeau" type="Node3D"]
+script = ExtResource("1_jpa6d")
+
+[node name="Frigate01" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1.31134e-07, -3.57628e-07, 3, 0, 3, 3.57628e-07, -3, 1.56324e-14, -1.31134e-07, 6.09194, -1.94158, 0)
+visible = false
+mesh = ExtResource("1_pd3jm")
+skeleton = NodePath("../MeshInstance3D")
+surface_material_override/0 = SubResource("StandardMaterial3D_1ulaj")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(200, 0, 0, 0, 51.7638, -193.185, 0, 193.185, 51.7638, 0, 0, 0)
@@ -33,3 +60,8 @@ mesh = SubResource("SphereMesh_1ulaj")
 
 [node name="ScifiStation1" parent="MeshInstance3D/ScifiShield" instance=ExtResource("3_pd3jm")]
 transform = Transform3D(0.1, 0, 0, 0, -0.0996288, 0.00860778, 0, -0.00860778, -0.0996288, 0, 0.0914724, 0.00790313)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+light_color = Color(0.451136, 0.302551, 0.672215, 1)
+omni_range = 7.0

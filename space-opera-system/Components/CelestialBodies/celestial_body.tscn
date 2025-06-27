@@ -80,7 +80,6 @@ theme_override_font_sizes/font_size = 42
 text = "Orbit"
 
 [node name="Well" type="Button" parent="VBoxContainer/Controls/VBoxContainer"]
-visible = false
 layout_mode = 2
 size_flags_vertical = 3
 toggle_mode = true

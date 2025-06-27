@@ -1,5 +1,8 @@
 extends HBoxContainer
 
+func _ready() -> void:
+	$Amount.text = str(State.project_resources)
+
 
 func _on_sub_button_down() -> void:
 	State.project_resources -= 1

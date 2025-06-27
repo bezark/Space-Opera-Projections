@@ -234,26 +234,26 @@ layout_mode = 2
 size_flags_horizontal = 4
 text = "POST"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent"]]
 layout_mode = 2
 
-[node name="GenDC" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent", "ui_control"]]
+[node name="GenDC" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent"]]
 layout_mode = 2
 text = "Gen DC"
 
-[node name="ShowHide" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent", "ui_control"]]
+[node name="ShowHide" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent"]]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 64
 toggle_mode = true
 text = "UI"
 
-[node name="Refresh" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent", "ui_control"]]
+[node name="Refresh" type="Button" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls/HBoxContainer" groups=["permanent"]]
 layout_mode = 2
 theme_override_font_sizes/font_size = 66
 text = "↩️"
 
-[node name="GalacticPhaseControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
+[node name="GalacticPhaseControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent"]]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -316,7 +316,7 @@ text = "MODS"
 icon_alignment = 2
 expand_icon = true
 
-[node name="Project" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent", "ui_control"]]
+[node name="Project" type="HBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent"]]
 layout_mode = 2
 script = ExtResource("10_btpsi")
 

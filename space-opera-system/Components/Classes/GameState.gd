@@ -28,6 +28,7 @@ func save():
 	current_session.phases = phases
 	current_session.societies = societies
 	current_session.resources = resources
+	current_session.projecct_resources = project_resources
 	#TODO: remove this unnecessary save
 	current_session.archetypes = archetypes
 	current_session.actions_queued = actions_queued
