@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://tjnub6w8i78v"]
 
-[ext_resource type="Texture2D" uid="uid://hbp5kmuspg1k" path="res://Assets/Textures/SBS - Seamless Abstract Pack - 512x512/512x512/Texture_512x512_34.png" id="1_x7sm1"]
+[ext_resource type="Texture2D" uid="uid://cawnmrgcu3nml" path="res://Assets/Textures/SBS - Seamless Abstract Pack - 512x512/512x512/Texture_512x512_34.png" id="1_x7sm1"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykxn8"]
 albedo_texture = ExtResource("1_x7sm1")
@@ -11,13 +11,38 @@ transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
 material_override = SubResource("StandardMaterial3D_ykxn8")
 
 [node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 1.21064)
 radial_segments = 4
 rings = 2
 smooth_faces = false
 
 [node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGSphere3D"]
-transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 0, 0, -0.211467)
 operation = 2
 radial_segments = 4
 rings = 2
 smooth_faces = false
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1.31134e-07, -1, 0, 1, 1.31134e-07, 0, 1.18904e-07, 1.0258)
+height = 1.81348
+cone = true
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -1.28169)
+radius = 0.499271
+radial_segments = 4
+rings = 2
+smooth_faces = false
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGSphere3D2"]
+transform = Transform3D(1, -2.97355e-08, -3.12997e-08, 3.09086e-08, 0.707107, 0.707107, -4.12993e-09, -0.707107, 0.707107, 1.12358e-08, 0, -0.202787)
+operation = 2
+radial_segments = 4
+rings = 2
+smooth_faces = false
+
+[node name="CSGCylinder3D2" type="CSGCylinder3D" parent="CSGSphere3D2"]
+transform = Transform3D(-0.888532, -7.76779e-08, -3.39541e-15, 0, -3.8839e-08, 0.888532, -7.76779e-08, 0.888532, 3.8839e-08, -6.26633e-08, 1.03537e-07, 0.716785)
+height = 1.5791
+cone = true

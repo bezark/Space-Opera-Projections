@@ -981,7 +981,7 @@ light_indirect_energy = 16.0
 light_size = 600.0
 omni_range = 600.0
 
-[node name="Star" type="CSGSphere3D" parent="HOLES/BlackHole/Black"]
+[node name="Hole" type="CSGSphere3D" parent="HOLES/BlackHole/Black"]
 transform = Transform3D(1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0, 0, 1, 0, 0, 0)
 radius = 50.0
 radial_segments = 64

@@ -1153,7 +1153,6 @@ text = "0"
 label_settings = SubResource("LabelSettings_g0m5a")
 
 [node name="DiceMask" type="Sprite2D" parent="."]
-visible = false
 modulate = Color(1, 1, 1, 0)
 clip_children = 2
 position = Vector2(1550, 450)

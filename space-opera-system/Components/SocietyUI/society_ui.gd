@@ -66,17 +66,17 @@ func _on_control_society_focused(action: SocietyAction) -> void:
 		$Action.add_child(new_statement)
 
 		# print(component.statement)
-	if active_soc.turn.advantage != 0:
+	if int(active_soc.turn.advantage) != 0:
 		$Modifiers/Advantage.show()
 	else:
 		$Modifiers/Advantage.hide()
-	if active_soc.turn.disadvantage != 0:
+	if int(active_soc.turn.disadvantage) != 0:
 		$Modifiers/Disadvantage.show()
 	else:
 		$Modifiers/Disadvantage.hide()
 	$Modifiers/Advantage/Digit.text = str(active_soc.turn.advantage)
 	$Modifiers/Disadvantage/Digit.text = str(active_soc.turn.disadvantage)
-	$Risk/Digit.text = str(active_soc.turn.risk)
+	$Risk/Digit.text = str(int(active_soc.turn.risk))
 func swap_society():
 	_on_control_society_focused(action_on_deck)
 

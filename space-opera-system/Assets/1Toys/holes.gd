@@ -33,7 +33,7 @@ func _physics_process(delta: float) -> void:
 		sizes[1] += brate
 
 		$BlackHole/Black/Disk.mesh.outer_radius += brate
-		#$BlackHole/Black/Disk.mesh.outer_radius = $BlackHole/Black/Disk.mesh.inner_radius*1.5
+		$BlackHole/Black/Disk.mesh.inner_radius = $BlackHole/Black/Disk.mesh.outer_radius*0.5
 
 		holes.set_shader_parameter("black_hole_sizes", sizes)
 
@@ -111,7 +111,7 @@ func _on_b_right_button_down() -> void:
 	if not split:
 		$WhiteHole/White/Disk.mesh.outer_radius = 20
 		$WhiteHole/White/Disk.mesh.inner_radius = 10
-		$BlackHole/Black/Star.hide()
+		$BlackHole/Black/Hole.hide()
 		split=true
 	brate = scalar
 

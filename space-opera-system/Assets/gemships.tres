@@ -1,0 +1,12 @@
+[gd_resource type="Resource" script_class="SceneData" load_steps=4 format=3 uid="uid://q72sl0vpjdnu"]
+
+[ext_resource type="PackedScene" uid="uid://dvrf2tdnr1go1" path="res://Assets/1Toys/ships/gemships.tscn" id="1_yvrqj"]
+[ext_resource type="Script" uid="uid://dr51iert544uu" path="res://Components/Classes/SceneData.gd" id="2_nb4jf"]
+[ext_resource type="PackedScene" uid="uid://b580ywvpd3yhx" path="res://Assets/1Toys/Zooms/crystal.tscn" id="3_gyvks"]
+
+[resource]
+script = ExtResource("2_nb4jf")
+scene = ExtResource("1_yvrqj")
+zooms = Array[PackedScene]([ExtResource("3_gyvks")])
+transition_time = 2.0
+metadata/_custom_type_script = "uid://dr51iert544uu"

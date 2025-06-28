@@ -1,4 +1,4 @@
-[gd_scene load_steps=67 format=3 uid="uid://cdqhyp5lnk3hy"]
+[gd_scene load_steps=71 format=3 uid="uid://cdqhyp5lnk3hy"]
 
 [ext_resource type="Script" uid="uid://dd7belqrqcrcf" path="res://Components/DatapadAPI/datapad_sync.gd" id="1_a1u8q"]
 [ext_resource type="PackedScene" uid="uid://d3nh81q7dsdr4" path="res://Controller/Controller.tscn" id="1_kgeht"]
@@ -20,6 +20,7 @@
 [ext_resource type="Shader" uid="uid://x6vub6q5exuv" path="res://Assets/Shaders/ColorSnap.gdshader" id="12_u0cts"]
 [ext_resource type="Script" uid="uid://muokti5xk4km" path="res://Components/ProjectorTools/mapping_surface.gd" id="13_h2cot"]
 [ext_resource type="Shader" uid="uid://cqih6b2r6ybak" path="res://Assets/Shaders/chromaticabberation.gdshader" id="13_jn4fx"]
+[ext_resource type="Script" uid="uid://dyigcxopompxy" path="res://party_button.gd" id="14_1yskb"]
 [ext_resource type="Shader" uid="uid://6jx2afakeqyq" path="res://Assets/Shaders/kuwahara.gdshader" id="14_rhye5"]
 [ext_resource type="Script" uid="uid://si5f8voa1aex" path="res://Components/ProjectorTools/post.gd" id="16_hhat6"]
 [ext_resource type="PackedScene" uid="uid://b7x0paetbq6v7" path="res://Components/SocietyUI/society_ui.tscn" id="16_rhye5"]
@@ -38,6 +39,34 @@ viewport_path = NodePath("SystemView")
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_s83dy"]
 viewport_path = NodePath("ZoomView")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_ckkog"]
+emission_shape = 1
+emission_sphere_radius = 1.0
+inherit_velocity_ratio = 0.041
+gravity = Vector3(0, 0, 0)
+linear_accel_min = -2.23517e-06
+linear_accel_max = 27.42
+radial_accel_min = -2.23517e-06
+radial_accel_max = 51.5
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0e8f2"]
+albedo_color = Color(0, 0.301961, 0.768627, 1)
+metallic = 0.36
+metallic_specular = 0.0
+roughness = 0.4
+emission_enabled = true
+emission = Color(0.0273, 0.674613, 0.91, 1)
+emission_energy_multiplier = 1.96
+clearcoat_roughness = 0.06
+backlight_enabled = true
+backlight = Color(0.583648, 1.8049e-06, 3.36915e-07, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_m8wck"]
+material = SubResource("StandardMaterial3D_0e8f2")
+top_radius = 0.01
+bottom_radius = 0.01
+height = 0.1
 
 [sub_resource type="Environment" id="Environment_6t3px"]
 background_mode = 2
@@ -535,7 +564,7 @@ cameras = [NodePath("../Kin/Crane/OrbitalCamera"), NodePath("../Kin/FreeflyCamer
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 34.8842, -89.6286, 27.3441)
 
 [node name="FreeflyCamera" type="Camera3D" parent="SystemView/Kin" node_paths=PackedStringArray("orbital")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -625.159, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -625.159, -0.174309, 0)
 current = true
 script = ExtResource("9_rhye5")
 orbital = NodePath("../Crane/OrbitalCamera")
@@ -577,6 +606,18 @@ system = NodePath("../../../..")
 [node name="Delay" type="Timer" parent="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection"]
 wait_time = 0.8
 one_shot = true
+
+[node name="PartyButton" type="Button" parent="SystemView/Kin/Crane/OrbitalCamera/Selectors"]
+layout_mode = 2
+toggle_mode = true
+text = "PARTY"
+script = ExtResource("14_1yskb")
+
+[node name="GPUParticles3D" type="GPUParticles3D" parent="SystemView/Kin/Crane/OrbitalCamera"]
+emitting = false
+amount = 200
+process_material = SubResource("ParticleProcessMaterial_ckkog")
+draw_pass_1 = SubResource("CylinderMesh_m8wck")
 
 [node name="ZoomView" type="SubViewport" parent="."]
 own_world_3d = true
@@ -754,6 +795,7 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_4sgve")
 
 [node name="SocietalPhaseQue" type="Control" parent="Post"]
+modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -762,27 +804,27 @@ script = ExtResource("24_1yskb")
 
 [node name="Diag1" type="ColorRect" parent="Post/SocietalPhaseQue"]
 layout_mode = 0
-offset_left = -0.00012207
+offset_left = -886.0
 offset_top = -566.0
-offset_right = 981.001
+offset_right = 95.0011
 offset_bottom = 1001.0
 rotation = 0.523598
 color = Color(0, 0, 0, 1)
 
 [node name="Diag2" type="ColorRect" parent="Post/SocietalPhaseQue"]
 layout_mode = 0
-offset_left = 1942.0
+offset_left = 3355.0
 offset_top = -235.0
-offset_right = 2923.0
+offset_right = 4336.0
 offset_bottom = 1332.0
 rotation = 0.523598
 color = Color(0, 0, 0, 1)
 
 [node name="SocietyName" type="Label" parent="Post/SocietalPhaseQue"]
 layout_mode = 0
-offset_left = 151.0
+offset_left = -901.0
 offset_top = 150.0
-offset_right = 1248.0
+offset_right = 196.0
 offset_bottom = 351.0
 scale = Vector2(1, 2)
 text = "THE SOCIETAL PHASE"
@@ -994,6 +1036,7 @@ script = ExtResource("28_0e8f2")
 [connection signal="timeout" from="DatapadSync/Timer" to="DatapadSync" method="_on_timer_timeout"]
 [connection signal="cam_selected" from="SystemView/CameraSelect" to="SystemView" method="_on_camera_select_cam_selected"]
 [connection signal="timeout" from="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection/Delay" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/SocietySelection" method="_on_delay_timeout"]
+[connection signal="toggled" from="SystemView/Kin/Crane/OrbitalCamera/Selectors/PartyButton" to="SystemView/Kin/Crane/OrbitalCamera/Selectors/PartyButton" method="_on_toggled"]
 [connection signal="toggled" from="Post/FireButton" to="Post/FireControls" method="_on_fire_toggled"]
 [connection signal="value_changed" from="Post/FireControls/HSlider" to="Post/FireControls" method="_on_h_slider_value_changed"]
 [connection signal="value_changed" from="Post/FireControls/HSlider2" to="Post/FireControls" method="_on_h_slider_2_value_changed"]
