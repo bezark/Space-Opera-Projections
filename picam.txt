@@ -1,0 +1,27 @@
+  GNU nano 7.2                                         /etc/systemd/system/ffmpeg-pi-stream.service                                                   
+ # /etc/systemd/system/ffmpeg-pi-stream.service
+[Unit]
+Description=USB webcam → H.264 → UDP → NixOS loopback
+After=network-online.target
+Wants=network-online.target
+
+[Service]
+User=johnb
+Group=video
+
+
+# send all logs to journal
+StandardOutput=journal
+StandardError=journal
+
+Restart=always
+RestartSec=5
+TimeoutStopSec=5
+
+ExecStart=/usr/bin/ffmpeg -fflags nobuffer -flags low_delay -probesize 32 -flush_packets 1 -analyzeduration 0 -f v4l2 -input_format mjpeg -video_size>
+#ExecStart=/usr/bin/ffmpeg -fflags nobuffer -flags low_delay -probesize 32 -flush_packets 1 -analyzeduration 0 -f v4l2 -input_format mjpeg -video_siz>
+#ExecStart=/usr/bin/ffplay -f v4l2 -framerate 60 /dev/video0
+#ExecStart=/usr/bin/ffmpeg -fflags nobuffer -flags low_delay -flush_packets 1 -probesize 32 -analyzeduration 0 -f v4l2 -input_format mjpeg -video_siz>
+
+[Install]
+WantedBy=multi-user.target
