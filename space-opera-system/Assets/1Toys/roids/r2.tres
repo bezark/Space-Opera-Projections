@@ -1,6 +1,6 @@
 [gd_resource type="ArrayMesh" load_steps=4 format=4 uid="uid://br005r8upqypy"]
 
-[ext_resource type="Texture2D" uid="uid://ccpg06cf5ymm0" path="res://Assets/1Toys/roids/Asteroid2b_Color_2K.png" id="1_wrfip"]
+[ext_resource type="Texture2D" uid="uid://drwnc1lxbdg85" path="res://Assets/1Toys/roids/Asteroid2b_Color_2K.png" id="1_wrfip"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8klhh"]
 resource_name = "Asteroid2b"

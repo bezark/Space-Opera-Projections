@@ -1,0 +1,23 @@
+[gd_scene load_steps=3 format=3 uid="uid://tjnub6w8i78v"]
+
+[ext_resource type="Texture2D" uid="uid://hbp5kmuspg1k" path="res://Assets/Textures/SBS - Seamless Abstract Pack - 512x512/512x512/Texture_512x512_34.png" id="1_x7sm1"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ykxn8"]
+albedo_texture = ExtResource("1_x7sm1")
+uv1_scale = Vector3(10, 10, 10)
+
+[node name="NewMega" type="CSGCombiner3D"]
+transform = Transform3D(1000, 0, 0, 0, 1000, 0, 0, 0, 1000, 0, 0, 0)
+material_override = SubResource("StandardMaterial3D_ykxn8")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
+radial_segments = 4
+rings = 2
+smooth_faces = false
+
+[node name="CSGSphere3D2" type="CSGSphere3D" parent="CSGSphere3D"]
+transform = Transform3D(0.707107, 0.5, -0.5, 0, 0.707107, 0.707107, 0.707107, -0.5, 0.5, 0, 0, 0)
+operation = 2
+radial_segments = 4
+rings = 2
+smooth_faces = false
