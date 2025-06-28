@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dkq1twrcasgfp"]
 
-[ext_resource type="Texture2D" uid="uid://byoqwpxw3da7a" path="res://Assets/Textures/Wood_06-256x256.png" id="1_l0trv"]
+[ext_resource type="Texture2D" uid="uid://b67ax0w2o2dkm" path="res://Assets/Textures/SBS - Synthetic Texture Pack - 512x512/512x512/Misc/Synth-Misc_03-512x512.png" id="1_l0trv"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_5kt7j"]
 albedo_texture = ExtResource("1_l0trv")

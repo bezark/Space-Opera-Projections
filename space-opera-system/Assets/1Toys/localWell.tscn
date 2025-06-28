@@ -35,6 +35,7 @@ height = 3535.78
 material = ExtResource("4_j78bn")
 
 [node name="Button" type="Button" parent="." groups=["zoom_control"]]
+visible = false
 offset_right = 8.0
 offset_bottom = 8.0
 toggle_mode = true

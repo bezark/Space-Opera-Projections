@@ -124,25 +124,25 @@ script = ExtResource("3_5g3r3")
 metadata/_custom_type_script = "uid://c0w752ro86qws"
 
 [node name="WeirdHouse" parent="." instance=ExtResource("4_82xs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17, 0)
+transform = Transform3D(-0.98328, 0, -0.182098, 0, 1, 0, 0.182098, 0, -0.98328, 0, 17, 0)
 
 [node name="WeirdHouse2" parent="." instance=ExtResource("4_82xs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.227823, 59.8054)
+transform = Transform3D(0.945228, 0, -0.32641, 0, 1, 0, 0.32641, 0, 0.945228, 0, -0.227823, 59.8054)
 
 [node name="WeirdHouse3" parent="." instance=ExtResource("4_82xs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5651, -0.227823, 51.4633)
+transform = Transform3D(0.182407, 0, -0.983223, 0, 1, 0, 0.983223, 0, 0.182407, 15.5651, -0.227823, 51.4633)
 
 [node name="WeirdHouse4" parent="." instance=ExtResource("4_82xs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.9838, -0.227823, 90.6641)
+transform = Transform3D(-0.931641, 0, -0.363381, 0, 1, 0, 0.363381, 0, -0.931641, -25.2505, -0.227823, 90.6641)
 
 [node name="WeirdHouse5" parent="." instance=ExtResource("4_82xs6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1372, -0.227823, 54.5294)
 
 [node name="WeirdHouse6" parent="." instance=ExtResource("4_82xs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.558, -0.227823, 68.7935)
+transform = Transform3D(0.972431, 0, 0.233191, 0, 1, 0, -0.233191, 0, 0.972431, -32.558, -0.227823, 68.7935)
 
 [node name="WeirdHouse7" parent="." instance=ExtResource("4_82xs6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -29.6886, 10.0627, 16.8624)
+transform = Transform3D(0.91653, 0, -0.399965, 0, 1, 0, 0.399965, 0, 0.91653, -29.6886, 10.0627, 16.8624)
 
 [node name="WeirdHouse8" parent="." instance=ExtResource("4_82xs6")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.95242, 10.0627, 16.8624)

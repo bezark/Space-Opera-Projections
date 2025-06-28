@@ -255,6 +255,7 @@ text = "↩️"
 
 [node name="GalacticPhaseControls" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Body/Main/Views/Zoom/UIControls" groups=["permanent"]]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 size_flags_horizontal = 3
 theme = ExtResource("1_55pmi")

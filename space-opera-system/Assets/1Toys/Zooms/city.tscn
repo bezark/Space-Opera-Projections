@@ -1,9 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://cw1pdlvuehwmt"]
+[gd_scene load_steps=40 format=3 uid="uid://cw1pdlvuehwmt"]
 
 [ext_resource type="Texture2D" uid="uid://c802ayx0ag01i" path="res://Assets/Textures/pack1/Metal_01-256x256.png" id="1_lvmj5"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="1_oi8ks"]
 [ext_resource type="Script" uid="uid://7vonoxyx1d4i" path="res://Assets/1Toys/Zooms/city.gd" id="1_tpq0m"]
 [ext_resource type="Material" uid="uid://c8lhplnin6gvt" path="res://Assets/Materials/Building.tres" id="2_oi8ks"]
+[ext_resource type="Texture2D" uid="uid://bmuv5xjo5uawt" path="res://Assets/ep2-logos/Episode 2 Logos/Episode 2 Logos/Burning Ember - Logo Only.svg" id="5_o34si"]
 [ext_resource type="Texture2D" uid="uid://bhq1j7cfmxg55" path="res://Assets/1Toys/UEC.png" id="6_j527a"]
 [ext_resource type="Texture2D" uid="uid://bomkn2acdfxyl" path="res://Assets/1Toys/ships/carrier01_diffuse.png" id="7_pwq83"]
 [ext_resource type="Texture2D" uid="uid://3yrbet2y1jxw" path="res://Assets/1Toys/ships/carrier01_normal.png" id="8_koroh"]
@@ -205,6 +206,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -55.7584, 4.11642, -12.5912)
 size = Vector3(5.92859, 9.30872, 2.25)
 material = SubResource("StandardMaterial3D_sbx5d")
 
+[node name="Decal" type="Decal" parent="Buildings/CSGBox3D2"]
+size = Vector3(5, 5, 5)
+texture_albedo = ExtResource("5_o34si")
+
 [node name="CSGBox3D3" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -64.0343, 7.46206, -34.3321)
 size = Vector3(5.92859, 16, 3.30957)
@@ -360,6 +365,11 @@ transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 33.250
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_i2p1q")
 
+[node name="Decal" type="Decal" parent="Buildings/CSGBox3D38"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.26267e-08, 0.965926, 0.258819, 8.44439e-08, 0.258819, -0.965926, 0.0276794, 0.290312, 1.43262)
+size = Vector3(9.2934, 9.59192, 2.72266)
+texture_albedo = ExtResource("5_o34si")
+
 [node name="CSGBox3D39" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.5116, 7.17636, 0.179138)
 size = Vector3(5.92859, 9.30872, 2.25)
@@ -384,6 +394,11 @@ material = SubResource("StandardMaterial3D_4ad6f")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 42.7007, 10.522, -14.9318)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_4ad6f")
+
+[node name="Decal" type="Decal" parent="Buildings/CSGBox3D43"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.26267e-08, 0.965926, 0.258819, 8.44439e-08, 0.258819, -0.965926, 0.0276794, 2.46909, 1.43262)
+size = Vector3(9.2934, 9.59192, 2.72266)
+texture_albedo = ExtResource("5_o34si")
 
 [node name="CSGBox3D44" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 63.9119, 10.522, -23.2077)
@@ -620,6 +635,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.45198, 9.5323, -25.5196)
 size = Vector3(5.92859, 24.7803, 3.30957)
 material = SubResource("StandardMaterial3D_vufg6")
 
+[node name="Decal" type="Decal" parent="Buildings/CSGBox3D92"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.26267e-08, 0.965926, 0.258819, 8.44439e-08, 0.258819, -0.965926, 0.0276794, 6.83384, 1.43262)
+size = Vector3(9.2934, 9.59192, 2.72266)
+texture_albedo = ExtResource("5_o34si")
+
 [node name="CSGBox3D93" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -26.5878, 18.483, -36.3722)
 size = Vector3(5.92859, 16, 3.30957)
@@ -679,6 +699,11 @@ material = SubResource("StandardMaterial3D_6mngp")
 transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, 22.9372, 8.24173, -19.8394)
 size = Vector3(5.92859, 11.4395, 3.30957)
 material = SubResource("StandardMaterial3D_6mngp")
+
+[node name="Decal" type="Decal" parent="Buildings/CSGBox3D104"]
+transform = Transform3D(-1, 0, -8.74228e-08, -2.26267e-08, 0.965926, 0.258819, 8.44439e-08, 0.258819, -0.965926, 0.0276794, 0.290312, 1.43262)
+size = Vector3(9.2934, 9.59192, 2.72266)
+texture_albedo = ExtResource("5_o34si")
 
 [node name="CSGBox3D105" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 42.1979, 7.17636, -7.27313)
@@ -769,6 +794,11 @@ material = SubResource("StandardMaterial3D_uyuhl")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.6845, 5.57327, 18.6115)
 size = Vector3(5.92859, 16, 3.30957)
 material = SubResource("StandardMaterial3D_uyuhl")
+
+[node name="Decal" type="Decal" parent="Buildings/CSGBox3D123"]
+transform = Transform3D(0.996302, 0.0222381, -0.0829935, -2.26267e-08, 0.965926, 0.258819, 0.0859211, -0.257862, 0.962354, 0.0276794, 2.99841, -1.0658)
+size = Vector3(9.2934, 9.59192, 2.72266)
+texture_albedo = ExtResource("5_o34si")
 
 [node name="CSGBox3D124" type="CSGBox3D" parent="Buildings"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.31245, 3.29297, 36.0941)

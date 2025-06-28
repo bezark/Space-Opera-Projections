@@ -274,3 +274,13 @@ texture_albedo = ExtResource("2_r8non")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0074141, -1.54319, -0.814412)
 size = Vector3(10, 10, 10)
 texture_albedo = ExtResource("2_r8non")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.66767, 7, -6.88427)
+light_color = Color(0.836895, 0.392376, 0.965118, 1)
+omni_range = 12.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.36715, 7, 4.63142)
+light_color = Color(0.303851, 0.662421, 0.8382, 1)
+omni_range = 12.0

@@ -1,4 +1,4 @@
-[gd_scene load_steps=97 format=3 uid="uid://4wik5qowm8jb"]
+[gd_scene load_steps=116 format=3 uid="uid://4wik5qowm8jb"]
 
 [ext_resource type="Script" uid="uid://dmbp2jse31d6g" path="res://Assets/1Toys/holes.gd" id="2_4hkls"]
 [ext_resource type="Script" uid="uid://badidsgy73djm" path="res://Assets/1Toys/hole_controls.gd" id="2_regpr"]
@@ -37,10 +37,8 @@
 [ext_resource type="PackedScene" uid="uid://hfn3lqg1fa0j" path="res://Assets/1Toys/star.tscn" id="17_oo752"]
 [ext_resource type="PackedScene" uid="uid://b67cago41ch8b" path="res://Assets/1Toys/Planets/City.tscn" id="17_xhn7u"]
 [ext_resource type="PackedScene" uid="uid://3cwl5kgytcru" path="res://Assets/1Toys/Planets/Earth.tscn" id="18_qwjcd"]
-[ext_resource type="Texture2D" uid="uid://c5cm1gmydjhd8" path="res://Assets/1Toys/roids/Asteroid2a_Color_2K.png" id="18_vk8jg"]
 [ext_resource type="Shader" uid="uid://bb2tbt5n3fnj1" path="res://addons/zylann.atmosphere/shaders/planet_atmosphere_v1_no_clouds.gdshader" id="18_yfr1v"]
 [ext_resource type="PackedScene" uid="uid://ckuf0ejlgxn5e" path="res://Assets/1Toys/Planets/Desert.tscn" id="19_vk8jg"]
-[ext_resource type="PackedScene" uid="uid://dejmxcbny0emy" path="res://Assets/1Toys/Planets/AsteroidBelt.tscn" id="20_mcu1l"]
 [ext_resource type="PackedScene" uid="uid://cht1f4bhktdj0" path="res://Assets/1Toys/Planets/Gas.tscn" id="21_ggr6d"]
 [ext_resource type="PackedScene" uid="uid://b606ll82uxf2o" path="res://Assets/gasss.tscn" id="22_pt8ev"]
 [ext_resource type="PackedScene" uid="uid://cgv5cuntgow0q" path="res://Assets/1Toys/Planets/Volcanic.tscn" id="22_v0qhr"]
@@ -51,6 +49,19 @@
 [ext_resource type="PackedScene" uid="uid://b7qovvjsewkwn" path="res://Assets/1Toys/Zooms/ice.tscn" id="27_h4gil"]
 [ext_resource type="PackedScene" uid="uid://btkq2oei0qw31" path="res://Assets/1Toys/Zooms/Surface2.tscn" id="27_sed3l"]
 [ext_resource type="PackedScene" uid="uid://dijfvnnagnbsw" path="res://Assets/1Toys/Zooms/crumbszoom.tscn" id="30_cmavm"]
+[ext_resource type="Script" uid="uid://dr58fmoxwwcb4" path="res://Assets/1Toys/asteroid_belt.gd" id="36_st4xa"]
+[ext_resource type="Script" uid="uid://0xxcu2ookj5n" path="res://addons/proton_scatter/src/scatter.gd" id="38_5s8g1"]
+[ext_resource type="Material" uid="uid://th1vuhq1ouco" path="res://Assets/Materials/rock.tres" id="38_oo752"]
+[ext_resource type="Script" uid="uid://bf7i7sjk05jgd" path="res://addons/proton_scatter/src/stack/modifier_stack.gd" id="39_yafxo"]
+[ext_resource type="Script" uid="uid://bhg2y5mrrduf6" path="res://addons/proton_scatter/src/modifiers/base_modifier.gd" id="40_inpve"]
+[ext_resource type="Script" uid="uid://cgugffcrafhcj" path="res://addons/proton_scatter/src/modifiers/create_inside_random.gd" id="41_vydts"]
+[ext_resource type="Script" uid="uid://bbbw7wxr3ii32" path="res://addons/proton_scatter/src/modifiers/randomize_transforms.gd" id="42_ubo63"]
+[ext_resource type="Script" uid="uid://csgg7hc2wdglp" path="res://addons/proton_scatter/src/modifiers/relax.gd" id="43_sujkf"]
+[ext_resource type="Script" uid="uid://dudjtieepb4bv" path="res://addons/proton_scatter/src/scatter_item.gd" id="44_ed042"]
+[ext_resource type="Script" uid="uid://dk4rkhgvttpgs" path="res://addons/proton_scatter/src/scatter_shape.gd" id="45_vkgv0"]
+[ext_resource type="Script" uid="uid://opv1k3tchq2o" path="res://addons/proton_scatter/src/shapes/sphere_shape.gd" id="46_hy0tw"]
+[ext_resource type="Script" uid="uid://f1x37svb3g4m" path="res://addons/proton_scatter/src/shapes/box_shape.gd" id="47_4l4ua"]
+[ext_resource type="Script" uid="uid://cypf6p5dafka0" path="res://addons/proton_scatter/src/cache/scatter_cache.gd" id="48_5s8g1"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_regpr"]
 render_priority = 0
@@ -378,6 +389,62 @@ zooms = Array[PackedScene]([])
 transition_time = 2.0
 metadata/_custom_type_script = "uid://dr51iert544uu"
 
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_m8q1e"]
+
+[sub_resource type="Resource" id="Resource_5s8g1"]
+script = ExtResource("41_vydts")
+amount = 2000
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_yafxo"]
+script = ExtResource("42_ubo63")
+position = Vector3(1, 1, 0.15)
+rotation = Vector3(360, 360, 360)
+scale = Vector3(10, 10, 10)
+enabled = true
+override_global_seed = false
+custom_seed = 0
+restrict_height = false
+reference_frame = 2
+
+[sub_resource type="Resource" id="Resource_inpve"]
+script = ExtResource("43_sujkf")
+iterations = 3
+offset_step = 0.2
+consecutive_step_multiplier = 0.75
+use_computeshader = true
+enabled = false
+override_global_seed = false
+custom_seed = 0
+restrict_height = true
+reference_frame = 0
+
+[sub_resource type="Resource" id="Resource_vydts"]
+script = ExtResource("39_yafxo")
+stack = Array[ExtResource("40_inpve")]([SubResource("Resource_5s8g1"), SubResource("Resource_yafxo"), SubResource("Resource_inpve")])
+
+[sub_resource type="Resource" id="Resource_sv0vh"]
+script = ExtResource("46_hy0tw")
+radius = 1400.0
+metadata/_custom_type_script = "uid://opv1k3tchq2o"
+
+[sub_resource type="Resource" id="Resource_7sdxs"]
+script = ExtResource("46_hy0tw")
+radius = 1000.0
+
+[sub_resource type="Resource" id="Resource_bhp5u"]
+script = ExtResource("47_4l4ua")
+size = Vector3(4000, 700, 4000)
+metadata/_custom_type_script = "uid://f1x37svb3g4m"
+
+[sub_resource type="Resource" id="Resource_o0xy4"]
+script = ExtResource("47_4l4ua")
+size = Vector3(4000, 700, 4000)
+
 [sub_resource type="Curve3D" id="Curve3D_ii0dt"]
 closed = true
 _data = {
@@ -389,9 +456,6 @@ point_count = 24
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_mcu1l"]
 radius = 2.402
 height = 10.74
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ggr6d"]
-albedo_texture = ExtResource("18_vk8jg")
 
 [sub_resource type="Curve3D" id="Curve3D_4hkls"]
 closed = true
@@ -624,7 +688,7 @@ text = "Heat"
 [node name="HEAT" type="HSlider" parent="HOLES/HoleControls/Controls/Sliders"]
 layout_mode = 2
 min_value = 1.0
-max_value = 24.0
+max_value = 48.0
 step = 0.01
 value = 1.0
 
@@ -752,11 +816,11 @@ speed = -0.02
 
 [node name="OmniLight3D" type="OmniLight3D" parent="HOLES/WhiteHole/White"]
 transform = Transform3D(1, 5.96046e-08, 0, -5.96046e-08, 1, 0, 0, 0, 1, 0, 0, 0)
-visible = false
-light_energy = 16.0
-light_indirect_energy = 16.0
-light_size = 600.0
+light_energy = 8.0
+light_indirect_energy = 8.0
+light_size = 1.0
 omni_range = 4000.0
+omni_attenuation = 0.2
 
 [node name="BlackHole" type="Node3D" parent="HOLES" node_paths=PackedStringArray("body", "sattelites") groups=["point_of_interest"]]
 script = ExtResource("3_qmfsb")
@@ -1180,18 +1244,194 @@ shader_params/u_atmosphere_ambient_color = Color(0.334563, 0.242808, 0.140899, 1
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.52087, 0, 0)
 visible = false
 
-[node name="AsteroidBelt" parent="." node_paths=PackedStringArray("body") instance=ExtResource("9_l1est")]
+[node name="AsteroidBelt" type="Node3D" parent="." node_paths=PackedStringArray("body") groups=["point_of_interest"]]
+script = ExtResource("3_qmfsb")
 scene_data = SubResource("Resource_xhn7u")
 body = NodePath("AsteroidBelt")
 
-[node name="AsteroidBelt" parent="AsteroidBelt" instance=ExtResource("20_mcu1l")]
+[node name="VBoxContainer" type="VBoxContainer" parent="AsteroidBelt" groups=["system_control"]]
+offset_right = 40.0
+offset_bottom = 40.0
 
-[node name="path2" type="Path3D" parent="AsteroidBelt/AsteroidBelt" node_paths=PackedStringArray("_tile_mmis")]
+[node name="Title" type="Button" parent="AsteroidBelt/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Planet"
+
+[node name="Controls" type="HBoxContainer" parent="AsteroidBelt/VBoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Sliders" type="GridContainer" parent="AsteroidBelt/VBoxContainer/Controls"]
+layout_mode = 2
+columns = 2
+
+[node name="DistanceLabel" type="Label" parent="AsteroidBelt/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Distance"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="AsteroidBelt/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+
+[node name="Less" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "<"
+
+[node name="Right" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/Sliders/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = ">"
+
+[node name="SpeedLabel" type="Label" parent="AsteroidBelt/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Speed"
+
+[node name="Speed" type="HSlider" parent="AsteroidBelt/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="SpinLabel" type="Label" parent="AsteroidBelt/VBoxContainer/Controls/Sliders"]
+layout_mode = 2
+text = "Spin"
+
+[node name="Spin" type="HSlider" parent="AsteroidBelt/VBoxContainer/Controls/Sliders"]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+min_value = -0.1
+max_value = 0.1
+step = 0.001
+value = -0.1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="AsteroidBelt/VBoxContainer/Controls"]
+layout_mode = 2
+
+[node name="Fucked" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Fucked"
+
+[node name="Orbit" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 42
+text = "Orbit"
+
+[node name="Target" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "Roid"
+
+[node name="Zap" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Zap"
+
+[node name="Shoot" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Shoot"
+
+[node name="Laser" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Laser"
+
+[node name="Boom" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+toggle_mode = true
+text = "Boom"
+
+[node name="Delete" type="Button" parent="AsteroidBelt/VBoxContainer/Controls/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+text = "DELETE"
+
+[node name="Effects" type="Node3D" parent="AsteroidBelt"]
+script = ExtResource("7_0nw5c")
+
+[node name="ElectricExplosion" parent="AsteroidBelt/Effects" instance=ExtResource("8_cmavm")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 0, 0)
+
+[node name="ExplosionBig" parent="AsteroidBelt/Effects" instance=ExtResource("9_k64gf")]
+
+[node name="FireBig" parent="AsteroidBelt/Effects" instance=ExtResource("10_4hkls")]
+transform = Transform3D(20, 0, 0, 0, 20, 0, 0, 0, 20, 0, 4, 4)
+
+[node name="Weapons" type="Node3D" parent="AsteroidBelt/Effects"]
+
+[node name="Laser" parent="AsteroidBelt/Effects/Weapons" instance=ExtResource("12_sfmsk")]
+visible = false
+
+[node name="Fireballs" parent="AsteroidBelt/Effects/Weapons" instance=ExtResource("13_6gncn")]
+transform = Transform3D(1, 0, 0, 0, 0.866025, -0.5, 0, 0.5, 0.866025, 0, 0, 0)
+visible = false
+
+[node name="RoidStrike" parent="AsteroidBelt/Effects" instance=ExtResource("14_oo752")]
+
+[node name="AsteroidBelt" type="Node3D" parent="AsteroidBelt"]
+script = ExtResource("36_st4xa")
+
+[node name="FuckedBelt" type="Node3D" parent="AsteroidBelt/AsteroidBelt"]
+visible = false
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt"]
+visible = false
+mesh = SubResource("CapsuleMesh_m8q1e")
+surface_material_override/0 = ExtResource("38_oo752")
+
+[node name="ProtonScatter" type="Node3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt"]
+script = ExtResource("38_5s8g1")
+render_mode = 2
+force_rebuild_on_load = false
+modifier_stack = SubResource("Resource_vydts")
+Performance/use_chunks = true
+Performance/chunk_dimensions = Vector3(15, 15, 15)
+
+[node name="ScatterItem" type="Node3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt/ProtonScatter"]
+script = ExtResource("44_ed042")
+source = 0
+path = "../../MeshInstance3D"
+
+[node name="ScatterShape" type="Node3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt/ProtonScatter"]
+transform = Transform3D(1, 0, -2.98023e-08, 0, 1, 0, 2.98023e-08, 0, 1, 0, 0, 0)
+script = ExtResource("45_vkgv0")
+shape = SubResource("Resource_sv0vh")
+
+[node name="ScatterShape2" type="Node3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt/ProtonScatter/ScatterShape"]
+script = ExtResource("45_vkgv0")
+negative = true
+shape = SubResource("Resource_7sdxs")
+
+[node name="ScatterShape" type="Node3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt/ProtonScatter/ScatterShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 935.091, 0)
+script = ExtResource("45_vkgv0")
+negative = true
+shape = SubResource("Resource_bhp5u")
+
+[node name="ScatterShape3" type="Node3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt/ProtonScatter/ScatterShape"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1084.66, 0)
+script = ExtResource("45_vkgv0")
+negative = true
+shape = SubResource("Resource_o0xy4")
+
+[node name="ScatterCache" type="Node3D" parent="AsteroidBelt/AsteroidBelt/FuckedBelt/ProtonScatter"]
+script = ExtResource("48_5s8g1")
+cache_file = "res://addons/proton_scatter/cache/BlackHoleSystem_2594493224_scatter_cache.res"
+metadata/_custom_type_script = "uid://cypf6p5dafka0"
+
+[node name="Normal" type="Node3D" parent="AsteroidBelt/AsteroidBelt"]
+
+[node name="path2" type="Path3D" parent="AsteroidBelt/AsteroidBelt/Normal" node_paths=PackedStringArray("_tile_mmis")]
 transform = Transform3D(-0.980673, 0, -0.195655, 0, 1, 0, 0.195655, 0, -0.980673, 0.608006, 0, -0.917908)
 curve = SubResource("Curve3D_ii0dt")
 script = ExtResource("17_mcu1l")
 _tile_meshes = Array[Mesh]([SubResource("CapsuleMesh_mcu1l")])
-_tile_material = SubResource("StandardMaterial3D_ggr6d")
+_tile_material = ExtResource("38_oo752")
 _tile_spacing = 8.92
 _tile_mmis = [NodePath("tile_mmi_0")]
 _last_built_curve = SubResource("Curve3D_4hkls")
@@ -1206,16 +1446,16 @@ _rand_seed = 3
 _grounded = false
 metadata/_custom_type_script = "uid://kjavq4i37ayq"
 
-[node name="tile_mmi_0" type="MultiMeshInstance3D" parent="AsteroidBelt/AsteroidBelt/path2"]
-material_override = SubResource("StandardMaterial3D_ggr6d")
+[node name="tile_mmi_0" type="MultiMeshInstance3D" parent="AsteroidBelt/AsteroidBelt/Normal/path2"]
+material_override = ExtResource("38_oo752")
 multimesh = SubResource("MultiMesh_dn3a4")
 
-[node name="path3" type="Path3D" parent="AsteroidBelt/AsteroidBelt" node_paths=PackedStringArray("_tile_mmis")]
+[node name="path3" type="Path3D" parent="AsteroidBelt/AsteroidBelt/Normal" node_paths=PackedStringArray("_tile_mmis")]
 transform = Transform3D(-0.896618, 0, -0.442805, 0, 1, 0, 0.442805, 0, -0.896618, 0.608006, 8.53177, -0.917908)
 curve = SubResource("Curve3D_ii0dt")
 script = ExtResource("17_mcu1l")
 _tile_meshes = Array[Mesh]([SubResource("CapsuleMesh_mcu1l")])
-_tile_material = SubResource("StandardMaterial3D_ggr6d")
+_tile_material = ExtResource("38_oo752")
 _tile_spacing = 8.92
 _tile_mmis = [NodePath("tile_mmi_0")]
 _last_built_curve = SubResource("Curve3D_regpr")
@@ -1230,8 +1470,8 @@ _rand_seed = 3
 _grounded = false
 metadata/_custom_type_script = "uid://kjavq4i37ayq"
 
-[node name="tile_mmi_0" type="MultiMeshInstance3D" parent="AsteroidBelt/AsteroidBelt/path3"]
-material_override = SubResource("StandardMaterial3D_ggr6d")
+[node name="tile_mmi_0" type="MultiMeshInstance3D" parent="AsteroidBelt/AsteroidBelt/Normal/path3"]
+material_override = ExtResource("38_oo752")
 multimesh = SubResource("MultiMesh_b0c3i")
 
 [node name="Crumbs" type="Node3D" parent="." node_paths=PackedStringArray("body", "sattelites") groups=["point_of_interest"]]
@@ -1636,6 +1876,23 @@ transform = Transform3D(0.9964, 0, -0.0847735, 0, 1, 0, 0.0847735, 0, 0.9964, 0,
 [connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Destroy" to="DysonSphere/DysonSphere" method="_on_destroy_pressed"]
 [connection signal="pressed" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Delete" to="DysonSphere" method="_on_delete_pressed"]
 [connection signal="button_down" from="DysonSphere/VBoxContainer/Controls/VBoxContainer/Shrink" to="DysonSphere/DysonSphere" method="_on_shrink_button_down"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Title" to="AsteroidBelt" method="_on_title_toggled"]
+[connection signal="button_down" from="AsteroidBelt/VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="AsteroidBelt" method="_on_less_button_down"]
+[connection signal="button_up" from="AsteroidBelt/VBoxContainer/Controls/Sliders/HBoxContainer/Less" to="AsteroidBelt" method="_on_less_button_up"]
+[connection signal="button_down" from="AsteroidBelt/VBoxContainer/Controls/Sliders/HBoxContainer/Right" to="AsteroidBelt" method="_on_right_button_down"]
+[connection signal="button_up" from="AsteroidBelt/VBoxContainer/Controls/Sliders/HBoxContainer/Right" to="AsteroidBelt" method="_on_right_button_up"]
+[connection signal="value_changed" from="AsteroidBelt/VBoxContainer/Controls/Sliders/Speed" to="AsteroidBelt" method="_on_speed_value_changed"]
+[connection signal="value_changed" from="AsteroidBelt/VBoxContainer/Controls/Sliders/Spin" to="AsteroidBelt" method="_on_spin_value_changed"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Fucked" to="AsteroidBelt/AsteroidBelt" method="_on_fucked_toggled"]
+[connection signal="pressed" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Orbit" to="AsteroidBelt" method="_on_orbit_pressed"]
+[connection signal="pressed" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Target" to="AsteroidBelt/Effects/RoidStrike" method="strike"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Zap" to="AsteroidBelt/Effects" method="_on_zap_toggled"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Shoot" to="AsteroidBelt" method="_on_shoot_toggled"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Shoot" to="AsteroidBelt/Effects" method="_on_shoot_toggled"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Laser" to="AsteroidBelt" method="_on_shoot_toggled"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Laser" to="AsteroidBelt/Effects" method="_on_laser_toggled"]
+[connection signal="toggled" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Boom" to="AsteroidBelt/Effects" method="_on_boom_toggled"]
+[connection signal="pressed" from="AsteroidBelt/VBoxContainer/Controls/VBoxContainer/Delete" to="AsteroidBelt" method="_on_delete_pressed"]
 [connection signal="toggled" from="Crumbs/VBoxContainer/Title" to="Crumbs" method="_on_title_toggled"]
 [connection signal="value_changed" from="Crumbs/VBoxContainer/Controls/Sliders/Distance" to="Crumbs" method="_on_distance_value_changed"]
 [connection signal="value_changed" from="Crumbs/VBoxContainer/Controls/Sliders/Speed" to="Crumbs" method="_on_speed_value_changed"]

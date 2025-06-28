@@ -235,3 +235,17 @@ surface_material_override/0 = SubResource("StandardMaterial3D_pd15u")
 
 [node name="Farm" type="Node3D" parent="Home_colonists"]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 24.536, 23.7115, 13.455)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 14, -40.8885)
+light_color = Color(0.927056, 0.532403, 0.282837, 1)
+light_energy = 3.059
+light_indirect_energy = 8.412
+omni_range = 31.0
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19, 14, 21.1975)
+light_color = Color(0.927056, 0.532403, 0.282837, 1)
+light_energy = 3.059
+light_indirect_energy = 8.412
+omni_range = 31.0

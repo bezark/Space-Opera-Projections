@@ -68,7 +68,7 @@ func _on_w_scale_value_changed(value: float) -> void:
 	sizes[0] = value
 	holes.set_shader_parameter.call_deferred("black_hole_sizes", sizes)
 	$WhiteHole/White/Disk.inner_radius = value
-	$WhiteHole/White/Disk.outer_radius = value * 1.5
+	$WhiteHole/White/Disk.outer_radius = value * 1.25
 
 
 
@@ -77,7 +77,7 @@ func _on_b_scale_value_changed(value: float) -> void:
 	sizes[1] = value
 
 	$BlackHole/Black/Disk.inner_radius = value
-	$BlackHole/Black/Disk.outer_radius = value * 1.5
+	$BlackHole/Black/Disk.outer_radius = value * 1.25
 
 
 	holes.set_shader_parameter("black_hole_sizes", sizes)
@@ -110,6 +110,7 @@ var split = false
 func _on_b_right_button_down() -> void:
 	if not split:
 		$WhiteHole/White/Disk.mesh.outer_radius = 20
+		$WhiteHole/White/Disk.mesh.inner_radius = 10
 		$BlackHole/Black/Star.hide()
 		split=true
 	brate = scalar

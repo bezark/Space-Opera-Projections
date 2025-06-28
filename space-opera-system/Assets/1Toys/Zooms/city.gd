@@ -9,6 +9,8 @@ func _on_parties_toggled(toggled_on: bool) -> void:
 func _on_flyby_pressed() -> void:
 	$AnimationPlayer.play("flyby")
 
+func _ready() -> void:
+	$Buildings.material_overlay.albedo_color = Color(0.5, 0.25, 0.25, 1.0)
 
 func _on_button_toggled(toggled_on: bool) -> void:
 	if toggled_on:

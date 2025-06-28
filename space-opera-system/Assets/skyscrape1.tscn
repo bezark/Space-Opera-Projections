@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=4 uid="uid://cvfsh658j0tnq"]
+[gd_scene load_steps=28 format=4 uid="uid://cvfsh658j0tnq"]
 
 [ext_resource type="Shader" uid="uid://bh2dsie2025ai" path="res://Assets/Shaders/metall.gdshader" id="1_6xsvf"]
 [ext_resource type="Material" uid="uid://urfd04mkdivw" path="res://Assets/POLYB/lightning.material" id="2_i1hp8"]
@@ -178,37 +178,50 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_w8pf0")
 
+[sub_resource type="CylinderMesh" id="CylinderMesh_7gpyj"]
+material = SubResource("ShaderMaterial_a1is7")
+top_radius = 15.0
+bottom_radius = 10.0
+height = 2.191
+
 [node name="Skyscrape1" type="Node3D"]
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(3.01992e-08, -6.89694e-15, -0.4, 1.74846e-08, 0.4, -5.57689e-15, 0.4, -1.74846e-08, 3.01992e-08, -0.25, 32, 0)
+[node name="car" type="Node3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car"]
+transform = Transform3D(3.01992e-08, -6.89694e-15, -0.4, 0.4, -3.49692e-08, 3.01992e-08, -3.49692e-08, -0.4, 4.25684e-15, -0.25, 27.9766, -4.0234)
 mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
 
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(4.52987e-08, -1.03454e-14, -0.6, 2.62268e-08, 0.6, -8.36534e-15, 0.6, -2.62268e-08, 4.52987e-08, -0.25, 22, 0)
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="car"]
+transform = Transform3D(4.52987e-08, -1.03454e-14, -0.6, 0.6, -5.24536e-08, 4.52987e-08, -5.24536e-08, -0.6, 6.38527e-15, -0.25, 27.9766, 5.9766)
 mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
 
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(6.03983e-08, -1.37939e-14, -0.8, 3.49691e-08, 0.8, -1.11538e-14, 0.8, -3.49691e-08, 6.03983e-08, -0.25, 12, 0)
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="car"]
+transform = Transform3D(6.03983e-08, -1.37939e-14, -0.8, 0.8, -6.99382e-08, 6.03983e-08, -6.99382e-08, -0.8, 8.51371e-15, -0.25, 27.9766, 15.9766)
 mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
 
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(8.74228e-08, -1.77636e-14, -1, 4.37114e-08, 1, -1.42109e-14, 1, -4.37114e-08, 8.74228e-08, -0.25, 0, 0)
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="car"]
+transform = Transform3D(8.74228e-08, -1.77636e-14, -1, 1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 1.03895e-14, -0.25, 27.9766, 27.9766)
 mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
 surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
 
-[node name="CSGSphere3D" type="CSGSphere3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 40, 0)
+[node name="CSGSphere3D" type="CSGSphere3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 27.9766, -12.0234)
 material_overlay = ExtResource("2_i1hp8")
 radius = 3.0
 radial_segments = 24
 rings = 24
 material = SubResource("ShaderMaterial_a1is7")
 
-[node name="LightningBall" type="GPUParticles3D" parent="CSGSphere3D"]
+[node name="LightningBall" type="GPUParticles3D" parent="car/CSGSphere3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391029, 0)
 amount = 4
 lifetime = 0.2
@@ -216,7 +229,7 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_os1ry")
 draw_pass_1 = SubResource("ArrayMesh_hacmx")
 
-[node name="ElectricSparks_1" type="GPUParticles3D" parent="CSGSphere3D/LightningBall"]
+[node name="ElectricSparks_1" type="GPUParticles3D" parent="car/CSGSphere3D/LightningBall"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011364, 0)
 sorting_offset = -1.0
 amount = 16
@@ -226,17 +239,89 @@ fixed_fps = 60
 process_material = SubResource("ParticleProcessMaterial_coeu5")
 draw_pass_1 = SubResource("ArrayMesh_icv4q")
 
-[node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 17.5, 0)
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="car"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 27.9766, 10.4766)
 radius = 4.69385
 height = 33.0
 material = SubResource("StandardMaterial3D_2pg0j")
 
-[node name="SpotLight3D" type="SpotLight3D" parent="."]
-transform = Transform3D(-1, -3.82137e-15, -8.74228e-08, -8.74228e-08, 4.37114e-08, 1, 0, 1, -4.37114e-08, 0, 72.3362, 0)
+[node name="SpotLight3D" type="SpotLight3D" parent="car"]
+transform = Transform3D(-1, -3.82138e-15, -8.74228e-08, 3.82137e-15, 1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 0, 27.9766, -44.3596)
 light_color = Color(1, 0, 0, 1)
 light_energy = 16.0
 light_indirect_energy = 15.252
 light_volumetric_fog_energy = 10.932
 spot_range = 84.0
 spot_angle = 30.9375
+
+[node name="car2" type="Node3D" parent="."]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 37.4823, 0, 0)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="car2"]
+transform = Transform3D(3.01992e-08, -6.89694e-15, -0.4, 0.4, -3.49692e-08, 3.01992e-08, -3.49692e-08, -0.4, 4.25684e-15, -0.25, 27.9766, -4.0234)
+mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="car2"]
+transform = Transform3D(4.52987e-08, -1.03454e-14, -0.6, 0.6, -5.24536e-08, 4.52987e-08, -5.24536e-08, -0.6, 6.38527e-15, -0.25, 27.9766, 5.9766)
+mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="car2"]
+transform = Transform3D(6.03983e-08, -1.37939e-14, -0.8, 0.8, -6.99382e-08, 6.03983e-08, -6.99382e-08, -0.8, 8.51371e-15, -0.25, 27.9766, 15.9766)
+mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="car2"]
+transform = Transform3D(8.74228e-08, -1.77636e-14, -1, 1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 1.03895e-14, -0.25, 27.9766, 27.9766)
+mesh = SubResource("TorusMesh_6xsvf")
+skeleton = NodePath("../..")
+surface_material_override/0 = SubResource("ShaderMaterial_a1is7")
+
+[node name="CSGSphere3D" type="CSGSphere3D" parent="car2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 27.9766, -12.0234)
+material_overlay = ExtResource("2_i1hp8")
+radius = 3.0
+radial_segments = 24
+rings = 24
+material = SubResource("ShaderMaterial_a1is7")
+
+[node name="LightningBall" type="GPUParticles3D" parent="car2/CSGSphere3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.391029, 0)
+amount = 4
+lifetime = 0.2
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_os1ry")
+draw_pass_1 = SubResource("ArrayMesh_hacmx")
+
+[node name="ElectricSparks_1" type="GPUParticles3D" parent="car2/CSGSphere3D/LightningBall"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.011364, 0)
+sorting_offset = -1.0
+amount = 16
+lifetime = 0.8
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_coeu5")
+draw_pass_1 = SubResource("ArrayMesh_icv4q")
+
+[node name="CSGCylinder3D" type="CSGCylinder3D" parent="car2"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 27.9766, 10.4766)
+radius = 4.69385
+height = 33.0
+material = SubResource("StandardMaterial3D_2pg0j")
+
+[node name="SpotLight3D" type="SpotLight3D" parent="car2"]
+transform = Transform3D(-1, -3.82138e-15, -8.74228e-08, 3.82137e-15, 1, -8.74228e-08, 8.74228e-08, -8.74228e-08, -1, 0, 27.9766, -44.3596)
+light_color = Color(1, 0, 0, 1)
+light_energy = 16.0
+light_indirect_energy = 15.252
+light_volumetric_fog_energy = 10.932
+spot_range = 84.0
+spot_angle = 30.9375
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(0.775, 0, 0, 0, 0.960861, -0.27703, 0, 0.27703, 0.960861, 16.3486, 15.6407, -45.3301)
+mesh = SubResource("CylinderMesh_7gpyj")

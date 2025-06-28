@@ -290,7 +290,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0.1, 0.533333),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(151, 40), Vector2(-901, 40)]
+"values": [Vector2(151, 150), Vector2(-901, 150)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -365,7 +365,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 0.8),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [Vector2(-901, 40), Vector2(151, 40)]
+"values": [Vector2(-901, 150), Vector2(151, 150)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -754,7 +754,6 @@ grow_vertical = 2
 texture = SubResource("ViewportTexture_4sgve")
 
 [node name="SocietalPhaseQue" type="Control" parent="Post"]
-modulate = Color(1, 1, 1, 0)
 layout_mode = 3
 anchors_preset = 10
 anchor_right = 1.0
@@ -782,9 +781,9 @@ color = Color(0, 0, 0, 1)
 [node name="SocietyName" type="Label" parent="Post/SocietalPhaseQue"]
 layout_mode = 0
 offset_left = 151.0
-offset_top = 100.0
+offset_top = 150.0
 offset_right = 1248.0
-offset_bottom = 301.0
+offset_bottom = 351.0
 scale = Vector2(1, 2)
 text = "THE SOCIETAL PHASE"
 label_settings = SubResource("LabelSettings_obmmj")

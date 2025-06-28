@@ -5,11 +5,9 @@
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2e7vq"]
 albedo_color = Color(0.54902, 1, 1, 1)
 albedo_texture = ExtResource("1_msrdq")
-metallic_specular = 0.77
-roughness = 0.75
-clearcoat_enabled = true
-clearcoat = 0.11
-clearcoat_roughness = 0.29
+metallic_specular = 0.19
+clearcoat = 0.12
+clearcoat_roughness = 0.24
 uv1_scale = Vector3(5, 5, 5)
 
 [node name="Gemstone" type="CSGSphere3D"]

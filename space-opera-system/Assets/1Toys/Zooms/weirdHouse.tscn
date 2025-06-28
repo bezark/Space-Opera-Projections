@@ -1,24 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://c666ft2w1n6op"]
+[gd_scene load_steps=6 format=3 uid="uid://c666ft2w1n6op"]
 
 [ext_resource type="Texture2D" uid="uid://b6nllhkqogatu" path="res://Assets/Textures/SBS - Abstract Texture Pack - 512x512/512x512/Abstract_512x512-17.png" id="1_inyou"]
+[ext_resource type="Material" uid="uid://bg7hvs01m0ehf" path="res://Assets/1Toys/PoweredUp.tres" id="2_iqkah"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_iqkah"]
 albedo_texture = ExtResource("1_inyou")
 uv1_scale = Vector3(3.37, 3.37, 3.37)
 
+[sub_resource type="SphereMesh" id="SphereMesh_iqkah"]
+material = ExtResource("2_iqkah")
+radius = 1.0
+height = 2.0
+
+[sub_resource type="SphereMesh" id="SphereMesh_0xhg2"]
+material = ExtResource("2_iqkah")
+radius = 1.0
+height = 2.0
+
 [node name="WeirdHouse" type="Node3D"]
 
 [node name="CSGCylinder3D" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
-radius = 5.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.64722, 0)
+radius = 7.80566
+height = 3.29443
 material = SubResource("StandardMaterial3D_iqkah")
 
 [node name="CSGCylinder3D2" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
-radius = 4.0
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.12012, 0)
+radius = 6.38037
+height = 4.24023
 material = SubResource("StandardMaterial3D_iqkah")
 
 [node name="CSGCylinder3D3" type="CSGCylinder3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 5, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 7.87106, 0)
 radius = 3.0
+height = 3.87207
 material = SubResource("StandardMaterial3D_iqkah")
+
+[node name="CSGSphere3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.29141, 12, 0.0703535)
+mesh = SubResource("SphereMesh_iqkah")
+
+[node name="CSGSphere3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.00024, 12, 0.0703535)
+mesh = SubResource("SphereMesh_0xhg2")

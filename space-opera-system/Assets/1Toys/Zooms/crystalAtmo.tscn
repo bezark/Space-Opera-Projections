@@ -1,21 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://he2g8gx4xwrn"]
+[gd_scene load_steps=15 format=3 uid="uid://he2g8gx4xwrn"]
 
 [ext_resource type="CompositorEffect" uid="uid://dn5hnqp81gyru" path="res://NewCloudsGD.tres" id="1_ber5q"]
 [ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_hx5ff"]
 [ext_resource type="Script" uid="uid://c0w752ro86qws" path="res://Components/Cameras/free_fly.gd" id="3_7jpg5"]
 [ext_resource type="Script" uid="uid://djusduuxf0voj" path="res://addons/SunshineClouds2/SunshineCloudsDriver.gd" id="4_wsqug"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hx5ff"]
-
-[sub_resource type="Sky" id="Sky_k6yqt"]
-sky_material = SubResource("ProceduralSkyMaterial_hx5ff")
-
-[sub_resource type="Environment" id="Environment_7jpg5"]
-background_mode = 2
-sky = SubResource("Sky_k6yqt")
-
-[sub_resource type="Compositor" id="Compositor_v0xyi"]
-compositor_effects = Array[CompositorEffect]([ExtResource("1_ber5q")])
 
 [sub_resource type="Gradient" id="Gradient_aicao"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -34,18 +22,7 @@ domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mwnly"]
-resource_local_to_scene = false
-resource_name = ""
-width = 512
-height = 512
-invert = false
-in_3d_space = false
-generate_mipmaps = true
 seamless = true
-seamless_blend_skirt = 0.1
-as_normal_map = false
-bump_strength = 8.0
-normalize = true
 color_ramp = SubResource("Gradient_aicao")
 noise = SubResource("FastNoiseLite_dvrme")
 
@@ -72,16 +49,37 @@ _shader_parameters = {
 &"world_space_normal_blend": true
 }
 
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_hx5ff"]
+
+[sub_resource type="Sky" id="Sky_k6yqt"]
+sky_material = SubResource("ProceduralSkyMaterial_hx5ff")
+
+[sub_resource type="Environment" id="Environment_7jpg5"]
+background_mode = 2
+sky = SubResource("Sky_k6yqt")
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ber5q"]
+sky_top_color = Color(0.0723033, 0.000958518, 0.191831, 1)
+sky_horizon_color = Color(0.457869, 0.0787423, 0.519782, 1)
+sky_curve = 0.0388224
+ground_bottom_color = Color(0.253671, 0.0741999, 0.327209, 1)
+ground_horizon_color = Color(0.261861, 0.339629, 0.767155, 1)
+energy_multiplier = 1.5
+
+[sub_resource type="Sky" id="Sky_wsqug"]
+sky_material = SubResource("ProceduralSkyMaterial_ber5q")
+
+[sub_resource type="Environment" id="Environment_hx5ff"]
+background_mode = 2
+sky = SubResource("Sky_wsqug")
+tonemap_mode = 2
+glow_enabled = true
+glow_intensity = 2.05
+fog_light_color = Color(0.628198, 0.429186, 0.894403, 1)
+fog_light_energy = 0.3
+fog_density = 0.005
+
 [node name="Crystal" type="Node3D"]
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(-0.866023, -0.433016, 0.250001, 0, 0.499998, 0.866027, -0.500003, 0.749999, -0.43301, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_max_distance = 1.0
-
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_7jpg5")
-compositor = SubResource("Compositor_v0xyi")
 
 [node name="Terrain3D" type="Terrain3D" parent="."]
 data_directory = "res://Assets/1Toys/Zooms/crystal"
@@ -103,10 +101,13 @@ script = ExtResource("4_wsqug")
 update_continuously = true
 clouds_resource = ExtResource("1_ber5q")
 ambience_sample_environment = SubResource("Environment_7jpg5")
-tracked_directional_lights = [NodePath("../DirectionalLight3D")]
+tracked_directional_lights = [NodePath("")]
 tracked_directional_light_shadow_steps = Array[int]([12])
-extra_large_clouds_pos = Vector3(85338.8, 0, 85338.8)
-large_clouds_pos = Vector3(10947, 0, 10947)
-medium_clouds_pos = Vector3(380.724, 0, 380.724)
-small_clouds_pos = Vector3(-186.001, -186.001, -186.001)
+extra_large_clouds_pos = Vector3(99257.7, 0, 99257.7)
+large_clouds_pos = Vector3(20879.9, 0, 20879.9)
+medium_clouds_pos = Vector3(-1645.62, 0, -1645.62)
+small_clouds_pos = Vector3(1006.09, 1006.09, 1006.09)
 metadata/_custom_type_script = "uid://djusduuxf0voj"
+
+[node name="WorldEnvironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hx5ff")

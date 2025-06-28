@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://b580ywvpd3yhx"]
+[gd_scene load_steps=15 format=3 uid="uid://b580ywvpd3yhx"]
 
 [ext_resource type="Terrain3DAssets" uid="uid://jl6681mk4lte" path="res://Assets/1Toys/Zooms/SPACEOPERATERRAIN.tres" id="1_58caq"]
 [ext_resource type="PackedScene" uid="uid://dj4teh6d7ba7l" path="res://Assets/1Toys/crystal.tscn" id="2_aicao"]
@@ -6,6 +6,7 @@
 [ext_resource type="ArrayMesh" uid="uid://dtp4wwbas1kgj" path="res://Assets/1Toys/crystalTree.tres" id="4_exmtv"]
 [ext_resource type="PackedScene" uid="uid://c0itdbchse1ts" path="res://Assets/1Toys/localWell.tscn" id="4_mwnly"]
 [ext_resource type="PackedScene" uid="uid://daobvw078qsyh" path="res://Assets/zoom-meshes/crystal_tree.tscn" id="6_rv1jj"]
+[ext_resource type="PackedScene" uid="uid://dvrf2tdnr1go1" path="res://Assets/1Toys/ships/gemships.tscn" id="7_ilfll"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_dvrme"]
 sky_top_color = Color(0.522782, 0.363897, 0.670134, 1)
@@ -14,19 +15,20 @@ ground_bottom_color = Color(0.253671, 0.0741999, 0.327209, 1)
 ground_horizon_color = Color(0.652741, 0.568152, 0.707964, 1)
 energy_multiplier = 1.5
 
-[sub_resource type="Sky" id="Sky_mwnly"]
+[sub_resource type="Sky" id="Sky_u5kq1"]
 sky_material = SubResource("ProceduralSkyMaterial_dvrme")
 
 [sub_resource type="Environment" id="Environment_exmtv"]
 background_mode = 2
-sky = SubResource("Sky_mwnly")
+sky = SubResource("Sky_u5kq1")
 tonemap_mode = 2
 glow_enabled = true
 glow_intensity = 2.05
 fog_enabled = true
 fog_light_color = Color(0.628198, 0.429186, 0.894403, 1)
 fog_light_energy = 0.3
-fog_density = 0.005
+fog_density = 0.001
+fog_sky_affect = 0.278
 
 [sub_resource type="Gradient" id="Gradient_aicao"]
 offsets = PackedFloat32Array(0.2, 1)
@@ -45,18 +47,7 @@ domain_warp_fractal_lacunarity = 1.5
 domain_warp_fractal_gain = 1.0
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_mwnly"]
-resource_local_to_scene = false
-resource_name = ""
-width = 512
-height = 512
-invert = false
-in_3d_space = false
-generate_mipmaps = true
 seamless = true
-seamless_blend_skirt = 0.1
-as_normal_map = false
-bump_strength = 8.0
-normalize = true
 color_ramp = SubResource("Gradient_aicao")
 noise = SubResource("FastNoiseLite_dvrme")
 
@@ -80,8 +71,17 @@ _shader_parameters = {
 &"noise_texture": SubResource("NoiseTexture2D_mwnly"),
 &"projection_angular_division": 2.0,
 &"projection_threshold": 0.8,
+&"world_noise_fragment_normals": false,
+&"world_noise_height": 64.0,
+&"world_noise_lod_distance": 7500.0,
+&"world_noise_max_octaves": 4,
+&"world_noise_min_octaves": 2,
+&"world_noise_offset": Vector3(0, 0, 0),
+&"world_noise_region_blend": 0.33,
+&"world_noise_scale": 5.0,
 &"world_space_normal_blend": true
 }
+world_background = 2
 
 [node name="Crystal" type="Node3D"]
 
@@ -100,7 +100,7 @@ metadata/_edit_lock_ = true
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 6.31691, 16.4081, -9.53674e-07)
 
 [node name="FreeFlyCamera" type="Camera3D" parent="."]
-transform = Transform3D(0.710824, 0, -0.70337, 0, 1, 0, 0.70337, 0, 0.710824, 0, 11.3525, 372.284)
+transform = Transform3D(0.997963, -0.0461407, 0.0440531, 0.0264189, 0.927478, 0.372944, -0.0580662, -0.37102, 0.926808, 54.9254, 317.796, 372.284)
 current = true
 script = ExtResource("3_dvrme")
 metadata/_custom_type_script = "uid://c0w752ro86qws"
@@ -116,3 +116,9 @@ transform = Transform3D(0.965926, -0.258819, 0, 0.258819, 0.965926, 0, 0, 0, 1, 
 
 [node name="CrystalTree" parent="." instance=ExtResource("6_rv1jj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.27849, 8.3962, 354.937)
+
+[node name="GemShips" parent="." instance=ExtResource("7_ilfll")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, 0, 193.776, 290.981)
+
+[node name="GemShips2" parent="." instance=ExtResource("7_ilfll")]
+transform = Transform3D(10, 0, 0, 0, 10, 0, 0, 0, 10, -84.1101, 284.378, 71.55)
