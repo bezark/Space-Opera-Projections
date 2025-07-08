@@ -544,7 +544,7 @@
 
     
   environment.sessionVariables = {
-    LD_LIBRARY_PATH = "/run/current-system/sw/lib";
+    # LD_LIBRARY_PATH = "/run/current-system/sw/lib";
   #   JAVA_HOME = "${pkgs.jdk11}/lib/openjdk";
   #   LD_LIBRARY_PATH = [ "${pkgs.systemd}/lib" ];
   #   ANDROID_SDK_ROOT = "${pkgs.android-studio}/libexec/android-sdk";
